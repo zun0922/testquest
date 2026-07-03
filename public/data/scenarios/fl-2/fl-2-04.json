@@ -1,0 +1,173 @@
+{
+  "id": "fl-2-04",
+  "title": "何をどう試す？ 〜テストタイプと確認・リグレッション〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "今度のリリースには欠陥修正が入るよ。機能のテストだけでいいのか、直した所の確認はどうするのか。“何をどう試すか”を一緒に決めよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "まず“機能テスト”と“非機能テスト”。この2つの違いを説明できる？",
+      "choices": [
+        {
+          "text": "何をすべきかと、どのようにうまく振る舞うか",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。機能テストは、テスト対象が“何”をすべきかを評価し、機能の完全性・正確性・適切性をチェックします。非機能テストは“どのようにうまく振る舞うか”を評価し、性能効率性・互換性・使用性・信頼性・セキュリティ・保守性・移植性といった品質特性をチェックします。",
+            "syllabusRefs": ["2.2.2"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "非機能テストは必ず最後にまとめて行う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "非機能テストは、ライフサイクルの早期（レビューやコンポーネントテストの一部など）に開始するのが適切な場合もあります。非機能の欠陥の発見が遅れると、プロジェクトの成功に重大な脅威をもたらす可能性があります。“必ず最後”という思い込みは危険です。",
+            "syllabusRefs": ["2.2.2"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "ブラックボックステストとホワイトボックステスト。何が違って、どこで使えるものだと思う？",
+      "choices": [
+        {
+          "text": "仕様に基づくか、内部構造に基づくかの違い",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。ブラックボックステストは仕様に基づき、テスト対象の外部から見えるドキュメントからテストを導出して、動作を仕様に照らしてチェックします。ホワイトボックステストはコードやアーキテクチャーといった内部構造からテストを導き出し、構造を受け入れ可能なレベルまでカバーします。そして4つのテストタイプは、焦点は異なりますが、すべてのテストレベルに適用できます。",
+            "syllabusRefs": ["2.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テストタイプは特定のレベルでしか使えない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストタイプに関連するテスト活動のほとんどは、すべてのテストレベルで実行できます。機能・非機能・ブラックボックス・ホワイトボックスの4タイプは、各レベルで焦点は異なりますが、どのレベルにも適用可能です。",
+            "syllabusRefs": ["2.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "開発チームから“欠陥を直した”って連絡が来た。直ったことはどう確かめる？",
+      "choices": [
+        {
+          "text": "確認テストで元の欠陥の修正を確認する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。確認テストでは、元の欠陥が正常に修正されたことを確認します。リスクに応じて、欠陥のために不合格になったテストケースをすべて再実行したり、修正に必要だった変更をカバーする新しいテストケースを追加したりします。",
+            "syllabusRefs": ["2.2.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "制約が強い時は故障の再現手順だけ確認する",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "それも正しい運用です。欠陥の修正にかけられる時間や費用が限られている場合、確認テストは、欠陥によって引き起こされる故障を再現するステップを実行し、故障が発生しないことを確認するだけに限定することがあります。ただし基本は、不合格になったテストの再実行や新規テストの追加による確認です。",
+            "syllabusRefs": ["2.2.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "開発者が直したと言うなら再テスト不要",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "修正されたことは、テストで確認する必要があります。確認テストで元の欠陥が直ったことを確かめ、さらに変更が悪影響を及ぼしていないかをリグレッションテストで確認します。",
+            "syllabusRefs": ["2.2.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "直した場所の確認はいいとして、直していない場所は大丈夫かな？どう考える？",
+      "choices": [
+        {
+          "text": "影響度分析で範囲を決めリグレッションテスト",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。変更の悪影響は、変更したコンポーネントだけでなく、同じシステム内の他のコンポーネント、接続されている他のシステム、さらには環境にまで及ぶ可能性があります。まず影響度分析でどこに影響が及ぶかを見極め、リグレッションテストの範囲を最適化します。何度も実行するため自動化の有力候補で、CIに含めることがよい実践です。",
+            "syllabusRefs": ["2.2.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "変更したコンポーネントだけ見れば十分",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "変更による悪影響は、変更した箇所に限りません。同じシステム内の他のコンポーネントや接続されている他のシステムに影響することもあります。欠陥の修正や変更が行われたら、確認テストとリグレッションテストはすべてのテストレベルで必要になります。",
+            "syllabusRefs": ["2.2.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "機能も非機能も、直した所も直していない所も。“何をどう試すか”を意識して選べたね。この感覚が、テストを設計する力になっていくよ。",
+      "next": null
+    }
+  ]
+}

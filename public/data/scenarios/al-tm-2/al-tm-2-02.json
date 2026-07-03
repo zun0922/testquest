@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-2-02",
+  "title": "数字を物語に 〜ステークホルダーに届くテスト報告〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "明日はリリース判定会議だ。経営層への報告は君がまとめてくれ。手元のデータを見てみよう。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【手元のデータ】プロダクトリスクカバレッジ85%（決済関連は100%・帳票系に未テスト残）／未解決欠陥12件（重要度高2件・ともに回避策あり）／コードカバレッジ72%／テスト実行率91%。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "経営層への報告、何を軸に組み立てる？",
+      "choices": [
+        {
+          "text": "リスクの観点で整理し、意思決定に直結させる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "的確です。報告の目的は「マネジメントの目的のために、情報に対する素早い理解を提供する」こと。全テストが合格したリスクの割合・不合格になったリスク・まだテストできていないリスク——リスクの観点で整理すれば、経営層は“リリースして受け入れる残存リスクは何か”を直接判断できます。決済100%と帳票の未テスト残、回避策つきの重要度高2件は、まさにその判断材料です。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "収集した全メトリクスを一覧表で並べて渡す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "網羅性は誠実に見えますが、生の一覧は“素早い理解の提供”という報告の目的に反します。経営層が知りたいのは数字そのものではなく、リリース判断に効く意味。リスクの観点で組み立て、詳細は求められたら出せるよう控えておくのが良い報告です。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "良い数字だけ選んで安心してもらう",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "空気は良くなりますが、未解決の重要度高2件と帳票系の未テストこそ、判定会議が扱うべき情報です。報告は意思決定の材料であり、演出ではありません。悪い情報を隠した報告は、本番障害の日に最も高くつきます。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "コードカバレッジ72%って数字、経営層への報告ではどう扱う？",
+      "choices": [
+        {
+          "text": "構造カバレッジは低レベル向き。報告は要件とリスクで",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。構造カバレッジのメトリクスはコンポーネントテスト（ステートメントカバレッジ等）やコンポーネント統合テスト（インターフェースカバレッジ等）のような低レベルのテストに適用できます。高いレベルのテスト報告は、要件仕様書・ユースケース・ユーザーストーリー・プロダクトリスクといったテストベースに基づき、コンテキストとニーズに合わせるべき。低レベルで構造カバレッジ100%を達成しても、欠陥と品質リスクは高レベルで対処する必要が残ります。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "コードカバレッジ100%を全レベルの報告基準にする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "1つの数字で統一したくなりますが、構造カバレッジは低レベルテスト向きの指標です。仮にコンポーネントテストで100%でも、高レベルの品質リスクへの対処は残ります。経営層への報告は、要件とリスクのカバレッジを軸に、コンテキストに合わせて組み立てましょう（変更の多い環境で変更影響のモニタリングに使う、といった補助的な活用は有効です）。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "未解決欠陥12件。この数字は“今の値”で見せるか、それとも？",
+      "choices": [
+        {
+          "text": "時点の値と時系列の傾向を目的で使い分ける",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。メトリクスは、ある時点におけるスナップショットとして報告することも、傾向を評価するための時系列的な変遷として報告することもできます。リリース判定では「12件」という値そのものより、“未解決欠陥が収束傾向にあるのか、増え続けているのか”の方が意思決定に効きます。目的に応じて見せ方を選びましょう。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "最新値だけ見せれば十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "シンプルではありますが、「12件」は増加中の12件か、収束した末の12件かで意味がまるで違います。傾向の時系列は、その文脈を与えてくれます。スナップショットと傾向、両方の見せ方を持っておきましょう。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "報告に深みを出すには、メトリクス同士をどう見せればいいかな？",
+      "choices": [
+        {
+          "text": "欠陥傾向×実行傾向の相関など組み合わせて示す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。異なるカテゴリーのメトリクスを組み合わせることは有用です——未解決欠陥の傾向と実行したテストの傾向の相関（テストが進んでも欠陥が増え続けていないか）、要件に見つかった欠陥数に基づくテストベース品質の提示など。単独の数字では見えない構図が、組み合わせで浮かび上がります。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "指標は1種類に絞るのが誠実な報告だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "絞る潔さは魅力ですが、1種類の指標は1つの側面しか照らしません。プロダクトリスク・欠陥・進捗・カバレッジ・コストは、組み合わせて初めてプロジェクトの全体像を語ります。“少数の軸で整理し、組み合わせで裏付ける”が報告の型です。",
+            "syllabusRefs": ["TM-2.1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "数字を並べるのではなく、リスクの物語として届ける。明日の会議、その報告なら経営層は正しく迷えるはずだ——それが良い報告というものだ。",
+      "next": null
+    }
+  ]
+}

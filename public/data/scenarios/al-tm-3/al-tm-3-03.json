@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-3-03",
+  "title": "チームを率いる力 〜リーダーシップとモチベーション〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "チームに新メンバーが2名入る。人が入れば、チームは一度揺れるものだ。率いる側の振る舞いと、チームの動機付けを考えておこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "チームを率いるのに必要な力って、何だと思う？",
+      "choices": [
+        {
+          "text": "管理の専門能力に加え、社会的・個人の能力が不可欠",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。基本的なマネジメント活動（計画・進捗モニタリング・コントロール・報告）の専門的・方法論的能力と、テストマネジメント固有の知識（アプローチ・戦略開発・技法・SDLC理解）に加えて——リードやコーチには社会的能力・個人の能力が不可欠な成功要因です。回復力、委任する能力、チームに受け入れられる資質、テストの利益を主張しステークホルダーと対話して対立を解決する能力が含まれます。",
+            "syllabusRefs": ["TM-3.1.5"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "技術で一番でありさえすればついてくる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "技術力は尊敬の源泉にはなりますが、率いる力とは別物です。チームを成功に導くには、マネジメント活動の能力に加えて、委任・対立解決・受け入れられる資質といった社会的・個人の能力が不可欠——“一番の技術者”と“よいリーダー”は違う仕事なのです。",
+            "syllabusRefs": ["TM-3.1.5"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "新メンバーが入るとチームは“形成期”からやり直しになる。段階ごとの関わり方は？",
+      "choices": [
+        {
+          "text": "形成は支援・混乱は対立解決・機能期は委任へ",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。Tuckmanモデルのフェーズに応じたスキルが求められます——形成期＝メンバーのチームへの参加を支援する意欲／混乱期＝チーム内の対立を解決する能力／統一期＝合意された価値観やルールを守らせる規律と目標指向のリーダーシップ／機能期＝チームに自分自身の責任を持たせる委任能力／散会期＝去るメンバーに感謝と信頼を持って接する能力。チームの発達段階を読み、関わり方を変えるのがリーダーの技術です。",
+            "syllabusRefs": ["TM-3.1.5"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "どの段階でも同じ接し方が公平だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一貫性は美徳ですが、形成期のチームに機能期と同じ“委任”をすれば放置になり、機能期のチームに形成期の手取り足取りをすれば束縛になります。Tuckmanモデルが示すとおり、チームの発達段階に応じてリーダーの関わり方は変えるべきものです。",
+            "syllabusRefs": ["TM-3.1.5"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "チームのモチベーションって、何で上がるものなんだろう？",
+      "choices": [
+        {
+          "text": "承認と評価・責任と自律・やりがい・成長の機会",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。動機付け-衛生理論（Herzberg）のモチベーションを上げる要因は——仕事の達成に対する承認と評価／責任と自律性の向上（チーム内でテストプロセスを定義する等）／達成可能で努力する価値のある、興味深く有意義でやりがいのあるタスク（自動化の新ツール選定・導入等）／プロフェッショナルとしての昇進と成長。満足しモチベーションの高いチームは生産性を上げ、クロストレーニングが自然に起き、マネジメントは外部課題に時間を使えるようになります。",
+            "syllabusRefs": ["TM-3.1.6"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "給料さえ上げれば万事解決だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "報酬は大事ですが、動機付け-衛生理論では“衛生要因”に分類されます。適切な報酬は欠けるとモチベーションを下げますが、満たしても自動的に満足が増えるわけではありません。上げたいなら、承認・自律性・やりがい・成長という動機付け要因を作り、強化することです。",
+            "syllabusRefs": ["TM-3.1.6"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では“衛生要因”とは何か、説明できるか？",
+      "choices": [
+        {
+          "text": "報酬・方針・労働条件など。欠けると士気が下がる",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。衛生要因は通常“当然のもの”と見なされます——適切な報酬（市場に見合う給与・時間外手当）／評価される人事方針とマネジメントスタイル（現実的な目標・干渉や過負荷からの保護）／快適な労働条件（曖昧でない仕様・成熟したテスト対象・安定したテスト環境）／最低限必要な安全性／良好な対人関係。満たしても自動的に満足は増えませんが、欠けるとモチベーションが下がります。マネジメントは衛生要因の欠如を継続的に排除しつつ、動機付け要因を作り強化すべきです。",
+            "syllabusRefs": ["TM-3.1.6"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "衛生要因を満たせばモチベーションはどんどん上がる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい——そこが衛生要因の落とし穴です。衛生要因は満たしても自動的により大きな満足をもたらすわけではなく、欠けたときにモチベーションを下げる性質のものです。“下げない”ための衛生要因の維持と、“上げる”ための動機付け要因の強化は、別の打ち手として両方回します。",
+            "syllabusRefs": ["TM-3.1.6"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "段階を読み、下げる要因を取り除き、上げる要因を育てる。チームは“管理”するものではなく“手入れ”するものだ——庭と同じでな。",
+      "next": null
+    }
+  ]
+}

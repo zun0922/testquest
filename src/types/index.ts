@@ -1,0 +1,108 @@
+// 設計書 v1.1 §3 データ構造定義に準拠
+
+// ===== 3.1 基本型 =====
+export type StatusKey = 'knowledge' | 'skill' | 'confidence' | 'teamwork'
+export type StatusValues = Record<StatusKey, number> // 各 0〜100 の整数
+
+export const STATUS_KEYS: StatusKey[] = ['knowledge', 'skill', 'confidence', 'teamwork']
+
+export const INITIAL_STATUS: StatusValues = {
+  knowledge: 10,
+  skill: 10,
+  confidence: 10,
+  teamwork: 10,
+} // 要件 FR-006
+
+export const STATUS_MIN = 0
+export const STATUS_MAX = 100
+
+export type Rating = 'best' | 'good' | 'poor' // 最適／可／要改善（FR-005）
+
+export type CharacterId = 'rin' | 'tanaka' | 'ken' | 'takumi' | 'mio' // takumi/mio は AL 編（設定書 v1.4 §4.4〜4.5）
+export type Expression = 'normal' | 'happy' | 'angry' | 'sad' | 'thinking'
+export type Position = 'left' | 'right'
+
+// ===== 3.2 シナリオデータ =====
+export interface ScenarioIndex {
+  version: 1
+  scenarios: ScenarioIndexEntry[]
+}
+export interface ScenarioIndexEntry {
+  id: string // 'fl-1-01' / 'al-tm-1-01' 形式
+  title: string
+  level: 'FL' | 'AL-TM' | 'AL-TTA' // Phase 3 で AL を追加（2026-07-03）
+  chapter: number // FL=1〜6・AL-TM=1〜3・AL-TTA=1〜6（章番号は level 内で解釈する）
+  order: number // 章内の表示順（FR-002 は order 昇順）
+  estimatedMinutes: number
+  file: string // 'fl-1/fl-1-01.json'
+}
+
+export interface Scenario {
+  id: string
+  title: string
+  startNodeId: string
+  nodes: SceneNode[]
+}
+
+export type SceneNode = TextNode | ChoiceNode
+
+export interface NodeBase {
+  id: string
+  background: string
+  characters: CharacterDisplay[] // 0〜2体（UI-RULE-004）
+  speaker: CharacterId | 'narration'
+  text: string // 最大200文字（UI-RULE-002）
+}
+export interface TextNode extends NodeBase {
+  type: 'text'
+  next: string | null // null＝最終シーン（結果画面へ）
+}
+export interface ChoiceNode extends NodeBase {
+  type: 'choice'
+  choices: Choice[] // 2〜3個（UI-RULE-003）
+}
+
+export interface CharacterDisplay {
+  characterId: CharacterId
+  expression: Expression
+  position: Position // 同一 position の重複は検証エラー
+}
+
+export interface Choice {
+  text: string // 最大40文字
+  rating: Rating
+  statusEffects: Partial<Record<StatusKey, number>> // 値は1〜5・1キー以上必須（減算なし）
+  feedback: Feedback
+  next: string // 分岐先ノードID
+}
+
+export interface Feedback {
+  explanation: string // 最大400文字
+  syllabusRefs: string[] // 例 ['1.3']。1件以上必須
+}
+
+// ===== 3.3 進捗データ（localStorage） =====
+export interface SaveDataV1 {
+  version: 1
+  status: StatusValues
+  cleared: Record<string, ClearRecord> // key＝シナリオID
+}
+export interface ClearRecord {
+  clearedAt: string // ISO 8601
+  ratings: Record<Rating, number>
+  statusGain: Partial<Record<StatusKey, number>>
+}
+
+// ===== 制約値（検証・UIで共有） =====
+export const LIMITS = {
+  TEXT_MAX: 200, // UI-RULE-002
+  CHOICE_TEXT_MAX: 40,
+  EXPLANATION_MAX: 400,
+  CHOICES_MIN: 2, // 1選択肢ノード内の選択肢数
+  CHOICES_MAX: 3,
+  CHOICE_NODES_MIN: 3, // シナリオ内の choice ノード数（要件6.1）
+  CHOICE_NODES_MAX: 5,
+  CHARACTERS_MAX: 2,
+  STATUS_EFFECT_MIN: 1,
+  STATUS_EFFECT_MAX: 5,
+} as const

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TestQuest モックB案 — 育成シミュレーション風</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; background: #eef2f7; color: #2b3445; min-height: 100vh; }
+
+  .mock-header { background: #fff; padding: 10px 16px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; border-bottom: 2px solid #d7e0ec; }
+  .mock-header h1 { font-size: 15px; color: #2563b0; font-weight: 700; }
+  .mock-header p { font-size: 12px; color: #6b7891; }
+  .tabs { display: flex; gap: 8px; margin-left: auto; }
+  .tabs button { background: #eef2f7; color: #44506a; border: 1px solid #c5d2e3; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+  .tabs button.active { background: #2563b0; color: #fff; font-weight: 700; border-color: #2563b0; }
+
+  .layout { max-width: 1000px; margin: 14px auto; padding: 0 12px; display: grid; grid-template-columns: 1fr 240px; gap: 14px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .side { order: -1; } }
+
+  .stage-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 18px rgba(37, 99, 176, .10); border: 1px solid #dde6f1; }
+  .stage { position: relative; aspect-ratio: 16 / 10; min-height: 380px; background: linear-gradient(180deg, #cfe3f7 0%, #e8f1fa 60%, #d8e4f0 100%); }
+  .bg-window { position: absolute; top: 10%; left: 10%; width: 26%; height: 36%; background: linear-gradient(135deg, #aecdf0, #7fa8d8); border: 4px solid #fff; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .bg-window.right { left: auto; right: 10%; }
+  .bg-desk { position: absolute; bottom: 0; width: 100%; height: 16%; background: #b9c9da; }
+
+  .chara { position: absolute; bottom: 0; width: 200px; height: 76%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; transition: filter .3s; }
+  .chara .body { width: 134px; height: 80%; border-radius: 64px 64px 0 0; }
+  .chara .head { width: 68px; height: 68px; border-radius: 50%; margin-bottom: -11px; z-index: 2; }
+  .chara .name-chip { position: absolute; top: 8%; font-size: 12px; background: #fff; color: #44506a; padding: 2px 12px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .chara.rin { left: 10%; }
+  .chara.rin .head { background: #e9c8e9; } .chara.rin .body { background: linear-gradient(180deg, #b1a3e0, #8678c2); }
+  .chara.tanaka { right: 10%; }
+  .chara.tanaka .head { background: #d8b48e; } .chara.tanaka .body { background: linear-gradient(180deg, #91a3c0, #68799a); }
+  .chara.inactive { filter: grayscale(1) opacity(.5); }
+
+  .msg-area { padding: 16px 20px 20px; border-top: 3px solid #2563b0; background: #fff; min-height: 130px; position: relative; }
+  .speaker { display: inline-block; background: #2563b0; color: #fff; font-weight: 700; font-size: 13px; padding: 3px 14px; border-radius: 6px; margin-bottom: 8px; }
+  .msg-text { font-size: 15px; line-height: 1.9; }
+  .next-cursor { position: absolute; right: 18px; bottom: 10px; color: #2563b0; font-size: 13px; animation: blink 1.1s infinite; }
+  @keyframes blink { 50% { opacity: .15; } }
+
+  /* サイドパネル（ステータス常設） */
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  .panel { background: #fff; border-radius: 14px; padding: 16px; border: 1px solid #dde6f1; box-shadow: 0 4px 18px rgba(37, 99, 176, .08); }
+  .panel h2 { font-size: 13px; color: #2563b0; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .st-row { margin-bottom: 12px; }
+  .st-row .lbl { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 4px; color: #44506a; }
+  .st-row .rank { font-size: 11px; font-weight: 700; }
+  .bar { height: 10px; background: #e4ebf4; border-radius: 5px; overflow: hidden; }
+  .fill { height: 100%; border-radius: 5px; }
+  .f-knowledge { width: 32%; background: linear-gradient(90deg, #3b82d6, #6faae6); } .r-knowledge { color: #3b82d6; }
+  .f-skill { width: 24%; background: linear-gradient(90deg, #e8853c, #f3a96b); } .r-skill { color: #e8853c; }
+  .f-conf { width: 18%; background: linear-gradient(90deg, #e6b73c, #f1d077); } .r-conf { color: #c79a1d; }
+  .f-team { width: 28%; background: linear-gradient(90deg, #34b37a, #6fd0a4); } .r-team { color: #34b37a; }
+  .progress-note { font-size: 11.5px; color: #6b7891; line-height: 1.7; }
+
+  /* 選択肢 */
+  .choices { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); width: min(560px, 90%); display: none; flex-direction: column; gap: 10px; }
+  .choices button { background: #fff; border: 2px solid #aecdf0; color: #2b3445; border-radius: 10px; padding: 13px 16px; font-size: 14px; line-height: 1.6; cursor: pointer; text-align: left; box-shadow: 0 3px 10px rgba(37,99,176,.10); transition: .15s; }
+  .choices button:hover { border-color: #2563b0; transform: translateY(-1px); }
+  .choices .label { display: inline-block; background: #2563b0; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; margin-right: 10px; }
+
+  /* フィードバック */
+  .fb-overlay { position: absolute; inset: 0; background: rgba(43, 52, 69, .45); display: none; align-items: center; justify-content: center; }
+  .fb-card { width: min(540px, 92%); background: #fff; border-radius: 14px; padding: 22px 24px; border-top: 6px solid #34b37a; }
+  .fb-badge { display: inline-block; background: #e3f6ed; color: #1e8a5a; font-weight: 700; font-size: 13px; padding: 4px 16px; border-radius: 14px; }
+  .fb-card h3 { font-size: 15px; margin: 12px 0 6px; color: #1e8a5a; }
+  .fb-card p { font-size: 13.5px; line-height: 1.9; color: #44506a; }
+  .fb-growth { margin-top: 12px; background: #f2f7fc; border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: #44506a; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .chip-up { background: #e3f6ed; color: #1e8a5a; font-weight: 700; border-radius: 12px; padding: 2px 10px; font-size: 12px; animation: pop 1.4s infinite; }
+  @keyframes pop { 50% { transform: scale(1.06); } }
+  .fb-ref { margin-top: 10px; font-size: 12px; color: #6b7891; }
+  .fb-ref code { background: #eef2f7; padding: 2px 8px; border-radius: 6px; color: #2563b0; }
+  .fb-close { margin-top: 16px; width: 100%; background: #2563b0; color: #fff; font-weight: 700; border: none; border-radius: 8px; padding: 11px; font-size: 14px; cursor: pointer; }
+
+  .note { max-width: 1000px; margin: 4px auto 30px; padding: 0 12px; font-size: 12px; color: #6b7891; line-height: 1.8; }
+</style>
+</head>
+<body>
+  <div class="mock-header">
+    <div>
+      <h1>B案：育成シミュレーション風（明るいオフィス調）</h1>
+      <p>サイドパネルにステータスを常設し「育てている」感を強調。ランク表記（E〜S）で数値を抽象化（UI-RULE-006）</p>
+    </div>
+    <div class="tabs">
+      <button class="active" onclick="show('scene', this)">会話シーン</button>
+      <button onclick="show('choice', this)">選択肢シーン</button>
+      <button onclick="show('feedback', this)">フィードバック</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="stage-card">
+      <div class="stage">
+        <div class="bg-window"></div>
+        <div class="bg-window right"></div>
+        <div class="bg-desk"></div>
+        <div class="chara rin" id="charaRin">
+          <span class="name-chip">鈴木 凛</span>
+          <div class="head"></div><div class="body"></div>
+        </div>
+        <div class="chara tanaka inactive" id="charaTanaka">
+          <span class="name-chip">田中 課長</span>
+          <div class="head"></div><div class="body"></div>
+        </div>
+
+        <div class="choices" id="paneChoice">
+          <button><span class="label">A</span>明日までに全部のパターンを試します！</button>
+          <button><span class="label">B</span>リスクの高い箇所から優先的に確認します</button>
+          <button><span class="label">C</span>品質保証のためには時間が必要です、と交渉する</button>
+        </div>
+
+        <div class="fb-overlay" id="paneFeedback">
+          <div class="fb-card">
+            <span class="fb-badge">✓ 最適な判断</span>
+            <h3>なぜこの選択が良いのか</h3>
+            <p>全数テストは不可能です（テストの7原則）。限られた時間では、リスクの高い箇所から優先順位をつけてテストするリスクベースドテストの考え方が現実的で、課長の期待にも応えられます。</p>
+            <div class="fb-growth">
+              成長：<span class="chip-up">📚 知識 ↑</span><span class="chip-up">🔧 スキル ↑</span>
+              <span style="font-size:11.5px;color:#6b7891;">（サイドパネルのメーターが伸びます）</span>
+            </div>
+            <p class="fb-ref">参照シラバス：<code>FL 1.3 テストの原則</code></p>
+            <button class="fb-close">閉じて次へ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="msg-area" id="paneScene">
+        <span class="speaker" id="speakerName">鈴木 凛</span>
+        <p class="msg-text">ようこそ、QAチームへ。あなたが今日から配属の新人さんね。早速だけど——「テスト」って何のためにあると思う？</p>
+        <span class="next-cursor">▼</span>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="panel">
+        <h2>📊 あなたの成長</h2>
+        <div class="st-row"><div class="lbl"><span>📚 知識</span><span class="rank r-knowledge">D</span></div><div class="bar"><div class="fill f-knowledge"></div></div></div>
+        <div class="st-row"><div class="lbl"><span>🔧 スキル</span><span class="rank r-skill">E</span></div><div class="bar"><div class="fill f-skill"></div></div></div>
+        <div class="st-row"><div class="lbl"><span>⭐ 自信</span><span class="rank r-conf">E</span></div><div class="bar"><div class="fill f-conf"></div></div></div>
+        <div class="st-row"><div class="lbl"><span>🤝 チームワーク</span><span class="rank r-team">D</span></div><div class="bar"><div class="fill f-team"></div></div></div>
+      </div>
+      <div class="panel">
+        <h2>📖 第1章 テストの基礎</h2>
+        <p class="progress-note">シナリオ 2 / 5 プレイ中<br>「はじめてのテスト依頼」</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    ※ ステータスはバー＋ランク表記（E・D・C・B・A・S）で抽象化し、内部数値（0〜100）は表示しない（UI-RULE-006）。ランクは内部値の帯域で決まる（設計書で定義）。<br>
+    ※ スマートフォン（縦）ではサイドパネルが上部に折り返して表示される（このページを幅を狭めて確認可能）。
+  </p>
+
+<script>
+function show(pane, btn) {
+  document.getElementById('paneChoice').style.display = pane === 'choice' ? 'flex' : 'none';
+  document.getElementById('paneFeedback').style.display = pane === 'feedback' ? 'flex' : 'none';
+  document.getElementById('charaTanaka').classList.toggle('inactive', pane !== 'choice');
+  document.getElementById('charaRin').classList.toggle('inactive', pane === 'choice');
+  if (pane === 'choice') { document.getElementById('speakerName').textContent = '田中 課長'; }
+  else { document.getElementById('speakerName').textContent = '鈴木 凛'; }
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

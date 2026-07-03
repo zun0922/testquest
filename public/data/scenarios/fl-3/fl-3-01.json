@@ -1,0 +1,163 @@
+{
+  "id": "fl-3-01",
+  "title": "動かさずに見つける 〜静的テストの基本〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "実装はまだ先だが、テスターの仕事はもう始められる。ソフトウェアを動かさずに品質を確かめる“静的テスト”だ。何ができるのか、一緒に見ていこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず確認だ。“静的テスト”とは、どんなテストだと思う？",
+      "choices": [
+        {
+          "text": "ソフトを実行せずに成果物を評価するテスト",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。静的テストでは、動的テストと異なり、テスト対象のソフトウェアを実行する必要がありません。コードや仕様書などの作業成果物を評価し、品質向上・欠陥検出のほか、可読性・完全性・正確性・一貫性などの特性も評価します。検証にも妥当性確認にも適用できます。",
+            "syllabusRefs": ["3.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "動かしてこそテスト。実行しないなら別物だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストは実行だけではありません——これはよくある誤解です。静的テストはソフトウェアを実行せずに作業成果物を評価する、れっきとしたテストです。品質向上や欠陥検出、可読性・完全性・一貫性などの特性評価を目的とし、検証にも妥当性確認にも適用できます。",
+            "syllabusRefs": ["3.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "静的テストって、具体的にはどうやるの？人が読むだけかな？",
+      "choices": [
+        {
+          "text": "人手のレビューとツールの静的解析がある",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。手段は大きく2つ、人手による確認（レビュー）と、ツールの力を借りる静的解析です。静的解析はテストケースが不要で、動的テストの前に問題を識別でき、少ない労力で済む場合が多いため、CIフレームワークへ組み込むことがよくあります。スペルチェッカーや可読性を上げるツールも静的解析ツールの一例です。",
+            "syllabusRefs": ["3.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "静的テスト＝レビューのこと。ツールは無関係",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "レビューだけと考えるのはよくある誤解です。人手のレビューに加えて、ツールによる静的解析も静的テストの手段です。静的解析は主にコードの特定の欠陥を検出するために使いますが、保守性やセキュリティを評価するためにも使われます。",
+            "syllabusRefs": ["3.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "静的テストの対象になるのは、どんな作業成果物だろう？",
+      "choices": [
+        {
+          "text": "要件・コード・計画書など読める成果物全般",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。要件仕様書・ソースコード・テスト計画書・テストケース・プロダクトバックログアイテム・テストチャーター・プロジェクトドキュメント・契約書・モデルなど、ほとんどの作業成果物を静的テストで確認できます。読んで理解できるあらゆる作業成果物がレビューの対象になりえます。",
+            "syllabusRefs": ["3.1.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "静的テストの対象はソースコードだけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "コード限定と考えるのはよくある誤解です。要件仕様書・テスト計画書・契約書・モデルなど、読んで理解できるあらゆる作業成果物がレビューの対象になりえます。テスト関連の成果物（テスト計画書やテストケース）も対象です。",
+            "syllabusRefs": ["3.1.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ、どんな成果物でもツールの静的解析にかけられるのかな？",
+      "choices": [
+        {
+          "text": "モデルやコードなど構造を持つものに限られる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。静的解析には、作業成果物をチェックするための構造——モデル、コード、正式な構文を持つテキストなど——が必要です。また、人間による解釈が困難なものや、ツールで解析してはいけないもの（法規制がある第三者の実行可能コードなど）は静的テストに適しません。",
+            "syllabusRefs": ["3.1.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "どんな文書でもツールで自動チェックできる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そうとは限りません。静的解析には構造（モデル・コード・正式な構文を持つテキスト）が必要で、自由な文章の確認は人手のレビューで行います。また、法規制がある第三者の実行可能コードのように、ツールで解析してはいけないものもあります。",
+            "syllabusRefs": ["3.1.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "動かさなくても、品質はここまで確かめられる。実行できるものが届く前から、テストはもう始まっているんだ。",
+      "next": null
+    }
+  ]
+}

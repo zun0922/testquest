@@ -1,0 +1,163 @@
+{
+  "id": "fl-5-05",
+  "title": "記録が品質を守る 〜構成管理と欠陥マネジメント〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“先週のテスト結果、同じ条件で再現できる？”って聞かれて固まってない？今日は記録の規律——構成管理と欠陥マネジメントの回だよ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "構成管理（CM）は、テストをどう支えてくれるんだろう？",
+      "choices": [
+        {
+          "text": "成果物を一意に識別しバージョン管理・追跡する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。CMは、テスト計画書・テスト条件・テストケース・スクリプト・結果記録・レポートなどを構成アイテムとして識別・コントロール・トラッキングする規律を提供します。すべての構成アイテムを一意に識別し、バージョンコントロールと変更追跡を行い、相互に関連付けてトレーサビリティを維持します。CI/CDのパイプラインには自動化されたCMが通常含まれます。",
+            "syllabusRefs": ["5.4"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "最新版さえあれば過去のバージョンは消してよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "身軽に見えますが、過去を消すと“以前のテスト結果の再現”ができなくなります。CMでは新しいベースラインを作るとき変更した構成アイテムの記録を残すため、以前のベースラインに戻して過去のテスト結果を再現できます。冒頭の質問に答えられるのは、この仕組みがあってこそです。",
+            "syllabusRefs": ["5.4"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テスト用に承認された成果物——“ベースライン”はどう扱う？",
+      "choices": [
+        {
+          "text": "承認済みは正式な変更コントロールでのみ変更",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。構成アイテムがテスト用に承認されるとベースラインとなり、正式な変更コントロールプロセスを通じてのみ変更できます。複雑な構成アイテム（テスト環境など）については、アイテム・その関係・バージョンを記録します。",
+            "syllabusRefs": ["5.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "気づいた人がその場で直して上書きすればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "素早い修正は魅力的ですが、勝手な上書きは“何をテストしたのか”を分からなくします。承認された構成アイテム＝ベースラインは、正式な変更コントロールプロセスを通じてのみ変更します。変更の記録が残るからこそ、テスト結果とテスト対象の対応関係を信じられるのです。",
+            "syllabusRefs": ["5.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "欠陥を見つけたら欠陥レポートを書くけど、あれは何のためだと思う？",
+      "choices": [
+        {
+          "text": "解決に十分な情報を与え、改善のヒントにもなる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。欠陥レポートの目的は、解決に責任を持つ人への十分な情報の提供・作業成果物の品質を追跡する手段・開発とテストのプロセス改善のアイデア提供です。なお報告した不正は本当の欠陥のこともあれば、偽陽性や変更要求のこともあります。欠陥マネジメントプロセスは、記録→解析→分類→対応決定→クローズのワークフローと分類ルールを含み、全ステークホルダーが遵守します。",
+            "syllabusRefs": ["5.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "見つけた欠陥の件数を数えるだけの記録だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "件数も大事な情報ですが、それだけではもったいない。欠陥レポートは、解決責任者が問題を解決するのに十分な情報を提供し、品質の追跡を可能にし、プロセス改善のアイデアまで生む資産です。“数えるための記録”から“直すため・良くするための情報”へ、視点を変えましょう。",
+            "syllabusRefs": ["5.5"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では実践だ。動的テストで欠陥を見つけた。レポートには何を書く？",
+      "choices": [
+        {
+          "text": "再現手順・期待と実際の結果・重要度などを書く",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。代表的な内容は、一意な識別子・簡潔なタイトル・日付/発行組織/起票者・テスト対象とテスト環境・欠陥のコンテキスト（実行中のテストケースや技法など）・再現と解決を可能にする故障の説明（手順・ログ・スクリーンショット・録画）・期待結果と実際の結果・重要度・修正の優先度・状態（オープン/修正待ち/クローズ等）・参考文献。ツール使用時は識別子や日付などが自動記録されることもあります。",
+            "syllabusRefs": ["5.5"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "“動きません”と一言書けば伝わる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "急いでいるとやりがちですが、“動きません”だけでは、開発者は何をどの環境でどう操作したら何が起きたのかが分からず、再現も解決もできません。再現手順・期待結果と実際の結果・環境・重要度——解決に必要な情報を揃えることが、結果的に一番の近道です。",
+            "syllabusRefs": ["5.5"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "何を・どのバージョンで・どう試して・何が起きたか。記録がそろっているから、結果を信じられるし、明日の改善につながる。地味だけど、これが品質の土台だよ。",
+      "next": null
+    }
+  ]
+}

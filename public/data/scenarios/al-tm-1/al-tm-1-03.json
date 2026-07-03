@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-1-03",
+  "title": "モデル×レベル×タイプ 〜コンテキストに合わせる〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "聞いた？うちの会社、一部のプロジェクトがハイブリッド開発に移行するって。リーダーとして、テストの段取りをどう合わせるか、開発側のケンも交えて整理しておこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "そもそもハイブリッド開発って、どういうものなんだろう？中途半端にならないのかな。",
+      "choices": [
+        {
+          "text": "従来型とアジャイルの要素を目的に応じて統合",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ハイブリッドは、シーケンシャルなアプローチとアジャイルプラクティスの要素を、プロジェクトのニーズや組織の移行に合わせて統合したものです。採用理由は主に2つ——①アジャイルへの移行の橋渡し（文化やチームの急変を避けるバランス）②目的に合わせた併用（リスクの高い部分はシーケンシャル、他はアジャイル）。テスト側は、チームの適応能力の評価、強み弱みの識別、スプリント内テストの追跡・レビューなどで支えます。",
+            "syllabusRefs": ["TM-1.2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "どっちつかずの妥協で、選ぶ理由はない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そう見えるかもしれませんが、ハイブリッドには明確な採用理由があります。アジャイルへの移行は文化やチームダイナミクスの根本的な変化を伴うため難しく、ハイブリッドは構造と柔軟性を組み合わせた橋渡しになります。また、規制の重い部分はシーケンシャル・他はアジャイルのように、目的に合わせて使い分けるためにも選ばれます。",
+            "syllabusRefs": ["TM-1.2.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "thinking", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "開発モデルが変わると、テストマネジメントの活動はどう変わるんだろう？",
+      "choices": [
+        {
+          "text": "見積りも文書も役割も、モデルに応じて変わる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。シーケンシャル（V字等）ではテストレベルごとの早期詳細見積り・戦略/計画書/レポートを含む厚い文書・テストマネージャーが統括・マイルストーンベースの報告。イテレーティブ（スクラム等）ではイテレーションごとの見積り・受け入れ基準と完了の定義に重点を置き文書は最小限・ファシリテーターやコーチが従来のマネージャーに代わる・CI/CD中心のツールと自動リグレッション・リアルタイムダッシュボードでの継続報告・ベロシティ等のアジャイルメトリクス、と広く変わります。",
+            "syllabusRefs": ["TM-1.2.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "モデルが違っても作法は同じだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じやり方を持ち込みたくなりますが、見積りのタイミング、テストウェアの厚さ、役割のあり方、ツール、報告のリズム、メトリクスまで、SDLCモデルによって変わります。テストマネージャーは組織で使われるモデルを理解し、テストを開発活動に適切に整合させる必要があります。",
+            "syllabusRefs": ["TM-1.2.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "テストレベルごとには、リーダーって何を見るものなの？ユニットテストにも来るの？",
+      "choices": [
+        {
+          "text": "レベルごとに相手と焦点を変えて調整する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。コンポーネントテストではスコープ・目的・完了基準を定義し、開発チームと調整（テスターの分析スキルをコードレビュー等でも活かす）。統合テストでは統合順序とテストの組み合わせを開発と協力して決定。システムテストではリソース・ツール・スケジュールをSDLCに合わせて調整。受け入れテストではステークホルダーと受け入れ基準の充足を確認し、UATをマネジメントしてリリース承認へ導きます。レベルごとに“話す相手”と“見るもの”が変わるのです。",
+            "syllabusRefs": ["TM-1.2.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "システムテストだけ見ていればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一番大きな山はそこですが、それだけでは足りません。コンポーネントや統合の段階から開発チームと調整し、受け入れではステークホルダーと基準を確認する——各レベルにマネジメント活動があります。上流のレベルを放置すると、システムテストにしわ寄せが来ます。",
+            "syllabusRefs": ["TM-1.2.5"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "thinking", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "機能・非機能・ブラックボックス・ホワイトボックス。テストタイプごとのマネジメントはどう考える？",
+      "choices": [
+        {
+          "text": "タイプ特有の要求を統合的に扱い計画に織り込む",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。機能テストは要件充足に向けた戦略策定と進捗追跡・リソース調整。非機能テストは性能ベンチマークの設定とアセスメント・セキュリティや使用性などの標準への適合検証。ブラックボックスはユーザーシナリオとビジネス要件のカバレッジ分析とフィードバックの取り込み。ホワイトボックスはカバレッジツールでギャップを見つけて資源を割り当て、内部構造の知見を計画へ反映。タイプ特有の要求を統合的に扱います。",
+            "syllabusRefs": ["TM-1.2.6"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "タイプが違ってもやることは同じだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じに見えて、必要な環境・スキル・観点が違います。非機能テストにはベンチマークと特殊な環境が、ホワイトボックスにはコード構造の理解とカバレッジツールが要ります。タイプ特有の要求を考慮した統合的なアプローチが、効果的なテストマネジメントの条件です。",
+            "syllabusRefs": ["TM-1.2.6"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "happy", "position": "left" },
+        { "characterId": "ken", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "モデル×レベル×タイプ。掛け算のどこにいるかで、見るもの・話す相手・作る文書が変わる。コンテキストに合わせて段取りを変えられるのが、リーダーの腕だね。",
+      "next": null
+    }
+  ]
+}

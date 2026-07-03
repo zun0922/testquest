@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-3-02",
+  "title": "測って、伸ばす 〜スキルアセスメントと育成〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "必要な力の地図はできたね。次は、いまのメンバーが持っている力を測って、育成計画につなげよう。測らずに伸ばす計画は立てられないから。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "メンバーのスキルって、どうやって測ればいいんだろう？",
+      "choices": [
+        {
+          "text": "実タスクの実施・資格や経験・ふりかえりで測る",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。専門的・方法論的能力は、典型的なテストタスクを実際にやってもらうことでアセスメントできます——テスト戦略を概説して同僚と議論する・テストベースをレビューして発見事項を伝える（コミュニケーション能力も見える）・目的に合うテスト技法を決定し適用する・テスト完了レポートを作成する。加えて外部の資格・認定・実務経験・学位でも測れます。アジャイルでは、ふりかえりへの定期参加とフィードバックがチームの求めるスキルの識別につながります。",
+            "syllabusRefs": ["TM-3.1.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "本人の自己申告だけで十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "手軽ではありますが、自己認識と実際の力にはずれがあるものです。実際のタスクをやってもらう・成果物を見る・資格や経験で裏づける——複数の物差しを組み合わせることで、育成計画の土台になる正確なアセスメントができます。",
+            "syllabusRefs": ["TM-3.1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "個人は優秀なのにチームとして噛み合わない——そんなときは何を見る？",
+      "choices": [
+        {
+          "text": "Belbin等のモデルでチームの過不足を識別する",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。Meredith Belbin の「チームの役割」などのモデルがあります。Belbin によれば、チームは異なる性格や役割のタイプで構成されることで効果的に機能します。こうしたモデルは、チームにどのようなスキルがあり、どのようなスキルが不足しているかを識別するのに役立ちます——個人の優秀さの合計と、チームの機能は別物なのです。",
+            "syllabusRefs": ["TM-3.1.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "優秀な人を集めれば構成は考えなくてよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そう思いたくなりますが、同じタイプの優秀な人ばかりでは、視点も役割も偏ります。チームは異なる性格・役割のタイプで構成されることで効果的に機能する——Belbin らのモデルが示す知見です。採用や配置では“何が足りないタイプか”を見ましょう。",
+            "syllabusRefs": ["TM-3.1.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "測ったら、次は伸ばす番。育成のアプローチって、どんな選択肢があるんだっけ？",
+      "choices": [
+        {
+          "text": "研修・自己学習・ピア・メンタリング・OJTから選ぶ",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。スキルマトリクスで必要なスキルと現在のスキルを比較し、開発ニーズを識別してから選びます——トレーニングと教育（教室型・社内セッション・eラーニング）／自己学習（本・動画・Webリソース）／ピアラーニング（同僚同士の知識・経験の共有）／メンタリングやコーチング（経験者による個別の指導と支援）／OJT（それらの組み合わせ）。完璧な人材が揃わなくても、強いチームは長所と短所のバランスを取れます。",
+            "syllabusRefs": ["TM-3.1.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "とりあえず全員を同じ研修に送る",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "公平で楽な采配に見えますが、開発ニーズは人によって違います。スキルマトリクスで“誰に何が足りないか”を見える化してから、その人に合うアプローチ（研修・自己学習・ピア・メンタリング・OJT）を選ぶ——育成も、テストと同じで狙いを定めるものです。",
+            "syllabusRefs": ["TM-3.1.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では、コミュニケーションのような社会的・個人の能力は、どう伸ばす？",
+      "choices": [
+        {
+          "text": "研修やコーチングで。交流と内省が成功要因だから",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。自己学習やトレーニングは専門的・方法論的な能力開発に適しています（テストの基本知識はISTQBのトレーニングや、シラバスに基づく自己学習で身につけられます）。一方、社会的および個人の能力の開発には、トレーニングやコーチングのアプローチが推奨されます——社会的交流・フィードバック・内省が重要な成功要因であり、自己学習より効果が期待できることが多いためです。",
+            "syllabusRefs": ["TM-3.1.4"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "本を読ませれば対人スキルも身につく",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "知識としては学べますが、対人スキルは実際の交流・フィードバック・内省の中でしか磨かれません。社会的・個人の能力にはトレーニングやコーチングを——本は、専門的・方法論的能力の自己学習のために取っておきましょう。",
+            "syllabusRefs": ["TM-3.1.4"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "実際にやってもらって測り、マトリクスで差分を見て、その人に合う方法で伸ばす。チームの成長曲線は、この地道な設計で決まるんだよ。",
+      "next": null
+    }
+  ]
+}

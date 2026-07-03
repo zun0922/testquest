@@ -1,0 +1,163 @@
+{
+  "id": "fl-3-02",
+  "title": "レビューは高いか安いか 〜静的テストの価値〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“レビューに時間を使うくらいなら、その分テストを実行したほうがよくない？”って声が開発チームから出てるんだ。静的テストの価値、一緒に整理してみよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "静的テストをやる価値って、何だと思う？",
+      "choices": [
+        {
+          "text": "早期に、動的で見つからない欠陥も検出できる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。静的テストはSDLCの初期段階で欠陥を検出でき、早期テストの原則を満たします。さらに、到達できないコード、狙い通りに実装されていないデザインパターン、実行不可能な作業成果物に内在する欠陥など、動的テストでは検出できない欠陥も見つけられます。ステークホルダー間の共通理解やコミュニケーションの改善にもつながります。",
+            "syllabusRefs": ["3.1.2"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "静的で見つかる欠陥は動的でも見つかるはず",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実は、欠陥の種類によっては、静的テストと動的テストのどちらかでしか発見できないものがあります。例えば到達できないコードや、実行不可能な作業成果物に内在する欠陥は、動的テストでは見つけられません。“動的で全部見つかる”はよくある誤解です。",
+            "syllabusRefs": ["3.1.2", "3.1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "だが、レビューにもコストがかかる。割に合うのか？",
+      "choices": [
+        {
+          "text": "後半の修正が減り、全体では通常安くなる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。レビューの実装にはコストがかかりますが、プロジェクトの後半で欠陥を修正するために費やす時間と労力が少なくて済むため、通常、プロジェクト全体のコストはレビューを実施しない場合よりもはるかに安価になります。静的解析も、コードの欠陥減少と開発工数削減の両方を実現できます。",
+            "syllabusRefs": ["3.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "レビューはコストがかかるだけで割に合わない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "目先のコストだけを見るとそう感じるかもしれません。しかしレビューで早期に欠陥を見つけることで、プロジェクト後半の修正に費やす時間と労力が大きく減ります。そのため、全体のコストは通常、レビューを実施しない場合よりはるかに安くなります。",
+            "syllabusRefs": ["3.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "静的テストと動的テストでは、欠陥の“見つかり方”はどう違うと思う？",
+      "choices": [
+        {
+          "text": "静的は欠陥を直接、動的は故障から分析で特定",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。静的テストでは欠陥を直接発見します。動的テストでは故障を引き起こし、その後の分析によって関連する欠陥を特定します。また、静的テストは実行不可能な作業成果物にも適用でき、コードの実行に依存しない品質特性（保守性など）の測定にも使えます。両者は互いに補完し合う関係です。",
+            "syllabusRefs": ["3.1.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "どちらも故障を観察する点では同じだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "静的テストは故障を起こしません。ソフトウェアを実行しないからです。静的テストは欠陥を直接発見し、動的テストは故障を引き起こしてから分析で欠陥を特定する——ここが大きな違いです。",
+            "syllabusRefs": ["3.1.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では、静的テストが特に得意とする欠陥は、どんなものだと思う？",
+      "choices": [
+        {
+          "text": "要件の曖昧さ・到達不能コード・規約逸脱など",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。要件の欠陥（一貫性のなさ・曖昧さ・矛盾・欠落・不正確さ）、設計の欠陥（非効率なデータベース構造など）、ある種のコードの欠陥（値が未定義の変数・到達不能コード・重複コード・過剰な複雑度）、コーディング標準からの逸脱、正しくないインターフェース仕様、特定の種類のセキュリティ脆弱性、テストベースへのカバレッジ不足——これらを早期かつ安価に検出できます。",
+            "syllabusRefs": ["3.1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "性能効率性の測定も静的テストが得意だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しいですが、性能効率性はコードの実行に依存する品質特性なので、動的テストで測定します。静的テストが得意なのは、実行に依存しない特性（保守性など）の測定と、要件の曖昧さや到達不能コードのような欠陥の早期検出です。",
+            "syllabusRefs": ["3.1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "レビューは“余計なコスト”じゃなくて“先行投資”。早く見つけるほど安く直せる。これなら開発チームにも説明できそうだね。",
+      "next": null
+    }
+  ]
+}

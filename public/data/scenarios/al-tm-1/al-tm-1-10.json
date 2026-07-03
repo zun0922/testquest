@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-1-10",
+  "title": "テストのやり方を良くする 〜IDEALと改善アプローチ〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "先月の欠陥流出、悔しかったね。テストプロセス改善の旗振り役、あなたに任されたよ。さて、どう進める？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "改善活動そのものは、どういう段取りで進める？",
+      "choices": [
+        {
+          "text": "開始→診断→確立→行動→学習のサイクルで進める",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。IDEALモデル——Initiating（開始：目的とスコープをステークホルダーと合意）→Diagnosing（診断：現状のアセスメントと改善可能性の特定）→Establishing（確立：優先順位付きの改善計画。ROI・リスク・戦略整合・利益で優先順位付け）→Acting（行動：トレーニング・パイロット・展開）→Learning（学習：得られた利益の検証と次への反映）。PDCAと同様の考えに基づき、組織レベルだけでなくプロジェクトやチームレベルにも適用できます。",
+            "syllabusRefs": ["TM-1.5.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "思いついた改善をその場で全部導入する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "勢いは買いますが、改善案には優先順位付けが必要です（ROI・リスク・戦略との整合・達成すべき利益に基づいて）。そして一度に多くの改善を実施すると、検証可能なステップでマネジメントすることが難しくなります。診断→計画→行動→学習の順で、効果を確かめながら進めましょう。",
+            "syllabusRefs": ["TM-1.5.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“診断”のやり方だけど、モデルベースの改善ってどういうもの？",
+      "choices": [
+        {
+          "text": "TMMiやTPI NEXTと比較して段階的に改善する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。テスト改善モデルは最良の実践例に基づいており、改善を段階的に進めます。TMMi は5つの成熟度レベル（レベル2以上にプロセス領域と改善ゴール・プラクティスを含む）、TPI NEXT は16のキーエリア×4成熟度レベルで、チェックポイントによるアセスメント結果を成熟度マトリクスで可視化します。前提は「プロダクトの品質は、使用・適用されるプロセスの品質に大きく影響される」という仮定です。",
+            "syllabusRefs": ["TM-1.5.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "モデルは組織レベル専用で現場では使えない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "大掛かりに見えますよね。しかしモデルベースの改善はプロジェクトレベルでも適用できます。その場合、テスト計画やテスト設計などプロジェクトレベルの活動と重要領域に焦点を当て、テストポリシーやテスト組織のような組織レベルの活動は除外するか、プロジェクトのコンテキストに合わせて調整します。",
+            "syllabusRefs": ["TM-1.5.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "もうひとつの道——分析ベースの改善は、どう進める？",
+      "choices": [
+        {
+          "text": "自分たちのデータから問題を識別して直す",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。分析的アプローチは、プロジェクトやチーム自体のデータに基づいて問題を識別します。例——根本原因分析（欠陥のセットからクラスターを識別し、特性要因図〔石川/魚の骨ダイアグラム〕で根本原因を特定して除去策を導く）、尺度・メトリクス・指標による分析（有効性・効率性・予測性）、GQMアプローチ（測定ゴール→質問→メトリクス）。モデルベースと併用して結果を検証し、多様性を得ることもできます。",
+            "syllabusRefs": ["TM-1.5.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "他社の実践を写せば自チームの分析は不要だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "外部の最良実践に学ぶのはモデルベースの強みですが、それだけでは“うちのチームで何が起きているか”は分かりません。分析的アプローチは自分たちの定量・定性データから問題を識別する方法で、データ分析は客観的なプロセス改善に重要です。両方を組み合わせるのが賢い使い方です。",
+            "syllabusRefs": ["TM-1.5.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "今週のふりかえり、あなたがファシリテーターだよ。どう運営する？",
+      "choices": [
+        {
+          "text": "信頼の場づくりから決定まで5ステップで文書化",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。典型的なふりかえりは——①イントロダクション（ゴール確認と、非難や判断なしに話せる相互信頼の雰囲気づくり）②データの収集（タイムライン等の定性＋テスト進捗・欠陥検出・有効性などの定量）③改善策の導出（根本原因分析やブレスト）④改善アクションの決定（優先順位付け・責任者・ゴールとメトリクス。一度に多くやらない）⑤クロージング（ふりかえり自体のレビュー）。結果の文書化と伝達が重要で、テスト担当者は独自の視点で課題を提起できます。",
+            "syllabusRefs": ["TM-1.5.4"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "良かった点だけ共有して気持ちよく終える",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "雰囲気は良くなりますが、ふりかえりの目的は学んだ教訓——良い点と悪い点の両方——を把握し、改善のための変更と行動を決定することです。悪い点を扱うために必要なのは回避ではなく、非難や判断なしで話せる相互信頼の場づくり。そこがファシリテーターの腕の見せ所です。",
+            "syllabusRefs": ["TM-1.5.4"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "モデルで外の知恵を借り、データで自分たちの現実を見て、ふりかえりで声を集める。テストの3〜4割はプロジェクトのコスト——磨く価値は十分にある。",
+      "next": null
+    }
+  ]
+}

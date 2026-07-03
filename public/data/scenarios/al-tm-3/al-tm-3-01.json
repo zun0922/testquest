@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-3-01",
+  "title": "チームに要る力を読む 〜4つの能力領域とスキル分析〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "新プロジェクトの人員配置、君に任せる。誰を置くかの前に——“何の力が要るか”を読むところからだ。状況を確認しよう。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【プロジェクト概要】金融ドメイン（業務知識が求められる）。マイクロサービス構成でAPI・セキュリティの技術知識が必要。開発はアジャイル。テストチームは既存4名——手動テスト中心で、金融ドメインの経験は浅い。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "まず物差しから。人のスキルって、どう分類して見ればいいんだろう？",
+      "choices": [
+        {
+          "text": "専門的・方法論的・社会的・個人の4領域で捉える",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。①専門的能力（テスト技法・アプリケーション領域の技術/ビジネス専門知識・プロジェクトマネジメント）②方法論的能力（分析力・概念力・判断力——複雑度や新規性の高い課題を独自に遂行する一般的能力）③社会的能力（コミュニケーション・協力・対立マネジメント・適応性）④個人の能力（セルフマネジメント・責任感・批判を受ける力・回復力・学ぶ意欲・任せる能力）。すべての領域がチームの成功に重要で、ISTQBは専門的能力の開発に重点を置きます。",
+            "syllabusRefs": ["TM-3.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テスト技法の知識がすべてだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "技法は専門的能力の中核ですが、一部にすぎません。分析力や判断力（方法論的）、開発者への欠陥報告や対立解決（社会的）、回復力や学ぶ意欲（個人）——4つの能力領域が揃って、チームはテストタスクを成功裏に完了できます。",
+            "syllabusRefs": ["TM-3.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では本題だ。このプロジェクト、何のスキルが要ると読む？",
+      "choices": [
+        {
+          "text": "金融の業務知識・API/セキュリティ・アジャイル適性",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "的確な分析です。プロジェクトコンテキストが必要スキルを教えてくれます——システムドメイン（金融）→アプリケーション分野のビジネス専門知識。アーキテクチャと技術（マイクロサービス）→API技術・セキュリティ脆弱性の技術的専門知識。SDLC（アジャイル）→テストレベルや役割の知識に加え、高い社会的スキルと自己管理・規律。人員配置はテスト計画の活動であり、戦略の実装に必要な役割とスキルの特定から始まります。既存4名とのギャップが、次の育成計画の入力になります。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "今いる4人のできることに合わせて計画を縮める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "現実的に見えますが、順序が逆です。人員配置は、テスト戦略を実装するために必要な役割とスキルを特定するタスクであり、詳細な状況分析が先。必要スキルが見えて初めて、育成するか・外部の力を借りるか・計画を調整するかを、根拠を持って選べます。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "スキルは配属後に自然と身につくから分析不要",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "経験から学べるのは確かですが、金融ドメインの知識やセキュリティの専門知識は“自然と”は身につきません。必要スキルの分析なしでは、育成の的も絞れず、リスクの高い領域に不慣れなメンバーを置く事故も起きます。分析は配置と育成の土台です。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストのレベルやタイプによっても、要る力って変わるのかな？",
+      "choices": [
+        {
+          "text": "機能適合性は業務知識、保守性は技術知識——変わる",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストタイプやテストレベルが異なれば、求められるスキルも異なります。システムの機能適合性のアセスメントにはアプリケーションドメインのビジネス専門知識が、コードの保守性のアセスメントには技術的専門知識が必要。活動ごとにも——計画には概念的知識、分析には分析スキル、実装にはスクリプトのプログラミング等の技術専門知識、完了には成果を伝える能力が求められます。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "テストは誰がどこをやっても同じだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じ“テスト”という名前でも、中身は大きく違います。業務ルールの妥当性を見る目と、コードの構造を読む目は別のスキルです。レベル・タイプ・活動ごとに必要スキルを見立てて、人とタスクを合わせるのがマネジメントの仕事です。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "分析の結果、セキュリティテストはチームの能力を超えていそうだ。どうする？",
+      "choices": [
+        {
+          "text": "外部の専門家導入も合理的。長所と短所は補い合う",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストチームの能力を超える特定のテストタスクについては、外部の専門家を導入することが理にかなっている場合があります。チーム外の人々が特定のスキルを提供することもある。完璧な人材が揃うとは限りませんが、強力なチームは個人の長所と短所のバランスを取れます——足りない力は、育てるか、借りるか、です。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "今のメンバーだけで意地でも完結させる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "チームで完結させたい気持ちは分かりますが、セキュリティのように専門性の高い領域を経験の浅いメンバーで賄うと、リスクの高い部分にこそ穴が開きます。能力を超えるタスクには外部専門家の導入が合理的——それは敗北ではなく、リスクに対する誠実な采配です。",
+            "syllabusRefs": ["TM-3.1.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "プロジェクトを読み、要る力を4つの領域で描き出す。配置も育成も、この地図があって初めて打ち手になる。次は“いまの力”を測る番だ。",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "id": "fl-4-05",
+  "title": "一緒に書けば欠陥は減る 〜コラボレーションベースのアプローチ〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "今日は新フィーチャーのバックログリファインメントだ。ビジネス側・開発・テストの三者でユーザーストーリーを書く。テスターとしての視点、期待しているよ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "これまで学んだ技法と、コラボレーションベースのアプローチ。狙いはどう違うと思う？",
+      "choices": [
+        {
+          "text": "検出だけでなく、協働による欠陥の回避も狙う",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ブラックボックス・ホワイトボックス・経験ベースの各技法は欠陥の検出に関して特定の目的を持ちます。一方、コラボレーションベースのアプローチは、コラボレーションとコミュニケーションによって欠陥を“回避”することにも焦点を当てます。作り込む前に防ぐ、という発想です。",
+            "syllabusRefs": ["4.5"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "他の技法と同じで欠陥検出だけが目的だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "検出も大切ですが、それだけではありません。コラボレーションベースのアプローチの特徴は、コラボレーションとコミュニケーションによる欠陥の“回避”にも焦点を当てる点です。三者で一緒に書くことで、誤解由来の欠陥を作り込む前に防ぎます。",
+            "syllabusRefs": ["4.5"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ユーザーストーリーはどう書くのがいいと思う？",
+      "choices": [
+        {
+          "text": "3つのCを意識し、3つの視点で共同執筆する",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。ユーザーストーリーには“3つのC”——カード（記述する媒体）、会話（どう使われるかの説明）、確認（受け入れ基準）——という重要な側面があります。共同執筆にはブレーンストーミングやマインドマップが使え、ビジネス・開発・テストの3視点で共通のビジョンを得られます。優れたストーリーの特性はINVEST（独立・交渉可能・価値・見積り可能・小さい・テスト可能）です。",
+            "syllabusRefs": ["4.5.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "開発担当者が一人で書くのが一番速い",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "速さでは魅力的ですが、一人で書くとビジネス・開発・テストの3視点が揃わず、チームとしての共通のビジョンが得られません。なお、ステークホルダーがストーリーのテスト方法を分からない場合、ストーリーが明確でないか、価値が反映されていないサインかもしれません。",
+            "syllabusRefs": ["4.5.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ストーリーの“受け入れ基準”は、どう書けばいいんだろう？",
+      "choices": [
+        {
+          "text": "シナリオ指向かルール指向で書くのが一般的",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。最も一般的な形式は2つ——シナリオ指向（BDDで使われるGiven/When/Then形式）とルール指向（箇条書きの検証リストや入出力マッピングの表形式）です。受け入れ基準はステークホルダーが実装を受け入れる条件であり、テストケースで確認すべきテスト条件とみなせます。スコープ定義・合意形成・ポジティブとネガティブ両シナリオの説明・受け入れテストのベース・計画と見積りへの貢献に使われます。",
+            "syllabusRefs": ["4.5.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "受け入れ基準は実装が終わってから考える",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "後回しにしたくなりますが、受け入れ基準は通常、ユーザーストーリーを書く際の“会話”の結果として先に定義します。ストーリーのスコープを定め、合意を形成し、受け入れテストのベースになるものなので、実装後では役割を果たせません。",
+            "syllabusRefs": ["4.5.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "明確で曖昧さがなければ独自の形式でもよい",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "よく知っていますね。受け入れ基準が十分に定義され、曖昧さがない限り、チームは別の独自の形式を使ってもよいとされています。ただし一般的なのはシナリオ指向（Given/When/Then）とルール指向（検証リスト・表形式）の2形式で、ほとんどの受け入れ基準はこのどちらかで文書化できます。",
+            "syllabusRefs": ["4.5.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "このチームはATDDを採用している。テストケースはいつ、誰が、どう作ると思う？",
+      "choices": [
+        {
+          "text": "実装前に多視点でテストを作る。正常系から",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。ATDDはテストファーストのアプローチで、テストケースはユーザーストーリーの実装前に、顧客・開発担当者・テスト担当者などさまざまな視点を持つメンバーで作成します。最初のステップは仕様化ワークショップで、ストーリーと受け入れ基準を分析・議論し、不完全さや曖昧さを解決します。テストケースは受け入れ基準に基づく“実例”で、典型的にはまずポジティブなテスト、次にネガティブなテスト、最後に非機能特性もカバーします。自動化すれば実行可能な要件になります。",
+            "syllabusRefs": ["4.5.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "実装後に開発者だけで書けばよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それではATDDになりません。ATDDはテストファーストで、テストケースは実装の“前”に作成します。しかも顧客・開発担当者・テスト担当者など、さまざまな視点を持つチームメンバーで作ることが特徴です。テストケースがソフトウェアの動作の実例となり、ストーリーを正しく実装する助けになります。",
+            "syllabusRefs": ["4.5.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "見つける技法と、作り込ませない協働。両方を使いこなせれば、品質はもっと前から作れる。今日の三者の会話、いい問いがいくつもあったよ。",
+      "next": null
+    }
+  ]
+}

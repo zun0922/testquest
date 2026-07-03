@@ -1,0 +1,173 @@
+{
+  "id": "fl-1-03",
+  "title": "7つの道しるべ 〜テストの原則〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "リリースが近い。チームから色々な声が上がっている。テストの原則を道しるべに、冷静に判断していこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "「全部テストすれば安心」と言われたら？",
+      "choices": [
+        {
+          "text": "全数テストは非現実的。技法と優先順位で集中",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 2 },
+          "feedback": {
+            "explanation": "原則2「全数テストは不可能」。ごく単純なソフトウェア以外で全数テストは非現実的です。テスト技法・優先順位付け・リスクベースドテストで労力を集中させます。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "時間をかければ全部テストできる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "原則2に反します。入力や経路の組み合わせは膨大で、全数テストは現実的ではありません。技法・優先順位・リスクで集中します。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "「バグが出ないから品質は完璧」という意見は？",
+      "choices": [
+        {
+          "text": "欠陥がないことは証明できない。妥当性確認も要る",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 2 },
+          "feedback": {
+            "explanation": "原則1「テストは欠陥の存在は示せるが不在は証明できない」と原則7「欠陥ゼロの落とし穴」。検証だけでなく妥当性確認も行い、ニーズを満たすかを確認します。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "バグが出ないなら安心だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "原則1・原則7に反します。欠陥が見つからないことは正しさの証明にはなりません。妥当性確認も実施すべきです。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "「同じテストを毎回繰り返そう」については？",
+      "choices": [
+        {
+          "text": "同じテストは効果が薄れる。テストを見直す",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 2 },
+          "feedback": {
+            "explanation": "原則5「テストの弱化」。同じテストを繰り返すと新たな欠陥の検出効果は薄れます。テストやテストデータを見直す、または新規に作成することが必要です。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "自動リグレッションは繰り返す価値がある",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "それも正しい観点です。自動化されたリグレッションテストのように、同じテストを繰り返すことが有益な場合もあります（弱化の例外）。ただし新規欠陥の検出力は別途見直しが必要です。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "繰り返すほど必ず新しい欠陥が見つかる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "誤りです。原則5「テストの弱化」のとおり、同じテストの繰り返しでは新たな欠陥の検出効果はむしろ薄れます。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "限られた時間、どこを重点的にテストする？",
+      "choices": [
+        {
+          "text": "欠陥は偏在する。集中している箇所を重点的に",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 2 },
+          "feedback": {
+            "explanation": "原則4「欠陥の偏在」。欠陥や故障の大部分は少数のコンポーネントに集中します（パレートの法則）。偏在の予測と観察はリスクベースドテストの重要なインプットです。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "どこも均等に薄くテストする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "原則4「欠陥の偏在」を無視しています。均等配分ではリスクの高い箇所への集中ができません。偏在を踏まえて重点化します。",
+            "syllabusRefs": ["1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "原則という道しるべがあれば、声に流されず判断できる。全数は無理、ゼロは証明できない、偏在を突く。これがテストの土台だ。",
+      "next": null
+    }
+  ]
+}

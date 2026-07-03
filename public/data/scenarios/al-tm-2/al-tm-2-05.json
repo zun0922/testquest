@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-2-05",
+  "title": "欠陥の一生 〜ワークフローと委員会〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "欠陥管理ツールの運用ルール、あなたが整備することになったね。最初に押さえてほしいんだけど——“テスト不合格＝欠陥”じゃないんだよ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストが不合格になった。これは欠陥？",
+      "choices": [
+        {
+          "text": "まだ分からない。調査をレポート作成から始める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。プロセスの初期段階では、その不一致が作業成果物の欠陥によるものか、他の何か（自動テストの故障・テスト担当者の要件への誤解など）によるものか分かりません——「インシデントマネジメント」「不正マネジメント」という呼称はこの事実を強調しています。不正を観察したら調査を行い、通常は欠陥レポートの作成から始めます。なおTDDでは開発完了までテストの一部が不合格なのは正常で、欠陥レポートで追跡しないのが通例です。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "不合格になったら即・欠陥として扱う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "素早い対応に見えますが、不合格の原因は欠陥とは限りません。自動テスト自体の故障、テストデータの問題、要件の誤解——調査して初めて分かります。即断すると開発チームに偽の欠陥が飛び、信頼と時間を消耗します。まず調査、が鉄則です。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "欠陥レポートの“流れ”はどう設計する？",
+      "choices": [
+        {
+          "text": "オープン→進行中→解決→クローズ＋却下の基本形",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。単純な欠陥ワークフローは——オープン（作成時の初期状態）→進行中（分析・修正に取り組み中）→解決（修正済み。テスト担当者が再現手順に従い確認テスト）→クローズ（終了。確認テスト成功または却下の受け入れ）＋却下（無効な情報・誤ったテスト・重複など、理由を記録）。ほとんどの状態で1人が欠陥レポートを所有しタスクを担当します。コンテキストに応じて再オープン・見送り等で拡張できます。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "直したら口頭で伝えて終わりにする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "近い席なら回る気もしますが、口頭は状態が残らず、確認テストの抜けや直し漏れが起きても気づけません。ワークフローは「今どの状態で、誰がボールを持っているか」を全員に見せる仕組みです。軽量にしたい場合も、状態と所有者だけは残しましょう。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "ワークフローを設計するとき、押さえておくべき実践は？",
+      "choices": [
+        {
+          "text": "組織で統一・終端は1つ・役割分担・属性は限定",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。よい実践は——可能なら組織全体で統一（全プロジェクトで一貫した欠陥マネジメント）／重複・偽陽性は別ステータスか却下理由で表現（プロセス改善の分析に有用）／終端ステータスは1つ（クローズ）にして終結理由を選択／状態名は他のエンティティと揃える／連続する状態は異なる役割に割り当てる／各状態に遷移先を持たせる／**入力を求める属性は実質的な価値を与えるものに限定**する。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "念のため入力必須の属性は多いほど安心だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "漏れを防ぎたい気持ちは分かりますが、属性を増やすたびにレポート作成の時間が延び、入力する人の混乱を招きます。ステータス遷移で入力を要求する属性は、欠陥マネジメントに実質的な価値を与えるものに限定すべき、が明示されたよい実践です。",
+            "syllabusRefs": ["TM-2.3.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "見つかった欠陥を“直すか・捨てるか・先送りか”。これは誰がどう決める？",
+      "choices": [
+        {
+          "text": "機能横断の委員会がトリアージで判定する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。特定プロジェクトの欠陥マネジメントは通常、機能横断的なチーム（欠陥マネジメント委員会）が担当します——テストマネージャー・開発・サプライヤー・PM・プロダクトマネジメント・POなどの代表で構成。各レポートが有効な欠陥かを判断し、修正（どのチームが）/却下/延期を、修正の利点・リスク・コストを検討して決めます（トリアージミーティング）。テストチームは相対的重要性の客観情報を提供。超大規模では専任の欠陥マネージャーを置くことも。そして——ツールは優れたコミュニケーションの代用にならず、委員会も優れたツール活用の代用にはなりません。",
+            "syllabusRefs": ["TM-2.3.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "見つけたテスターが直すべき欠陥を独断で決める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "発見者の思い入れは分かりますが、修正判断には利点・リスク・コストの検討が必要で、それは開発・PM・POら多視点の情報が揃って初めてできます。テスター（テストチーム）の役割は、欠陥の相対的な重要性について有効で客観的な情報を提供すること。判定は機能横断の場に委ねます。",
+            "syllabusRefs": ["TM-2.3.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "不合格を疑い、状態で追いかけ、みんなで決める。欠陥の一生をちゃんと設計できれば、ツールはチームの共通言語になるよ。",
+      "next": null
+    }
+  ]
+}

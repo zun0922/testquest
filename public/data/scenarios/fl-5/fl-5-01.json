@@ -1,0 +1,173 @@
+{
+  "id": "fl-5-01",
+  "title": "テストの地図を描く 〜テスト計画〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "新機能のテスト計画づくりに、君にも入ってもらう。計画書はただの書類仕事じゃない。テストの目的地と道筋を描く“地図”だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず聞こう。テスト計画書は、何のためにあると思う？",
+      "choices": [
+        {
+          "text": "目的達成の手段を文書化し、対話の道具にもなる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テスト計画書は、テスト目的を達成するための手段やスケジュールを文書化し、テスト活動が基準を満たすことの保証に役立ち、チームメンバーやステークホルダーとのコミュニケーション手段にもなります。テストポリシーや戦略の遵守（または逸脱の理由）も示します。準備するプロセス自体が、必要な取り組みを検討する有効な方法です。",
+            "syllabusRefs": ["5.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "書いたら終わりの形式的な文書だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "形式的に見えるかもしれませんが、計画書はテスト担当者の思考をガイドし、リスク・スケジュール・人員・コストといった将来の課題に向き合わせてくれる道具です。内容にはスコープ・前提と制約・ステークホルダー・リスクレジスター・テストアプローチ・予算とスケジュールなどが含まれます。",
+            "syllabusRefs": ["5.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "アジャイルだとリリース計画とイテレーション計画があるよね。テスターはそこで何ができると思う？",
+      "choices": [
+        {
+          "text": "テスト可能なストーリー作りやリスク分析で貢献",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。リリース計画では、テスト可能なユーザーストーリーと受け入れ基準の作成、プロジェクトと品質のリスク分析、テスト工数の見積り、テストアプローチの決定などで貢献します。イテレーション計画では、詳細なリスク分析への参加、ストーリーの試験性の判断、テストタスクへの分解、工数見積りなどを行います。",
+            "syllabusRefs": ["5.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "計画は上司の仕事。テスターは実行だけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そう思われがちですが、テスト担当者は計画の段階から価値を出せます。リリース計画ではテスト可能なストーリーと受け入れ基準づくり・リスク分析・見積りに、イテレーション計画では試験性の判断やタスク分解に貢献します。早くから関わるほどテストしやすいプロダクトになります。",
+            "syllabusRefs": ["5.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストを“始めていい”条件——開始基準とは、どういうものだと思う？",
+      "choices": [
+        {
+          "text": "リソースやテストウェアの可用性などの事前条件",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。開始基準は活動を行うための事前条件です。典型例は、リソースの可用性（人・ツール・環境・テストデータ・予算・時間）、テストウェアの可用性（テストベース・試験性のある要件・テストケース）、テスト対象の初期品質レベル（スモークテスト全合格など）。アジャイルでは「準備完了（Ready）の定義」と呼びます。",
+            "syllabusRefs": ["5.1.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "基準がなくても始めてしまえば結果は同じ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "早く始めたい気持ちは分かりますが、開始基準が満たされないまま始めた活動は、結果的により困難で、時間がかかり、コストがかさみ、リスクが高くなる可能性があります。環境もデータも揃わないままのテストは、やり直しの温床になります。",
+            "syllabusRefs": ["5.1.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ逆に、テストはいつ“終われる”んだろう？",
+      "choices": [
+        {
+          "text": "カバレッジや未解決欠陥数などの基準で決める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。終了基準は、活動の完了を宣言するために何を達成すべきかの定義です。典型例は、徹底度の測定（達成カバレッジ・未解決欠陥数・欠陥密度・不合格テスト数）と完了基準（計画したテストの実行完了・静的テストの実施・全欠陥のレポート・リグレッションテストの自動化など）。アジャイルでは「完了（done）の定義」と呼びます。",
+            "syllabusRefs": ["5.1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "欠陥がゼロになるまで終われない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "気持ちは分かりますが、テストは欠陥の不在を証明できない（原則1）ため、“欠陥ゼロ”を終了条件にすると永遠に終われません。終了基準は、カバレッジ・未解決欠陥数などの徹底度の測定と、完了基準で定義します。",
+            "syllabusRefs": ["5.1.3", "1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "リスクを受け入れたなら時間切れ終了も妥当",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "よく知っていますね。時間切れや予算切れも、終了基準として妥当とみなすことがあります。他の終了基準が未達でも、ステークホルダーがこれ以上テストせずに本稼働させるリスクをレビューし受け入れたなら、テストの終了は許容されます。ただし基本は、徹底度の測定と完了基準による定義です。",
+            "syllabusRefs": ["5.1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "どこから始めてよく、どこで終われるのか。それを先に描いておくのがテスト計画だ。地図があれば、迷っても戻ってこられる。",
+      "next": null
+    }
+  ]
+}

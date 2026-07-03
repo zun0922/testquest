@@ -1,0 +1,130 @@
+{
+  "id": "al-tm-1-07",
+  "title": "効いたのか、を測る 〜RBTの成功メトリクスと罠〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "リリースお疲れさま。このあとのふりかえりでは、今回のリスクベースドテストが本当に“効いた”のかを確かめたいな。リーダーとして、どう検証する？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "リスクベースドテストの“成功”って、何で測ればいい？",
+      "choices": [
+        {
+          "text": "高優先欠陥の早期発見率などの問いで確かめる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ふりかえりで問うべきは——関連するステークホルダーはリスク分析に関与したか／その関与は適切だったか／深刻な欠陥の見逃しによる本番インシデントは解決されたか／優先度の高い欠陥の多くをテスト実行の早い段階で発見できたか／テスト結果をリスクの観点で説明できたか／スキップしたテストは実行分より低リスクだったか。成功していれば、これらに肯定的に答えられます。長期的には成功メトリクスに改善ゴールを設定します。",
+            "syllabusRefs": ["TM-1.3.6"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストケース消化率100%なら成功だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "分かりやすい数字ですが、消化率はリスクの軽減度を語りません。全ケースを消化しても、高優先の欠陥が終盤や本番で見つかっていたら、リスクベースドテストとしては機能していません。“危ないものを早く見つけられたか”を測る問いに置き換えましょう。",
+            "syllabusRefs": ["TM-1.3.6"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "チームから「毎回同じようなリスクが挙がりますね」という声があった。これをどう見る？",
+      "choices": [
+        {
+          "text": "油断のサイン。適切な人を交え重要リスクに絞る",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "鋭い見立てです。“デジャブ”——プロジェクトごとに同じリスクが提起され、リスクへの油断が生じる——は、リスクマネジメントの典型的な困難さの一つです。解決策は、リスク識別に適切な人材を参加させ、重要なリスクのみを軽減すること。ほかの罠には、レベルアセスメントの困難さ（過去データと主要関係者の活用で対処）、重要リスクの見逃し（適切な人材の関与とトレーニング）などがあります。",
+            "syllabusRefs": ["TM-1.3.6"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "同じなら前回の結果をコピーして省力化できる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "効率化に見えますが、それこそが“デジャブ”の罠です。同じリスクばかり挙がるのは分析が形骸化しているサインかもしれません。適切な人材を関与させて新鮮な目で識別し、重要なリスクに絞って軽減する——コピーではなく、参加者の設計で立て直します。",
+            "syllabusRefs": ["TM-1.3.6"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "リスク分析って、結局いつまでやるものなんだろう？",
+      "choices": [
+        {
+          "text": "状況も人も変わる。継続的・反復的に続ける",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ステークホルダーは時間とともに変わる可能性があり、新たなリスクも発生します。だからリスク分析は継続的でイテレーティブな活動であり、初めに一度だけ実施するものではありません。テストモニタリングにはリスクモニタリング——既知リスクの進展の監視、新規リスクの分析、リスクレジスターの調整——を含めるべきです。",
+            "syllabusRefs": ["TM-1.3.6", "TM-1.3.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "キックオフで一度やれば完了でいい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一度で済むなら楽なのですが、ステークホルダーの変化とともに新たなリスクが発生します。リスク分析は継続的・イテレーティブな活動——「初めに一度だけ実施するものではない」とシラバスも明言しています。定期的なモニタリングと報告に組み込みましょう。",
+            "syllabusRefs": ["TM-1.3.6"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストのやり方そのものを測って、直す。それができるチームは強い。リスクベースドテストの旅は一度きりじゃない——次のプロジェクトは、もっとうまくやれるぞ。",
+      "next": null
+    }
+  ]
+}

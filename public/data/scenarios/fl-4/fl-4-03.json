@@ -1,0 +1,163 @@
+{
+  "id": "fl-4-03",
+  "title": "コードの中を照らす 〜ホワイトボックステスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "開発チームの単体テストレビュー、一緒に出ようよ。さっき“カバレッジ100%だから大丈夫”って声が聞こえたけど——その100%って、何の100%なんだろう？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "調べてきたよ。まず“ステートメントカバレッジ100%”って、どういう意味だと思う？",
+      "choices": [
+        {
+          "text": "全ステートメントを通した。だが検出保証はない",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ステートメントテストのカバレッジアイテムは実行可能なステートメントで、100%はすべてを最低1回通したことを意味します。欠陥のあるステートメントも実行されるため故障が発生する可能性はありますが、必ず検出されるわけではありません。例えばデータに依存する欠陥（分母が0のときだけ不合格になるゼロ除算など）は見逃すことがあります。",
+            "syllabusRefs": ["4.3.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "100%なら判定ロジックも全部テスト済みだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そう思いたくなりますが、ステートメントカバレッジ100%でも、判定ロジックをすべてテストしたことは確認できません。例えばコード内のすべてのブランチを通過していない可能性があります。カバレッジの数字は“何を数えたか”とセットで解釈することが大切です。",
+            "syllabusRefs": ["4.3.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "じゃあ、ブランチテストって何を通すテストなんだろう？",
+      "choices": [
+        {
+          "text": "無条件・条件付きの制御の遷移を通すテスト",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。ブランチとは制御フローグラフの2つのノード間の制御の遷移で、無条件（直列のコード）と条件付き（判定結果）があります。条件ブランチは if...then 判定の真偽の結果、switch/case の結果、ループの終了・継続の判定に対応します。ブランチカバレッジ100%は、すべてのブランチを通したことを意味します。",
+            "syllabusRefs": ["4.3.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "if文の真側を通せばブランチは網羅できる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "真側だけでは足りません。条件ブランチは判定の真偽両方の結果に対応するため、偽側も通す必要があります。なお、ブランチを通過しても欠陥がすべて検出されるわけではなく、特定のパスの実行を必要とする欠陥は見逃すことがあります。",
+            "syllabusRefs": ["4.3.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ステートメントカバレッジとブランチカバレッジ、2つの関係はどうなってるんだろう？",
+      "choices": [
+        {
+          "text": "ブランチ100%はステートメント100%を含む",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ブランチカバレッジはステートメントカバレッジを包含します。つまりブランチカバレッジ100%を達成した一連のテストケースは、100%のステートメントカバレッジも達成します。ただし、その逆は成立しません。",
+            "syllabusRefs": ["4.3.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "ステートメント100%ならブランチも100%",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "包含関係が逆です。ブランチカバレッジ100%ならステートメントカバレッジも100%になりますが、ステートメント100%でも通っていないブランチが残ることがあります。だからこそ“ステートメント100%だから大丈夫”とは言い切れないのです。",
+            "syllabusRefs": ["4.3.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "最後にさ、ホワイトボックステストの価値って何だと思う？限界も含めて考えてみようよ。",
+      "choices": [
+        {
+          "text": "仕様が曖昧でも実装に基づき欠陥を見つけられる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。ホワイトボックステストの基本的な強みは、実装そのものを考慮するため、仕様が曖昧・古い・不完全でも欠陥を検出しやすいことです。またブラックボックステストだけでは実際のコードカバレッジを測定できないため、カバレッジの客観的な測定と改善に必要な情報を提供します。制御フローでモデル化できる疑似コードのレビューなど、静的テストにも使えます。",
+            "syllabusRefs": ["4.3.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "未実装の要件の欠落も必ず検出できる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "そこがホワイトボックステストの弱点です。ソフトウェアが1つ以上の要件を実装していない場合、実装（コード）を起点にテストするホワイトボックステストでは、結果として生じる“欠落”を欠陥として検出できない可能性があります。仕様側から見るブラックボックステストとの併用が大切です。",
+            "syllabusRefs": ["4.3.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "カバレッジって“安心の証明”じゃなくて“どこを照らしたかの地図”なんだね。数字の意味が分かってれば、開発チームともいい議論ができそうだ！",
+      "next": null
+    }
+  ]
+}

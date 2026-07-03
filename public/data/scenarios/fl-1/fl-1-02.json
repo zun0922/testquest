@@ -1,0 +1,130 @@
+{
+  "id": "fl-1-02",
+  "title": "はじめてのテスト依頼 〜なぜテストするの？〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "ねえ、そもそもなんでコストをかけてまでテストするんだろう？動けばいいんじゃないの？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストの意義をどう説明する？",
+      "choices": [
+        {
+          "text": "欠陥を効率よく見つけ品質評価と判断材料を出す",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "テストは欠陥を費用対効果よく検出し、品質を直接評価して、リリース判定など次の工程へ進む判断の材料を提供します。これがテストの意義です。",
+            "syllabusRefs": ["1.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "バグをゼロにするため",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストは欠陥があることは示せても、欠陥がないことは証明できません（原則1）。目的は欠陥の検出・品質評価・判断支援であり、バグゼロの保証ではありません。",
+            "syllabusRefs": ["1.2.1", "1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "テストって、いわゆる品質保証（QA）と同じこと？",
+      "choices": [
+        {
+          "text": "テストはQCの一種、QAはプロセスの予防活動",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。QC（品質コントロール）はプロダクト指向の是正アプローチで、テストはその主要な形式。QA（品質保証）はプロセス指向の予防アプローチで、よいプロセスがよいプロダクトを生むという考えに基づきます。",
+            "syllabusRefs": ["1.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テストはQAそのものだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストとQAは同じではありません。テストは品質コントロール（QC）の一形式です。QAはプロセスの実装と改善に焦点を当てた予防的アプローチです。",
+            "syllabusRefs": ["1.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "「エラー」「欠陥」「故障」の関係は？",
+      "choices": [
+        {
+          "text": "人のエラー→欠陥→(実行されると)故障",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解です。人はエラー（誤り）を起こし、それが欠陥（バグ）を生み、欠陥が実行されると故障につながることがあります。根本原因は根本原因分析で特定し、対処します。",
+            "syllabusRefs": ["1.2.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "故障の原因は必ず人のミスだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "誤りです。故障の原因はエラーや欠陥だけではありません。放射線や電磁波などの環境条件によっても故障は発生します。",
+            "syllabusRefs": ["1.2.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "happy", "position": "left" },
+        { "characterId": "ken", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "なるほど。テストは“バグ潰し”じゃなくて、品質を測って判断を支える活動なんだね。QAとの違いも分かったよ。ありがとう！",
+      "next": null
+    }
+  ]
+}

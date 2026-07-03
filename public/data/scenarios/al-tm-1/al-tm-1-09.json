@@ -1,0 +1,173 @@
+{
+  "id": "al-tm-1-09",
+  "title": "測れるゴールを立てる 〜SMARTなテスト目的〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "君の計画書のこの一文——“品質を高め、しっかりテストする”。聞くが、達成したかどうかは、どうやって判定するんだ？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テスト目的と終了基準は、どう書くべきだと思う？",
+      "choices": [
+        {
+          "text": "具体的・測定可能・達成可能・妥当・期限つき",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。スマートの法則です——S＝具体的（明確で曖昧でない）、M＝測定可能（数値化でき、達成状況を判断する進捗基準を持つ）、A＝達成可能（リソース・時間枠・能力を考慮して実現可能）、R＝妥当（プロジェクト全体の目的に沿う）、T＝タイムリー（具体的な時間枠と完了期限）。プロジェクトでテストへリリースするフィーチャーに関連して、テスト目的と終了基準をこの形で定義します。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "高い目標を掲げてチームを鼓舞すればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "士気は大事ですが、判定できない目標は“達成したつもり”と“できていない現実”のずれを生みます。テスト目的と終了基準は SMART——具体的で、測定可能で、達成可能で、妥当で、期限のある形に。高さより、測れることが先です。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ、さっきの一文を書き直してみよう。SMARTなテスト目的はどれ？",
+      "choices": [
+        {
+          "text": "四半期末までに回帰の自動化率を60%→80%へ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。具体的（リグレッションテストの自動化率）・測定可能（60%→80%）・達成可能かの検討ができ・組織ゴール（自動化度向上）に妥当で・期限（四半期末）がある——SMARTを満たします。シラバスの目的例にも「テスト自動化のレベルを定義されたパーセンテージで向上させる」「定められた期間内に指定された終了基準に達する」「組織の品質ゴールをKPIとして測定する」などが挙げられています。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "品質をできるだけ高める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "志は正しいのですが、“できるだけ”は測定できず、期限もありません。達成したかどうかを誰も判定できない目的は、進捗のコントロールにも報告にも使えません。数値化できる指標と期限を持つ形に書き直しましょう。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "欠陥をゼロにしてからリリースする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "測定はできますが、“達成可能”ではありません。テストは欠陥の不在を証明できない（FLの原則1）ため、欠陥ゼロを終了基準にすると永遠にリリースできなくなります。SMARTのAは、リソース・時間枠・能力を考慮した実現可能性を求めています。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“達成可能”の判断で、見落としがちなことってあるかな？",
+      "choices": [
+        {
+          "text": "環境が同時に使えるとは限らない等の現実を織り込む",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "いい着眼です。プロジェクトコンテキストやテスト目的によっては、リソースやツールを備えた複数のテスト環境が必要になりますが、すべてが同時に利用できるとは限りません。達成可能なテスト目的と終了基準を策定する際には、この点を考慮する必要があります。理想の稼働率ではなく、現実の制約で見積もることが“A”の中身です。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "環境も人も常にフル稼働できる前提で組む",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "計画上は美しいのですが、環境は保守や他チームの利用で塞がり、人は会議や割り込みに削られます。フル稼働前提の目的は、初週から“未達”が始まります。環境の同時利用可否まで織り込んでこそ、達成可能な目的です。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最後にひとつ。数字にしにくい品質は、どう扱う？",
+      "choices": [
+        {
+          "text": "専門家や関係者による品質アセスメントも考慮する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。プロジェクトのテスト目的の集計や測定とは別に、業界の専門家やステークホルダーによる品質レベルのアセスメントも考慮すべきとされています。測れるものはSMARTに、測りにくいものは適切な目利きの評価で——両輪で品質を捉えます。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "数字にできないものは目的から外す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "測定を徹底する姿勢は良いのですが、数字にならないからと外すと、使用感や業務適合のような大事な品質が置き去りになります。測定・集計とは別に、専門家やステークホルダーによるアセスメントを組み合わせるのがシラバスの推奨です。",
+            "syllabusRefs": ["TM-1.4.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "“しっかりテストする”が“四半期末までに自動化率80%”に変わった。これで進捗も報告も判定もできる。ゴールは、測れて初めてゴールだ。",
+      "next": null
+    }
+  ]
+}

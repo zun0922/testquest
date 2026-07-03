@@ -1,0 +1,130 @@
+{
+  "id": "fl-3-05",
+  "title": "レビューが根づくチーム 〜成功要因〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最近、うちのレビューが形だけになってきている気がする。どうすればレビューが“機能する”チームになるのか、君の意見も聞かせてくれ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず、レビューの目的の決め方で気をつけることは何だと思う？",
+      "choices": [
+        {
+          "text": "明確な目的と測定可能な終了基準を定める",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。明確な目的と測定可能な終了基準の定義が、成功要因の筆頭です。そして——参加者の評価は、決して目的にしてはなりません。人の評価に使われると、率直な指摘や学びの場としてのレビューが成り立たなくなります。",
+            "syllabusRefs": ["3.2.5"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "せっかくだからメンバーの能力評価にも使う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "気持ちは分かりますが、参加者の評価は決して目的にしてはならない、と成功要因に明記されています。評価に使われると、指摘を恐れて発言が減り、レビューそのものが機能しなくなります。目的は成果物の品質向上に置きましょう。",
+            "syllabusRefs": ["3.2.5"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "長い設計書のレビューだと、集中力が続かないんだよね。どう進めるのがいいと思う？",
+      "choices": [
+        {
+          "text": "対象を小さく分割し、十分な準備時間を取る",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。個人のレビューやレビューミーティングで集中力を維持できるよう、レビューは対象を小さく分割して実施します。参加者に十分な準備時間を与えること、全員が役割の果たし方を学べる適切なトレーニング、ミーティングのファシリテートも成功要因です。",
+            "syllabusRefs": ["3.2.5"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "大きな成果物ほど一気に全部レビューする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一気に進めたくなりますが、集中力が切れて後半の見落としが増えます。対象を小さく分割して実施することが成功要因のひとつです。実際、大きすぎる作業成果物は、レビュープロセスを2、3回行って全体のレビューを完了させることがあります。",
+            "syllabusRefs": ["3.2.5", "3.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では最後だ。レビューをチームに根づかせるには、何が必要だと思う？",
+      "choices": [
+        {
+          "text": "マネジメントの支援と、組織文化への定着",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。レビュープロセスに対するマネジメントからの支援と、レビューを組織の文化として定着させて学習とプロセス改善を促進することが成功要因です。レビューの結果をステークホルダーや作成者にフィードバックし、プロダクトと自分たちの活動の改善につなげることも重要です。",
+            "syllabusRefs": ["3.2.5", "3.2.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "現場の有志が空き時間で回せば十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "現場の熱意は大切ですが、有志頼みでは長続きしません。マネジメントからの支援（時間・人員などのリソース確保）と、組織文化としての定着があってこそ、レビューは継続的な学習とプロセス改善の仕組みになります。",
+            "syllabusRefs": ["3.2.5"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "目的を明確に、小さく分けて、チームの文化に。レビューが根づけば、品質は会議室ではなく日々の仕事の中で作られていく。頼りにしているよ。",
+      "next": null
+    }
+  ]
+}

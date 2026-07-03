@@ -1,0 +1,163 @@
+{
+  "id": "fl-5-04",
+  "title": "見える化して伝える 〜モニタリング・コントロール・完了〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "“テスト、今どんな感じだ？”——この問いに一言で答えられるか？進捗を見える化して伝えることも、テストの大事な仕事だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストモニタリングとテストコントロール。この2つの関係はどうなっている？",
+      "choices": [
+        {
+          "text": "情報を集めて進捗を測り、補正の指示につなげる",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストモニタリングはテストに関する情報の収集で、進捗の評価や終了基準の充足の測定に使います。テストコントロールはその情報を使って、補正のアクションを指示します。例：リスクが問題化したときの優先度見直し・開始/終了基準の再評価・環境遅延に対応するスケジュール調整・リソース追加。テスト完了はマイルストーンでデータを集約し、経験やテストウェアを統合します。",
+            "syllabusRefs": ["5.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "集計は全部終わってから1回やれば十分",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "終わってからの集計では、途中の軌道修正ができません。モニタリングはテスト期間中の継続的な情報収集で、その情報を使ってコントロール（優先度見直し・スケジュール調整・リソース追加など）を行うことで、最も効果的で効率的なテストに近づけます。",
+            "syllabusRefs": ["5.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ、テストでは何を測ればいいんだろう？",
+      "choices": [
+        {
+          "text": "進捗・品質・欠陥・リスク・カバレッジ・コスト",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。代表的なテストメトリクスには、プロジェクト進捗（タスク完了・リソース使用量・工数）、テスト進捗（実装/実行の進捗・合格/不合格数・実行時間）、プロダクト品質（可用性・応答時間・平均故障までの時間）、欠陥（発見/修正数・欠陥密度・欠陥検出率）、リスク（残留リスクレベル）、カバレッジ（要件・コード）、コストがあります。目的に応じて選んで収集します。",
+            "syllabusRefs": ["5.3.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "消化したテストケース数だけ見れば分かる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "消化数は分かりやすい指標ですが、それだけでは“品質が良いのか”“リスクが残っているのか”が見えません。テスト進捗に加え、プロダクト品質・欠陥・残留リスク・カバレッジ・コストなどのメトリクスを組み合わせて、テストの実像を捉えます。",
+            "syllabusRefs": ["5.3.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストレポートには進捗レポートと完了レポートがある。使い分けは？",
+      "choices": [
+        {
+          "text": "進捗は定期・完了は節目。読み手に合わせ調整",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テスト進捗レポートは定期的（毎日・毎週など）に作成し、期間・進捗状況・阻害要因と回避策・メトリクス・新規/変更リスク・次の計画を含みます。テスト完了レポートはテストレベルやイテレーションなどの節目で作成し、概要・評価・計画からの逸脱・未解決リスク・学んだ教訓などを含みます。対象者によって求める情報・形式度・頻度が異なるため、読み手に合わせて調整します。",
+            "syllabusRefs": ["5.3.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "誰に対しても同じレポートを送ればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じものを送る方が楽ですが、対象者が異なれば求める情報も、適切な形式や頻度も異なります。同じチームのメンバーへの進捗共有は頻繁で非形式的に、経営層への報告はまとめて形式的に——読み手に合わせるのがレポートの基本です。",
+            "syllabusRefs": ["5.3.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストの状況って、正式なレポート以外で伝えてもいいのかな？",
+      "choices": [
+        {
+          "text": "口頭・ダッシュボード・レポートを使い分ける",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。伝達手段には、口頭でのコミュニケーション、ダッシュボード（CI/CDダッシュボード・タスクボード・バーンダウンチャート）、電子チャネル（メール・チャット）、オンラインドキュメント、正式なテストレポートがあり、複数を組み合わせて使えます。地理的に分散したチームでは、より形式的なコミュニケーションが適する場合もあります。",
+            "syllabusRefs": ["5.3.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "正式な文書以外で状況を伝えてはいけない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "きちんとしたい気持ちは分かりますが、正式な文書だけが手段ではありません。口頭・ダッシュボード・チャットなども立派な伝達手段で、テストマネジメントの懸念・組織のテスト戦略・チームの状況に応じて選びます。大切なのはステークホルダーの関心に合わせて調整することです。",
+            "syllabusRefs": ["5.3.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "測って、伝えて、直す。テストは実行して終わりじゃない。“今どんな感じだ？”に数字と根拠で答えられれば、チームはもっと速く正しく動ける。",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-2-07",
+  "title": "欠陥データは語る 〜レポート情報とプロセス改善〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "来週はふりかえりだ。この1年の欠陥データが溜まっている——ここから“次はどこを直すか”を導くのが、今日の仕事だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "その前に確認。欠陥レポートに“必須”とすべき情報って何だっけ？",
+      "choices": [
+        {
+          "text": "タイトルと概要・再現手順つき詳細・重要度・優先度",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。ほとんどの環境で必須なのは——欠陥のタイトルと不正の簡単な概要／故障を再現する手順を含む詳細な説明／ステークホルダーへの影響の重要度／修正の優先度。識別子・作成日時・報告者・フェーズ・ステータス・所有者・変更履歴・参照などは欠陥マネジメントツールが自動作成することが多い項目です。属性を追加するたびに作成時間が延び混乱を招くため、コンテキストで必要なデータと改善に使うデータのみを収集するのが望ましいとされます。",
+            "syllabusRefs": ["TM-2.3.5"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "とにかく全項目を必須入力にして漏れを防ぐ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "漏れ防止の意図は正しいのですが、必須項目が多いほどレポート作成の時間が延び、入力者の混乱を招きます。結果、レポート自体が書かれなくなる本末転倒も。核となる情報（タイトル・再現手順つき詳細・重要度・優先度）を必須にし、残りは価値のあるものに限定する——それが設計です。",
+            "syllabusRefs": ["TM-2.3.5"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "追加で集める情報は、何を基準に選ぶ？",
+      "choices": [
+        {
+          "text": "解決支援・状況・品質・プロセス能力の4目的で設計",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。情報は目的別に設計します——①欠陥解決に役立てる（サブシステム・テストアイテムとリリース番号・テスト環境）②プロジェクト全体の状況のアセスメント（修正する/しないことに関するリスク・コスト・機会・利益、回避策、影響を受ける要件）③プロダクト品質の観点でのアセスメント（欠陥の種類・混入した作業成果物・影響を受けた品質特性）④プロセス能力のアセスメント（混入・検出・除去のSDLCフェーズ、根本原因）。核となる情報はSDLC全体・全プロジェクトで一貫させます。",
+            "syllabusRefs": ["TM-2.3.5"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "開発者が直せれば、それ以外の情報は無駄だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "解決支援は確かに第一目的ですが、それだけではありません。欠陥レポートはプロジェクト状況の把握、プロダクト品質のアセスメント、そしてプロセス能力の評価という4つの目的に奉仕します。“直すための情報”に加えて“学ぶための情報”を最小限だけ設計するのが、マネージャーの視点です。",
+            "syllabusRefs": ["TM-2.3.5"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では本題。溜まった欠陥の統計は、プロセス改善にどう使える？",
+      "choices": [
+        {
+          "text": "混入と検出のフェーズ・根本原因・クラスターで攻める",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。混入・検出・除去フェーズの情報でフェーズ内阻止をアセスメントし品質コスト分析（混入と同じフェーズで除去できれば品質コストは最小）。混入が最も多いフェーズの分析で的を絞った欠陥予防。根本原因の情報で総数を減らす改善。発生箇所のクラスター分析でリスクベースドテストのための技術的リスク理解と問題コンポーネントのリファクタリング。再オープン欠陥でデバッグの品質を、重複・却下欠陥でレポート作成の品質をアセスメント——欠陥データは終わった話ではなく、次のプロジェクトの設計図です。",
+            "syllabusRefs": ["TM-2.3.6"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "欠陥データは終わった話だから捨ててよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "リリースが済むと過去に見えますよね。しかし欠陥データを長期に収集・分析することは、テストとSDLCの他プロセス（アーキテクチャや設計の改善による欠陥予防など）の改善領域を特定するのに役立ちます。捨てるのは、次のプロジェクトへの最大の投資を捨てることです。",
+            "syllabusRefs": ["TM-2.3.6"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "「欠陥の追跡なんてオーバーヘッドだ、やめよう」って声が出たら、どう答える？",
+      "choices": [
+        {
+          "text": "可視性低下と改善困難という代償を示して議論する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。一部または全フェーズで欠陥を追跡しない決定は、効率性の名の下に、プロセスのオーバーヘッド削減のために行われることが多い——しかしそれは、ソフトウェア開発とテストのプロセス能力の可視性を大幅に低下させ、信頼できるサポートデータの不足により改善の実施を困難にします。やめるならこの代償を理解した上で。軽くする方法（属性の限定・ツールの自動化）から先に検討しましょう。",
+            "syllabusRefs": ["TM-2.3.6"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "効率化のため常に追跡しないのが正しい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "オーバーヘッド削減は分かりますが、“常に追跡しない”はプロセス能力の可視性を大幅に下げ、改善提案の裏付けデータを失わせます。効率化したいなら、追跡をやめるのではなく、必須属性の限定やツールの自動記録で“軽く追跡する”のが正解です。",
+            "syllabusRefs": ["TM-2.3.6"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "欠陥は直して終わりではない。どこで生まれ、どこで捕まえ、なぜ起きたか——データが語る声を聞けるチームだけが、同じ欠陥と二度戦わずに済む。",
+      "next": null
+    }
+  ]
+}

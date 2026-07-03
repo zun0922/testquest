@@ -1,0 +1,173 @@
+{
+  "id": "al-tm-1-02",
+  "title": "ステークホルダーの地図 〜権力と関心のマトリクス〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "新案件のキックオフだ。リーダーとしての最初の仕事は、ステークホルダーの地図づくり。誰が品質に関心を持ち、誰の声を聞き、誰にどう報告するか——描いてみてくれ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "そもそも“テストステークホルダー”って、どこまで含めるんだっけ？",
+      "choices": [
+        {
+          "text": "開発・PMやPO・運用・顧客とユーザーまで含む",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストステークホルダーは、プロダクトの品質に直接的または間接的な関心を持つ個人やグループです。開発担当者・リーダー・マネージャー（ユニットテストにも関与）、テスト側の面々、プロジェクトマネージャー・プロダクトオーナー・ビジネスユーザー（要件と品質レベルの定義・UAT参加・判定）、運用チーム（運用受け入れテスト・非機能要件）、そして顧客とユーザー（要件定義の鍵・UAT参加）まで含みます。",
+            "syllabusRefs": ["TM-1.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストチームのメンバーのことだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "身近なところから考えると、そうなりがちです。しかしステークホルダーは“品質に関心を持つ人々”全体で、開発・マネジメント・運用・顧客とユーザーまで広がります。テストチームだけを見ていると、要件や受け入れの視点が抜け落ちます。",
+            "syllabusRefs": ["TM-1.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では、この案件の関係者リストはどう作る？",
+      "choices": [
+        {
+          "text": "戦略・計画の一環として分析し固有に識別する",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。典型的なステークホルダーのリストはあくまで出発点です。テストマネージャーは、テスト戦略やテスト計画の作成の一環として、テストスコープを考慮しつつ、プロジェクト固有のステークホルダーを識別する“ステークホルダー分析”を行わなければなりません。",
+            "syllabusRefs": ["TM-1.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "典型リストをコピーすれば分析は不要だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "楽ではありますが、典型リストにはこのプロジェクト固有の関係者——特定の規制当局・外部ベンダー・特殊なユーザー層——は載っていません。スコープを考慮したステークホルダー分析で、固有の顔ぶれを識別することが求められます。",
+            "syllabusRefs": ["TM-1.2.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "この人数、全員に同じように関わるのは無理そう。優先順位はどうつける？",
+      "choices": [
+        {
+          "text": "影響力×関心の4象限で整理し関与を設計する",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ステークホルダーマトリクス（権力と関心度のマトリクス）で、推進者（影響力高×関心高＝戦略形成に不可欠な協力者）・潜在的協力者（高×低＝リソース配置や方向性の意思決定が重要）・擁護者（低×高＝定性的フィードバック・定期報告で関心を維持）・無関心者（低×低＝重要マイルストーンで報告）の4象限に整理し、関与に優先順位を付けて期待値をマネジメントします。",
+            "syllabusRefs": ["TM-1.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "全員に同じ頻度・同じ内容で報告するのが公平",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "公平に見えますが、関心の薄い人に詳細を毎日送れば読まれなくなり、重要な協力者への情報が薄まります。影響力と関心で4象限に分け、それぞれに合った関与——これがマトリクスの使い方です。専門知識の活用やリスクマネジメント支援にもつながります。",
+            "syllabusRefs": ["TM-1.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では試そう。影響力は高いが、日々のテストには関心が薄い役員がいる。どう関与を得る？",
+      "choices": [
+        {
+          "text": "資源配置や方向性の意思決定の場面で関与を得る",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。影響力が高く関心が低いのは“潜在的協力者”。日々のタスクには強い関心を持たなくても、リソース配置や高いレベルのプロジェクトの方向性に関する意思決定が重要な人です。その意思決定の場面に絞って関与を得るのが、マトリクスに沿った期待値マネジメントです。",
+            "syllabusRefs": ["TM-1.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "毎日の詳細レポートを送って関心を高める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "熱意は買いますが、関心の低い相手に詳細を毎日送っても読まれず、かえって印象を損ねます。潜在的協力者には、リソースや方向性の意思決定という“効く場面”に絞って関与してもらうのが適切です。",
+            "syllabusRefs": ["TM-1.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "関心が低いのだから報告しなくてよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "手離れは良いですが、影響力の高い人を放置するのは危険です。予算やリソースの決定権を持つ相手との接点を失うと、テストに必要な支援を得られなくなります。意思決定の場面に絞った関与が正解です（完全な無報告でよいのは影響力も関心も低い“無関心者”ですら、重要マイルストーンでは報告します）。",
+            "syllabusRefs": ["TM-1.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "地図が描けたな。推進者と共に戦略を作り、擁護者の声を拾い、節目には無関心者にも届ける。人間関係の設計も、テストマネジメントの立派な仕事だ。",
+      "next": null
+    }
+  ]
+}

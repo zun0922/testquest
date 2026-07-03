@@ -1,0 +1,130 @@
+{
+  "id": "fl-1-05",
+  "title": "チームで品質をつくる 〜スキルと独立性〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "見つけた欠陥を開発の人に伝えないと…。でも、なんだか気まずいな。どう言えばいいんだろう？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "欠陥はどう伝えるのがいい？",
+      "choices": [
+        {
+          "text": "事実ベースで建設的に伝える",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "テスト担当者は“悪い知らせの運び手”になりがちです。欠陥や故障の情報は、人を責めるのではなく事実に基づき建設的に伝えることが重要です。コミュニケーションスキルは必須です。",
+            "syllabusRefs": ["1.5.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "作った人のミスとして責める言い方をする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "作成者を責める伝え方は協働を損ねます。確証バイアスもあり受け入れが難しくなります。建設的なコミュニケーションを心がけましょう。",
+            "syllabusRefs": ["1.5.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "そもそも、テストは誰がやるのがいいの？",
+      "choices": [
+        {
+          "text": "本人/同僚/別チーム/外部で独立性の度合いが違う",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストの独立性にはレベルがあります（作成者本人＝独立性なし、同僚、組織内の別チーム、組織外）。独立性があると認知バイアスの違いで欠陥を見つけやすくなります。一方で作成者本人も自分のコードの欠陥を効率よく見つけられます。",
+            "syllabusRefs": ["1.5.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "独立性は不要、作った本人だけでよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "本人テストにも価値はありますが、ある程度の独立性があると認知バイアスの違いで欠陥を見つけやすくなります。独立性のレベルを状況に応じて使い分けます。",
+            "syllabusRefs": ["1.5.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "品質は誰の責任だと思う？",
+      "choices": [
+        {
+          "text": "品質はチーム全員の責任（チーム全体アプローチ）",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "チーム全体アプローチでは、必要な知識とスキルを持つメンバーがどの仕事も担い、全員が品質に責任を持ちます。チーム内の情報伝達とコラボレーションが強化されます。",
+            "syllabusRefs": ["1.5.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "品質はテスターだけの責任",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "チーム全体アプローチに反します。品質はチーム全員の責任です。テスト担当者は他のメンバーと連携し、テストの知識を共有していきます。",
+            "syllabusRefs": ["1.5.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "happy", "position": "left" },
+        { "characterId": "ken", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "事実ベースで建設的に伝える。独立性を使い分ける。品質はチーム全員でつくる。これなら気まずさより前向きに動けそうだ。ありがとう！",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-2-06",
+  "title": "チームの数だけ流儀がある 〜アジャイルとハイブリッドの欠陥マネジメント〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "参ったよ。うちのアジャイルチームと、シーケンシャル開発のサプライヤーで、欠陥の扱いがバラバラなんだ。向こうは重厚なレポート必須、こっちは口頭文化で……。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "そもそもアジャイルチームの欠陥管理って、どこまで軽くしていいんだろう？",
+      "choices": [
+        {
+          "text": "同席と対話が十分なら形式レポートなしも多い",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。アジャイルの欠陥マネジメントはシーケンシャルより軽量的・非形式的なことが多く、チームが同じ場所にいる、またはコミュニケーション手段が十分に確立されている場合、形式的な欠陥レポートなしで、テスト担当者・顧客担当者・開発者の間で欠陥や故障の情報交換を行うことが多いとされます。軽さは“サボり”ではなく、対話が機能している証です。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "アジャイルでも全欠陥に必ず形式レポートを書く",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "丁寧ではありますが、その日のうちに直せる欠陥まで形式レポートを課すと、アジャイルの速さを殺してしまいます。同席と対話が機能していれば形式レポートなしの情報交換でよい——ただし“書くべき場合”の線引きは必要です。それが次の問いです。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "thinking", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ、それでもレポートを“書くべき”なのはどんなとき？",
+      "choices": [
+        {
+          "text": "ブロックする・期間内に解決不能・他チーム対応時",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。書くべき場合——①他のスプリント活動をブロックし、チーム内ですぐ修正できない欠陥 ②同じイテレーション内で解決できない欠陥（当日中に解決できなければ作成、というルールのチームも）③複合チーム組織で他チームによって/他チームと協力して解決すべき欠陥 ④サプライヤーが解決すべき欠陥 ⑤レポートが明示的に求められている欠陥。基本は組織的テスト戦略で定め、形式化レベル・トリガー・属性などチーム合意に任される部分は**常に文書化**します（同席状況・時差・チーム数・成熟性・規模・リスク・規制を反映）。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "書くかどうかは各自の気分で決めてよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "自由は魅力ですが、気分任せでは“書かれなかった重要欠陥”が消えます。書くべき場合の判断基準（ブロック・イテレーション内解決不能・他チーム/サプライヤー対応・明示要求）を持ち、チーム合意の詳細はナレッジ管理ツールのガイドライン等に文書化する——軽量と無秩序は別物です。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "で、本題。うちとサプライヤーみたいな複合チームだと、何が課題になるんだろう？",
+      "choices": [
+        {
+          "text": "ツールの整合・優先順位付け・計画の整合と透明性",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり、課題は3つ。①欠陥の属性とツールの整合——理想は全チーム1ツールだが、実際は別ツールが一般的。ツール間の同期を（できれば自動で）確立する。②欠陥の優先順位付け——POが結果とリスクの情報を積極的に求めて関与し、アジャイルの速さに合わせてミーティングは頻繁に短く。最終判断は少数のステークホルダーが下すのが有益なことも。③テスト計画書の整合と透明性——全チームの仕事を同じプロジェクト計画に合わせ、ダッシュボードやバックログで共有。シーケンシャル側がアジャイルのミーティングに参加するのも有効です。",
+            "syllabusRefs": ["TM-2.3.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "各チームが好きなツールでバラバラに管理して問題ない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "チームの自律は尊重したいのですが、同期のないバラバラ管理では、同じ欠陥が二重登録され、優先順位の全体像を誰も持てなくなります。現実に別ツールになるのは仕方ない——だからこそ、ツール間の同期（できれば自動）を確立することが望ましいとされているのです。",
+            "syllabusRefs": ["TM-2.3.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "イテレーション内で解決できなかった欠陥、どう扱うのがいいと思う？",
+      "choices": [
+        {
+          "text": "バックログに追加し、後の回で優先順位付けする",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。同じイテレーション内で解決できない欠陥をプロダクトバックログに追加し、後のイテレーションのために他の欠陥やユーザーストーリーの中で優先順位を付けられるようにするのが、一般的な実践です。欠陥がストーリーと同じ土俵に乗ることで、チームは「直す価値」を透明に比較できます。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "担当者の個人メモで覚えておく",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "忘れない自信があっても、個人メモは可視性ゼロです。優先順位付けの土俵に乗らず、担当者の異動や休暇とともに欠陥ごと消えます。バックログに載せて、チーム全員の目と優先順位付けの仕組みに委ねましょう。",
+            "syllabusRefs": ["TM-2.3.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "happy", "position": "left" },
+        { "characterId": "ken", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "軽さの線引きを文書化して、ツールを同期して、計画を一枚に揃える——なるほど、流儀の違いは“設計”で埋められるんだね。サプライヤーとの次の定例で提案してみるよ！",
+      "next": null
+    }
+  ]
+}

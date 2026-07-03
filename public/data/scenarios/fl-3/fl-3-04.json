@@ -1,0 +1,173 @@
+{
+  "id": "fl-3-04",
+  "title": "それぞれの持ち場 〜レビューの役割と種別〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "今日は設計書のレビューミーティングだ。私がモデレーター、リンが書記を務める。それぞれの役割と、レビューの“形式”の意味を覚えていこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "なぜレビューでは役割を分けるのだと思う？",
+      "choices": [
+        {
+          "text": "運営・記録・精査を分担し漏れなく進めるため",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。主な役割は、マネージャー（レビュー対象の決定とリソース提供）、作成者（成果物の作成と修正）、モデレーター（誰もが自由に発言できる安全な場を作り効果的に運営）、書記（不正や決定事項の記録）、レビューア（レビューの実施。専門家やステークホルダーの場合もある）、レビューリーダー（参加者や開催の決定など全体責任）です。",
+            "syllabusRefs": ["3.2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "全員同じことをすればいい。分担は不要だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "役割分担がないと、時間のマネジメントも記録も曖昧になり、レビューの効果が下がります。モデレーターの運営、書記の記録、レビューアの精査——それぞれの責務が揃うことで、レビューは機能します。",
+            "syllabusRefs": ["3.2.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "レビュー対象を作った本人——“作成者”は、どう関わればいいのかな？",
+      "choices": [
+        {
+          "text": "作成と修正が役目。リーダーや書記は兼ねない",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。作成者の責務は、レビュー対象の作業成果物を作成し、修正することです。ただし最も形式的なインスペクションでは、作成者はレビューリーダーや書記として活動することはできません。",
+            "syllabusRefs": ["3.2.3", "3.2.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "作成者がリーダーも書記も兼ねるのが早い",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "早そうに見えますが、最も形式的なインスペクションでは、作成者はレビューリーダーや書記として活動できないと定められています。中立な立場での運営と記録が、率直な指摘と正確な記録を支えるからです。",
+            "syllabusRefs": ["3.2.3", "3.2.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "レビューには非形式的なものから形式的なものまである。“形式度”はどう選べばいいと思う？",
+      "choices": [
+        {
+          "text": "成果物の重要性や規制・監査の要否などで選ぶ",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。必要な形式的レベルは、従うSDLC、開発プロセスの成熟度、作業成果物の重要性と複雑度、法的または規制上の要件、監査証跡の必要性に依存します。種別の選択は目的のほか、プロジェクトのニーズ、使用可能なリソース、成果物の種類とリスク、ビジネスドメイン、企業文化にも基づいて行います。",
+            "syllabusRefs": ["3.2.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "常に最も形式的なインスペクションにすべきだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "常に最も形式的に、とは限りません。インスペクションは強力ですが、汎用プロセスに完全に従うため工数もかかります。目的や成果物の重要性・複雑度、規制要件などに応じて適切なレビュー種別を選択することが、レビュー目的を達成する鍵です。",
+            "syllabusRefs": ["3.2.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "同じ成果物を非形式→形式と複数回やる手もある",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "よく知っていますね。同じ作業成果物でも、最初は非形式的なレビューを行い、後に形式的なレビューを行う、というように異なるレビュー種別でレビューすることができます。ただし選び方の基本は、目的・成果物の重要性・規制要件などに応じた適切な種別の選択です。",
+            "syllabusRefs": ["3.2.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "非形式的レビュー、ウォークスルー、テクニカルレビュー、インスペクション。それぞれの特徴、説明できる？",
+      "choices": [
+        {
+          "text": "主導者と形式度が違う。目的に応じ使い分ける",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。非形式的レビューは定義されたプロセスに従わず、主目的は不正の検出。ウォークスルーは作成者が主導し、教育・合意形成・品質評価など多くの目的を果たせます（事前の個人レビューは必須ではありません）。テクニカルレビューは技術的に適格なレビューアが行い、モデレーターが主導して技術的な合意と判断を目指します。インスペクションは最も形式的で汎用プロセスに完全に従い、不正の最大数発見が主目的。メトリクスを収集してSDLCの改善にも使います。",
+            "syllabusRefs": ["3.2.4"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "どれも目的は同じ。区別する意味はない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "種別ごとに主導者・形式度・主目的が異なります。例えばウォークスルーは作成者主導で合意形成や教育に強く、インスペクションは最も形式的で不正の最大数発見を狙います。適切な種別の選択が、レビュー目的を達成する鍵になります。",
+            "syllabusRefs": ["3.2.4"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "役割と形式は、レビューを堅苦しくするためのものじゃない。目的を確実に達成するための道具だ。今日のレビュー、いい動きだったよ。",
+      "next": null
+    }
+  ]
+}

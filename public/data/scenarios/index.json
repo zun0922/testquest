@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "fl-1-01",
+      "title": "配属初日 〜テストって何？〜",
+      "level": "FL",
+      "chapter": 1,
+      "order": 1,
+      "estimatedMinutes": 10,
+      "file": "fl-1/fl-1-01.json"
+    },
+    {
+      "id": "fl-1-02",
+      "title": "はじめてのテスト依頼 〜なぜテストするの？〜",
+      "level": "FL",
+      "chapter": 1,
+      "order": 2,
+      "estimatedMinutes": 10,
+      "file": "fl-1/fl-1-02.json"
+    },
+    {
+      "id": "fl-1-03",
+      "title": "7つの道しるべ 〜テストの原則〜",
+      "level": "FL",
+      "chapter": 1,
+      "order": 3,
+      "estimatedMinutes": 12,
+      "file": "fl-1/fl-1-03.json"
+    },
+    {
+      "id": "fl-1-04",
+      "title": "テストの段取り 〜活動と役割〜",
+      "level": "FL",
+      "chapter": 1,
+      "order": 4,
+      "estimatedMinutes": 12,
+      "file": "fl-1/fl-1-04.json"
+    },
+    {
+      "id": "fl-1-05",
+      "title": "チームで品質をつくる 〜スキルと独立性〜",
+      "level": "FL",
+      "chapter": 1,
+      "order": 5,
+      "estimatedMinutes": 10,
+      "file": "fl-1/fl-1-05.json"
+    },
+    {
+      "id": "fl-2-01",
+      "title": "プロジェクトが変わればテストも変わる 〜開発モデルとテスト〜",
+      "level": "FL",
+      "chapter": 2,
+      "order": 1,
+      "estimatedMinutes": 12,
+      "file": "fl-2/fl-2-01.json"
+    },
+    {
+      "id": "fl-2-02",
+      "title": "テストが先か、コードが先か 〜テストファーストとシフトレフト〜",
+      "level": "FL",
+      "chapter": 2,
+      "order": 2,
+      "estimatedMinutes": 12,
+      "file": "fl-2/fl-2-02.json"
+    },
+    {
+      "id": "fl-2-03",
+      "title": "どこまで組み上がった？ 〜5つのテストレベル〜",
+      "level": "FL",
+      "chapter": 2,
+      "order": 3,
+      "estimatedMinutes": 12,
+      "file": "fl-2/fl-2-03.json"
+    },
+    {
+      "id": "fl-2-04",
+      "title": "何をどう試す？ 〜テストタイプと確認・リグレッション〜",
+      "level": "FL",
+      "chapter": 2,
+      "order": 4,
+      "estimatedMinutes": 12,
+      "file": "fl-2/fl-2-04.json"
+    },
+    {
+      "id": "fl-2-05",
+      "title": "動いているシステムに触れる 〜メンテナンステスト〜",
+      "level": "FL",
+      "chapter": 2,
+      "order": 5,
+      "estimatedMinutes": 10,
+      "file": "fl-2/fl-2-05.json"
+    },
+    {
+      "id": "fl-3-01",
+      "title": "動かさずに見つける 〜静的テストの基本〜",
+      "level": "FL",
+      "chapter": 3,
+      "order": 1,
+      "estimatedMinutes": 12,
+      "file": "fl-3/fl-3-01.json"
+    },
+    {
+      "id": "fl-3-02",
+      "title": "レビューは高いか安いか 〜静的テストの価値〜",
+      "level": "FL",
+      "chapter": 3,
+      "order": 2,
+      "estimatedMinutes": 12,
+      "file": "fl-3/fl-3-02.json"
+    },
+    {
+      "id": "fl-3-03",
+      "title": "早めに、何度でも 〜フィードバックとレビュープロセス〜",
+      "level": "FL",
+      "chapter": 3,
+      "order": 3,
+      "estimatedMinutes": 12,
+      "file": "fl-3/fl-3-03.json"
+    },
+    {
+      "id": "fl-3-04",
+      "title": "それぞれの持ち場 〜レビューの役割と種別〜",
+      "level": "FL",
+      "chapter": 3,
+      "order": 4,
+      "estimatedMinutes": 12,
+      "file": "fl-3/fl-3-04.json"
+    },
+    {
+      "id": "fl-3-05",
+      "title": "レビューが根づくチーム 〜成功要因〜",
+      "level": "FL",
+      "chapter": 3,
+      "order": 5,
+      "estimatedMinutes": 10,
+      "file": "fl-3/fl-3-05.json"
+    },
+    {
+      "id": "fl-4-01",
+      "title": "技法という道具箱 〜同値分割と境界値〜",
+      "level": "FL",
+      "chapter": 4,
+      "order": 1,
+      "estimatedMinutes": 12,
+      "file": "fl-4/fl-4-01.json"
+    },
+    {
+      "id": "fl-4-02",
+      "title": "組み合わせと状態を描く 〜デシジョンテーブルと状態遷移〜",
+      "level": "FL",
+      "chapter": 4,
+      "order": 2,
+      "estimatedMinutes": 12,
+      "file": "fl-4/fl-4-02.json"
+    },
+    {
+      "id": "fl-4-03",
+      "title": "コードの中を照らす 〜ホワイトボックステスト〜",
+      "level": "FL",
+      "chapter": 4,
+      "order": 3,
+      "estimatedMinutes": 12,
+      "file": "fl-4/fl-4-03.json"
+    },
+    {
+      "id": "fl-4-04",
+      "title": "経験というセンサー 〜経験ベースのテスト〜",
+      "level": "FL",
+      "chapter": 4,
+      "order": 4,
+      "estimatedMinutes": 12,
+      "file": "fl-4/fl-4-04.json"
+    },
+    {
+      "id": "fl-4-05",
+      "title": "一緒に書けば欠陥は減る 〜コラボレーションベースのアプローチ〜",
+      "level": "FL",
+      "chapter": 4,
+      "order": 5,
+      "estimatedMinutes": 12,
+      "file": "fl-4/fl-4-05.json"
+    },
+    {
+      "id": "fl-5-01",
+      "title": "テストの地図を描く 〜テスト計画〜",
+      "level": "FL",
+      "chapter": 5,
+      "order": 1,
+      "estimatedMinutes": 12,
+      "file": "fl-5/fl-5-01.json"
+    },
+    {
+      "id": "fl-5-02",
+      "title": "いくら掛かる？どれから試す？ 〜見積りと優先順位〜",
+      "level": "FL",
+      "chapter": 5,
+      "order": 2,
+      "estimatedMinutes": 14,
+      "file": "fl-5/fl-5-02.json"
+    },
+    {
+      "id": "fl-5-03",
+      "title": "危ないところから試す 〜リスクマネジメント〜",
+      "level": "FL",
+      "chapter": 5,
+      "order": 3,
+      "estimatedMinutes": 12,
+      "file": "fl-5/fl-5-03.json"
+    },
+    {
+      "id": "fl-5-04",
+      "title": "見える化して伝える 〜モニタリング・コントロール・完了〜",
+      "level": "FL",
+      "chapter": 5,
+      "order": 4,
+      "estimatedMinutes": 12,
+      "file": "fl-5/fl-5-04.json"
+    },
+    {
+      "id": "fl-5-05",
+      "title": "記録が品質を守る 〜構成管理と欠陥マネジメント〜",
+      "level": "FL",
+      "chapter": 5,
+      "order": 5,
+      "estimatedMinutes": 12,
+      "file": "fl-5/fl-5-05.json"
+    },
+    {
+      "id": "fl-6-01",
+      "title": "道具箱を知る 〜テストツールの種類〜",
+      "level": "FL",
+      "chapter": 6,
+      "order": 1,
+      "estimatedMinutes": 8,
+      "file": "fl-6/fl-6-01.json"
+    },
+    {
+      "id": "fl-6-02",
+      "title": "自動化は銀の弾丸か 〜テスト自動化の利点とリスク〜",
+      "level": "FL",
+      "chapter": 6,
+      "order": 2,
+      "estimatedMinutes": 10,
+      "file": "fl-6/fl-6-02.json"
+    },
+    {
+      "id": "al-tm-1-01",
+      "title": "三本柱を握る 〜計画・モニタリングとコントロール・完了〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 1,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-01.json"
+    },
+    {
+      "id": "al-tm-1-02",
+      "title": "ステークホルダーの地図 〜権力と関心のマトリクス〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 2,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-02.json"
+    },
+    {
+      "id": "al-tm-1-03",
+      "title": "モデル×レベル×タイプ 〜コンテキストに合わせる〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 3,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-03.json"
+    },
+    {
+      "id": "al-tm-1-04",
+      "title": "三つの信号 〜計画・モニタリング・コントロールの複合判断〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 4,
+      "estimatedMinutes": 18,
+      "file": "al-tm-1/al-tm-1-04.json"
+    },
+    {
+      "id": "al-tm-1-05",
+      "title": "リスクの声を集める 〜識別とアセスメント〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 5,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-05.json"
+    },
+    {
+      "id": "al-tm-1-06",
+      "title": "限られた時間をどこに注ぐか 〜リスク軽減の設計〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 6,
+      "estimatedMinutes": 18,
+      "file": "al-tm-1/al-tm-1-06.json"
+    },
+    {
+      "id": "al-tm-1-07",
+      "title": "効いたのか、を測る 〜RBTの成功メトリクスと罠〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 7,
+      "estimatedMinutes": 12,
+      "file": "al-tm-1/al-tm-1-07.json"
+    },
+    {
+      "id": "al-tm-1-08",
+      "title": "このプロジェクトの戦い方 〜テストアプローチの選択〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 8,
+      "estimatedMinutes": 18,
+      "file": "al-tm-1/al-tm-1-08.json"
+    },
+    {
+      "id": "al-tm-1-09",
+      "title": "測れるゴールを立てる 〜SMARTなテスト目的〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 9,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-09.json"
+    },
+    {
+      "id": "al-tm-1-10",
+      "title": "テストのやり方を良くする 〜IDEALと改善アプローチ〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 10,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-10.json"
+    },
+    {
+      "id": "al-tm-1-11",
+      "title": "道具を根づかせる 〜ツール導入とライフサイクル〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 11,
+      "estimatedMinutes": 15,
+      "file": "al-tm-1/al-tm-1-11.json"
+    },
+    {
+      "id": "al-tm-1-12",
+      "title": "その投資、回収できるか 〜ツール選定とROI〜",
+      "level": "AL-TM",
+      "chapter": 1,
+      "order": 12,
+      "estimatedMinutes": 18,
+      "file": "al-tm-1/al-tm-1-12.json"
+    },
+    {
+      "id": "al-tm-2-01",
+      "title": "測れるものは達成できる 〜テストメトリクスの設計〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 1,
+      "estimatedMinutes": 15,
+      "file": "al-tm-2/al-tm-2-01.json"
+    },
+    {
+      "id": "al-tm-2-02",
+      "title": "数字を物語に 〜ステークホルダーに届くテスト報告〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 2,
+      "estimatedMinutes": 18,
+      "file": "al-tm-2/al-tm-2-02.json"
+    },
+    {
+      "id": "al-tm-2-03",
+      "title": "いくらかかる？を分解する 〜見積りの基本と影響要因〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 3,
+      "estimatedMinutes": 15,
+      "file": "al-tm-2/al-tm-2-03.json"
+    },
+    {
+      "id": "al-tm-2-04",
+      "title": "どの物差しで測るか 〜見積り技法の選択〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 4,
+      "estimatedMinutes": 18,
+      "file": "al-tm-2/al-tm-2-04.json"
+    },
+    {
+      "id": "al-tm-2-05",
+      "title": "欠陥の一生 〜ワークフローと委員会〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 5,
+      "estimatedMinutes": 15,
+      "file": "al-tm-2/al-tm-2-05.json"
+    },
+    {
+      "id": "al-tm-2-06",
+      "title": "チームの数だけ流儀がある 〜アジャイルとハイブリッドの欠陥マネジメント〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 6,
+      "estimatedMinutes": 15,
+      "file": "al-tm-2/al-tm-2-06.json"
+    },
+    {
+      "id": "al-tm-2-07",
+      "title": "欠陥データは語る 〜レポート情報とプロセス改善〜",
+      "level": "AL-TM",
+      "chapter": 2,
+      "order": 7,
+      "estimatedMinutes": 15,
+      "file": "al-tm-2/al-tm-2-07.json"
+    },
+    {
+      "id": "al-tm-3-01",
+      "title": "チームに要る力を読む 〜4つの能力領域とスキル分析〜",
+      "level": "AL-TM",
+      "chapter": 3,
+      "order": 1,
+      "estimatedMinutes": 18,
+      "file": "al-tm-3/al-tm-3-01.json"
+    },
+    {
+      "id": "al-tm-3-02",
+      "title": "測って、伸ばす 〜スキルアセスメントと育成〜",
+      "level": "AL-TM",
+      "chapter": 3,
+      "order": 2,
+      "estimatedMinutes": 15,
+      "file": "al-tm-3/al-tm-3-02.json"
+    },
+    {
+      "id": "al-tm-3-03",
+      "title": "チームを率いる力 〜リーダーシップとモチベーション〜",
+      "level": "AL-TM",
+      "chapter": 3,
+      "order": 3,
+      "estimatedMinutes": 15,
+      "file": "al-tm-3/al-tm-3-03.json"
+    },
+    {
+      "id": "al-tm-3-04",
+      "title": "テストの価値を語る 〜品質コストと費用対効果〜",
+      "level": "AL-TM",
+      "chapter": 3,
+      "order": 4,
+      "estimatedMinutes": 18,
+      "file": "al-tm-3/al-tm-3-04.json"
+    }
+  ]
+}

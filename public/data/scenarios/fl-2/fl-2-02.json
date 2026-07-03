@@ -1,0 +1,173 @@
+{
+  "id": "fl-2-02",
+  "title": "テストが先か、コードが先か 〜テストファーストとシフトレフト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "開発チームが今期からTDDとCI/CDを本格導入する。同期のケンくんが開発チームで詳しく聞いてきたそうだ。二人でテストの考え方がどう変わるのか、整理しておいで。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "開発チームで聞いてきたよ。TDDって“テストを先に書く”んだって。コードより先にテストなんて、順番が逆だと思わない？",
+      "choices": [
+        {
+          "text": "コードを書く前にテストを定義し開発を導く",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。TDD・ATDD・BDDはいずれも、コードを書く前にテストケースを定義し、テストが開発を導くアプローチです。早期テストの原則の実装であり、シフトレフトの採用でもあります。テストケースを自動テストとして持続させ、将来の適応やリファクタリングの際にコード品質を支えることもあります。",
+            "syllabusRefs": ["2.1.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストは必ずコードの完成後に書くものだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "TDD・ATDD・BDDのようなテスト主導のアプローチでは、コードを書く前にテストを定義します。テストを先に書くことで早期テストの原則を実装し、イテレーティブな開発を支えます。“テストは必ず後”とは限りません。",
+            "syllabusRefs": ["2.1.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "CI/CDのパイプラインだと、自動テストがどんどん走るようになるらしいよ。そうなったら、手動テストってどうなるんだろう？",
+      "choices": [
+        {
+          "text": "自動化が進んでも、ユーザー視点の手動は残る",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。DevOpsは迅速なフィードバック、CIによるシフトレフト、安定したテスト環境の構築、リグレッションリスクの最小化などを促進し、繰り返しの手動テストの必要性は減ります。しかし高いレベルの自動テストが前提でも、手動テスト——特にユーザーの視点からのテスト——は依然として必要です。",
+            "syllabusRefs": ["2.1.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "自動テストが揃えば手動テストは不要になる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "DevOpsには高いレベルの自動テストが前提となりますが、手動テスト、特にユーザーの視点からのテストは依然として必要です。また、デリバリーパイプラインの定義・確立、CI/CDツールの導入・保守、テスト自動化の確立と保守が難しい場合があるといった課題もあります。",
+            "syllabusRefs": ["2.1.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "最近“シフトレフト”ってよく聞くよね。どういう考え方か、説明できる？",
+      "choices": [
+        {
+          "text": "早い段階からテストする。後半の軽視ではない",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。シフトレフトは早期テストの原則の言い換えで、コードの実装や統合を待たず、SDLCの早い段階からテストを行うアプローチです。仕様書をテストの観点でレビューする、コードの前にテストケースを書く、CI/CDを使う、静的解析を先に済ませる、可能なら非機能テストも早く始める、などが実践例です。ただし、SDLC後半のテストを軽視するべきだという意味ではありません。",
+            "syllabusRefs": ["2.1.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "シフトレフトすれば後半のテストは不要になる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "シフトレフトは「テストをより早い段階で行うべき」という提言ですが、SDLCの後半でのテストを軽視するべきだということを意味していません。早期のテストと後半のテスト、どちらも必要です。",
+            "syllabusRefs": ["2.1.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "初期は追加の労力やコストがかかることもある",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "よく知っていますね。シフトレフトはプロセスの初期には追加のトレーニング・労力・コストがかかるかもしれませんが、後期には労力やコストの削減が期待されます。だからこそステークホルダーの納得と受け入れが重要です。ただ、それは留意点であって、本質は“テストをSDLCの早い段階から行うこと”です。",
+            "syllabusRefs": ["2.1.5"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "イテレーションの終わりに“ふりかえり”をやるんだって。何のための場だと思う？",
+      "choices": [
+        {
+          "text": "成功と改善点を議論し、記録してフォローする",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ふりかえりでは、何が成功し何を残すべきか・何を改善できるか・改善をどう取り入れるかを、テスト担当者だけでなく開発担当者やプロダクトオーナーなども交えて議論します。結果は記録され、通常テスト完了レポートの一部になります。改善点のフォローアップが継続的改善の成功に重要です。",
+            "syllabusRefs": ["2.1.6"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "うまくいかなかった犯人を特定する場だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "ふりかえりは責任追及の場ではなく、継続的改善のための場です。テストの有効性・効率性の向上、テストウェアの品質向上、チームの絆と学び、テストベースの品質向上、開発とテストの連携向上といった利点につながります。",
+            "syllabusRefs": ["2.1.6"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "テストを先に、早めに、チームみんなで。DevOpsの時代でも、テストの原則はちゃんと生きてるんだね。僕ももっと調べてみるよ。一緒に頑張ろう！",
+      "next": null
+    }
+  ]
+}

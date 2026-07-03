@@ -1,0 +1,206 @@
+{
+  "id": "fl-5-02",
+  "title": "いくら掛かる？どれから試す？ 〜見積りと優先順位〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“このテスト、何人日かかる？どれから実行する？”って田中さんに聞かれちゃった。見積りと段取り、一緒に考えよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "専門家の見積りは、楽観4・最有力7・悲観16人日。三点見積りだと、最終見積りはいくつになる？",
+      "choices": [
+        {
+          "text": "約8人日±2（楽観+4×最有力+悲観を6で割る）",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。三点見積りは E=(a+4m+b)/6 の加重算術平均で、(4+4×7+16)÷6=8人日。測定誤差は SD=(b-a)/6=(16-4)÷6=2 なので、8±2人日（6〜10人日）と言えます。他にも、比率に基づく見積り（過去プロジェクトの比率を利用）・外挿（早期の実測から概算・イテレーティブ向き）・ワイドバンドデルファイ（専門家の反復合意・プランニングポーカーはその変種）があります。",
+            "syllabusRefs": ["5.1.4"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "3つを足して3で割って9人日でいい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "単純平均を取りたくなりますが、三点見積りは“最も可能性の高い値”に重みを付けた加重平均 E=(a+4m+b)/6 を使います。この例では (4+28+16)÷6=8人日。さらに SD=(b-a)/6 で誤差（±2人日）まで示せるのがこの技法の利点です。",
+            "syllabusRefs": ["5.1.4"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "見積りを扱うときの心得は何だと思う？",
+      "choices": [
+        {
+          "text": "誤差の可能性を明示し、大きなタスクは分解する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。見積りは多くの仮定に基づいており、常に見積り誤差の可能性があることを関係者に明示することが重要です。また、小さなタスクの見積りは大きなタスクより正確なので、大きなタスクは小さなタスクの集合に分解して順に見積ります。",
+            "syllabusRefs": ["5.1.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "一度出した見積りは絶対。誤差は口にしない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "頼もしく見えるかもしれませんが、見積りは多くの仮定に基づく予測であり、誤差の可能性を関係者に明示することこそが重要です。誤差を隠すと、計画が崩れたときの調整が効かなくなります。",
+            "syllabusRefs": ["5.1.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストスイートが揃ったら、実行の順番はどう決める？",
+      "choices": [
+        {
+          "text": "リスク・カバレッジ・要件に基づく戦略で決める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。代表的な優先順位付け戦略は3つ。リスクベース（リスク分析の結果に基づき、最も重要なリスクをカバーするテストを最初に）、カバレッジベース（最も高いカバレッジを達成するテストを最初に。追加カバレッジ方式もある）、要件ベース（重要な要件に遡れるテストを最初に）。加えて依存関係とリソースの可用性も考慮します。",
+            "syllabusRefs": ["5.1.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "テストケースを作った順に実行すればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "手軽ですが、作成順には根拠がありません。リスクベース・カバレッジベース・要件ベースといった優先順位付け戦略を使えば、重要なものから先に実行でき、重大な欠陥を早く見つけられます。",
+            "syllabusRefs": ["5.1.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "高優先が低優先に依存するなら低を先に実行",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "いい視点です。テストケースやテストする機能に依存関係がある場合、優先度の高いテストケースが低いものに依存しているなら、低い方を先に実行しなければなりません。リソースの可用性（ツール・環境・人の都合）も実行順序に影響します。ただし基本は、リスク・カバレッジ・要件に基づく優先順位付け戦略です。",
+            "syllabusRefs": ["5.1.5"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "自動テストの工数配分を考える“テストピラミッド”。どんなモデルだったか説明できるか？",
+      "choices": [
+        {
+          "text": "下層ほど小さく速く多く、上層ほど遅く少なく",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストピラミッドはテストの粒度が異なることを示すモデルです。最下層のテストは小さく分離され速いため、妥当なカバレッジには多くのテストが必要。最上層は複雑でハイレベルなE2Eテストで、遅いため少数のみ。レイヤー名の例は「ユニット」「サービス」「UI」や、ユニット/統合/E2Eなどです。",
+            "syllabusRefs": ["5.1.6"]
+          },
+          "next": "q5"
+        },
+        {
+          "text": "E2Eテストを一番厚くするのが正解だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "E2Eは“全部見られる”ので厚くしたくなりますが、ピラミッドの示す配分は逆です。上層のE2Eは遅く保守も重いため少数に絞り、速くて安定した下層（ユニットテスト）を厚くします。だから“ピラミッド”の形なのです。",
+            "syllabusRefs": ["5.1.6"]
+          },
+          "next": "q5"
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "もうひとつ、“テストの四象限”っていうモデルもあるよね。あれは何を整理するもの？",
+      "choices": [
+        {
+          "text": "ビジネス/技術×支援/批評の2軸で整理するモデル",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。四象限は「ビジネス向きか技術向きか」×「チームを支援する（開発を導く）かプロダクトを批評するか」の2軸で、テストレベルを適切なテストタイプ・活動・技法に分類します。Q1=技術×支援（コンポーネント系・CIで自動化）、Q2=ビジネス×支援（機能テスト・受け入れ基準の確認）、Q3=ビジネス×批評（探索的・使用性・UAT・多くは手動）、Q4=技術×批評（スモーク・非機能・自動化が多い）。",
+            "syllabusRefs": ["5.1.7"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "テストの重要度を4段階に並べたランキングだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "ランキングに見えますが、四象限に優劣はありません。ビジネス/技術×チーム支援/プロダクト批評の2軸の組み合わせで、すべての適切なテストタイプとテストレベルがSDLCに含まれることを確実にし、ステークホルダーにテストのタイプを説明する助けになるモデルです。",
+            "syllabusRefs": ["5.1.7"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "いくら掛かるかを誤差つきで示して、危ないものから順に試す。数字と根拠で語れるようになったら、もう一人前のテスターかもね。",
+      "next": null
+    }
+  ]
+}

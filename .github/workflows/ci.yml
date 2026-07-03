@@ -1,0 +1,54 @@
+# CI（テスト計画書 v1.0 §10.6 準拠）
+# npm ci → 型チェック → 実行時脆弱性 → 単体(Vitest) → E2E(Playwright・ヘッドレス)
+# ※ このリポジトリを GitHub に push した時点で有効化される。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# 同一ブランチの古い実行は自動キャンセル（無駄なCI実行を抑制）
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 依存インストール
+        run: npm ci
+
+      - name: 型チェック
+        run: npm run typecheck
+
+      # 実行時依存（production）の脆弱性のみをゲートにする。
+      # dev ツールチェーン（vite/vitest 系）の既知脆弱性は別途 vite8 更新で対応（worklog 参照）。
+      - name: 実行時依存の脆弱性チェック
+        run: npm audit --omit=dev --audit-level=moderate
+
+      - name: 単体テスト（Vitest）
+        run: npm run test
+
+      - name: Playwright ブラウザ導入
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E（Playwright・ヘッドレス）
+        run: npm run test:e2e
+
+      - name: E2Eレポート保存
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

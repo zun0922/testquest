@@ -1,0 +1,195 @@
+{
+  "id": "al-tm-1-06",
+  "title": "限られた時間をどこに注ぐか 〜リスク軽減の設計〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "リスク分析の結果が出た。残り4週間——全部をテストする時間はない。どこに力を注ぐか、配分の設計を君に任せる。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【分析結果】決済＝リスク非常に高（安全関連の規制でテスト技法とカバレッジの規定あり）／検索＝中／帳票＝低。決済領域のテスト経験があるシニアは、チームに1名だけだ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では聞こう。テストの配分方針は？",
+      "choices": [
+        {
+          "text": "リスクに比例配分。高い所は早期に厳密に適任者で",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "的確です。テストの開発と実行にかける時間と労力は、リスクレベルに比例させます。高リスクには早期に厳密なテスト技法を、低リスクは後半に軽く。さらにコンテキスト要因の分析——テストアイテムごとのリスク差・影響する品質特性に応じたテストタイプ・静的/動的の組み合わせ・SDLC・チーム（最高リスクは最も適任な担当者に＝決済経験のあるシニアの投入）・規制要件（規定された技法とカバレッジの遵守保証）——を踏まえてアプローチを選びます。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "全アイテムを同じ厳格さで試すのが公平で安全だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "公平に聞こえますが、シラバスは「テスト対象は一律な厳格さでテストする必要はない」と明言しています。時間が有限である以上、均等配分は“最高リスクに必要な厳密さを確保できない”配分です。リスクレベルへの比例こそが、限られた資源での安全を最大化します。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "やりやすい帳票から着手して勢いをつける",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "勢いづけの気持ちは分かりますが、それは低リスク領域に貴重な初期時間を使う選択です。高いリスクレベルに対するテストは早期に開始すべきとされています。帳票で作った勢いは、決済の重大欠陥が終盤に出た瞬間に消えてしまいます。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "実行の順序はどうする？高いものから深く？それとも広く浅く？",
+      "choices": [
+        {
+          "text": "縦型探索で始め、逼迫したら横型に切り替える",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "実務的な選択です。縦型探索（depth-first）はリスクレベルの高いものから厳格に降順で実行し、最高リスクを可能な限り早期に軽減したい場合に適します。横型探索（breadth-first）は各リスクに最低1つのテストを優先割り当てし、品質の全体像を早く把握したい場合に適します。実際には縦型で始め、時間が限られてきたら残りのリスクアイテムをすべて一度はテストする横型へ切り替えることが多い、とされています。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "最初から横型探索で全体像を早く示す",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "それも正当な戦略です。横型探索は、ステークホルダーがプロダクト品質の全体像をできるだけ早い段階で把握したい場合に適しています。ただし今回のように「非常に高」リスクの決済が規制要件まで抱えている状況では、最高リスクの早期軽減（縦型で開始）を優先し、後から横型に切り替える組み合わせの方が適合します。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テストケースが完成した順に実行する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "流れ作業としては自然ですが、完成順はリスクと無関係です。リスクベースドテストでは、テスト実装における優先順位付けはリスクレベルに基づいて行い、最も重要な領域の早期カバレッジを確かなものにします。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "それでも、時間切れが見えてきたら？",
+      "choices": [
+        {
+          "text": "残存リスクを示し、延長か受容かの提案を出す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。リスクベースドテストの強みは、任意の時点で残存リスクレベルに基づくテスト進捗の報告ができることです。計画したテストが消化しきれないまま時間が尽きそうなとき、「テストを延長するか、残ったリスクを受け入れるか」の正当な提案をマネジメントに提供できます。ステークホルダーが理解できる形でリスクの観点から報告することが、リリース判定を支えます。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "黙って手当たり次第に消化を続ける",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "焦る気持ちは分かりますが、黙って消化を続けると、マネジメントは判断の機会を失います。残存リスクを可視化して「延長か受容か」を提案することは、リスクベースドテストだからこそできる、リーダーの説明責任の果たし方です。",
+            "syllabusRefs": ["TM-1.3.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ところで、リスク分析の技法って、どのくらい“重く”やるべきなんだろう？",
+      "choices": [
+        {
+          "text": "クリティカルなら重量的、通常は軽量的を選ぶ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。重量的な技法（ハザード分析・エクスポージャーコスト・FMEA・フォールトツリー解析）は形式的で、定義された手順・詳細な文書・広範なステークホルダー・数式による算出を伴い、セーフティクリティカルなシステムで使われます。軽量的な技法（SST・PRAM・PRISMA等）は労力が少なく、順序尺度で整理します。適否はプロジェクト・プロセス・プロダクトに依存します。",
+            "syllabusRefs": ["TM-1.3.5"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "常にFMEAでやるのが本格的で正しい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "本格的に見えますが、重量的な技法は詳細な文書と広範な関与を要し、コストがかかります。セーフティクリティカルでないアプリケーションでは通常、軽量的な技法を採用します。技法の重さは“正しさ”ではなく、プロジェクト・プロセス・プロダクトへの適合で選びます。",
+            "syllabusRefs": ["TM-1.3.5"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "危ない所から、深く、早く。時間が尽きるなら、正直に選択肢を示す。リスクベースドテストは、限られた資源で最大の安心を作る技術だ。いい配分だった。",
+      "next": null
+    }
+  ]
+}

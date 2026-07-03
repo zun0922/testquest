@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-2-04",
+  "title": "どの物差しで測るか 〜見積り技法の選択〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "見積り依頼が2案件、同時に来た。性格のまるで違う2件だ——それぞれに合う“物差し”を選んでくれ。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【案件A】シーケンシャル開発。過去の類似プロジェクトのデータが豊富に残っている。対象の複雑度は低め。【案件B】アジャイル開発・新規ドメインで履歴データなし。経験豊富なメンバーが在籍。見積りに使える時間は少ない。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず案件A。データ豊富・複雑度低・シーケンシャル。どの技法で見積る？",
+      "choices": [
+        {
+          "text": "メトリクスベース（比率・外挿）で過去データを活かす",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "適切な選択です。複雑度が低い場合はメトリクスベースの技法が使えます。比率に基づく見積りや外挿は過去のプロジェクトや類似プロジェクトの履歴データに依存する技法で、案件Aはまさにデータが豊富。組織内の過去データは見積りの最良のソースです。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "データがあっても勘で決める方が早い",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "早さでは勝るかもしれませんが、せっかくの履歴データを捨てる選択です。データの可用性は技法選択の重要な要因であり、比率や外挿はこのデータから“標準比率”や傾向を導いて見積りの精度と説明力を与えてくれます。勘は、データの検算役に回すのが賢い使い方です。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "ワイドバンドデルファイで専門家を集める",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "使える選択ではあります——シーケンシャル開発モデルではワイドバンドデルファイ見積り技法が使用できます。ただし案件Aは履歴データが豊富で複雑度も低いため、メトリクスベース（比率・外挿）の方がより適合します。専門家の時間は、データが乏しく複雑度の高い案件のために取っておきましょう。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "次は案件B。履歴なし・専門家あり・アジャイル・時間なし。どうする？",
+      "choices": [
+        {
+          "text": "エキスパートベース＝プランニングポーカー",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。履歴データがないのでメトリクスベース（比率・外挿）は使えず、経験豊富な専門家がいるならエキスパートベースが活きます。プランニングポーカーは専門家やチームメンバーの意見と判断に依存し、簡単に実施できる（時間制約に合う）——アジャイルソフトウェア開発でよく使われる、この状況にぴったりの技法です。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "外挿で数学的に出す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "数学的な響きは頼もしいのですが、外挿は現在または過去のデータの蓄積が要件で、モデリングの知識と時間も必要です。新規ドメインで履歴なし・時間なしの案件Bでは前提が揃いません。データが無いときこそ、専門家の判断（プランニングポーカー等）の出番です。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "いい選択だ。では、技法選択の基準を一般化しておこう。何を見て選ぶ？",
+      "choices": [
+        {
+          "text": "誤差測定・データ・専門家・モデリング・時間で選ぶ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。5つの要因——①見積り誤差（三点見積りのように標準偏差＝不確実性を測れる技法か）②データの可用性（比率・外挿は履歴データが要件）③専門家の可用性（デルファイ法・プランニングポーカーは専門家の判断に依存）④モデリングの知識（外挿・三点見積りは数式を使う）⑤時間的制約（プランニングポーカーは簡単、外挿は難しいことも）。選択基準はテストのコンテキスト（SDLC・ステークホルダー・レベルとタイプ）に大きく依存し、テストマネージャーは技法を調整・適用できなければなりません。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "いつも同じ技法を使うのが公平だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一貫性は美徳に見えますが、今日の2案件が示したとおり、コンテキストが違えば適する技法も違います。データがないのに外挿を、時間がないのに重い手法を使えば、見積りそのものが崩れます。“公平”は技法の統一ではなく、選択基準の統一で実現しましょう。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "出した見積りって、それで終わりでいいのかな？",
+      "choices": [
+        {
+          "text": "作成時点の情報に基づく。変化を反映し更新する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。どんな見積りも作成時点で有効な情報に基づくもので、プロジェクト初期は情報がかなり限られ、時間とともに変化します。テストスコープなどの入力パラメーターが変わればテスト見積りを調整し、正当な理由とともにプロジェクトマネジメントに提出します。理想的には、最終的な見積りは品質・スケジュール・予算・機能の領域で、組織とプロジェクトのゴールの最良のバランスを表します。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "一度出した見積りは最後まで変えないのが信頼だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "約束を守る姿勢は大切ですが、見積りは予言ではなく“その時点の最善の予測”です。入力が変わったのに数字を守り続けると、現実との乖離をチームが残業で埋めることになります。変化を反映して更新し、理由を添えて再提出する——それが本当の信頼の作り方です。",
+            "syllabusRefs": ["TM-2.2.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "データがあるならデータで、無いなら専門家で。物差しはコンテキストが選ぶ——覚えておくといい。2案件とも、いい見積りになりそうだ。",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-1-05",
+  "title": "リスクの声を集める 〜識別とアセスメント〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "新機能のリスク分析、今回はあなたが主催だね。誰を呼ぶか、どう測るか——今日はそこを設計しよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず基本を確認したい。テストとリスクの関係を、君はどう捉えている？",
+      "choices": [
+        {
+          "text": "テストは欠陥の早期発見で品質リスクを軽減する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストで欠陥が明らかになれば、リリース前に対処する機会が生まれ、プロダクトリスクの軽減に役立ちます。欠陥が見つからなければ、リスクレベルが予想より低いことを示す材料になります。リスクベースドテストは、リスク分析（識別＋アセスメント）とリスクコントロール（モニタリング＋軽減）を軸に、品質リスクへテストを集中させる進め方です。リスクレベルが高いほど、テストは早期に・集中して行います。",
+            "syllabusRefs": ["TM-1.3.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "リスク管理は別の担当でテストとは無関係だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "分業としてはそう見えるかもしれません。しかしテストは最も重要な品質リスク軽減活動であり、テストマネージャーはプロダクト品質の正確で信頼性の高い評価を提供する責任者として、品質リスク分析の主要なステークホルダーです。品質保証に関わるプロジェクトリスク（曖昧な要件・不十分な環境）にも積極的に関与します。",
+            "syllabusRefs": ["TM-1.3.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "リスク識別のミーティング、誰を呼んで、どう進める？",
+      "choices": [
+        {
+          "text": "広範な関係者とワークショップや面談等で集める",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。識別技法には専門家インタビュー・独自のアセスメント・ふりかえり・リスクワークショップ・ブレーンストーミング・チェックリスト・過去の経験の参照があります。可能な限り広範なステークホルダーが参加することで重大なプロダクトリスクのほとんどを識別でき、参加者リストはプロジェクトマネージャーと合意しておきます。参加できない人にはタスクを委任する機会を与えます。重要な関係者の欠落は、それ自体が大きな問題です。",
+            "syllabusRefs": ["TM-1.3.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テストチームだけで手早くリストを作る",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "速さは魅力ですが、テストチームだけでは見える範囲のリスクしか挙がりません。重要なステークホルダーが欠けたリスク識別は、大きな問題になる可能性があるとされています。広範な参加が重大リスクの網羅につながります——呼ぶ人を設計することが、リーダーの最初の仕事です。",
+            "syllabusRefs": ["TM-1.3.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "システム全体をひとまとめに“リスク高”と評価する案が出ている。どう思う？",
+      "choices": [
+        {
+          "text": "一様ではない。テストアイテムごとに識別する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。リスクはテスト対象内に一様に分布しません。例えば、セルフサービスアプリの顧客向けコンポーネントは、管理側コンポーネントとは全く異なる使用性リスクを持ちます。さまざまなテストアイテムの個々のリスクを識別することは、テスト計画の重要なタスクです。なお識別の過程では副産物（要件や設計書の問題などプロダクトリスク以外の課題）も出ます——品質が全員の関心事であることを示す好機として扱いましょう。",
+            "syllabusRefs": ["TM-1.3.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "全体にひとつのレベルを付ければ十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "シンプルではありますが、それではテストの濃淡を設計できません。リスクは対象内に一様に分布せず、顧客向けと管理側では性質もレベルも異なります。アイテムごとの識別があって初めて、“どこに力を注ぐか”という次の判断につながります。",
+            "syllabusRefs": ["TM-1.3.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "集めたリスクのレベルは、どう決めるのがいい？",
+      "choices": [
+        {
+          "text": "可能性×影響。データが無ければ順序尺度で定性",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。アセスメントではリスクをタイプと品質特性で分類し、リスク可能性（複雑度・組織成熟度・スキル・チーム内対立・変更率など）とリスク影響（使用頻度・機能とビジネスゴールの重要性・評判・収入損失・法的制裁・安全性など）からレベルを決めます。定量的アセスメント（可能性＝％・影響＝金額・積で算出）が適切なのは、広範で統計的に有効なデータがある場合のみ。通常は順序尺度（非常に高い〜非常に低い）の定性評価とし、リスクマトリクスで組み合わせます。",
+            "syllabusRefs": ["TM-1.3.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "数字を付ければ定量的アセスメントになる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "数字は説得力がありますよね。しかし定量的アセスメントが適切なのは、広範で統計的に有効なリスクデータに基づく場合のみです。根拠のない数字は精密さの錯覚を生みます。データがなければ、ステークホルダーの認識に基づく順序尺度の定性評価として正直に扱い、相対評価として解釈するのが正しい姿勢です。",
+            "syllabusRefs": ["TM-1.3.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "広く声を集めて、アイテムごとに見て、可能性と影響で測る。この分析が、次の“どこに力を注ぐか”の背骨になるよ。いい設計だったね。",
+      "next": null
+    }
+  ]
+}

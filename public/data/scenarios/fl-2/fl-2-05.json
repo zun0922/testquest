@@ -1,0 +1,130 @@
+{
+  "id": "fl-2-05",
+  "title": "動いているシステムに触れる 〜メンテナンステスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "本番稼働中のシステムで不具合が見つかった。今夜ホットフィックスを当てる。動いているシステムに触れるのは怖いが、だからこそテストの出番だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "ホットフィックスのテストでは、何を確かめればいいと思う？",
+      "choices": [
+        {
+          "text": "変更の評価と、未変更部分のリグレッション",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。本番稼働中のシステムに対する変更のテストには、変更の実装が成功したことを評価することと、変更されていないシステムの部分——通常はシステムの大部分——で起こりうるリグレッションをチェックすることの両方が含まれます。",
+            "syllabusRefs": ["2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "直した箇所だけテストすれば十分",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "変更の評価だけでは足りません。変更されていない部分で起こりうるリグレッションのチェックも必要です。メンテナンステストの範囲は、変更のリスクの度合い・既存システムの大きさ・変更の大きさに依存します。",
+            "syllabusRefs": ["2.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "そもそも、変更に取りかかる前にできることはないかな？",
+      "choices": [
+        {
+          "text": "影響度分析で他の領域への影響を判断する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。システムの他の領域への潜在的な影響に基づいて変更をするべきかどうかを判断するために、変更をする前に影響度分析を行うことがあります。ホットフィックスのような計画外のデプロイでも、リスクに応じて考えます。",
+            "syllabusRefs": ["2.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "小さな修正なら影響の検討は常に不要",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "“常に不要”とは言えません。小さな変更でも、システムの他の領域に影響することがあります。変更前に影響度分析を行い、潜在的な影響に基づいて変更の是非を判断することがあります。",
+            "syllabusRefs": ["2.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "メンテナンステストが必要になるのは、今回みたいな欠陥修正のときだけだと思う？",
+      "choices": [
+        {
+          "text": "改良・運用環境の更新や移行・廃棄もきっかけ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。きっかけは大きく3つに分類されます。①計画的な機能拡張や、修正・ホットフィックスといった改良 ②プラットフォーム移行のような運用環境の更新・移行（別システムへの移行ではデータ変換のテストが必要になることも） ③廃棄（長期のデータ保持が必要なら、アーカイブや復元・取得手順のテストが必要になることも）。",
+            "syllabusRefs": ["2.3", "2.3.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "メンテナンステストは欠陥修正のときだけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "修正だけではありません。メンテナンスには、環境の変化への適応や、パフォーマンス・保守性の改善も含まれます。運用環境の更新・移行や、システムの廃棄（データアーカイブ・復元のテスト）も、メンテナンステストのきっかけになります。",
+            "syllabusRefs": ["2.3", "2.3.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "無事にリリースできた。動いているシステムに敬意を払って、変えた所も変えていない所も確かめる。それがメンテナンステストだ。お疲れさま。",
+      "next": null
+    }
+  ]
+}

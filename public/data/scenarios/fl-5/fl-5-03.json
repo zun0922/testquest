@@ -1,0 +1,163 @@
+{
+  "id": "fl-5-03",
+  "title": "危ないところから試す 〜リスクマネジメント〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "リリースまで時間は限られてる。全部を同じ濃さでテストしても守り切れないよ。“危ないところから試す”——リスクの考え方を押さえよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "そもそも“リスクの大きさ”って、何で決まると思う？",
+      "choices": [
+        {
+          "text": "顕在化の可能性と影響の2要素で決まる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。リスクとは、顕在化すると悪影響が生じる潜在的な事象・ハザード・脅威・状況のこと。リスクの可能性（顕在化する確率・0より大きく1より小さい）とリスクの影響（顕在化がもたらす結果）の2要素が、リスクの尺度であるリスクレベルを表します。レベルが高いほど処置が重要です。",
+            "syllabusRefs": ["5.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "影響が大きければ可能性は考えなくてよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "影響の大きさに目を奪われがちですが、リスクレベルは可能性と影響の“2つの要素”で決まります。影響が甚大でもほぼ起きない事象と、影響は中程度でも頻発する事象——どちらを優先するかは、両方を見ないと判断できません。",
+            "syllabusRefs": ["5.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストで関心を持つリスクには2種類ある。プロジェクトリスクとプロダクトリスク、違いを言えるか？",
+      "choices": [
+        {
+          "text": "プロジェクト＝運営関連、プロダクト＝品質特性関連",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。プロジェクトリスクはマネジメントや統制に関するもので、組織的な問題（納期遅れ・不正確な見積り）・人の問題（スキル不足・対立）・技術的な問題（スコープクリープ）・サプライヤーの問題などがあり、スケジュール・予算・スコープに影響します。プロダクトリスクは品質特性に関するもので、機能の欠落や誤り・性能・セキュリティ脆弱性などがあり、顕在化するとユーザーの不満足・損失・賠償、極端な場合は人命に関わります。",
+            "syllabusRefs": ["5.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "バグに関することは全部プロジェクトリスクだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "混同しやすいところです。プロダクトの品質特性に関わるリスク（機能の誤り・不十分な応答時間・セキュリティ脆弱性など）はプロダクトリスクです。プロジェクトリスクは、納期・人・技術・サプライヤーといったプロジェクトのマネジメントや統制に関わるものを指します。",
+            "syllabusRefs": ["5.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "プロダクトリスクを分析すると、テストのやり方はどう変わるんだろう？",
+      "choices": [
+        {
+          "text": "範囲・レベル・技法・工数・優先順位の入力になる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。プロダクトリスク分析はリスク識別（包括的なリストづくり：ブレーンストーミング・ワークショップ・インタビュー等）とリスクアセスメント（分類・可能性/影響/レベルの決定・優先順位付け・対処提案）で構成されます。結果は、テスト範囲の決定・テストレベルとタイプの決定・技法とカバレッジの決定・工数見積り・優先順位付け・テスト以外の活動の要否判断に使われます。これがリスクベースドテストです。",
+            "syllabusRefs": ["5.2.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "リスク分析とテストのやり方は無関係だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "別物に見えるかもしれませんが、リスク分析の結果はテストの深さと範囲を直接左右します。リスク分析とリスクコントロールに基づいてテスト活動を選択・優先順位付け・マネジメントするアプローチを、リスクベースドテストと呼びます。テスト工数を“残存リスクの最小化”に集中させるのがゴールです。",
+            "syllabusRefs": ["5.2.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "分析して見えてきたリスクには、どう対応できる？",
+      "choices": [
+        {
+          "text": "テストでの軽減のほか受け入れ・移転などもある",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。プロダクトリスクコントロールはリスク軽減とリスクモニタリングで構成されます。対応にはテストによる軽減のほか、リスク受け入れ・リスク移転・コンティンジェンシー計画があります。テストによる軽減の例：リスクタイプに適したスキルのテスター選定・適切な独立性・レビューと静的解析・適切な技法とカバレッジ・品質特性に対応したテストタイプ・リグレッションを含む動的テストの実施。",
+            "syllabusRefs": ["5.2.4"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "リスクは全部テストで潰すしかない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストは強力な手段ですが、唯一の手段ではありません。リスクへの対応には、テストによる軽減のほかに、リスク受け入れ（そのまま許容）・リスク移転（保険や契約）・コンティンジェンシー計画（発生時の備え）もあります。リスクの性質に合わせて選びます。",
+            "syllabusRefs": ["5.2.4"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "限られた時間で最大の安心を届けるには、危ないところから順に光を当てること。リスクの目で仕様を見ると、テストの景色が変わるよ。",
+      "next": null
+    }
+  ]
+}

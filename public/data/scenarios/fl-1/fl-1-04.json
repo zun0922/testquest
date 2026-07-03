@@ -1,0 +1,173 @@
+{
+  "id": "fl-1-04",
+  "title": "テストの段取り 〜活動と役割〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "初めてテストを任せるよ。どう段取るかが腕の見せどころだ。順番に考えていこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "まず最初にやるべきことは？",
+      "choices": [
+        {
+          "text": "目的と範囲を定めるテスト計画から始める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "knowledge": 1, "confidence": 1 },
+          "feedback": {
+            "explanation": "テスト計画は、テスト目的を定義し、その目的を最も効果的に達成するアプローチを選ぶ活動です。まず目的と範囲を固めることが土台になります。",
+            "syllabusRefs": ["1.4.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "いきなりテストケースを書き始める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "目的・範囲が曖昧なままケースを書くと、抜け漏れや手戻りが生じます。まずテスト計画で目的とアプローチを定めます。",
+            "syllabusRefs": ["1.4.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "「何をテストするか」と「どうテストするか」はどう扱う？",
+      "choices": [
+        {
+          "text": "分析で“何を”、設計で“どのように”を決める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "knowledge": 1, "confidence": 1 },
+          "feedback": {
+            "explanation": "テスト分析は「何をテストするか」（テスト条件の識別・優先順位付け）に、テスト設計は「どのようにテストするか」（テストケースやカバレッジアイテムへの落とし込み）に答えます。",
+            "syllabusRefs": ["1.4.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "分析と設計は区別せず進める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "分析（何を）と設計（どのように）は目的が異なる活動です。区別が曖昧だと、条件の抜けやケースの根拠が不明確になります。",
+            "syllabusRefs": ["1.4.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストの「役割」についてはどう理解する？",
+      "choices": [
+        {
+          "text": "テストする役割とマネジメントする役割がある",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "knowledge": 1, "confidence": 1 },
+          "feedback": {
+            "explanation": "テストする役割は分析・設計・実装・実行などの技術的側面を、テストマネジメントする役割は計画・モニタリングとコントロール・完了を担います。1人が両方を兼ねることもあります。",
+            "syllabusRefs": ["1.4.5"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "役割の区別はなく全部同じ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストには「テストをする役割」と「テストマネジメントをする役割」の2つがあります。兼任は可能ですが、役割としては区別されます。",
+            "syllabusRefs": ["1.4.5"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストの成果物（テストウェア）はどう扱う？",
+      "choices": [
+        {
+          "text": "計画書・ケース・欠陥レポート等を構成管理する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "knowledge": 1, "confidence": 1 },
+          "feedback": {
+            "explanation": "テストウェアは各テスト活動の作業成果物（テスト計画書、テストケース、欠陥レポートなど）です。適切な構成管理により一貫性と整合性を確保します。",
+            "syllabusRefs": ["1.4.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "テストウェアはテストケースだけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストウェアはテストケースだけではありません。テスト計画書・スケジュール・欠陥レポート・テストデータなど、各活動の成果物が含まれます。",
+            "syllabusRefs": ["1.4.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "成果物は使い捨てで管理は不要",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストウェアは構成管理して一貫性・整合性を保つべきです。トレーサビリティの観点からも管理が重要です。",
+            "syllabusRefs": ["1.4.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "計画→分析→設計→実装→実行→完了。何をするか・どうするかを分け、役割と成果物を意識する。段取りが見えてきたね。",
+      "next": null
+    }
+  ]
+}

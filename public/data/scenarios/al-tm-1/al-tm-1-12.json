@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-1-12",
+  "title": "その投資、回収できるか 〜ツール選定とROI〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "自動化ツールの選定会議だ。経営は投資対効果を問うてくる。感覚ではなく、分析で答えを持っていこう。まず状況を整理する。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【候補】A＝商用：年間ライセンス費とサポート契約・規制認定あり。B＝オープンソース：無料・コミュニティサポート・自社でのスキル構築が必要。組織のテスト成熟度は低め。リグレッションテストは毎リリース、手動で2週間かかっている。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "そもそも評価って、誰の目線でやればいいんだろう？",
+      "choices": [
+        {
+          "text": "経営・運用・リーダー・使う人の関心を全部満たす",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。将来性のあるツールは多視点で検討します——経営幹部にはプラスのROIが要件。サポート・運用チームには、ツールの数が限られつつ必要な数であること（保守とライセンス管理がコスト過多にならない）。プロジェクトリーダーには測定可能な価値。使う人には使用性（作業への対応・習得性・運用性）。運用スタッフには保守性。ツールオーナーが、この分析の完遂を確認します。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "現場が使いたいものを選べばよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "現場の使用性は大事な観点の一つですが、それだけでは経営のROI要件も、運用チームの保守負荷も置き去りになります。ツールは長期的な投資——経営・運用・リーダー・ユーザーそれぞれの関心を満たすかを、視点を分けて分析します。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "費用対効果は、どう分析する？",
+      "choices": [
+        {
+          "text": "初期費と経常費に機会コストまで含めて分析する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。取得・構築の前に費用対効果分析を行い、非経常的コスト（要件定義・評価選定とPoC・購入/適応/開発・ガイドライン策定・初期トレーニング・既存ランドスケープへの統合・HW/SW調達）と経常的コスト（ライセンス料とサポート料・メンテナンス・継続トレーニング・環境への移植）の両方を考慮します。さらに機会コスト——ツールの評価・管理・訓練・使用に費やす時間は、実際のテストに使えたはずの時間——も忘れずに。導入前に追加のテストリソースが必要になることもあります。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "購入価格だけ比べて安い方にする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "分かりやすい比較ですが、購入価格は氷山の一角です。トレーニング・メンテナンス・ライセンス更新・環境移植といった経常費、そしてツールに費やす時間という機会コストまで、耐用年数にわたる総コストで比較しなければ、安い買い物が高くつきます。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "OSSは初期費用が安いから有利だ",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "事実として正しい観点です——オープンソースはコミュニティのサポートと開発があるため、通常初期費用が安い。ただしそれは分析の一項目にすぎません。経常費（保守・継続トレーニング）や機会コスト、そして本件では“組織の成熟度が低め”というROIリスクも効いてきます。初期費用の安さを結論にせず、総コストとリスクの中で位置づけましょう。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では、ROIの見込みを揺らすリスクは何だ？",
+      "choices": [
+        {
+          "text": "組織の未熟さ・方針変更・費用超過・利益未達",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "的確です。ROIに関するリスクは——組織の未熟さがツールの非効率的な使用につながる（本件は成熟度低めなので特に重要）、ベンダーのメンテナンスポリシー変更による作業量増、コストの予想超過、利益の予想未達。一方の利点（手作業の反復削減・テストサイクルの高速化・実行コスト削減・カバレッジ向上・ヒューマンエラー削減・情報への迅速アクセス）は、これらのリスクと併せて評価します。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "利点リストが長いのだから導入で決まりだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "利点は確かに多いのですが、利点リストは“うまくいった場合”の姿です。組織の未熟さによる非効率、ベンダー方針の変更、コスト超過、利益未達——これらのリスクを織り込んで初めて、プラスのROIを経営に約束できます。ROIの計算と評価はテストマネージャーの責任です（アジャイルではチーム全体の責任のことも）。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ちなみに——ツール1本で完結するものなのかな？",
+      "choices": [
+        {
+          "text": "連携前提の長期的・包括的なツール戦略を持つ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テスト組織が単一のツールを使うことはほとんどなく、組織の総ROIは、テストに使われるすべてのツールのROIの混合です。ツールは情報を共有し、協調して動作する必要があります。リスク・コスト・利益を含む、テストツールの長期的かつ包括的な戦略が望ましいとされています。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "案件ごとにバラバラに選べばよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "その場ごとの最適に見えて、組織全体では非効率を生みます。ツール同士が情報を共有できず、保守とライセンスの管理コストが膨らみ、総ROIが沈みます。運用チームの「限られつつ必要な数」という関心を思い出しましょう——長期的・包括的な戦略が答えです。",
+            "syllabusRefs": ["TM-1.6.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "視点を並べ、費用を数え、リスクを織り込む。これで経営に“感覚ではなく分析”で答えられる。——さあ、会議室へ行こうか。",
+      "next": null
+    }
+  ]
+}

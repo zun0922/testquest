@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-1-08",
+  "title": "このプロジェクトの戦い方 〜テストアプローチの選択〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "次のプロジェクト、テスト戦略の策定を君に任せる。まずは状況を頭に入れてくれ。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【プロジェクト概要】医療系プロダクト。規制により、テストの厳密さと文書化の要求が厳しい。組織のゴールは自動化度の向上で、開発はCIを採用。予算と時間の制約は厳しめ。テストデータは本番からの匿名化が必須だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“プロジェクトテスト戦略”って、組織のテスト戦略と何が違うんだろう？",
+      "choices": [
+        {
+          "text": "特定の文脈でのアプローチを描く計画の主要成果物",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。プロジェクトテスト戦略は、組織の目的——特にプロダクト品質とテスト活動に関する目的——を達成できるよう、特定のコンテキストにおけるテストへのアプローチを記述します。テスト計画の主要な成果物で、通常テスト計画書などの一部として文書化します（シーケンシャル開発や、契約・規制・法律の下では文書化が要求されることが多い）。単一のテストレベルやタイプに対する戦略も存在しえます。",
+            "syllabusRefs": ["TM-1.4.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "組織的テスト戦略をコピーすれば完成する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "土台にはなりますが、コピーでは完成しません。プロジェクトテスト戦略はプロジェクト特有の要件に合わせて調整するもの。組織的テスト戦略が存在しない場合や必要な側面をカバーしていない場合は、関連するステークホルダーとともに不足を明確にする努力も求められます。",
+            "syllabusRefs": ["TM-1.4.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストレベル・タイプ・技法の選択に、なぜそこまでこだわると思う？",
+      "choices": [
+        {
+          "text": "選択と組み合わせが有効性と効率性を大きく左右",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。理論上はすべてのテストタイプをどのレベルでも実施でき、どの技法も適用できます。しかし実際には、適切な選択と組み合わせがテストの有効性と効率性に大きな影響を与えます。例えば、コードの保守性は静的コード解析やコードレビューで評価する方が効果的・効率的なことが多く、性能効率性はスクリプト化したシステムテストで、機能の有用性はユーザーとの共同の手動受け入れテストで確認する方がよい場合があります。",
+            "syllabusRefs": ["TM-1.4.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "理論上どれも使えるのだから何を選んでも同じ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "理論上可能、というのは事実です。しかし“可能”と“最適”は別物で、選択と組み合わせが有効性と効率性を大きく左右します。保守性を動的テストだけで評価しようとすれば非効率ですし、性能を手動で測れば再現性を欠きます。選択こそが戦略の中身です。",
+            "syllabusRefs": ["TM-1.4.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では本題だ。このプロジェクトのテストアプローチは、何を分析して決める？",
+      "choices": [
+        {
+          "text": "規制・ゴール・資源・SDLC・データ制約を分析",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "的確です。分析すべき要因は——ドメイン（規制・標準・慣行がテストの厳密さと文書化を変える）、組織のゴール（自動化度の向上・テストの価値の説明）、プロジェクトのゴールとタイプ（予算・時間の制約→リスクベースドテストの厳格運用が必要になることも）、テストリソース（ツール・環境・要員スキル・ライセンス数）、SDLC（CIはより多くの自動テストを要求）、他システムとのインターフェース、テストデータの可用性（匿名化の必要・モデルベースドテストの支援）。この組み合わせから最適なアプローチを決めます。",
+            "syllabusRefs": ["TM-1.4.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "前のプロジェクトのやり方をそのまま使う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実績あるやり方は魅力的ですが、コンテキストが違えば最適も違います。前のプロジェクトが同じドメイン・同じ制約・同じSDLCだったとは限りません。組織的テスト戦略・プロジェクトコンテキスト・付加的な要因や制約を十分に理解した上で、今回に合う組み合わせを決めるのがテストマネージャーの仕事です。",
+            "syllabusRefs": ["TM-1.4.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "最新の流行手法を採用しておけば間違いない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "新しい手法に学ぶ姿勢は大切ですが、流行はコンテキストを保証しません。規制の厳しい医療ドメインでは、流行より先に、規制が求める厳密さと文書化、リスクへの焦点が優先されます。要因分析に基づく選択が、結果として流行手法を含むこともある——順序が逆なのです。",
+            "syllabusRefs": ["TM-1.4.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ具体的に——この医療系プロダクト、受け入れテストの重点はどこに置く？",
+      "choices": [
+        {
+          "text": "患者リスクに焦点を当てた集中的な受け入れテスト",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。製薬や医療のドメインでは、機能的なユーザー要求に基づいたテストケースを用いて、患者の健康に対するリスクに焦点を当てた集中的なユーザー受け入れテストを重視することが多い、とされています。ドメイン固有の規制・標準・慣行が、テストの厳密さ・文書化・重点を決めるのです。",
+            "syllabusRefs": ["TM-1.4.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "A/Bテストで使用性と契約率の向上を狙う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それは有効な戦略ですが——ウェブベースの保険アプリケーションのような、使用性と新規契約の可能性を高めたいドメインでの話です。患者の健康に関わる医療ドメインでは、A/Bテストの前に、患者リスクに焦点を当てた集中的な受け入れテストが求められます。ドメインを取り違えると、アプローチごと誤ります。",
+            "syllabusRefs": ["TM-1.4.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "コンテキストを分析し、レベルとタイプと技法の組み合わせを選ぶ。それがこのプロジェクトの“戦い方”になる。いい戦略書が書けそうだな。",
+      "next": null
+    }
+  ]
+}

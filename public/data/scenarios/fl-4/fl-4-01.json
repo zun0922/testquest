@@ -1,0 +1,163 @@
+{
+  "id": "fl-4-01",
+  "title": "技法という道具箱 〜同値分割と境界値〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "年齢によって割引が変わる入力フォームのテスト設計を任せたい。もちろん、すべての値は試せない。そこで“テスト技法”という道具箱の出番だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず全体像から。テスト技法は大きく3つに分類される。どう区別する？",
+      "choices": [
+        {
+          "text": "仕様・構造・経験の3分類。経験は補完役",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ブラックボックステスト技法は仕様上の振る舞いの分析に基づき、実装方法と無関係（実装が変わってもテストケースは有用）。ホワイトボックステスト技法は内部構造の分析に基づき、設計・実装後でないと作れません。経験ベースのテスト技法はテスト担当者の知識と経験を活かし、他の2つが見逃す欠陥も検出できる補完的な存在です。",
+            "syllabusRefs": ["4.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "技法は1つ覚えれば十分。分類に意味はない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "1つに絞りたくなる気持ちは分かりますが、分類には意味があります。ブラックボックスは仕様から、ホワイトボックスは内部構造から、経験ベースは知識と経験からテストを導きます。それぞれ見つけやすい欠陥が異なり、経験ベースは他の技法が見逃す欠陥を捉える補完役です。",
+            "syllabusRefs": ["4.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ同値分割法から。この技法の考え方、説明できる？",
+      "choices": [
+        {
+          "text": "同等処理のまとまりに分け、各から1つ試す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。テスト対象が同等に処理するデータをパーティション（同値パーティション）に分割します。あるパーティションの1つの値で欠陥が見つかるなら、同じパーティションの他の値でも見つかるはず——だから各パーティションに1つのテストで十分、というのが背景理論です。パーティションは重複せず、空でないこと。無効パーティションも含め、すべてを最低1回カバーします。",
+            "syllabusRefs": ["4.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "同じ区分から多く試すほど検出力が上がる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "たくさん試したくなりますが、同値分割法の理論は逆です。同じパーティションの値はテスト対象に同等に処理されると想定するので、1つの値で欠陥が見つかるなら他の値でも見つかるはず。つまり各パーティション1つで十分で、同じ区分から数を増やしても検出力は上がりません。その分を別のパーティションや境界に使いましょう。",
+            "syllabusRefs": ["4.2.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "では実践だ。割引の対象は“18以上65未満”。2値の境界値分析なら、どの値を通す？",
+      "choices": [
+        {
+          "text": "17・18・64・65（境界とその隣の値）",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。パーティションは「18未満」「18〜64」「65以上」に分かれ、境界は17|18と64|65。2値BVAでは境界値ごとに、その境界値と隣接パーティションの最も近い値の2つがカバレッジアイテムです。よって17・18・64・65を通します。境界値分析を使うのは、開発担当者が境界値に関するエラーを起こしやすいから。境界のずれや省略が代表的な欠陥です。",
+            "syllabusRefs": ["4.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "30や50など真ん中の値を数多く試す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "真ん中の値も1つは必要ですが（同値分割）、境界値分析の狙いは“境界”にあります。開発担当者は境界値に関するエラーを起こしやすく、境界のずれや省略が代表的な欠陥だからです。この例なら境界の17・18・64・65に着目します。境界値分析は順序性のあるパーティションにのみ使えます。",
+            "syllabusRefs": ["4.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "境界値分析には2値と3値があるんだけど、違いは何だと思う？",
+      "choices": [
+        {
+          "text": "3値は両隣も見る。2値で見逃す欠陥も拾える",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。3値BVAでは境界値ごとに、その境界値と両側の隣接値の3つがカバレッジアイテムになります。例えば「if(x≦10)」を誤って「if(x=10)」と実装した場合、2値BVA（10・11）のテストデータでは検出できませんが、3値BVAで導出されるx=9なら検出できる可能性があります。3値の方が厳密です。",
+            "syllabusRefs": ["4.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "2値も3値も検出力は同じ。楽な方でいい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じに見えますよね。しかし3値BVAは境界の両隣まで通すため、2値BVAでは見落とされる欠陥を検出する可能性があります。例えば「≦10」を「=10」と誤実装したケースは、2値の10・11では見逃しますが、3値のx=9で捉えられることがあります。厳密さが必要な場面では3値を選びます。",
+            "syllabusRefs": ["4.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "全部は試せないからこそ、少なく賢く選ぶ。同値分割で範囲を絞り、境界値分析で危ない所を突く。テスト設計の基本装備が揃ってきたね。",
+      "next": null
+    }
+  ]
+}

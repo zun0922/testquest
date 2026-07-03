@@ -1,0 +1,242 @@
+{
+  "id": "al-tm-1-04",
+  "title": "三つの信号 〜計画・モニタリング・コントロールの複合判断〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "リリースまで6週間。状況が絡まってきた。判断材料を順に並べる——リーダーとしての一手を、君が決めてくれ。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【進捗メトリクス】テスト実行率60%。計画に対して2週間の遅れ。しかも、リスク分析で最高レベルと評価された決済モジュールが、まだ未着手のまま残っている。",
+      "next": "brief2"
+    },
+    {
+      "id": "brief2",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【リスク】外部決済APIの仕様変更が判明した。リスクレジスターに載っていない、新しいリスクだ。",
+      "next": "brief3"
+    },
+    {
+      "id": "brief3",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【チーム状況】頼れるシニアテスターが来週から別案件へ異動。さらに、テスト環境が断続的にダウンしている。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "進捗の遅れ、新しいリスク、チームの穴。三つの信号を踏まえて——最初の一手は？",
+      "choices": [
+        {
+          "text": "差異を分析し、リスク基準で優先度を組み替える",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "適切な分析です。テストコントロールとは、計画書と実際の進捗を比較し、必要な是正措置を実装すること。「新たに識別したリスク・変化したリスクへの対処」はコントロールの明示的なタスクです。最高リスクの決済が未着手のまま遅れている今、リスクレベルに基づく優先度の見直し（決済の前倒し・API仕様変更のリスク分析への反映）が最初の一手になります。シニアの異動前に決済へ投入する采配も、この分析から導けます。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q2a"
+        },
+        {
+          "text": "承認済みの計画の順序を最後まで守り抜く",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "計画を尊重する姿勢は大切です。しかし、計画は守ること自体が目的ではありません。テストコントロールは計画との差異に応じて是正措置を打つ活動であり、新たなリスクへの対処はその明示的なタスクです。最高リスクの決済を後回しにしたまま順序を守れば、終盤に最も重い欠陥と向き合うことになります——この選択の先を見てみましょう。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q2b"
+        },
+        {
+          "text": "全員残業で消化数を稼ぎ、遅れを取り戻す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "気持ちは分かりますが、“消化数”はリスクと無関係に増やせてしまう数字です。テストの目的はリスクの軽減と品質の評価であり、実行率だけを取り戻しても最高リスクの決済が未着手なら状況は改善しません。まず差異を分析し、リスクに基づいて優先度を組み替えるのが先です。",
+            "syllabusRefs": ["TM-1.2.7"]
+          },
+          "next": "q2b"
+        }
+      ]
+    },
+    {
+      "id": "q2a",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "決済前倒しの組み替え、進めるね。それで——断続的に落ちてるテスト環境、あれはどうする？",
+      "choices": [
+        {
+          "text": "開始準備の問題として是正しエスカレーション",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。「テスト開始の準備の確立」はテストコントロールのタスクの一つです。環境の不安定はテスト全体の前提を崩す問題なので、是正措置として扱い、責任者へのエスカレーションとスケジュールへの影響評価を行います。ツールと環境の最適化はモニタリングの中心的な関心事でもあります。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "環境は運用の仕事。直るまで待機する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "担当分けとしては自然に見えますが、待機はテストの前提が崩れたまま時間だけが過ぎる選択です。テスト開始の準備の確立はコントロールのタスクであり、リーダーが自ら是正を働きかける領域です。エスカレーションと影響評価まで動かして、初めて“マネジメントした”と言えます。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q2b",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "angry", "position": "left" },
+        { "characterId": "rin", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "……あれから2週間。決済モジュールから重大欠陥が出て、手戻りが膨らんでる。せめて、断続的に落ちてるテスト環境だけでも手を打たない？",
+      "choices": [
+        {
+          "text": "開始準備の問題として是正しエスカレーション",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ここからでも打てる手はあります。「テスト開始の準備の確立」はテストコントロールのタスクです。環境の不安定はテスト全体の前提を崩す問題なので、是正措置として扱い、エスカレーションとスケジュールへの影響評価を行います。——そして今回の教訓：最高リスクの後回しは、終盤に最も重い請求書になって返ってきます。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "環境は運用の仕事。直るまで待機する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "手戻りへの対応で手一杯なのは分かります。しかし待機はさらに時間を失う選択です。テスト開始の準備の確立はコントロールのタスク——リーダーが自らエスカレーションと影響評価を動かすべき局面です。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "経営層がこの状況を知りたがっている。どう伝える？",
+      "choices": [
+        {
+          "text": "理解しやすい尺度でリスクの観点から継続報告",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。テスト作業成果物や活動のステータスは、プロジェクトやビジネスのステークホルダーにとって理解しやすく、関連性のある形で伝える必要があります。詳細な尺度・目標値を計画や戦略の目的に関連付けた枠組みで、リスクの観点から継続的に報告することが、経営層の意思決定を支えます。",
+            "syllabusRefs": ["TM-1.2.7", "TM-1.1.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "生データを全部そのまま送るのが誠実だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "隠さない姿勢は正しいのですが、生データの山は“伝えた”ことになりません。ステークホルダーに理解しやすく関連性のある形——尺度と目標値の枠組み、リスクの観点での要約——に加工することが、テストマネジメントの伝達責任です。",
+            "syllabusRefs": ["TM-1.2.7"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最後だ。次のフェーズへ進めてよいか——その判断は、何で行う？",
+      "choices": [
+        {
+          "text": "品質ゲートを定義し情報に基づいて判断する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストライフサイクル内で何が品質ゲートかを定義し、フェーズ進行においてプロダクトの整合性を維持するために、情報に基づいた意思決定を行います。あわせて、新たな洞察や課題に応じてテストプロセスを動的に調整する適応的なプロセスマネジメント（対応力と柔軟性）が、テストコントロールの本質です。",
+            "syllabusRefs": ["TM-1.2.7"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "期日が来たら自動的に次へ進める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "スケジュールは守りたいものですが、日付は品質を保証しません。品質ゲートを定義し、ゲートの通過を情報に基づいて判断する——これがフェーズ進行の規律です。期日だけで進めたものは、次のフェーズで倍の時間を要求してきます。",
+            "syllabusRefs": ["TM-1.2.7"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "メトリクスとリスクとチームの声。バラバラの信号を一枚の地図にして、根拠を持って動く。それがテストリーダーの仕事だ。今日の一手、覚えておくといい。",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-2-01",
+  "title": "測れるものは達成できる 〜テストメトリクスの設計〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "“順調です”は報告ではないぞ。測定されないものは無視されやすく、達成されない。何をどう測るか——メトリクスの設計から始めよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず全体像だ。テストメトリクスには、どんな種類がある？",
+      "choices": [
+        {
+          "text": "プロジェクト・プロダクト・プロセスの3分類",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。プロジェクトメトリクスはテスト実行率・合格率・不合格率など終了基準に対する進捗を、プロダクトメトリクスはプロダクトが期待品質をどの程度満たすかを、プロセスメトリクスはテストプロセスの能力とテストの有効性を測ります。テスト目的が達成されたかを判断するには、測る方法の定義が不可欠——「測定できるものは達成できる」のです。",
+            "syllabusRefs": ["TM-2.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テスト実行率だけ見ていれば十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実行率は分かりやすい指標ですが、進捗（プロジェクト）の一面しか映しません。プロダクトの品質、プロセスの有効性——それぞれに対応するメトリクスの分類があり、目的に応じて選びます。実行率100%でも品質が測れていなければ、目的達成は語れません。",
+            "syllabusRefs": ["TM-2.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "メトリクスって、いつ・何のために定義するものなんだろう？",
+      "choices": [
+        {
+          "text": "計画で定義。進捗用と完了用は異なりうる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。テスト計画の一部として、モニタリング・コントロール・完了のためのメトリクスを定義し、それぞれ測定・モニタリング・報告します。モニタリングとコントロールでは進捗に関するもの（コードカバレッジ・実績対見積り・欠陥解決数累計など）、完了時には目的達成を測るもの（自動化テストケースの実績対計画など）。要件カバレッジやプロダクトリスクカバレッジのように両方に使えるものもあります。終了基準はテスト目的から導きます。",
+            "syllabusRefs": ["TM-2.1.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "同じ数字を全部の場面で使い回せばよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "管理は楽になりますが、進捗を測る指標と目的達成を測る指標は役割が違います。例えばコードカバレッジは主にモニタリング・コントロール用、自動化率の実績対計画は完了時用。場面に合った物差しを計画段階で定義しておくことが、後の判断を支えます。",
+            "syllabusRefs": ["TM-2.1.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "集めた数字は、どう活かす？",
+      "choices": [
+        {
+          "text": "モニタの情報から是正措置を導き実行する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストモニタリングはデータを収集し進捗と終了基準の達成を評価する活動。テストコントロールはその情報を使って、効果的かつ効率的なテストのためのガイダンスと是正措置を提供します——リスクが課題化した際の再優先順位付け、手戻り時の開始/終了基準の再評価、環境遅延を考慮したスケジュール調整、必要な場所へのリソース追加。収集は手段で、行動につながって初めて価値になります。",
+            "syllabusRefs": ["TM-2.1.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "数字は集めて貼り出すだけで意味がある",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "見える化は第一歩ですが、貼り出しただけの数字は誰の行動も変えません。モニタリングの情報はコントロール——再優先順位付け・基準の再評価・スケジュール調整・リソース追加——の入力にしてこそ意味を持ちます。“この数字を見て、次に何をするか”までがセットです。",
+            "syllabusRefs": ["TM-2.1.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストって、結局いつ“終えられる”んだろうね？",
+      "choices": [
+        {
+          "text": "欠陥が減ってきたら、報告と終了基準で判断",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。テスト実行を継続し、識別される欠陥が少なくなってきたら、テストを終了する判断を下すことができます。ただしその判断は、メトリクスの報告と合意された終了基準に基づくべきです。感覚ではなく、事前に合意した物差しで“終わり”を宣言する——それがテスト完了の規律です。",
+            "syllabusRefs": ["TM-2.1.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "チームの感覚で“もう大丈夫”と思えたら終わり",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "経験者の感覚は貴重ですが、感覚は人によって違い、後から説明もできません。終了の判断はメトリクスの報告と、合意された終了基準に基づくべきです。感覚が「そろそろでは」と言うなら、それを基準と数字で確かめるのがリーダーの仕事です。",
+            "syllabusRefs": ["TM-2.1.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "何を測るかを決めた時点で、何を達成するかは半分決まっている。次は、その数字を“届く報告”にする番だ。",
+      "next": null
+    }
+  ]
+}

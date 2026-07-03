@@ -1,0 +1,32 @@
+import type { Config } from 'tailwindcss'
+
+// 設計書 v1.1 §7.1 カラーパレット（モックA案から抽出）。
+// カラーコードはここで一元管理し、コンポーネントにハードコードしない。
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        'bg-base': '#10141f',
+        surface: '#141b2e',
+        'surface-light': '#1b2440',
+        line: '#2e3a55',
+        accent: '#ffd97a',
+        'text-main': '#e8e8f0',
+        'text-muted': '#9aa4bd',
+        'rating-best': '#2e9e6b',
+        'rating-good': '#e6b73c',
+        'rating-poor': '#c0504d',
+        'status-knowledge': '#4da3ff',
+        'status-skill': '#ffa94d',
+        'status-confidence': '#ffd54d',
+        'status-teamwork': '#5ee6a8',
+        'status-gain': '#8ef0c4',
+      },
+      fontFamily: {
+        sans: ["'Segoe UI'", "'Hiragino Sans'", "'Meiryo'", 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config

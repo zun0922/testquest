@@ -1,0 +1,163 @@
+{
+  "id": "fl-2-01",
+  "title": "プロジェクトが変わればテストも変わる 〜開発モデルとテスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "今日から君にはアジャイル開発の新プロジェクトに入ってもらう。前のプロジェクトはウォーターフォールだったね。開発の進め方が変わると、テストはどう変わると思う？",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず基本から。開発モデル（SDLC）とテストの関係を、君はどう考える？",
+      "choices": [
+        {
+          "text": "開発モデルが違ってもテストは同じでよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストの成功には、選択されたSDLC（ソフトウェア開発ライフサイクル）への適応が必要です。SDLCの選択は、テスト活動の範囲とタイミング、テストドキュメントの詳細レベル、テスト技法とアプローチの選択、テスト自動化の範囲、テスト担当者の役割と責任に影響します。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "開発モデルに合わせてテストを適応させる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。SDLCの選択は、テスト活動の範囲とタイミング（テストレベルやテストタイプなど）、ドキュメントの詳細レベル、テスト技法とアプローチ、自動化の範囲、テスト担当者の役割と責任に影響します。モデルに合わせてテストを適応させることが成功の鍵です。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ウォーターフォールみたいに順番に進むモデルだと、初期には実行できるコードがまだないよね。その間、テスト担当者は何をしていると思う？",
+      "choices": [
+        {
+          "text": "コードがないうちは何もできない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "動的テスト（実際に動かすテスト）は初期にはできませんが、何もできないわけではありません。シーケンシャル開発モデルの初期でも、テスト担当者は要件レビュー・テスト分析・テスト設計に参加できます。早い段階から品質に貢献できるのです。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "要件レビューやテスト分析・設計に参加する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。実行可能なコードができるのは後のフェーズなので動的テストは初期には実施できませんが、要件のレビューやテスト分析・テスト設計には初期から参加できます。これが早期からの品質への貢献になります。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "このプロジェクトはアジャイルだ。イテレーションごとに動くものを届けるし、変更も想定される。テストの持ち方はどうする？",
+      "choices": [
+        {
+          "text": "これまで通り重厚なテスト文書を作り込む",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "アジャイル開発では、プロジェクトを通じて変更が生じることを想定しています。そのため作業成果物の文書化は軽量化し、リグレッションテストを容易にするためのテスト自動化を充実させることが好まれます。重厚な文書を作り込む進め方は、変更の多い環境に合いません。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "文書は軽量化し、テスト自動化を充実させる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。変更を想定するアジャイルでは、文書は軽量化し、リグレッションテストを支える自動化を充実させます。また、手動テストの多くは、事前の大規模なテスト分析・設計を必要としない経験ベースのテスト技法で行われる傾向があります。",
+            "syllabusRefs": ["2.1.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ逆に、どんな開発モデルでも変わらない“よいテストの実践”って、何だと思う？",
+      "choices": [
+        {
+          "text": "分析・設計を対応する開発フェーズ中に始める",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解です。モデルによらないよい実践として、すべての開発活動に対応するテスト活動があること、各テストレベルにそのレベル特有の目的があること、テスト分析・設計を対応する開発フェーズの間に開始すること（早期テストの原則）、成果物のドラフトができたらすぐレビューに関与することが挙げられます。",
+            "syllabusRefs": ["2.1.2", "1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "開発が全部終わってからテストを対応づける",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それでは早期テストの原則に反します。テスト分析・設計は対応する開発フェーズの間に開始し、作業成果物のドラフトができたらすぐレビューに関与することで、早期の欠陥検出（シフトレフト）を支援できます。",
+            "syllabusRefs": ["2.1.2", "1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "いいね。開発の進め方が変われば、テストの範囲もタイミングも文書も変わる。でも“早くから関わる”というよい実践は変わらない。次はこのプロジェクトのテストの組み立てを一緒に考えよう。",
+      "next": null
+    }
+  ]
+}

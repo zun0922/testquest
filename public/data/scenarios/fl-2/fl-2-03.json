@@ -1,0 +1,163 @@
+{
+  "id": "fl-2-03",
+  "title": "どこまで組み上がった？ 〜5つのテストレベル〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "新機能の開発が始まる。部品単位から完成したシステムまで、どの段階で・誰が・何を確かめるか。テストレベルの組み立てを一緒に考えよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "まず一番小さい単位から。コンポーネントテストは、誰がどこでやるものだと思う？",
+      "choices": [
+        {
+          "text": "部品単独に焦点。通常は開発担当者が行う",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。コンポーネントテスト（ユニットテスト）は、コンポーネントを単独でテストすることに焦点を当てます。テストハーネスやユニットテストフレームワークのような特定のサポートを必要とすることが多く、通常は開発担当者が開発環境で行います。",
+            "syllabusRefs": ["2.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "単体レベルも全部テスト担当者がやるべき",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "コンポーネントテストは通常、開発担当者が開発環境で行います。テストレベルには“アプローチと責務”という属性があり、レベルごとに担い手が異なります。すべてのレベルをテスト担当者が引き受けるわけではありません。",
+            "syllabusRefs": ["2.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "部品同士をつなぐときのコンポーネント統合テストでは、何に注目すると思う？",
+      "choices": [
+        {
+          "text": "コンポーネント間のインターフェースと相互処理",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。コンポーネント統合テストは、コンポーネント間のインターフェースおよび相互処理に焦点を当てます。ボトムアップ・トップダウン・ビッグバンといった統合戦略のアプローチに大きく依存します。",
+            "syllabusRefs": ["2.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "単体で見つけ損ねた欠陥を全部拾い直す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それでは冗長になります。各テストレベルには、そのレベル特有の異なる目的があり、冗長性を避けつつ適切に包括したテストをすることがよい実践です。統合テストの焦点は“つなぎ目”、つまりコンポーネント間のインターフェースと相互処理です。",
+            "syllabusRefs": ["2.2.1", "2.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "システムテストと受け入れテスト。どちらも“全体”を見るテストだが、違いは何だろう？",
+      "choices": [
+        {
+          "text": "全体の振る舞いか、妥当性確認かの違い",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。システムテストはシステム全体の振る舞いや能力（エンドツーエンドの機能テストや非機能テスト）に焦点を当て、独立したテストチームが実施することもあります。受け入れテストは妥当性確認とデプロイ準備の実証に焦点を当て、想定ユーザーによる実施が理想です。UAT・運用受け入れテスト・契約および規制による受け入れテスト・アルファ/ベータテストという形式があります。",
+            "syllabusRefs": ["2.2.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "受け入れはシステムテストのやり直しだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "目的が違います。システムテストはシステムの仕様に関連して全体の振る舞いを確認し、受け入れテストはユーザーのビジネスニーズを満たしていること（妥当性確認）とデプロイの準備ができていることを実証します。同じことの繰り返しではありません。",
+            "syllabusRefs": ["2.2.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "テストレベルって、結局のところ何で区別するんだろう？“いつやるか”かな？",
+      "choices": [
+        {
+          "text": "対象・目的・テストベース・責務などの属性",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "正解。テストレベルは、テスト対象、テスト目的、テストベース、欠陥および故障、アプローチと責務という代表的な属性のリストで区別します。こうして区別することで、テスト活動の重複を避けられます。",
+            "syllabusRefs": ["2.2", "2.2.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "実施する時期だけで区別できる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "時期だけでは区別できません。テストレベルは時間的に重なることがあり、開発活動が複数のテストレベルにまたがることもあります。区別するのは、テスト対象・テスト目的・テストベース・欠陥および故障・アプローチと責務といった属性です。",
+            "syllabusRefs": ["2.2", "2.2.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "部品から全体へ、そしてユーザーの手元へ。レベルごとに目的と責任を分けるから、ムダなく漏れなく確かめられる。いい組み立てができそうだね。",
+      "next": null
+    }
+  ]
+}

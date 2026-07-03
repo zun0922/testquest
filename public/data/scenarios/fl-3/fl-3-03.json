@@ -1,0 +1,163 @@
+{
+  "id": "fl-3-03",
+  "title": "早めに、何度でも 〜フィードバックとレビュープロセス〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "初めてのレビュー招待、おめでとう。いきなり読み合わせが始まると思った？実はレビューって、ちゃんとした“プロセス”なんだよ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "そもそも、ステークホルダーからのフィードバックって、いつもらうのがいいと思う？",
+      "choices": [
+        {
+          "text": "早期かつ頻繁に。誤解や手戻りを防げる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。早期かつ頻繁なフィードバックは、潜在的な品質問題を早期に伝えられます。関与が少ないと、プロダクトがステークホルダーのビジョンを満たせず、コストのかかる手直し・納期遅延・責任のなすり合い、さらにはプロジェクトの失敗につながりえます。頻繁なフィードバックは要件の誤解を防ぎ、価値の高いフィーチャーへの集中を助けます。",
+            "syllabusRefs": ["3.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "完成してから一度だけ見せるのが効率的",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "一見効率的に見えますよね。しかし完成後に“思っていたものと違う”と分かると、手直しのコストは最大になります。SDLCを通じて頻繁にフィードバックをもらうことで、誤解を早く発見し、要件の変更をより早く理解して実装できます。",
+            "syllabusRefs": ["3.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "ではレビューの話だ。レビューは、どこから始まると思う？",
+      "choices": [
+        {
+          "text": "計画から。目的・対象・終了基準を定義する",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。レビュープロセスは計画から始まります。計画フェーズでは、目的、レビュー対象の作業成果物、評価する品質特性、重点を置く領域、終了基準、工数と時間枠といったレビューの範囲を定義します。続く立ち上げでは、全参加者が対象にアクセスでき、自分の役割と責務を理解していることを確認します。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "まず集まって、読み合わせから始める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "いきなり読み合わせから、と考えがちですが、レビューは計画（目的・範囲・終了基準の定義）と立ち上げ（参加者の準備確認）を経てから、個々人のレビューへ進むプロセスです。なお、大きすぎる作業成果物は小さく分割し、レビュープロセスを2、3回行って完了させることがあります。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "レビューで見つけたことは“不正”って呼ぶんだけど、見つけた不正はどう扱えばいいと思う？",
+      "choices": [
+        {
+          "text": "記録し、ミーティングで分析して対応を決める",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "そのとおり。個々人のレビューでは、チェックリストベースドレビューなどの技法を使って不正・推奨・質問を識別し、すべて記録します。そして、レビューで識別した不正が必ずしも欠陥であるとは限らないため、共有と分析の場（通常はレビューミーティング）ですべて議論し、ステータス・オーナー・必要なアクションを決めます。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "不正はすべて欠陥。見つけ次第すぐ直させる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実は、レビューで識別した不正が必ずしも欠陥であるとは限りません——ここが大事なポイントです。だからこそ、すべての不正を分析して議論する必要があります。議論の場では、成果物の品質レベルと必要なフォローアップのアクションも決めます。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最後に、レビューの締めくくりには何が必要だと思う？",
+      "choices": [
+        {
+          "text": "欠陥レポートを作りフォローし、結果を報告",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1, "teamwork": 1 },
+          "feedback": {
+            "explanation": "正解。是正処置をフォローアップできるように、すべての欠陥に対して欠陥レポートを作成します。終了基準に達すれば作業成果物を受け入れることができ、レビュー結果はレポートします。アクションの完了確認に、フォローアップのレビューが必要になる場合もあります。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "指摘したら終わり。修正は作成者に任せきり",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "指摘のしっぱなしでは、レビューの効果を確認できません。欠陥レポートを作成して是正処置をフォローアップし、終了基準に達したことを確認して成果物を受け入れ、結果を報告する——ここまでがレビュープロセスです。",
+            "syllabusRefs": ["3.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "計画して、準備して、各自で読み、集まって議論して、直して報告する。“ちゃんとしたプロセス”の意味、伝わったかな。",
+      "next": null
+    }
+  ]
+}

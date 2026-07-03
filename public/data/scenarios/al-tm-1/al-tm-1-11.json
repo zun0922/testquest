@@ -1,0 +1,163 @@
+{
+  "id": "al-tm-1-11",
+  "title": "道具を根づかせる 〜ツール導入とライフサイクル〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "テストマネジメントツールの導入、君が主担当だ。開発側の窓口はケンくん。先に言っておくが——買って配れば終わり、じゃないぞ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "ツールって、どうやって選んで入れるのがいいんだろう？うちの技術スタックとの相性も気になるよ。",
+      "choices": [
+        {
+          "text": "要件と客観基準で評価しPoC→試行→段階展開",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。評価・選択のよい実践は——プロセス改善機会の識別、組織の技術との互換性、SDLCへの統合の理解、明確な要件と客観的基準による評価、ベンダー評価（OSSならサポート評価）、トレーニング要件の識別、ライセンスモデルの比較、最終段階としてのコンセプトの証明（PoC）。採用・展開では、パイロットプロジェクトで選択基準を妥当性確認し、プロセスへの適応・ガイドライン策定・トレーニング・段階的展開・使用情報の収集・ツールオーナーの定義を行います。",
+            "syllabusRefs": ["TM-1.6.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "営業デモの印象が良ければ即・全社一斉導入",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "デモは魅力的に作られているものです。明確な要件と客観的な基準に照らした評価、PoC、そしてパイロットプロジェクトでの妥当性確認を経てから、段階的に展開する——この順序を飛ばした一斉導入は、現場に合わないツールを組織全体に配る危険な賭けになります。",
+            "syllabusRefs": ["TM-1.6.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "商用ツールとオープンソース、どう見比べる？",
+      "choices": [
+        {
+          "text": "規制下は認定ある商用が適合しやすい等、場面で選ぶ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。見るべき側面は——規制とセキュリティ（クリティカルなソフトウェアや法令遵守の対象組織では、認定を取得した商用ツールが要件に適合しやすい）、経済的側面（OSSは初期費用が安いが、商用は購入価格とライセンス費用。どのツールも保守サポートは高コストになりうる）、ステークホルダーの要件（全要件を満たすにはカスタムツールが最良のことも）、既存のソフトウェアランドスケープとツール戦略（優先ベンダー・依存関係・フルサービスサポートモデル）。",
+            "syllabusRefs": ["TM-1.6.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "どんな場合もOSSが得に決まっている",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "初期費用だけ見ればそうなのですが、規制やセキュリティの要件が厳しい組織では、適切な認定を取得している商用ツールの方が適合することが多いとされます。またどのツールも、メンテナンスとサポートには高いコストがかかる可能性があります。“常に得”な選択肢はなく、側面ごとの評価が必要です。",
+            "syllabusRefs": ["TM-1.6.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "導入したあとの管理って、何をすればいいの？入れっぱなしのツール、うちにも結構あるよね……。",
+      "choices": [
+        {
+          "text": "調達→保守→進化→廃棄を所有者を決めて回す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ツールのライフサイクルは4ステージ——調達（選定の判定後、所有者を割り当て、命名規則や保管場所を事前に決める。これがROIを大きく左右）、サポートとメンテナンス（バックアップと復元、相互運用時のデータ交換と連携）、進化（環境・ビジネスニーズ・ベンダーの決定による変更への対応）、廃棄（機能の置換とデータの保存・保管。移行の利点がコストとリスクを上回るとき）。各ステージの活動が定義・実行・マネジメントされるよう、管理者を任命します。",
+            "syllabusRefs": ["TM-1.6.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "買ったら終わり。あとは各自が使うだけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "“入れっぱなしのツール”はまさにその結果です。所有者のいないツールは、命名も保管もばらばらになり、保守されず、いつの間にか使われなくなります。調達の段階で所有者を割り当て、ライフサイクル全体をマネジメントすることが、投資を活かす条件です。",
+            "syllabusRefs": ["TM-1.6.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最後に。ツールからは、何をどう測る？",
+      "choices": [
+        {
+          "text": "各ツールの得意を組み合わせ、ツール自体も監視",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。ツールごとに得意なデータが違います——テストマネジメントツール（テスト実行状況）、要件マネジメントツール（要件カバレッジのトレーサビリティ）、欠陥マネジメントツール（重要度・欠陥密度・検出率・リードタイム）、静的解析（コード複雑度）、性能テスト（ピーク時の応答時間・故障率）、コードカバレッジ。メトリクスはステークホルダーのニーズに基づいて設計・収集し、ツール自体のモニタリング（使用有無での欠陥検出数の比較など）も必要です。",
+            "syllabusRefs": ["TM-1.6.5"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "ひとつのツールの数字だけで全体を判断する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "1本の数字は全体の一断面にすぎません。実行状況・要件カバレッジ・欠陥・複雑度・性能——異なるツールが異なるデータを持っており、組み合わせて初めてテスト活動全体のマネジメントと最適化領域の特定に使えます。ツールが情報を共有し協調して動く設計も大切です。",
+            "syllabusRefs": ["TM-1.6.5"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "ken", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "選んで、試して、根づかせて、いつか手放す——ツールって“飼う”ものなんだね。オーナー決めの話、開発チームにも持ち帰るよ！",
+      "next": null
+    }
+  ]
+}

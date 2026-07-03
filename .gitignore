@@ -1,0 +1,26 @@
+# 依存（OneDrive同期からも除外したい大物）
+node_modules/
+# ビルド成果物
+dist/
+dist-ssr/
+*.local
+# ログ
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# エディタ
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+# テスト
+coverage/
+test-results/
+playwright-report/
+e2e-shots/
+# Vite
+.vite/
+# 画像候補（採用済みのみ public/images/ に置く。候補・系譜はローカル/OneDrive保持・90MB級のためGit除外）
+assets-candidates/
+# シラバス抽出テキスト（ISTQBシラバス本文の抽出＝著作物。リポジトリに含めない）
+シラバス抽出_*.txt

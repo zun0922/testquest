@@ -1,0 +1,185 @@
+{
+  "id": "al-tm-3-04",
+  "title": "テストの価値を語る 〜品質コストと費用対効果〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "経営会議で問われた——“テストのコストは削れないのか”と。次の会議には君に説明してもらう。テストの価値を、ビジネスの言葉で語る準備をしよう。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "narration",
+      "text": "【社内試算・欠陥1件あたりの平均コスト】リリース後に発覚した場合の外部失敗コスト：5,000。テストによる検出（評定）コスト：600。リリース前の修正（内部失敗）コスト：400。（単位：千円）",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "まず枠組みから。“品質コスト”って、どう分類するんだっけ？",
+      "choices": [
+        {
+          "text": "欠陥予防・評定・内部失敗・外部失敗の4カテゴリー",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。①欠陥予防コスト＝低品質を防ぐ計画的・積極的な活動（トレーニング・テストベースの早期レビュー・適切なコミュニケーション）②評定（アプレイザル）コスト＝欠陥検出を目的とした活動（静的・動的テストの実施・レビュー）③内部失敗コスト＝対処的な活動（テスト中に発見した欠陥の修正・回避策の提供）④外部失敗コスト＝リリース後の損失と対応（収益・資産・健康・人命・環境の損失、リリース後の修正・法的コスト・フィールド欠陥対応）。この4カテゴリーのコストを決定することが、テストの説得力あるビジネスケースを作ります。",
+            "syllabusRefs": ["TM-3.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストにかかる費用＝ツールと人件費だけだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "見えやすいのはそこですが、品質コストの全体像はもっと広い——防ぐコスト、見つけるコスト、直すコスト、そして“世に出てしまった”コスト。特に外部失敗コストを勘定に入れないと、テストは“費用”にしか見えません。4カテゴリーで捉えることが、価値の議論の出発点です。",
+            "syllabusRefs": ["TM-3.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "じゃあ試算の数字で——欠陥1件をリリース前に見つける価値は、いくら？",
+      "choices": [
+        {
+          "text": "5,000−（600＋400）＝1件あたり平均4,000の節約",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。欠陥あたりの平均節約額＝外部失敗コストの平均−（評定コストの平均＋内部失敗コストの平均）＝5,000−（600＋400）＝4,000（千円）。評定コストと内部失敗コストの合計は通常、外部失敗コストよりも大幅に少ない——だからテストは非常に価値のある投資になります。“テストは1件見つけるたびに約400万円の損失を防いでいる”——これがビジネスの言葉です。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "600＋400＝1,000のコスト増でしかない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "支出だけ見るとそうなりますが、それは“防いだ損失”を勘定に入れていない計算です。リリース前に見つけなければ、その欠陥は外部失敗コスト5,000になっていた——節約額は外部失敗の平均から評定＋内部失敗の平均を引いた4,000です。テストのコストは、より大きな損失の保険料なのです。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "“それなら、テストは後でまとめてやっても同じでは？”と聞かれたら？",
+      "choices": [
+        {
+          "text": "Boehm曲線——発見が遅いほど修正コストは増える",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。Boehm曲線はSDLCにおける時間経過に伴う欠陥修正コストのグラフ表現で、内部失敗コスト（修正コスト）は欠陥の発見が遅くなるほど増加します。ここから“テストはSDLCの早い段階で実施すべき”という経済的な結論が導かれます。テストマネージャーは、欠陥予防コストと内部・外部コストの最適な関係を探ります。定性的利点（品質への評判・予測可能なリリース・信頼性・法的責任からの保護）も併せて伝えましょう。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "早くやるのは気分の問題で、コストは同じだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じ欠陥なら同じコストに思えますよね。しかしBoehm曲線が示すとおり、修正コストは発見が遅れるほど増加します。設計段階で見つかれば図面の修正で済むものが、本番で見つかれば顧客対応・緊急リリース・信用の損失まで膨らむ——“早めのテスト”は気分ではなく、経済合理性です。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "最後の問いだ。テストは、どこまでやるべきだと思う？",
+      "choices": [
+        {
+          "text": "リスクに基づき、過剰と不足の間の最適点を設計する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。過剰なテストは利益を上回る不合理な遅延とコストをもたらし、不足はユーザーに低品質のプロダクトを届けます。最適はその間にあり、テスト労力はプロジェクト・プロダクトのリスクと、ビジネスが取ることをいとわないリスクに基づくべきです。リスクベースドテストが、リスクレベルに比例した労力投入と優先順位付けで費用対効果を支えます。このバランスとテストの付加価値をステークホルダーに理解してもらうことが、テストマネージャーの責任です。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "欠陥がゼロになるまで本番稼働させない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "品質への誠実さは買いますが、欠陥ゼロの証明は原理的に不可能で、過剰なテストは利益を上回る遅延とコストをもたらします。ビジネスが取れるリスクに基づいて“どこまでやるか”を設計し、残存リスクを示して判断を仰ぐ——それが費用対効果に責任を持つ姿勢です。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "既知の欠陥ありで稼働する方がよい場合もある",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "鋭い視点です。既知の欠陥を抱えたまま本番稼働する方が、欠陥が解決するまで待つよりもはるかによい場合もあります——その欠陥の発生確率と重要度が大きく関係します（文書化し、おそらく回避策を用意した上で）。ただし主たる答えは、リスクに基づいて過剰と不足の間の最適点を設計すること。その設計の中に“受け入れる欠陥”という選択肢がある、という関係です。",
+            "syllabusRefs": ["TM-3.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "数字で価値を語り、人を育てて率い、リスクで判断する——この1年、君はそのすべてをやってのけた。もう立派なテストマネージャー候補だ。次の経営会議、隣の席は空けておく。",
+      "next": null
+    }
+  ]
+}

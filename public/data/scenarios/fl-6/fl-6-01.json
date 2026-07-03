@@ -1,0 +1,130 @@
+{
+  "id": "fl-6-01",
+  "title": "道具箱を知る 〜テストツールの種類〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "チームのツール棚卸し、一緒にやろうって言われたんだ。で、調べてみたんだけど——“テストツール”って、思ってたよりずっと広いんだよ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "ねえ、テストツールって、どこまでを指すんだと思う？",
+      "choices": [
+        {
+          "text": "マネジメントから静的テスト・非機能まで幅広い",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ツールによる支援は多くのテスト活動に及びます。マネジメントツール（要件・テスト・欠陥・構成の管理）、静的テストツール（レビュー・静的解析の支援）、テスト設計/実装ツール（テストケース・データ・プロシジャーの作成促進）、テスト実行とカバレッジツール、非機能テストツール、DevOpsツール（パイプライン・CI/CD）、コラボレーションツール、コンテナ化などの標準化支援ツールなどがあります。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストツール＝自動実行ツールのことだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "真っ先に浮かぶのは自動実行ツールですよね。でも実行の自動化は道具箱の一角にすぎません。マネジメント・静的テスト・設計と実装・カバレッジ・非機能・DevOps・コラボレーションなど、ツールはテストのほぼすべての活動を支援してくれます。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "性能テストみたいな非機能テストは、ツールなしでもできるのかな？",
+      "choices": [
+        {
+          "text": "手動では困難な非機能テストを可能にしてくれる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "正解。非機能テストツールは、テスト担当者が手動で行うことが困難、または不可能な非機能テストを行えるようにしてくれます。数千ユーザー分の負荷を生成したり、ミリ秒単位の応答時間を正確に測ったりするのは、人手では再現性を確保できません。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "性能テストもストップウォッチ計測で十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "小規模な確認ならそれで足りる場面もありますが、多数の同時アクセスの負荷生成や精密な計測は人手では困難または不可能です。だからこそ非機能テストツールが、手動ではできないテストを可能にする道具として挙げられています。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "じゃあさ、いつも使ってる表計算ソフトって、テストツールなのかな？",
+      "choices": [
+        {
+          "text": "テストの用途で使えばテストツールになりうる",
+          "rating": "best",
+          "statusEffects": { "knowledge": 3, "confidence": 1 },
+          "feedback": {
+            "explanation": "そのとおり。シラバスは“その他、テストを補助するツール”の例として表計算ソフトを挙げています。テストのコンテキストで使われる表計算ソフトはテストツールです。道具の分類は製品の種類ではなく、用途とコンテキストで決まります。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "専用製品でなければテストツールとは呼べない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "専用製品らしさで線を引きたくなりますが、シラバスはテストを補助するツールの例として表計算ソフトを挙げています。テストデータの管理や結果の集計に使う表計算は、立派なテストツール。道具の価値は“何のために使うか”で決まります。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "道具箱は思ってたより大きかったね。大事なのは“何のために使うか”。目的から道具を選べば、僕たちのテストはもっと速く、もっと確かになるはずだよ。",
+      "next": null
+    }
+  ]
+}
