@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-3-01",
+  "title": "実行せずに見抜く 〜制御フロー解析とデータフロー解析〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "レガシーコードの引き継ぎだ。動かす前に、コードの“形”から欠陥を見抜く——静的解析の目を持て。制御フローとデータフロー、2つの道具を使う。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "制御フロー解析で見つけられる不正は、どんなものだ？",
+      "choices": [
+        {
+          "text": "不適切なループ・到達不能コード・未呼び出し関数など",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。制御フロー解析は通常ツールを使用し、制御フローグラフを用いてプログラム中の手順を解析する静的な技法です。検出できる不正は多数あります——適切な設計でないループ（複数の開始点を持つ・終了しない）、特定の言語における対象が曖昧な関数呼び出し、誤った処理順序、到達できないコード、呼び出されていない関数など。実行せずに、構造から見抜けるのです。",
+            "syllabusRefs": ["TTA-3.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "実行時のメモリリークが見つかる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "メモリリークは実行時にしか症状が見えない故障で、主に動的解析の領分です（静的解析でも「割り当てたが解放しないコード」を見つけられる場合はありますが）。制御フロー解析が得意なのは、ループの設計不良・到達不能コード・未呼び出し関数といった、構造上の不正の検出です。",
+            "syllabusRefs": ["TTA-3.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "問題だ。単一の入口と出口を持つ構造化コードに、IF判定が2つ。独立したパスの数——サイクロマティック複雑度は？",
+      "choices": [
+        {
+          "text": "3",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。サイクロマティック複雑度は、強連結グラフにおける独立したパスの数を表す正の整数です。単一入口・出口の構造化コードでは、判定が1つ増えるごとに独立パスが1つ増えるので、判定2つなら3。McCabeの理論では、システムが複雑になるほど保守が困難になり欠陥が多く含まれる——複雑度と欠陥数の相関は多くの研究で指摘されています。複雑度が高いコンポーネントは、複数への分割などリファクタリングの再検討候補です。",
+            "syllabusRefs": ["TTA-3.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "2",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "判定の数（2）と混同しやすいところです。複雑度は“独立したパスの数”——判定がゼロでもパスは1本あるので、判定が2つなら 1＋2＝3 です。この数が大きいコンポーネントほど保守が難しく欠陥を含みやすい、というのがMcCabeの理論です。",
+            "syllabusRefs": ["TTA-3.2.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "次はデータフロー解析。何を調べる技法だ？",
+      "choices": [
+        {
+          "text": "変数のライフサイクルが順番どおりかをパスに沿って調査",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。データフロー解析は、システムにおける変数の使用に関する情報を収集する技術群です。制御フローパスに沿って各変数のライフサイクル——宣言・定義・使用・破棄される場所——を調査し、これらのアクションが順番どおりでない潜在的な不正を特定します。変数の使い方は3つの不可分アクションに分類されます：定義（x:=3）／使用（if x > temp）／削除（ファイルのclose・ループ制御変数のスコープ外）。",
+            "syllabusRefs": ["TTA-3.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "変数の命名がわかりやすいかを調べる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "命名規則のチェックはコーディング標準への準拠検証（保守性向上の静的解析）の話です。データフロー解析が見るのは名前ではなく“変数の一生”——定義・使用・破棄のアクションが制御フローパスに沿って正しい順番で行われているか、です。",
+            "syllabusRefs": ["TTA-3.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "では見てくれ。`x:=3` の直後、xを一度も使わずに `x:=5`。これはどのパターンだ？",
+      "choices": [
+        {
+          "text": "定義に続く再定義（使用なし）。チェックすべきフラグ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。潜在的不正の指標は——①定義に続いて別の定義がある、または使用されずに削除 ②定義に対して削除がない（動的割り当て変数のメモリリークの可能性）③定義の前に使用または削除 ④削除の後に使用もしくは削除。使用なしの再定義は多くの言語で合法で、意図的な場合もありますが、データフロー解析ツールは「不正の可能性があるのでチェックすべき」とフラグを立てることがあります。制約も知っておくこと：実行不能なパス上の誤報告がありえ、動的なデータ構造や並行スレッド間の共有変数では特定が困難です。なお“データフローテスト”は定義使用ペアを動かす動的テストで、同じ概念を使う別物です。",
+            "syllabusRefs": ["TTA-3.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "不正ではなく、常に正常なコードだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "構文的には合法で、意図的なこともあります——しかし「定義→使用なし→再定義」は潜在的不正の代表パターンです。最初の代入が無意味なら、書き間違いや消し忘れのサインかもしれない。だからツールは“チェックすべき”とフラグを立てるのです。合法と健全は別物、が静的解析の目線です。",
+            "syllabusRefs": ["TTA-3.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……いい目になってきた。制御の流れと、データの一生。実行せずにここまで見抜ける。次は、この道具で“直せるコード”を作る話だ。",
+      "next": null
+    }
+  ]
+}

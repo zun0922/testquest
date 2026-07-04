@@ -1,0 +1,168 @@
+{
+  "id": "al-tta-5-02",
+  "title": "設計図を疑う 〜アーキテクチャレビュー〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "ECサイトの時間効率性を、アーキテクチャの段階でレビューする。チェックリストを片手に、設計図を疑ってかかれ。状況を見てくれ。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "narration",
+      "text": "【設計の状況】①DB接続はリクエストのたびに新規に確立している ②サーバーは1台に全負荷が集中（増設済みの追加サーバーは未使用）③同じ商品情報を毎回DBから取得している。【チェックリスト（抜粋）】コネクションプーリング／ロードバランシング／キャッシング。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "まず道具の話だ。レビューのチェックリスト、その意義は？",
+      "choices": [
+        {
+          "text": "確認漏れ防止と客観性。組織で徐々に育てるもの",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。チェックリストはレビュー中に使われ、参加者に特定のポイントの確認を思い出させます。また「これは全レビューで使う同じチェックリストで、あなたの作業成果物だけを対象にしているわけではない」という形で、レビューを客観的に行うのにも有効です。汎用（shallとshouldの使い分け・書式）にも、特定の品質特性や分野（セキュリティ・性能効率性）にも焦点化できます。最も有用なのは、プロダクトの性質・ローカル開発環境（スタッフ/ツール/優先度）・過去の成功例と欠陥の履歴・特定の問題を反映して、各組織で徐々に作り、組織やプロジェクトに合わせてカスタマイズしたものです。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "全組織共通の既製品を1つ買えば完成する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "既製品の流用では効きません。最も有用なチェックリストは、プロダクトの性質・ローカル開発環境・過去の欠陥履歴・特定の問題を反映して各組織で徐々に作り上げ、組織やプロジェクトに合わせてカスタマイズしたものです。買って終わりではなく、育てて磨くものです。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "では解析だ。「DB接続を毎回確立」——チェックリストのどの項目に引っかかる？",
+      "choices": [
+        {
+          "text": "コネクションプーリングの欠如",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。コネクションプーリングとは、コネクションの共有プールを確立することにより、データベース接続の確立に関連する実行時間のオーバーヘッドを削減する手法です。リクエストのたびに新規確立するのは、この項目に反しています。ソフトウェアアーキテクチャとは、システムの基本的な概念や特性からなり、その要素・関係・設計と進化の原則が組み込まれたものです。設計図の段階でこうした問題を捕まえられるのが、アーキテクチャレビューの価値です。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "HTMLの標準適合の問題だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "HTMLの標準適合はWebページのマークアップの話で、アーキテクチャの時間効率性とは別軸です。「DB接続を毎回確立」が反しているのはコネクションプーリング——接続確立のオーバーヘッドを共有プールで削減する、という項目です。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「1台に全負荷」と「同じ情報を毎回取得」。この2つは？",
+      "choices": [
+        {
+          "text": "ロードバランシング欠如と、キャッシング欠如",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ロードバランシングは一連のリソース間で負荷を均等に分散させる手法で、追加サーバーがあるのに1台へ集中させているのは違反です。キャッシングはアクセス時間短縮のためデータのローカルコピーを使う手法で、同じ商品情報を毎回DBから取得するのは違反です。チェックリストには他にも、分散処理・遅延インスタンス化・トランザクションの並行性・OLTPとOLAPのプロセス分離・データの複製といった項目があります。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "どちらも問題ではなく、仕様として正常だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "正常ではありません。増設サーバーがあるのに1台集中はロードバランシング（負荷の均等分散）の欠如、同じ情報を毎回DB取得はキャッシング（ローカルコピーでアクセス時間短縮）の欠如です。どちらも時間効率性のアーキテクチャチェックリストが捕まえるべき問題です。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "問題は3つ見つかった。設計者への伝え方は？",
+      "choices": [
+        {
+          "text": "建設的に、業務関係を保ち、重要度情報を添えて",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。レビューコメントを記述し議論する際は、作成者と建設的な業務関係を維持することが求められます。そしてTTAは、欠陥の重要度情報の提供において重要な役割を担います——「どこが・チェックリストのどの項目に・どれほど重大か」を添えて伝えることで、設計者は優先順位をつけて対処できます。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "設計者の力量不足を明記して突き返す",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "人を責める書き方は、レビューの目的を損ないます。レビューでは作成者と建設的な業務関係を維持すること、そして欠陥の重要度情報を添えることが重要。チェックリストが「あなただけを狙ったものではない」客観の道具であるのも、この建設的な関係を支えるためです。",
+            "syllabusRefs": ["TTA-5.2.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "コードが書かれる前に、設計図で3つの穴を塞いだ。これがアーキテクチャレビューの力だ。……次は、もっと細かい——コードそのものを読む。",
+      "next": null
+    }
+  ]
+}

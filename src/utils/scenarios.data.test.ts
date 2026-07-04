@@ -96,6 +96,37 @@ describe('本番シナリオデータの検証（FR-009 データ品質の門番
     expect(orders).toEqual([...orders].sort((a, b) => a - b))
   })
 
+  it('AL-TTA第3章は order 昇順で3本（起案 AL-TTA第3章 v0.1・監修承認 2026-07-04・企画書§5.3.1）', () => {
+    const ch3 = index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 3)
+    expect(ch3).toHaveLength(3)
+    const orders = ch3.map((s) => s.order)
+    expect(orders).toEqual([...orders].sort((a, b) => a - b))
+  })
+
+  it('AL-TTA第4章は order 昇順で6本（起案 AL-TTA第4章 v0.1・監修承認 2026-07-04・企画書§5.3.1）', () => {
+    const ch4 = index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 4)
+    expect(ch4).toHaveLength(6)
+    const orders = ch4.map((s) => s.order)
+    expect(orders).toEqual([...orders].sort((a, b) => a - b))
+  })
+
+  it('AL-TTA第5章は3本・第6章は3本（起案 AL-TTA第5-6章 v0.1・監修承認 2026-07-04・企画書§5.3.1）', () => {
+    const ch5 = index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 5)
+    const ch6 = index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 6)
+    expect(ch5).toHaveLength(3)
+    expect(ch6).toHaveLength(3)
+    expect(ch5.map((s) => s.order)).toEqual([...ch5.map((s) => s.order)].sort((a, b) => a - b))
+    expect(ch6.map((s) => s.order)).toEqual([...ch6.map((s) => s.order)].sort((a, b) => a - b))
+  })
+
+  it('AL-TTA は全21本（1+5+3+6+3+3・企画書§5.3.1 の計画どおり）', () => {
+    expect(index.scenarios.filter((s) => s.level === 'AL-TTA')).toHaveLength(21)
+  })
+
+  it('全コンテンツは71本（FL27＋AL-TM23＋AL-TTA21・企画書 Phase3 全達成）', () => {
+    expect(index.scenarios).toHaveLength(71)
+  })
+
   it('AL-TTA の syllabusRefs は TTA- 接頭辞形式（al-adaptation.md の項番規約）', () => {
     for (const s of index.scenarios.filter((x) => x.level === 'AL-TTA')) {
       const data = readJson(s.file) as {

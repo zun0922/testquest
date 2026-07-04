@@ -1,0 +1,168 @@
+{
+  "id": "al-tta-5-03",
+  "title": "コードの急所を突く 〜コードレビュー〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "今度はコードそのものを読む。チェックリストの抜粋を渡す。この擬似コード、急所が3つ隠れている。見つけられるか。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "narration",
+      "text": "【擬似コード】(1) total := 0.1 + 0.2 ; if (total == 0.3) then …  (2) CASE grade OF 'A','B','C' …（ELSE/DEFAULT句なし）  (3) result := value / divisor（divisor の 0 チェックなし）。【チェックリスト（抜粋）】算術演算／ループとブランチ／防御的プログラミング。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "まず、コードレビューのチェックリストの性質を押さえておこう。",
+      "choices": [
+        {
+          "text": "ローレベルで言語特化のとき最も有効。アンチパターンも",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。コードレビューのためのチェックリストは、必然的にローレベルのものになり、言語に特化したときに最も有効です。特に経験の浅いソフトウェア開発者には、コードレベルのアンチパターンを含めると有用です。試験でも実務でも、質問に答えるためのチェックリストのサブセットが提供される形で使われます。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "どの言語にも同じ汎用リスト1枚で十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "コードレビューのチェックリストは必然的にローレベルになり、言語に特化したときに最も有効です。言語ごとに気をつけるべきアンチパターンや落とし穴は違うため、汎用1枚では急所を突ききれません。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "(1) の `if (total == 0.3)`。何が問題だ？",
+      "choices": [
+        {
+          "text": "浮動小数点の等値比較。算術演算の項目違反",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。算術演算のチェックリスト項目には——コードは浮動小数点数が等しいかどうかの比較を避けているか／丸め誤差をシステム的に防いでいるか／大きさが大きく異なる数値の加算や減算を避けているか／除数は0やノイズでテストされたか、があります。0.1+0.2 は2進浮動小数点では 0.3 に厳密一致しないため、`== 0.3` は成立しない典型的なアンチパターンです。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "変数名が短いことだけが問題だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "命名は「変数」の項目の話で、ここでの急所ではありません。`if (total == 0.3)` の問題は浮動小数点数の等値比較——算術演算の項目が「避けているか」を問う典型的な誤りです。0.1+0.2 は厳密には 0.3 になりません。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "(2) CASEにDEFAULTなし、(3) 除数の0チェックなし。該当項目は？",
+      "choices": [
+        {
+          "text": "ループとブランチ（全CASEにデフォルト）と、除数のテスト",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ループとブランチの項目には——ループ/ブランチ/ロジックの構成が完全で正しく適切にネストされているか／IF-ELSEIFで最も一般的なケースを最初にテストしているか／ELSEまたはDEFAULT句を含むIF-ELSEIFやCASEで全ケースがカバーされているか／すべてのCASEにデフォルトがあるか／ループの終了条件は明白で必ず達成できるか、があります。除数の0・ノイズのテストは算術演算の項目です。それぞれ別のカテゴリーで捕まえます。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "両方とも書式（インデント）の問題だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "インデントは「構造」の書式の話で、ここでの急所ではありません。CASEにデフォルトが無いのは「ループとブランチ」（すべてのCASEにデフォルトがあるか）、除数の0未チェックは「算術演算」（除数は0やノイズでテストされたか）の項目に該当します。見た目ではなく、振る舞いの欠陥です。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「防御的プログラミング」の項目、例を挙げられるか？",
+      "choices": [
+        {
+          "text": "境界・入力妥当性・メモリ解放・タイムアウト・ファイル存在",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。防御的プログラミングの項目には——インデックス/ポインター/添え字を配列・レコード・ファイルの境界に対してテストしているか／インポートデータや入力引数の妥当性・完全性をテストしているか／すべての出力変数が割り当てられているか／すべてのメモリ割り当てが解放されているか／外部機器アクセスにタイムアウトやエラートラップを使っているか／ファイルへのアクセス前に存在をチェックしているか／プログラム終了時に全ファイル・デバイスが正しい状態か、があります。ほかに構造・ドキュメンテーション・変数のカテゴリーもあり、コードを多面的に見ます。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "とにかくtry-catchで全部囲えば防御になる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "例外で囲むのは対処の一手段にすぎません。防御的プログラミングの項目が問うのは、境界のテスト・入力の妥当性と完全性・出力変数の割り当て・メモリ解放・外部アクセスのタイムアウト・ファイル存在チェックなど、具体的な備えです。囲うより、そもそも危険な入力・状態を通さない設計が防御です。",
+            "syllabusRefs": ["TTA-5.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "浮動小数点、抜けたデフォルト、ゼロ除算——動かす前に、3つの急所を突いた。読める目は、書ける手より強い。……第5章はここまでだ。",
+      "next": null
+    }
+  ]
+}

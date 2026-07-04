@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-3-02",
+  "title": "未来の自分が読めるコード 〜静的解析による保守性向上〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「動いているからいい」——開発チームはそう言う。だが、動く、と、直せる、は別の話だ。静的解析で保守性を上げる提案を組み立てるぞ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "静的解析を保守性向上に使う。まず何をさせる？",
+      "choices": [
+        {
+          "text": "コーディング標準への準拠を検証し非準拠を更新",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。静的解析は、コーディング標準やガイドラインへの準拠検証に使えます。標準は命名規則・コメント・インデント・モジュール化など、必要なコーディングや設計のプラクティスを記述しており、非準拠のコードが特定されたら保守性向上のために更新できます。注意：静的解析ツールは一般に欠陥を「検出」するのではなく警告を発します——コードが構文的に正しくても（例えば複雑度に関して）警告を出すことがあります。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "標準への準拠は人が全数目視で確認すべきだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "誠実ですが、命名規則やインデントの全数目視は人の時間の使い方として非効率で、漏れも出ます。標準準拠の検証こそ静的解析ツールの得意分野。人の目は、ツールが出した警告の妥当性判断と、ツールでは測れない設計判断に使いましょう。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "モジュール化の支援。ツールは具体的に何をしてくれる？",
+      "choices": [
+        {
+          "text": "重複コード検索・結合/凝集の測定・複雑箇所の強調",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。①重複しているコードの検索——リファクタリングしてコンポーネント化する候補になります（ただしリアルタイムシステムでは、コンポーネント呼び出しの実行時オーバーヘッドが問題になることがある）。②コードのモジュール化の指標となるメトリクスの生成——結合度と凝集度の測定値を含む。③オブジェクト指向コードで、派生オブジェクトにおける親クラスへの可視性の過不足の指摘。④コードやアーキテクチャの中で構造的に複雑度が高い部分のハイライト。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "ツールが自動でリファクタリングまで完了してくれる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "ツールがやってくれるのは“候補の発見と測定”まで——重複コードの検索、結合度・凝集度のメトリクス生成、複雑箇所のハイライトです。それをどうリファクタリングするか（そもそもするか——リアルタイムシステムでは呼び出しオーバーヘッドが問題になることも）は、人間の設計判断です。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "基本を確認する。保守しやすい構造の指標は、どっちだ？",
+      "choices": [
+        {
+          "text": "結合度が低く、凝集度が高い",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。保守しやすいシステムは、結合度——コンポーネントが実行時に互いに依存する度合い——が低く、凝集度——コンポーネントが自己完結し、単一のタスクに集中している度合い——が高い傾向があります。互いに絡まず、それぞれが一つの仕事に徹する。コードも組織も同じですね。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "結合度が高く、凝集度が低い",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "逆です。結合度が高い＝コンポーネント同士が互いに依存し合っていて、1か所直すと連鎖して壊れる。凝集度が低い＝1つのコンポーネントが雑多な仕事を抱えていて、どこを直せばいいか分からない。保守しやすいのは「結合度が低く、凝集度が高い」構造です。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "最後に。Webサイトにも静的解析は使えると思うか？",
+      "choices": [
+        {
+          "text": "使える。構造バランスの確認や脆弱性チェックにも",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。Webサイトのメンテナンスも静的解析ツールで支援できます。目的はサイトのツリー構造のバランスのチェック——バランスの悪さは、より困難なテストタスクとメンテナンス負荷の増加の原因になります。さらに、実装コードに適用すれば、コードインジェクション・Cookieセキュリティ・クロスサイトスクリプティング・リソース改ざん・SQLコードインジェクションなどのセキュリティ脆弱性にさらされる可能性のチェックも可能です（詳細は第4章のセキュリティと、セキュリティテストシラバス）。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "Webサイトはコードでないから対象外だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "対象になります。サイトのツリー構造のバランスチェック（悪いとテスト困難・保守負荷増）に加え、実装コードへの適用でXSSやSQLインジェクションなどの脆弱性チェックも可能です。“実行せずに調べられるもの”は、コードに限らず静的解析の守備範囲です。",
+            "syllabusRefs": ["TTA-3.2.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "標準で足並みを揃え、重複を刈り、結合を解いて凝集を高める。未来の自分と、次にこのコードを触る誰かへの投資だ。……さて、次はいよいよ“動かして初めて見える”欠陥を追う。",
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "al-tta-4-02",
+  "title": "攻める前に、許可を取れ 〜セキュリティテスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "決済を守るセキュリティテストの番だ。攻める技術の前に、覚えることがある。……段取りと、作法だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "セキュリティテストは、そもそも何を調べる？",
+      "choices": [
+        {
+          "text": "ポリシー侵害を試みて脆弱性を評価。XSSやDoSなど",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。セキュリティテストは、システムのセキュリティポリシーを侵害しようとすることで、脅威に対する脆弱性を評価します。調査すべき潜在的脅威の例——アプリやデータの無許可コピー／無許可なアクセスコントロール（権限・アクセス権・特権が焦点）／意図しない副作用（正しく再生するが非暗号化の一時ファイルを書き出すメディアプレーヤー）／Webページに挿入され後続ユーザーが実行してしまうコード（XSS）／入力フィールドへの長すぎる文字列で起きるバッファオーバーフロー（悪意あるコード実行の機会）／サービス拒否（DoS）／通信の傍受・模倣・改ざん（中間者攻撃）／暗号解読／特定条件でだけ起動するロジックボム。",
+            "syllabusRefs": ["TTA-4.3.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "ウイルス対策ソフトの導入確認だけだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "対策ソフトの確認は入り口にすぎません。セキュリティテストの本質は「ポリシーを侵害しようとしてみる」こと——無許可アクセス、XSS、バッファオーバーフロー、DoS、中間者攻撃、ロジックボム……攻撃者の視点で脆弱性を洗い出す活動です。",
+            "syllabusRefs": ["TTA-4.3.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "では作法の話。セキュリティテストの計画で“最重要”は何だと思う？",
+      "choices": [
+        {
+          "text": "承認。TMの明確な許可を文書で得ること",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。セキュリティテスト計画の重要な側面は承認を得ることです。計画されていない追加のテストが実施されると実際の攻撃と見なされ、実施者は法的措置のリスクに晒されます。意図と承認を示す文書が無ければ、「セキュリティテストを行っていた」という言い訳を説得力を持って説明するのは難しい。他の考慮点も押さえましょう——セキュリティ問題はアーキテクチャ・設計・実装で混入するため各テストレベルで予定でき、脅威の性質が変化するため本番後も定期的に（多数の更新が特徴のIoTのような動的オープンアーキテクチャに特に当てはまる）。レビューや静的解析の併用は動的テストで見逃しやすい問題に有効。情報セキュリティ担当者がいれば全計画をその担当者と調整します。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "改善が性能や信頼性に与える影響の考慮",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "それも大事な考慮点です——セキュリティの改善はシステムの性能効率性や信頼性に影響を与える可能性があり、改善後に性能・信頼性テストの必要性を検討することが望まれます。ただし“最重要”は承認です。承認文書なしの攻撃テストは実際の攻撃と見なされ、法的措置のリスクに直結します。テストの中身より先に、テストしてよいという証拠を固めるのがこの分野の作法です。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "思いついた攻撃を今すぐ試して腕を磨く",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それが一番危ない。計画されていないテストの実施は実際の攻撃と見なされ、法的措置のリスクに晒されます。意図と承認を示す文書が無い状態では「テストだった」という説明は通りにくい。攻撃の設計と実施はステークホルダー（セキュリティ専門家を含む）との慎重な計画と調整の上で行うものです。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "承認は取れた。テストの仕様化はどう組み立てる？",
+      "choices": [
+        {
+          "text": "情報収集→脆弱性スキャン→攻撃計画の作成",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。①テスト仕様化に有用な情報の収集——従業員の氏名・物理的な住所・内部ネットワークの詳細・IPアドレス・使用ソフト/ハードの識別情報・OSバージョンなど。②広く利用可能なツールでの脆弱性スキャン——直接侵害するためではなく、ポリシー違反（の可能性がある）脆弱性を特定するため。NISTやOWASPの情報・チェックリストも活用できます。③収集した情報から攻撃計画——特定システムのセキュリティポリシー侵害を意図したテスト行動の計画——を作成。最も深刻な欠陥を捕まえるため、さまざまなインターフェース（UI・ファイルシステム）経由の複数の入力を指定します。攻撃計画は侵入テストのために作られることもあります。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "ツールでスキャンして終わり。それが攻撃計画だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "スキャンは3ステップの真ん中の1つにすぎません。前に情報収集（ネットワーク詳細・OSバージョン等）があり、後に攻撃計画の作成——複数インターフェース経由の複数入力を指定した行動計画——が続きます。ツールが列挙した脆弱性を、システム固有の攻撃シナリオへ束ねるのが人間の仕事です。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "セキュリティリスクを発生源でグループ化すると、どうなる？",
+      "choices": [
+        {
+          "text": "UI関連・ファイルシステム関連・OS関連・外部ソフト関連",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。発生源によるグループ化——①ユーザーインターフェース関連（無許可アクセス・悪意のある入力）②ファイルシステム関連（ファイルやリポジトリの機密データへのアクセス）③オペレーティングシステム関連（パスワード等を暗号化なしでメモリに保存→悪意ある入力でクラッシュした際に漏洩の可能性）④外部ソフトウェア関連（ネットワークレベルの誤ったパケットや、依存するソフトウェアコンポーネントの故障などの相互作用）。加えてISO 25010のセキュリティ副特性——機密性・インテグリティ・否認防止性・責任追跡性・真正性——も仕様化の基礎になります。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "発生源は常にユーザーの操作ミスだけだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "UIからの入力は発生源の1つにすぎません。ファイルシステムに残る機密データ、メモリに平文で置かれたパスワード（OS関連）、依存コンポーネントの故障（外部ソフトウェア関連）——攻め口は層ごとにあります。発生源でグループ化すると、抜けなく仕様化できます。",
+            "syllabusRefs": ["TTA-4.3.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "承認を固め、情報を集め、計画で攻める。腕のいい攻め手ほど、書類仕事が丁寧なものだ。……次は“落ちない”を証明する信頼性だ。",
+      "next": null
+    }
+  ]
+}

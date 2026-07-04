@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-5-01",
+  "title": "読む前に、備えよ 〜レビューにおけるTTAのタスク〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "統合テスト計画書のレビュー依頼だ。同僚は「会議の10分前にざっと読めばいい」と言うが……待て。レビューは、そんなに軽いものじゃない。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "テクニカルテストアナリストは、レビューに何をもたらす？",
+      "choices": [
+        {
+          "text": "開発者が見逃す運用の視点。チェックリスト維持も担う",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テクニカルテストアナリストはテクニカルレビュープロセスの積極的な参加者として、独自の意見を提供すべき存在です。テクニカルレビューやインスペクションに参加し、開発者が見逃してしまうような運用（行動）の視点をもたらします。さらに、レビューチェックリストの定義・適用・メンテナンス、そして欠陥の重要度情報の提供において重要な役割を担います。全参加者は形式的なレビュートレーニングを受け、コメントの記述・議論では作成者と建設的な業務関係を維持します。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "誤字脱字の指摘が主な任務だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "誤字の指摘は本質ではありません。TTAがレビューにもたらす価値は、開発者が見逃す運用（行動）の視点、チェックリストの定義・維持、欠陥の重要度情報です。文章の粗探しではなく、技術と運用の目で成果物の妥当性を見るのが役割です。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "なぜ「10分前にざっと」ではダメなんだ？ 準備の時間が要る理由は？",
+      "choices": [
+        {
+          "text": "準備なしでは“レビュー”が“編集作業”に堕ちるから",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。どのタイプのレビューでも、TTAには準備のための十分な時間が与えられなければなりません——作業成果物を読む時間、一貫性を検証するために相互参照された文書をチェックする時間、そして作業成果物に何が欠けている可能性があるかを判断する時間です。十分な準備時間がないと、レビューは真のレビューではなく、単なる編集作業になってしまいます。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "その場で読めば新鮮な目で見られるから準備は不要",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "新鮮さは、深さの代わりにはなりません。準備の時間がなければ、相互参照文書との一貫性チェックも、何が欠けているかの判断もできず、表面的な編集作業に終わります。真のレビューは、読み込む時間の上に成り立ちます。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「優れたレビュー」には、何が含まれる？",
+      "choices": [
+        {
+          "text": "理解・欠落の判断・技術的正確さ・他プロダクトとの整合",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。優れたレビューには、書かれていることの理解／何が欠けているかの判断／技術的側面に関する正確さの検証／記述されたプロダクトが、すでに開発されている・開発中の他のプロダクトと整合していることの検証、が含まれます。書いてあることを確かめるだけでなく、書いてないことと、周りとの整合まで見る——それが深いレビューです。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "書かれている文章の体裁の確認だけ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "体裁は一部にすぎません。優れたレビューは、理解・欠落の判断・技術的正確さの検証・他プロダクトとの整合の検証を含みます。特に「何が欠けているか」と「周囲との整合」は、体裁チェックでは決して見えてこない部分です。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "この統合テスト計画書のレビュー、対象の文書だけ見ればいいか？",
+      "choices": [
+        {
+          "text": "統合されるアイテム側も見る。準備・依存・データを",
+          "rating": "best",
+          "statusEffects": { "teamwork": 3, "confidence": 1, "skill": 1 },
+          "feedback": {
+            "explanation": "そのとおり。レビューは、レビューされる作業成果物に限定されるものではありません。統合レベルのテスト計画書をレビューするなら、統合されるアイテムについても考慮しなければなりません——それらは統合の準備ができているか？ 文書化しなければならない依存関係はあるか？ 統合ポイントをテストするために利用可能なデータはあるか？ そのアイテムとシステム内の他のアイテムとの相互作用も、考慮の対象です。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "レビュー対象はその文書だけ。他は範囲外だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "文書の中だけを見ていては、統合の落とし穴を見逃します。レビューは対象成果物に限定されません——統合されるアイテムの準備状況、文書化すべき依存関係、統合ポイントのテストデータ、他アイテムとの相互作用まで視野に入れるのが、統合テスト計画書のレビューです。",
+            "syllabusRefs": ["TTA-5.1.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "読み込み、欠落を探し、周囲との整合を確かめる。準備があって初めて、レビューはレビューになる。……次は、その武器となるチェックリストの使い方だ。",
+      "next": null
+    }
+  ]
+}

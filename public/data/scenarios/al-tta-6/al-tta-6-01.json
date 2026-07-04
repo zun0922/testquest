@@ -1,0 +1,167 @@
+{
+  "id": "al-tta-6-01",
+  "title": "自動化は開発プロジェクトだ 〜テスト自動化の立ち上げ〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「テストを自動化したい」——経営が言い出した。だが、ツールを買えば終わり、じゃない。自動化は、それ自体が一つの開発プロジェクトだ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "テスト自動化プロジェクト、正しい捉え方は？",
+      "choices": [
+        {
+          "text": "SW開発プロジェクトとして。設計文書もレビューもテストも",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。費用対効果を高めるため、テスト実行ツールは慎重にアーキテクチャ構築と設計を行う必要があります。しっかりしたアーキテクチャなしに実装すると、保守が高価で目的に不十分、目標とする投資収益率を達成できないツールセットになりがちです。テスト自動化プロジェクトはソフトウェア開発プロジェクトと考えるべきで、アーキテクチャの文書化・詳細設計の文書化・設計とコードのレビュー・コンポーネントと統合テスト・最終的なシステムテストが必要です。不安定または不正確な自動化コードは、テストを不必要に遅らせ複雑にします。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "ツールを買って録画すればすぐ完成する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "買って録画、では続きません。しっかりしたアーキテクチャなしの実装は、保守が高価で目標ROIを達成できないツールセットになります。自動化はソフトウェア開発プロジェクトとして、設計文書・レビュー・コンポーネント/統合テスト・システムテストを伴うもの。安易な録画は、後の保守地獄の入り口です。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "立ち上げでTTAが担うタスク、どこまで広い？",
+      "choices": [
+        {
+          "text": "ツール選択・IF定義・アダプター開発・方式選択・実行設計",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。TTAが実践できるタスクは多岐にわたります——実行責任者の決定（テストマネージャーと連携することも）／組織・スケジュール・チームのスキル・保守要件に適したツールの選択（取得ではなく自作を決めることも）／テストマネジメント・欠陥マネジメント・継続的インテグレーションなど他ツールとのインターフェース要件の定義／テスト対象ソフトウェアとの間のアダプター開発／キーワード駆動かデータ駆動かの選択／トレーニングを含む実装コストの見積り（アジャイルではチーム全体のプランニングで合意）／スケジューリングと保守時間の確保／テストアナリスト・ビジネスアナリストのトレーニング／いつどう実行するか・手動結果とどう組み合わせるかの決定。これらの決定は拡張性と保守性に影響します。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "実行ボタンを押すことだけだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実行は最後の一部にすぎません。TTAはツールの選択、他ツールとのインターフェース定義、アダプター開発、データ駆動/キーワード駆動の選択、コスト見積り、保守時間の確保まで担います。これらの上流の決定こそが、自動化の拡張性と保守性——ひいてはROI——を左右します。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "最初に決めるべき「インターフェース」は？",
+      "choices": [
+        {
+          "text": "GUIに限らずAPI・CLI含め最も効果的なアクセス先を選ぶ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テストの自動化はGUIによるテストに限定されません。APIレベル、コマンドラインインターフェース（CLI）、その他テスト対象ソフトウェアのインターフェースポイントを使う自動化を支援するツールも存在します。TTAが最初に決めるべきことの1つは、テストを自動化するためにアクセスする最も効果的なインターフェースの決定です。一般に、これらのインターフェースへのアダプターの開発が要求されるため、その労力を計画で考慮します。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "自動化＝GUI操作の録画、と決まっている",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "GUI録画は一手段にすぎません。自動化はGUIに限定されず、API・CLI・その他のインターフェースポイントも対象。むしろGUIは変化しやすく保守が重いので、最も効果的なアクセス先（しばしばAPIやCLI）を最初に見極めるのが要点です。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "手軽なキャプチャ/プレイバック。落とし穴はどこだ？",
+      "choices": [
+        {
+          "text": "GUI変更で記録スクリプトが壊れ、保守負担が大きくなる",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。GUIテストの難しさの1つは、ソフトウェアの進化に伴いGUIが変化しやすいこと。キャプチャ/プレイバックでは、記録スクリプトがグラフィカルオブジェクトとのやり取りをキャプチャするため、アクセスされるオブジェクトが変更されるとスクリプトの更新が必要になり、望んだ通りに実行されなくなることがあります。加えて自動化設計では、ソフトウェアの故障への対処（記録して継続か・終了か・遅延で対処か——放置は後続のテスト結果に影響）と、システムの状態の考慮（開始/終了時の状態を考え、データ削除やレコード状態変更・ログアウトで既知の状態へ戻し、繰り返し実行を可能に）も重要です。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "出発点としてなら、便利に使える",
+          "rating": "good",
+          "statusEffects": { "skill": 2 },
+          "feedback": {
+            "explanation": "そのとおりで、キャプチャ/プレイバックツールは自動化スクリプトを開発するための便利な出発点として使えます——テストセッションを記録し、記録スクリプトの一部を再利用可能な関数に置き換えるなど、保守性を高める修正を加えていくのが定石です。ただし問いの主眼は「落とし穴」。GUIが変わると記録スクリプトが壊れ、保守負担が大きくなる点を押さえた上で、出発点として賢く使うのが正解です。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "一度録れば未来永劫そのまま使える",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "永久には使えません。記録スクリプトはグラフィカルオブジェクトとのやり取りを捉えているため、GUIやオブジェクトが変わるたびに更新が必要になり、望んだ通りに動かなくなります。出発点としては便利でも、そのまま放置すれば保守負担が積み上がります。",
+            "syllabusRefs": ["TTA-6.1.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "設計し、文書化し、レビューし、テストする——自動化も立派な開発だ。手を抜けば、遅くて壊れやすい重荷になる。……次は、その心臓部の作り方だ。",
+      "next": null
+    }
+  ]
+}

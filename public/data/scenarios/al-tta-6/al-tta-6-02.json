@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-6-02",
+  "title": "データを分け、言葉を作る 〜データ駆動とキーワード駆動〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "自動化の心臓部——アプローチの選択だ。データ駆動と、キーワード駆動。何を、どこから分離するか。それが保守性とROIを決める。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "まずデータ駆動アプローチ。これは何をする？",
+      "choices": [
+        {
+          "text": "データを外部ストアへ分離し、1本のスクリプトで回す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。実行ステップはほぼ同じでデータだけ違うテスト（複数の無効値を入れ、それぞれのエラーを確認する等）では、値ごとにスクリプトを開発・保守するのは非効率です。一般的な解決策は、データをスプレッドシートやデータベースなどの外部ストアへ移すこと。実行ごとに特定データへアクセスする関数を書けば、入力値と期待結果を供給するデータセットを通して単一のスクリプトが動きます。ハーネスとインフラも必要です。実データはビジネスに精通したテストアナリストが作成し（アジャイルではPO等も、特に受け入れテストで）、この分業でTTAはスクリプト実装に集中、TAがテストのオーナーシップを維持します。",
+            "syllabusRefs": ["TTA-6.1.2"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "値ごとにスクリプトを複製して開発する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それこそデータ駆動が避けたい非効率です。テスト対象の値ごとにスクリプトを開発・保守するのは大変——だからデータを外部ストアに分離し、データセットを通して単一スクリプトを回します。複製ではなく分離が、データ駆動の要点です。",
+            "syllabusRefs": ["TTA-6.1.2"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "キーワード駆動は、そこからさらに何を分離する？",
+      "choices": [
+        {
+          "text": "データに対する“動作”を分離し、高水準言語を作る",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。キーワード駆動（アクションワード駆動）は、テストデータに対して実行される動作をスクリプトから分離します。この分離のため、直接実行可能な言語ではなく記述可能な高水準言語を作ります。キーワードは高レベル（Login・CreateUser＝業務アクション）も低レベル（ClickButton・SelectFromList＝インターフェースとの相互作用）も定義でき、パラメーターを持てます（Loginは user_name と password）。自動化担当者がキーワードを自動化コードへ変換し、フレームワークがキーワード記述のテストケースを読んで対応する関数/スクリプトを呼びます。ビジネスロジックの知識とプログラミングを分離することで、TTAはドメイン専門家にならずスキルを適用でき、コードと可変データの分離が保守性とROIを高めます。",
+            "syllabusRefs": ["TTA-6.1.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "データ駆動と完全に同じものだ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "同じではありません。データ駆動が分離するのは「データ」。キーワード駆動はさらに「データに対して実行される動作」まで分離し、記述可能な高水準言語（キーワード）を作ります。動作まで外に出すことで、ビジネスロジックの知識とプログラミングを切り分けられるのが違いです。",
+            "syllabusRefs": ["TTA-6.1.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "やってみろ。「注文キャンセル」をキーワードで書くなら？",
+      "choices": [
+        {
+          "text": "Login→Select_Order→Cancel_Order の順で",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。キーワードは一般に、システムとのハイレベルな業務上のやり取りを表現します。例えば Cancel_Order は、注文の存在確認・キャンセル要求者のアクセス権確認・対象注文の表示・キャンセル確認要求までを内包しえます。テストアナリストは、キーワードのシーケンス（Login・Select_Order・Cancel_Order など）と関連するテストデータでテストケースを記述します。細かいキーワードほどシナリオは具体的になりますが高水準言語の保守が複雑化し、集約キーワードは開発が楽な一方で保守が複雑になる——粒度の設計が肝要です。キーワードには、背後のビジネスロジックと、実行する自動化機能の2領域があり、両方に対応するプロセスが要ります。",
+            "syllabusRefs": ["TTA-6.1.4"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "ClickButton・SelectFromList の羅列で書く",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "低レベルアクションの羅列は避けたいところです。ClickButton や SelectFromList はGUIと直接結びつくため、仕様変更のたびにテストケースの保守が必要になります。業務プロセスは Login→Select_Order→Cancel_Order のような高レベルの業務キーワードで表すのが、変更に強く直感的な書き方です。",
+            "syllabusRefs": ["TTA-6.1.4"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "自動化がROI目標に届かない。技術的な原因は何が多い？",
+      "choices": [
+        {
+          "text": "設計なき実装・GUI直結の保守地獄・故障や状態の未対処",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ROI未達の一般的な技術的原因——しっかりしたアーキテクチャなしの実装（保守が高価で目的に不十分）／キャプチャ/プレイバック依存でGUI変更のたびにスクリプト更新が要る／ソフトウェアの故障への対処を設計していない（後続のテスト結果に波及）／システムの状態を考慮せず、繰り返し実行に手動介入が要る、など。逆にキーワードベースの自動化は、初期設定にコストがかかっても、プロジェクトが長く続けば保守コストを大幅に削減し、全体として安くなる可能性が高い——コードと可変データを分離し、変更から隔離することがROIを押し上げます。",
+            "syllabusRefs": ["TTA-6.1.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "原因は常に予算不足だけで、技術は無関係だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "予算だけの話ではありません。ROI未達には明確な技術的原因があります——設計なき実装による保守コスト増、GUI直結スクリプトの脆さ、故障やシステム状態の未対処。これらを設計で潰し、キーワードベースで変更から隔離することが、ROIを技術の側から守る道です。",
+            "syllabusRefs": ["TTA-6.1.3"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "データを分け、動作を言葉にする。変わるものを外に出せば、自動化は長生きする。……いよいよ最後だ。テクニカルテストアナリストの道具箱を、ひととおり見せよう。",
+      "next": null
+    }
+  ]
+}
