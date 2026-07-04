@@ -1,5 +1,5 @@
 // FR-003〜006 シナリオ再生。設計書§5.3〜5.6・§8.1（モックA案がレイアウトの正）。
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { PlaySession } from '../../hooks/useGame'
 import type { StatusValues, ChoiceNode, Choice, Rating, CharacterDisplay } from '../../types'
 import { useTypewriter } from '../../hooks/useTypewriter'
@@ -140,20 +140,32 @@ function Stage({ characters, speaker }: { characters: CharacterDisplay[]; speake
 }
 
 function ChoiceOverlay({ choices, onChoose }: { choices: Choice[]; onChoose: (i: number) => void }) {
+  // 表示順をシャッフルする（起案時は best を先頭に置いているため、そのままだと正答が常に A になり
+  // 「1番を選べば正解」が学習されて演習が形骸化する）。reducer は元インデックスで選択を解決するので、
+  // data-testid と onChoose には元インデックスを渡し、A/B/C ラベルは表示位置で振る。
+  // 順序は設問ごとに固定（choices 参照で useMemo）＝再描画で入れ替わらない。
+  const order = useMemo(() => {
+    const idx = choices.map((_, i) => i)
+    for (let i = idx.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[idx[i], idx[j]] = [idx[j], idx[i]]
+    }
+    return idx
+  }, [choices])
   return (
     <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 px-6 z-20">
-      {choices.map((c, i) => (
+      {order.map((origIdx, pos) => (
         <button
-          key={i}
-          data-testid={`choice-btn-${i}`}
-          onClick={() => onChoose(i)}
+          key={origIdx}
+          data-testid={`choice-btn-${origIdx}`}
+          onClick={() => onChoose(origIdx)}
           // ハイブリッド：透過ゴールド＋backdrop-blur＋テキストにスクリム（影）。背景の明暗に依らず読める
           className="w-full max-w-md text-left bg-accent/25 backdrop-blur-sm border border-accent/70 rounded-lg px-4 py-3 text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)] hover:bg-accent/40 hover:border-accent hover:-translate-y-0.5 transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
           <span className="inline-flex items-center justify-center mr-2 min-w-[1.4rem] rounded bg-black/40 text-accent font-bold [text-shadow:none]">
-            {String.fromCharCode(65 + i)}
+            {String.fromCharCode(65 + pos)}
           </span>
-          {c.text}
+          {choices[origIdx].text}
         </button>
       ))}
     </div>
