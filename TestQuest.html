@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!-- saved from url=(0253)https://e63e1f87-f99d-4350-b345-bbce4c1bd653.frame.claudeusercontent.com/_f/1783185762-111d/?__frame_t=FOARyK5gtwtp8UKUTeZ5ZyCs.396abd87-cc54-499c-9122-cfc84674bc0d.1bc00315-e0ad-496b-894d-7a48d7e0341f.1783190285&__frame_v=manifest.bda96bdb5ebc99bf.json -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- frame-runtime --><!--<base href="/_f/1783185762-111d/">--><base href="."><script>window.__FRAME_PREAMBLE={"capabilities":{"mcp":"mcp.BQqQVVN_.js"},"transforms":"_transforms.DYk1Ltlh.js"}</script><script>(function(){"use strict";const J="modulepreload",K=function(e){return"/"+e},V={},N=function(t,n,u){let o=Promise.resolve();function i(f){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=f,window.dispatchEvent(a),!a.defaultPrevented)throw f}return o.then(f=>{for(const a of f||[])a.status==="rejected"&&i(a.reason);return t().catch(i)})},$=["light","dark","system"];function q(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_init;return t!=null&&typeof t=="object"}function I(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_theme;if(t==null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&$.includes(n)}function S(e){if(window===top||e.type==="auxclick"&&e.button!==1)return;const t=e.composedPath?e.composedPath():[e.target];let n=null;for(let f=0;f<t.length;f++){const a=t[f];if(a&&a.matches&&a.matches("a[href],area[href]")){n=a;break}}if(!n&&e.target&&e.target.closest&&(n=e.target.closest("a[href],area[href]")),!n)return;const u=n.getAttribute("href");if(!u)return;let o,i;try{o=new URL(u,document.baseURI),i=new URL(document.baseURI).origin}catch{return}(o.protocol==="http:"||o.protocol==="https:")&&o.origin!==i&&(e.preventDefault(),parent.postMessage({__frame_nav:!0,url:o.href},"*"))}const L={};function v(e){if(window===top)return;const t=Date.now();t-(L[e]||0)<500||(L[e]=t,parent.postMessage({__frame_engaged:!0,kind:e},"*"))}function U(){addEventListener("click",S,!0),addEventListener("auxclick",S,!0)}function D(){addEventListener("scroll",()=>v("scroll"),{capture:!0,passive:!0}),addEventListener("pointermove",()=>v("pointer"),{capture:!0,passive:!0}),addEventListener("click",()=>v("click"),{capture:!0,passive:!0})}function F(e,t,n){const u=[...t.values()].filter(o=>o.targets.some(i=>i.startsWith(e+".")));return{wrap(o,i){const f=`${e}.${o}`,a=u.filter(s=>s.targets.includes(f));return a.length===0?(...s)=>{try{return i(...s)}catch(d){return Promise.reject(d)}}:(...s)=>{let d=s;for(const c of a){const l=c.module.parameters;if(l)try{d=l(d)}catch{return Promise.reject({code:"transform_error",id:c.id,scope:e,message:"parameters transform failed"})}}let m;try{m=i(...d)}catch(c){m=Promise.reject(c)}return m.then(c=>{for(let l=a.length-1;l>=0;l--){const g=a[l],p=g.module.returns;if(p)try{c=p(c)}catch{return n({id:g.id,scope:e,leg:"returns"}),c}}return c},c=>{for(let l=a.length-1;l>=0;l--){const g=a[l],p=g.module.throws;if(p)try{c=p(c)}catch{return n({id:g.id,scope:e,leg:"throws"}),Promise.reject(c)}}return Promise.reject(c)})}}}}function B(e,t,n,u=()=>{}){const o=new Set(e.changes??[]),i=new Map;for(const f of o){const a=t[f];a&&i.set(f,a)}return{contract:e.contract,changes:o,flags:new Set(e.flags??[]),capabilities:e.capabilities??{},transforms:i,shellOrigin:n.shellOrigin,mount:n.mount,pipe:f=>F(f,i,u)}}(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let u=0;for(let o=0;o<n.length;o++){const i=n[o];try{e(t,i,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[i]}catch{}try{e(t,i,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[i]=="function"&&u++}if(u&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:u},"*")}catch{}})();const z=1e4,x=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function W(e){for(const t of x)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}const b=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities??{}}),E=window.__FRAME_PREAMBLE?.transforms,k=/^[\w.-]+\.js$/,H=/^[a-z][a-z0-9_-]{0,63}$/;let C=null,h=null;function P(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}let R=!1;function A(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,R=!0):R&&(delete t.dataset.theme,t.style.colorScheme="",R=!1)}const _=new Map;function G(e,t){const n=_.get(e);if(!n)return;Object.assign(n.impl,t),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const u=n.queue;n.queue=[];for(const o of u){const i=t[o.method];i?i(...o.args).then(o.resolve,o.reject):o.reject({code:"capability_removed",message:`${e}.${o.method} is not in this runtime`})}}function j(e,t){const n=_.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t);const u=n.queue;n.queue=[];for(const o of u)o.reject(t)}const O=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(O&&O.writable===!1)){U(),D();const e=O?.value??{};P(window,"claude",e);const t=s=>{const d={impl:Object.create(null),queue:[]};_.set(s,d);const m=new Proxy(d.impl,{get:(c,l)=>{if(typeof l=="string"&&!(l==="then"||l==="toJSON"||l==="valueOf"))return l==="toString"?Object.prototype.toString:(...g)=>{const p=c[l]??c.__settled;return p?p(...g):new Promise((w,M)=>{d.queue.push({method:l,args:g,resolve:w,reject:M})})}},set:()=>!1});P(e,s,m)};for(const s of Object.keys(b)){if(e[s]!==void 0){P(e,s,e[s]);continue}t(s)}let n=null,u=null,o=0;const i=s=>{s.source!==parent||!W(s.origin)||q(s.data)&&(n=s.data.__frame_init,h=s.origin,removeEventListener("message",i),clearTimeout(o),u?.())};addEventListener("message",i),parent.postMessage({__frame_connect:!0},"*");const f=new Promise(s=>{u=s,o=setTimeout(()=>{removeEventListener("message",i),s()},z)}),a=document.readyState==="loading"?new Promise(s=>document.addEventListener("DOMContentLoaded",()=>s(),{once:!0})):Promise.resolve();f.then(async()=>{if(!n||!h){for(const r of _.keys())j(r,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}A(n.theme);const s=h;addEventListener("message",r=>{r.source!==parent||r.origin!==s||I(r.data)&&A(r.data.__frame_theme.theme)});const d=r=>N(()=>import("/_runtime/"+r),void 0),m=Object.keys(n.capabilities??{});for(const r of m)Object.hasOwn(b,r)||H.test(r)&&e[r]===void 0&&(t(r),j(r,{code:"capability_disabled",message:"capability not in this runtime generation"}));const c=m.filter(r=>Object.hasOwn(b,r)).map(r=>[r,b[r]]).filter(r=>typeof r[1]=="string"&&k.test(r[1])),[l,...g]=await Promise.allSettled([E&&k.test(E)?d(E):Promise.resolve({}),...c.map(([,r])=>d(r))]),p=h;C=B(n,l.status==="fulfilled"&&l.value?.TRANSFORMS||{},{shellOrigin:p,mount:G},r=>parent.postMessage({__frame_cap_telemetry:r},p));const w=r=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:r}},p),M=C;g.forEach((r,y)=>{const T=c[y][0];if(r.status!=="fulfilled"){w(T);return}try{r.value?.install?.(M)}catch{w(T)}});for(const[r,y]of _)y.queue.length===0&&Object.keys(y.impl).length>0||j(r,{code:m.includes(r)?"capability_disabled":"not_granted",message:"capability not available in this session"});await a,parent.postMessage({__frame_ready:!0},h)})}})();</script><!-- /frame-runtime --><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<style>
+  :root {
+    --paper: #f7f4ee;
+    --paper-2: #fffdf9;
+    --ink: #23293a;
+    --ink-soft: #55607a;
+    --line: #e4ddd0;
+    --accent: #b8842b;
+    --accent-soft: #f0e3c8;
+    --fl: #4f7d5e;      /* 入門コース */
+    --tm: #3f6296;      /* 管理職コース */
+    --tta: #6f5aa8;     /* 技術コース */
+    --shadow: 24px 24px 60px rgba(35,41,58,.07);
+    --serif: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "YuMincho", serif;
+    --sans: "Yu Gothic", "游ゴシック", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #161a24; --paper-2: #1e2330; --ink: #e9e7df; --ink-soft: #a3abbf;
+      --line: #2c3342; --accent: #d7a445; --accent-soft: #3a3218;
+      --fl: #6fa585; --tm: #7ba0d6; --tta: #a08fd6;
+      --shadow: 24px 24px 60px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f4ee; --paper-2: #fffdf9; --ink: #23293a; --ink-soft: #55607a;
+    --line: #e4ddd0; --accent: #b8842b; --accent-soft: #f0e3c8;
+    --fl: #4f7d5e; --tm: #3f6296; --tta: #6f5aa8; --shadow: 24px 24px 60px rgba(35,41,58,.07);
+  }
+  :root[data-theme="dark"] {
+    --paper: #161a24; --paper-2: #1e2330; --ink: #e9e7df; --ink-soft: #a3abbf;
+    --line: #2c3342; --accent: #d7a445; --accent-soft: #3a3218;
+    --fl: #6fa585; --tm: #7ba0d6; --tta: #a08fd6; --shadow: 24px 24px 60px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); line-height: 1.9; font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  section { padding: clamp(48px, 8vw, 88px) 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; line-height: 1.4; }
+  .eyebrow {
+    font-family: var(--sans); font-size: 12.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 14px;
+  }
+  h2 { font-size: clamp(24px, 4.4vw, 33px); margin: 0 0 20px; letter-spacing: .01em; }
+  p { margin: 0 0 20px; }
+  strong { color: var(--ink); font-weight: 700; border-bottom: 2px solid var(--accent-soft); padding-bottom: 1px; }
+  .lead { font-size: 18.5px; color: var(--ink-soft); }
+  .note { font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---- Hero ---- */
+  .hero {
+    background:
+      radial-gradient(120% 90% at 82% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
+      var(--paper);
+    text-align: center; padding: clamp(64px, 12vw, 120px) 0 clamp(48px,8vw,80px);
+    border-top: none;
+  }
+  .badge {
+    display: inline-block; font-family: var(--sans); font-size: 12px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
+    border-radius: 100px; padding: 7px 18px; font-weight: 700; margin-bottom: 30px;
+  }
+  .hero h1 { font-size: clamp(40px, 9vw, 74px); margin: 0 0 8px; letter-spacing: .02em; }
+  .hero .tag { font-family: var(--serif); font-size: clamp(17px,3.2vw,22px); color: var(--ink-soft); margin: 0 0 30px; }
+  .hero .oneline { max-width: 540px; margin: 0 auto; font-size: 18px; }
+
+  /* ---- Stats ---- */
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .stat { background: var(--paper-2); padding: 26px 22px; }
+  .stat .num { font-family: var(--serif); font-size: clamp(34px, 7vw, 48px); font-weight: 600;
+    color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .lbl { margin-top: 8px; font-size: 14px; color: var(--ink-soft); }
+
+  /* ---- Character cards ---- */
+  .chars { display: flex; flex-direction: column; gap: 14px; }
+  .char { display: flex; gap: 18px; align-items: baseline; background: var(--paper-2);
+    border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px;
+    border-left: 5px solid var(--role, var(--accent)); }
+  .char .name { font-family: var(--serif); font-size: 20px; font-weight: 600; white-space: nowrap; }
+  .char .role { font-size: 13px; color: var(--role, var(--accent)); font-weight: 700; margin-top: 3px; }
+  .char .desc { font-size: 15px; color: var(--ink-soft); margin: 0; }
+
+  /* ---- Duo (人とAI) ---- */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .duo .col { background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
+  .duo .who { font-family: var(--serif); font-size: 21px; font-weight: 600; margin: 0 0 4px; }
+  .duo .cap { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+  .duo .human .cap { color: var(--tm); }
+  .duo .ai .cap { color: var(--tta); }
+  .duo ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--ink-soft); }
+  .duo li { margin-bottom: 9px; }
+  .handshake { text-align: center; font-family: var(--serif); font-size: 17px; color: var(--ink-soft);
+    margin-top: 22px; }
+
+  /* ---- Timeline ---- */
+  .tl { list-style: none; margin: 0; padding: 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .tl li { position: relative; padding: 0 0 26px 52px; }
+  .tl li:last-child { padding-bottom: 0; }
+  .tl .dot { position: absolute; left: 6px; top: 3px; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--accent); }
+  .tl .done .dot { background: var(--accent); }
+  .tl .when { font-family: var(--sans); font-size: 12.5px; letter-spacing: .06em; color: var(--accent);
+    font-weight: 700; }
+  .tl .what { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 2px 0 4px; }
+  .tl .exp { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  /* ---- Story panel (最近のひとコマ) ---- */
+  .panel { background: var(--paper-2); border: 1px solid var(--line); border-radius: 18px;
+    padding: clamp(24px, 5vw, 38px); box-shadow: var(--shadow); }
+  .panel .q { font-family: var(--serif); font-size: 19px; color: var(--ink); margin: 0 0 6px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 4px; }
+  .chip { font-size: 13px; font-weight: 700; padding: 5px 13px; border-radius: 100px;
+    background: var(--accent-soft); color: var(--accent); }
+
+  .close { text-align: center; }
+  .close .big { font-family: var(--serif); font-size: clamp(22px,4.6vw,30px); color: var(--ink); margin: 0 auto 18px; max-width: 560px; }
+  .foot { text-align: center; padding: 40px 0 60px; color: var(--ink-soft); font-size: 13px; }
+  .foot a { color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .duo { grid-template-columns: 1fr; }
+    .char { flex-direction: column; gap: 6px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">TestQuest</span>
+    <h1>TestQuest</h1>
+    <p class="tag">テストクエスト ── 物語で学ぶ、品質の技</p>
+    <p class="oneline">スマホやパソコンで遊べる、<strong>「物語を読みながらIT製品の“品質を守る仕事”を学べる」</strong>学習ゲームです。いま作っている、その舞台裏の話をします。</p>
+  </div>
+</div>
+
+<section class="reveal in">
+  <div class="wrap">
+    <p class="eyebrow">そもそも、何のゲーム？</p>
+    <h2>「バグを見つける人」を育てるゲーム</h2>
+    <p>スマホのアプリや銀行のシステムは、世に出る前に必ず「ちゃんと動くか」を確かめる人がいます。この<strong>製品の欠陥（バグ）を見つけて品質を守る専門職</strong>を「テスト技術者」と呼びます。地味だけれど、事故や不具合から私たちを守っている、とても大事な仕事です。</p>
+    <p>ところが、この仕事の勉強は分厚い教科書が中心で、正直かなり退屈。そこで──<strong>マンガのように物語を読み進めながら、登場人物と一緒に考えて学べるゲーム</strong>にしてしまおう、というのが TestQuest です。</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">遊び方は、えらぶだけ</p>
+    <h2>読んで、選んで、なるほど</h2>
+    <p>遊び方はシンプルです。先輩や上司との会話が進み、ときどき<strong>「あなたならどうする？」という選択肢</strong>が出ます。選ぶと、なぜ正しい／惜しいのかを先輩がやさしく解説してくれる。この繰り返しで、いつのまにか専門知識が身についていく仕組みです。</p>
+    <p>クイズに正解するとキャラクターの信頼や知識の“ゲージ”が伸びていくので、ゲーム感覚で最後まで続けられます。</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">数字で見ると</p>
+    <h2>けっこう、大作です</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">71</div><div class="lbl">物語エピソード（全部プレイ可能）</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">学習コース（入門→管理職→技術）</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">登場キャラクター（絵つき）</div></div>
+      <div class="stat"><div class="num">約260</div><div class="lbl">練習問題（選択式）</div></div>
+    </div>
+    <p class="note" style="margin-top:18px;">3つのコースは、まず<span style="color:var(--fl);font-weight:700;">入門</span>で基礎を、次に<span style="color:var(--tm);font-weight:700;">管理職コース</span>でチームをまとめる立場を、最後に<span style="color:var(--tta);font-weight:700;">技術コース</span>で専門技術を──と、実際のキャリアの階段に沿って学べるようになっています。入門を全部クリアすると次のコースが開く“RPGの関所”方式です。</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">登場人物</p>
+    <h2>先生役の5人</h2>
+    <p>プレイヤーを導く5人。それぞれ絵（立ち絵）と5種類の表情を、あとで話す“ある方法”で用意しました。</p>
+    <div class="chars">
+      <div class="char" style="--role:var(--fl)"><div><div class="name">凛</div><div class="role">頼れる先輩</div></div><p class="desc">入門コースで隣に立ち、基礎を一緒に考えてくれる案内役。</p></div>
+      <div class="char" style="--role:var(--tm)"><div><div class="name">田中</div><div class="role">上司（管理職コース）</div></div><p class="desc">チームをまとめ、見積もりや報告を教える。昇進していく物語の師匠。</p></div>
+      <div class="char" style="--role:var(--fl)"><div><div class="name">ケン</div><div class="role">同期のエンジニア</div></div><p class="desc">開発側の目線で相談に乗る、同い年の仲間。</p></div>
+      <div class="char" style="--role:var(--tta)"><div><div class="name">匠</div><div class="role">技術の職人（技術コース）</div></div><p class="desc">ベテランの技術メンター。コードの奥深くまで見抜く目を授ける。</p></div>
+      <div class="char" style="--role:var(--tta)"><div><div class="name">澪</div><div class="role">技術メンター（控え）</div></div><p class="desc">将来キャラを入れ替えられるように用意した、もう一人の技術の先生。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">いちばん伝えたいこと</p>
+    <h2>人とAIの、二人三脚で作っている</h2>
+    <p>このゲーム、実は<strong>一人の人間（＝私）と、AI（人工知能のClaude）がペアを組んで</strong>作っています。どちらか一方ではなく、役割を分けた共同作業です。</p>
+    <div class="duo">
+      <div class="col human">
+        <div class="cap">人間の担当</div>
+        <div class="who">方向を決め、OKを出す</div>
+        <ul>
+          <li>「何を・どんな品質で作るか」を決める</li>
+          <li>AIの下書きを一つひとつ確認して承認</li>
+          <li>専門家として内容の正しさを保証</li>
+          <li>実際に遊んで「ここが変」と気づく</li>
+        </ul>
+      </div>
+      <div class="col ai">
+        <div class="cap">AIの担当</div>
+        <div class="who">手を動かし、形にする</div>
+        <ul>
+          <li>物語や問題の文章を書く</li>
+          <li>プログラムを組み、絵を用意する</li>
+          <li>品質を自動でチェックする</li>
+          <li>間違いを見つけたら直す</li>
+        </ul>
+      </div>
+    </div>
+    <p class="handshake">AIが「たたき台」を作り、人間が「これでいく」と決める。<br>この積み重ねで、71本もの物語ができました。</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">これまでの道のり</p>
+    <h2>企画から、公開まで</h2>
+    <ol class="tl">
+      <li class="done"><span class="dot"></span><div class="when">はじまり</div><div class="what">「こんなゲームを作ろう」の設計図づくり</div><p class="exp">どんな人に、何を、どう学んでもらうか。家を建てる前の図面のように、丁寧に計画を立てました。</p></li>
+      <li class="done"><span class="dot"></span><div class="when">第1段階</div><div class="what">入門コース 27話が完成</div><p class="exp">まず基礎を学ぶ物語を作成。ここでゲームの“型”が固まりました。</p></li>
+      <li class="done"><span class="dot"></span><div class="when">第2段階</div><div class="what">キャラクターの絵を用意</div><p class="exp">登場人物の立ち絵を、AIの画像生成でていねいに作成。表情も5種類ずつ揃えました。</p></li>
+      <li class="done"><span class="dot"></span><div class="when">第3段階</div><div class="what">管理職コース23話・技術コース21話</div><p class="exp">応用編を一気に制作。合計71話の“フルコンテンツ”に到達しました。</p></li>
+      <li class="done"><span class="dot"></span><div class="when">第4段階</div><div class="what">インターネットに公開 🎉</div><p class="exp">誰でもURLから遊べる状態に。以後は直したいときにボタン一つで反映できる仕組みも整えました。</p></li>
+      <li class="done"><span class="dot"></span><div class="when">仕上げ</div><div class="what">軽く・安全に</div><p class="exp">絵のデータを約7割ダウンさせて表示を速く。似ている絵が世に無いかの権利チェックも実施しました。</p></li>
+      <li><span class="dot"></span><div class="when">いま ・ これから</div><div class="what">遊びごたえの調整</div><p class="exp">実際に遊んで気づいた点を改善中。次の話へ。</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <p class="eyebrow">最近のひとコマ</p>
+    <h2>「答えが、全部いちばん上だった」</h2>
+    <div class="panel">
+      <p class="q">人間が遊んでいて、あることに気づきました。</p>
+      <p>「正解の選択肢が、いつも<strong>いちばん上（A）</strong>にある。これじゃ何も考えずに一番上を選ぶだけの“作業”になってしまう」。学ぶ意欲がわかない、と。</p>
+      <p>そこでAIが、選択肢の並び順を<strong>毎回シャッフル</strong>する仕組みを入れました。ところが──人間が再確認すると、今度は妙な偏りが。調べてみると、プログラムを軽量化する工程で<strong>並べ替えの命令がこっそり無効になっていた</strong>のです。単体の確認では気づけない、いじわるな不具合でした。</p>
+      <p>AIが原因を突き止め、壊れない方式に作り直し。<strong>実際に40回ためして、きちんとバラけることを確かめて</strong>解決しました。</p>
+      <div class="chip-row">
+        <span class="chip">人間が気づく</span>
+        <span class="chip">AIが直す</span>
+        <span class="chip">実測で確かめる</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px;">こうやって「気づく人」と「直す人」が組んでいるから、小さな違和感も見逃さずに良くしていけます。これがこのプロジェクトの一番の強みです。</p>
+  </div>
+</section>
+
+<section class="reveal close">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--accent)">これから</p>
+    <p class="big">物語はもう全部そろいました。<br>いまは「もっと考えたくなる」問題へと、磨いている最中です。</p>
+    <p class="lead">退屈な暗記を、続けたくなる冒険に。<br>そんなゲームを、これからも少しずつ育てていきます。</p>
+  </div>
+</section>
+
+<div class="foot wrap">
+  TestQuest ／ 2026年 制作中 ・ 人とAIの共同開発<br>
+  ※このページは、家族向けにやさしく書いた開発の紹介です。
+</div>
+
+<script>
+  (function () {
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (e) { io.observe(e); });
+  })();
+</script>
+
+</body></html>
