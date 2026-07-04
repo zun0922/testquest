@@ -84,22 +84,64 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.screen])
 
+  // 画面遷移時はスクロールを先頭に戻す（設計書 v1.3 §5.0。前画面のスクロール位置を
+  // 引き継ぐと、章選択などで先頭が隠れて表示される）
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [state.screen])
+
   // --- 描画 ---
+  // 横持ちガード（設計書 v1.3 §8・AC-011）：縦持ちのスマホでは立ち絵が画面幅を超えるため
+  // 横向きを案内するオーバーレイを表示する（表示条件は index.css のメディアクエリ）
+  const rotateGuard = (
+    <div
+      data-testid="rotate-guard"
+      className="rotate-guard fixed inset-0 z-50 bg-bg-base text-text-main flex-col items-center justify-center gap-4 p-8 text-center"
+    >
+      <div className="text-5xl" aria-hidden>
+        📱↻
+      </div>
+      <p className="text-lg font-bold">端末を横向きにしてください</p>
+      <p className="text-sm text-text-muted">TestQuest は横画面専用です</p>
+    </div>
+  )
+
   if (state.indexState === 'loading') {
-    return <div className="min-h-screen bg-bg-base text-text-muted flex items-center justify-center">読み込み中…</div>
+    return (
+      <>
+        {rotateGuard}
+        <div className="min-h-screen bg-bg-base text-text-muted flex items-center justify-center">読み込み中…</div>
+      </>
+    )
   }
   if (state.indexState === 'error') {
-    return <ErrorScreen onRetry={handleRetry} />
+    return (
+      <>
+        {rotateGuard}
+        <ErrorScreen onRetry={handleRetry} />
+      </>
+    )
   }
   // シナリオロード失敗はエラー画面（進捗は破壊しない）
   if (state.scenarioState === 'error') {
-    return <ErrorScreen onRetry={handleRetry} />
+    return (
+      <>
+        {rotateGuard}
+        <ErrorScreen onRetry={handleRetry} />
+      </>
+    )
   }
   if (state.scenarioState === 'loading') {
-    return <div className="min-h-screen bg-bg-base text-text-muted flex items-center justify-center">読み込み中…</div>
+    return (
+      <>
+        {rotateGuard}
+        <div className="min-h-screen bg-bg-base text-text-muted flex items-center justify-center">読み込み中…</div>
+      </>
+    )
   }
 
-  switch (state.screen) {
+  const screenEl = (() => {
+    switch (state.screen) {
     case 'title':
       return (
         <TitleScreen
@@ -136,5 +178,13 @@ export default function App() {
       ) : null
     default:
       return null
-  }
+    }
+  })()
+
+  return (
+    <>
+      {rotateGuard}
+      {screenEl}
+    </>
+  )
 }

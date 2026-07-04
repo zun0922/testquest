@@ -24,3 +24,6 @@ e2e-shots/
 assets-candidates/
 # シラバス抽出テキスト（ISTQBシラバス本文の抽出＝著作物。リポジトリに含めない）
 シラバス抽出_*.txt
+
+.vercel
+.env*

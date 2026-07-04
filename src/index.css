@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 横持ちガード（設計書 v1.3 §8・AC-011）
+   縦持ちのモバイル幅では立ち絵（h-68vh）が画面幅を超えるため、
+   横向きを案内するオーバーレイを表示する。表示制御はここで行い、
+   レイアウトは App.tsx 側の Tailwind クラス（flex-col 等）が担う。 */
+.rotate-guard {
+  display: none;
+}
+@media (orientation: portrait) and (max-width: 820px) {
+  .rotate-guard {
+    display: flex;
+  }
+}

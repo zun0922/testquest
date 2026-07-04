@@ -115,7 +115,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
 }
 
 function speakerName(id: string): string {
-  const names: Record<string, string> = { rin: 'リン', tanaka: '田中', ken: 'ケン' }
+  const names: Record<string, string> = { rin: 'リン', tanaka: '田中', ken: 'ケン', takumi: '匠', mio: '澪' }
   return names[id] ?? id
 }
 
@@ -130,7 +130,7 @@ function Stage({ characters, speaker }: { characters: CharacterDisplay[]; speake
             key={c.position}
             src={characterUrl(c.characterId, c.expression)}
             alt=""
-            className={`h-[68vh] w-auto object-contain drop-shadow-xl transition ${dim ? 'grayscale brightness-[.45]' : ''}`}
+            className={`h-[68vh] w-auto max-w-[46vw] object-contain object-bottom drop-shadow-xl transition ${dim ? 'grayscale brightness-[.45]' : ''}`}
             style={{ order: c.position === 'left' ? 0 : 1 }}
           />
         )

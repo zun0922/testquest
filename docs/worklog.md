@@ -824,3 +824,29 @@
 **次のアクション：** POの実画面確認 → ①AL-TTA着手（server背景の制作→第1章起案）②通しプレイFB反映 ③デプロイ検討。優先度はPO判断
 
 ---
+
+## 2026-07-04（追記9）
+**着手内容：** デプロイ検討（宿題D-3・PO指示）
+**PO決定：** ①方式＝**GitHub連携**（クロスワード踏襲・push→Vercel自動デプロイ・CI有効化）②**B-4（類似性逆引き）は後日・リスク了承で公開先行**（社内パイロット目的の限定公開と位置づけ・法務D2確認前である点も含めPOが了承）
+**完了内容（AI側の準備）：**
+- **`.gitignore` 追加**：`assets-candidates/`（90MB候補画像・系譜はローカル/OneDrive保持）・**`シラバス抽出_*.txt`（ISTQBシラバス本文の抽出＝著作物のためリポ厳禁）**。ステージング後に除外を機械確認（両方0件）
+- **git 初期化**（main）・ローカル識別設定（zun0922/noreply）・**初回コミット f607f42**（191ファイル・[feat]規約準拠）。**push は未実施（ユーザー操作）**
+- Vercel設定の事前確認：Vite自動検出・env不要・SPA rewrites不要。本番挙動確認済み（unlockAllはDEV限定で本番無効・ALはFL全クリア解放）
+- 残ユーザー操作を提示：①GitHubで空リポ作成（**Private推奨**＝B-4未了＋内部docs含む）②`git remote add`＋`git push -u origin main`（push契機でCI初回実行）③Vercelでimport→Deploy ④デプロイ後スモーク（AL🔒表示・unlockAll無効・進捗復元）
+**メモ：** public/images 34MB は許容範囲・将来 pngquant で圧縮余地（1/4程度）
+**次のアクション：** ユーザーの push → Vercel import → デプロイ後スモーク（AI が確認支援）→ 宿題 D-3 完了。並行候補＝AL-TTA着手・通しプレイFB反映・B-4実施
+
+---
+
+## 2026-07-04（追記10）
+**着手内容：** Vercelデプロイの代行実行（PO指示「3から代行できる？」→ ログインのみユーザー実施）
+**完了内容：**
+- ユーザー実施：GitHubリポ作成（`zun0922/testquest`）・push（f607f42）・`npx vercel login`
+- AI代行：`vercel link --yes`（プロジェクト `testsim` 作成・GitHubリポ自動連携＝以後 push で自動デプロイ）→ `vercel deploy --prod`
+- **本番デプロイ成功**：Status Ready・ビルド18秒。**Production URL: https://testsim-three.vercel.app**
+- **デプロイ後スモーク（全合格）：** ①HTTP 200＋タイトル「TestQuest — JSTQB テストエンジニア育成ゲーム（非公式）」②index.json＝50シナリオ配信（fl-1-01〜al-tm-3-04・level FL/AL-TM）③立ち絵PNG配信200 ④**本番JSバンドルに `unlockAll` が0件**＝devフックはビルド時除去・本番はALがFL全クリアでのみ解放（設計どおり）
+- CLI が .gitignore に `.vercel`/`.env*` を自動追記（次回コミットに含める）
+- **宿題 D-3 完了**（✅）。運用：以後は `git push` が本番リリース（push頻度方針どおりリリース時のみ）
+**次のアクション：** POの実機確認（スマホ含む・AC-011観点）→ 並行候補＝AL-TTA着手（server背景から）・通しプレイFB反映・B-4類似性逆引き
+
+---
