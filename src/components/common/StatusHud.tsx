@@ -17,11 +17,12 @@ interface Props {
 }
 
 export default function StatusHud({ status, variant = 'hud', before }: Props) {
+  const isHud = variant === 'hud'
   return (
     <div
       className={
-        variant === 'hud'
-          ? 'bg-black/62 rounded-lg p-2 flex flex-col gap-1'
+        isHud
+          ? 'bg-black/75 ring-1 ring-white/15 rounded-lg p-1.5 flex flex-col gap-0.5'
           : 'flex flex-col gap-3'
       }
     >
@@ -31,12 +32,18 @@ export default function StatusHud({ status, variant = 'hud', before }: Props) {
         const prev = before?.[key] ?? after
         return (
           // status-bar-{key}：この要素内のテキストに数字・% を出さないこと（背理法検証対象）
-          <div key={key} data-testid={`status-bar-${key}`} className="flex items-center gap-2">
-            <span aria-hidden className="text-sm">
+          <div key={key} data-testid={`status-bar-${key}`} className={`flex items-center ${isHud ? 'gap-1.5' : 'gap-2'}`}>
+            <span aria-hidden className={isHud ? 'text-[11px] leading-none' : 'text-sm'}>
               {m.icon}
             </span>
             <span className="sr-only">{m.label}</span>
-            <div className="relative h-1.5 w-[150px] rounded bg-line/60 overflow-hidden">
+            {/* トラック（未達部分）に濃い背景色を敷き、明るい背景でもメーターが視認できるようにする（PO指摘・PC/スマホ共通）。
+                HUD時は幅を縮小してスマホでの立ち絵との重なりを軽減する（レスポンシブ） */}
+            <div
+              className={`relative rounded overflow-hidden ${
+                isHud ? 'h-1.5 w-[92px] sm:w-[120px] bg-black/55 ring-1 ring-white/10' : 'h-1.5 w-[150px] bg-line/60'
+              }`}
+            >
               {/* compare：プレイ前の値を薄く下地表示 */}
               {variant === 'compare' && (
                 <div className="absolute inset-y-0 left-0 rounded bg-text-muted/50" style={{ width: `${prev}%` }} />
