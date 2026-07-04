@@ -1,0 +1,178 @@
+{
+  "id": "al-tta-2-05",
+  "title": "どこまで、どの技法で 〜ホワイトボックステスト技法の選択〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "2つのモジュールのカバレッジ方針を決める。技法は“強ければいい”わけじゃない。対象の性質とリスクで選ぶ。まず状況を頭に入れてくれ。",
+      "next": "brief1"
+    },
+    {
+      "id": "brief1",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "narration",
+      "text": "【モジュールA】フライト制御。安全関連で規制標準が適用される。判定は単一条件が中心。【モジュールB】機内エンターテインメント。安全非関連。複数条件の判定が多いが、手元のカバレッジツールは複合条件を未サポート。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "そもそも、カバレッジ基準は何%で指定すべきだ？",
+      "choices": [
+        {
+          "text": "原則100%。低い指定は最も危ない部分を残す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ホワイトボックスカバレッジは原則100%で指定します。低く指定すると、テストしない部分がテストの最も困難な部分——通常、最も複雑でエラーが発生しやすい部分——になりがちだからです。例えば80%の達成は、検出可能な欠陥の大部分を含むコードを未テストのまま残すことを意味しうる。ISO 29119-4は実行不可能なカバレッジアイテムを計算から除外でき、100%を達成可能な目標にできます。指定するカバレッジ基準は1つでよく、100%なら包含関係で下位基準も満たされます。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "80%など現実的な低めの値で指定する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "現実的に見えて、実は危険です。カバレッジを低く指定すると、テストしない20%が最もテストしにくい＝最も複雑でエラーの多い部分になりがち。80%達成が、検出可能な欠陥の大部分を含むコードを放置することを意味しかねません。だから標準として指定するなら、ほとんどの場合100%です。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "安全関連のモジュールA。技法選択の決め手は？",
+      "choices": [
+        {
+          "text": "規制標準が安全度水準ごとに要求カバレッジを定義",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。安全性に関連するシステムでは、達成すべきカバレッジレベルを定義する規制標準を通常使用しなければなりません（IEC 61508、自動車のISO 26262、航空機のDO-178Cなど）。標準はハザード分析を要求し、その結果のリスクで各部に安全度水準（SIL）を割り当て、水準ごとに要求カバレッジが定義されます。TTAの自由度は安全非関連システムより低くなります。なおAは判定が単一条件中心なので、MC/DCや複合条件は無駄になりうる（コーディングスタイル要因）点も踏まえます。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テストアナリストの主観で自由に決める",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "安全関連では自由には決められません。規制標準が安全度水準ごとに要求カバレッジを定義し、それに従う必要があります。主観で選べる自由度が高いのは安全“非”関連システムのほうです。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "一律に最も厳しい複合条件テストにする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "最も厳しくすれば安心とは限りません。Aは判定が単一条件中心——判定の中に複数条件がないコードにMC/DCや複合条件カバレッジを課すのは無駄です（コーディングスタイル要因）。従うべきは規制標準が定める要求カバレッジであり、技法は対象の性質に合わせて選びます。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "安全非関連のモジュールB。複数条件が多いが、ツールは複合条件を測れない。どう選ぶ？",
+      "choices": [
+        {
+          "text": "リスクとコストの妥協点で。ツール未対応の技法は避ける",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。安全非関連ではTTAの自由度は高いものの、選択は認識されたリスクと、コスト・リソース・時間との妥協点です。選択要因には契約・顧客・規制標準・テスト戦略・コーディングスタイル・過去の欠陥情報・スキルと経験・そして“ツール”があります。ホワイトボックスカバレッジはカバレッジツールでしか実際に測定できないため、尺度をサポートするツールが無ければ、その尺度を選び達成することは高いリスクをもたらします。Bはツールが複合条件を未サポートなので、MC/DCやデシジョンを現実解にします。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "複数条件が多いので迷わず複合条件テストにする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "条件の多さだけで選ぶと足をすくわれます。Bのツールは複合条件を未サポート——ホワイトボックスカバレッジはツールでしか実測できないため、測れない尺度を選ぶこと自体が高リスクです。ツールという選択要因を踏まえ、測定可能なMC/DCやデシジョンを現実解にします。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "カバレッジ基準どうしの包含関係、説明できるか？",
+      "choices": [
+        {
+          "text": "ブランチ/デシジョン⊃ステートメント、複合条件⊃MC/DC⊃デシジョン",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。あるカバレッジ基準を満たすテストが別の基準も満たすとき、前者は後者を包含するといいます。ブランチカバレッジとデシジョンカバレッジはステートメントカバレッジを包含し、MC/DCはデシジョン/ブランチカバレッジを包含し、複合条件カバレッジはMC/DCを包含します。だから100%で1つの基準を指定すれば、それが包含する下位の基準も自動的に満たされます。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "基準に上下関係はなく、すべて独立している",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "独立ではなく、包含の階層があります。ブランチ/デシジョン⊃ステートメント、MC/DC⊃デシジョン/ブランチ、複合条件⊃MC/DC。この階層があるからこそ、上位基準を100%で指定すれば下位も満たされ、指定すべき基準は1つで済むのです。",
+            "syllabusRefs": ["TTA-2.8.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "安全関連は標準に従い、そうでなければリスクとコストとツールで選ぶ。強い技法を振り回すんじゃない、対象に合わせて選ぶ——それがホワイトボックスの目利きだ。第2章はここまで。よくやった。",
+      "next": null
+    }
+  ]
+}

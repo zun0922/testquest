@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-1-01",
+  "title": "技術リスクの目利き 〜RBTにおけるTTAのタスク〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "今日からテクニカルテストアナリストだな。……テストマネージャーが立てたリスク戦略の中で、俺たち技術屋が何をするか。まずそこを、はっきりさせておこう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "リスクベースドテストの中で、テクニカルテストアナリストの立ち位置は？",
+      "choices": [
+        {
+          "text": "TMの枠組みの中で技術的リスクの知識を提供する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。リスクベースのテスト戦略を確立・マネジメントする全体責任はテストマネージャーにあり、テクニカルテストアナリストはその枠組みの中で仕事をします。セキュリティ・システムの信頼性・性能に関するリスクなど、プロジェクトに内在する技術的なプロダクトリスクの知識を提供し、性能・信頼性・セキュリティテストのためのテスト環境の取得やセットアップといった、テスト環境に関連するプロジェクトリスクの識別と対応にも貢献します。",
+            "syllabusRefs": ["TTA-1.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "TTAがリスク戦略全体を策定しマネジメントする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "戦略全体を担いたくなるかもしれませんが、それはテストマネージャーの責任です。テストマネージャーがリスクベースドアプローチを確立・マネジメントし、その正しい実装のためにテクニカルテストアナリストの関与を求めます。TTAは枠組みの中で、技術的リスクの知識を提供する役割です。",
+            "syllabusRefs": ["TTA-1.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "そのリスクベースドテスト、TTAが関わるタスクは何だ？",
+      "choices": [
+        {
+          "text": "識別・アセスメント・軽減に繰り返し関与する",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。テクニカルテストアナリストは、リスク識別・リスクアセスメント・リスク軽減の3つのタスクに積極的に関与します。これらは新たに発生するリスクや優先度の変化に対応し、リスクの状況を定期的に評価・伝達するために、プロジェクト期間中に繰り返し実施します。一度きりではありません。",
+            "syllabusRefs": ["TTA-1.2.2"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "テスト実行だけを担当すればよい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実行だけでは足りません。TTAはリスク識別・アセスメント・軽減の全タスクに関与します。実行はそのうち軽減の一部（設計したテストケースの実行）にすぎず、上流の識別・アセスメントにこそ技術的な知識が求められます。",
+            "syllabusRefs": ["TTA-1.2.2"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "リスク識別。技術屋の俺たちが得意なやり方は、どれだと思う？",
+      "choices": [
+        {
+          "text": "技術スキルで専門家面談やブレスト、関係者と協力",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。リスク識別は可能な限り広範なステークホルダーの参加で重要リスクを多く検出できます。TTAは優れた技術スキルを持つため、専門家インタビューや同僚とのブレーンストーミング、経験の分析でリスク領域の特定に特に適しています。開発者・アーキテクト・運用エンジニア・プロダクトオーナー・技術エキスパート・サービスデスク技術者らと密接に協力し、あらゆる見解が考慮されるようにします（他ステークホルダーの巻き込みはテストマネージャーが手助けすることが多い）。識別するリスクは、通常 ISO 25010 のプロダクト品質特性に基づきます。",
+            "syllabusRefs": ["TTA-1.2.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "技術者なのだから一人で判断すれば十分",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "技術力に自信があっても、一人では見落としが出ます。リスク識別は可能な限り広範なステークホルダーの参加で、重要なリスクを多く検出できます。TTAの役割は、技術スキルを活かして専門家面談やブレストを主導し、開発・アーキテクト・運用など他の関係者を巻き込むことです。",
+            "syllabusRefs": ["TTA-1.2.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "リスクの“可能性”と“影響”。TTAはどちらに貢献する？",
+      "choices": [
+        {
+          "text": "技術リスクの発生確率。影響は主にTAが決める",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。テクニカルテストアナリストは各技術的なプロダクトリスクの確率（発生の可能性）の理解に貢献し、テストアナリストは問題が発生した場合の潜在的なビジネスへの影響の理解に貢献します。TTAはTMが確立したガイドラインに従ってリスクの可能性の初期値を提示し（全ステークホルダーの見解を踏まえてTMが修正することも）、リスクの影響は通常テストアナリストが決定します。軽減では、高リスク領域のテストケースを設計・実行し、追加情報に基づいて再評価します。",
+            "syllabusRefs": ["TTA-1.2.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "TTAが可能性も影響も単独で確定する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "両方を一人で確定したくなりますが、役割分担があります。TTAは技術リスクの発生確率に貢献し、ビジネス影響の理解はテストアナリストが担います。可能性の初期値もTMのガイドラインに従って提示し、TMが全体を踏まえて修正しうるもの。技術と業務、それぞれの目利きを持ち寄るのがリスクアセスメントです。",
+            "syllabusRefs": ["TTA-1.2.2"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……いい入り方だ。技術リスクの確率を読み、関係者を巻き込み、繰り返し評価する。それが技術屋のリスクベースドテストだ。次は、コードそのものと向き合ってもらう。",
+      "next": null
+    }
+  ]
+}

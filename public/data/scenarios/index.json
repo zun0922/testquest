@@ -450,6 +450,60 @@
       "order": 4,
       "estimatedMinutes": 18,
       "file": "al-tm-3/al-tm-3-04.json"
+    },
+    {
+      "id": "al-tta-1-01",
+      "title": "技術リスクの目利き 〜RBTにおけるTTAのタスク〜",
+      "level": "AL-TTA",
+      "chapter": 1,
+      "order": 1,
+      "estimatedMinutes": 12,
+      "file": "al-tta-1/al-tta-1-01.json"
+    },
+    {
+      "id": "al-tta-2-01",
+      "title": "コードを通す、判定を通す 〜ステートメント／デシジョンテスト〜",
+      "level": "AL-TTA",
+      "chapter": 2,
+      "order": 1,
+      "estimatedMinutes": 15,
+      "file": "al-tta-2/al-tta-2-01.json"
+    },
+    {
+      "id": "al-tta-2-02",
+      "title": "独立して効く条件 〜改良条件判定テスト（MC/DC）〜",
+      "level": "AL-TTA",
+      "chapter": 2,
+      "order": 2,
+      "estimatedMinutes": 15,
+      "file": "al-tta-2/al-tta-2-02.json"
+    },
+    {
+      "id": "al-tta-2-03",
+      "title": "すべての組み合わせを尽くす 〜複合条件テスト〜",
+      "level": "AL-TTA",
+      "chapter": 2,
+      "order": 3,
+      "estimatedMinutes": 15,
+      "file": "al-tta-2/al-tta-2-03.json"
+    },
+    {
+      "id": "al-tta-2-04",
+      "title": "つなぎ目を攻める 〜APIテスト〜",
+      "level": "AL-TTA",
+      "chapter": 2,
+      "order": 4,
+      "estimatedMinutes": 15,
+      "file": "al-tta-2/al-tta-2-04.json"
+    },
+    {
+      "id": "al-tta-2-05",
+      "title": "どこまで、どの技法で 〜ホワイトボックステスト技法の選択〜",
+      "level": "AL-TTA",
+      "chapter": 2,
+      "order": 5,
+      "estimatedMinutes": 18,
+      "file": "al-tta-2/al-tta-2-05.json"
     }
   ]
 }

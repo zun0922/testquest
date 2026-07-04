@@ -88,6 +88,29 @@ describe('本番シナリオデータの検証（FR-009 データ品質の門番
     expect(index.scenarios.filter((s) => s.level === 'AL-TM')).toHaveLength(23)
   })
 
+  it('AL-TTA第1章は1本・第2章は5本（起案 AL-TTA第1-2章 v0.1・監修承認 2026-07-04・企画書§5.3.1）', () => {
+    expect(index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 1)).toHaveLength(1)
+    const ch2 = index.scenarios.filter((s) => s.level === 'AL-TTA' && s.chapter === 2)
+    expect(ch2).toHaveLength(5)
+    const orders = ch2.map((s) => s.order)
+    expect(orders).toEqual([...orders].sort((a, b) => a - b))
+  })
+
+  it('AL-TTA の syllabusRefs は TTA- 接頭辞形式（al-adaptation.md の項番規約）', () => {
+    for (const s of index.scenarios.filter((x) => x.level === 'AL-TTA')) {
+      const data = readJson(s.file) as {
+        nodes: Array<{ choices?: Array<{ feedback: { syllabusRefs: string[] } }> }>
+      }
+      for (const node of data.nodes) {
+        for (const c of node.choices ?? []) {
+          for (const ref of c.feedback.syllabusRefs) {
+            expect(ref, `${s.id} の項番 '${ref}' が TTA- 形式でない`).toMatch(/^TTA-\d+\.\d+(\.\d+)?$/)
+          }
+        }
+      }
+    }
+  })
+
   it('FL章の門番は level FL のみを数える（AL追加による誤カウント防止）', () => {
     const flCh1 = index.scenarios.filter((s) => s.level === 'FL' && s.chapter === 1)
     expect(flCh1).toHaveLength(5)

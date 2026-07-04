@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-2-04",
+  "title": "つなぎ目を攻める 〜APIテスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "今度はマイクロサービス間のAPIだ。画面はない。……画面のないテスト対象を、どう攻める？ APIテストの勘所を押さえよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "APIテストって、そもそもどういう性格のものだ？",
+      "choices": [
+        {
+          "text": "技法というよりやり方。入力値と返却データの評価に焦点",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。APIテストはテスト技法というよりも、テストのやり方の一種です。焦点は入力値と返されたデータの評価にあり、ある点でグラフィカルユーザーインターフェース（GUI）のテストとよく似ています。特定のカバレッジレベルを示すものではありません。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "特定のカバレッジレベルを示すテスト技法だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "APIテストは特定のカバレッジレベルを示すテスト技法ではありません。ステートメントテストやMC/DCのような「技法」ではなく、入力値と返却データの評価に焦点を当てた「テストのやり方」の一種です。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "APIテストで、特に外せない観点は何だ？",
+      "choices": [
+        {
+          "text": "ネガティブテストと堅牢なエラー処理",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。APIを使うプログラマーは、意図しない方法でインターフェースを使おうとする可能性があります。誤った運用を避けるには強固なエラー処理が不可欠であり、ネガティブテストが重要になります。また、1つのインターフェースに複数のパラメーターが含まれ、それらの値がさまざまに組み合わされうるため、多くのインターフェースの組み合わせテストが必要になる場合があります。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "正常系が通れば十分だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "正常系だけでは足りません。APIは意図しない方法で使われる可能性があり、誤った運用を避けるための強固なエラー処理が不可欠——だからネガティブテストが重要です。予期しない入力への振る舞いこそ、APIテストの要です。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "APIならではのリスクは、どこにある？",
+      "choices": [
+        {
+          "text": "疎結合ゆえの損失・タイミング不具合。リカバリを徹底",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。APIは疎結合であることが多く、その結果、トランザクションの損失やタイミングの不具合が発生する可能性が非常に高くなります。そのため、リカバリーとリトライのメカニズムを徹底的にテストする必要があります。APIを提供する組織は、すべてのサービスが非常に高い可用性を持つことを保証すべきで、厳格な信頼性テストとインフラのサポートがしばしば必要です。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "疎結合なので障害は起きにくい",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "逆です。API は疎結合であることが多く、その結果トランザクションの損失やタイミングの不具合の可能性が“非常に高く”なります。だからこそリカバリーとリトライのメカニズムを徹底的にテストし、高可用性を保証する必要があるのです。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "APIテストのカバレッジは、どう考える？",
+      "choices": [
+        {
+          "text": "最低限、現実的な入力と予期しない入力の両方で呼ぶ",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。APIテストは特定のカバレッジレベルを示しませんが、最低限、現実的な入力値と、例外処理をチェックするための予期しない入力の両方でAPIを呼び出すべきです。より徹底したテストは、呼び出し可能なエンティティが少なくとも一度確認できること、または可能なすべての関数を少なくとも一度呼び出せることを確認します。発見される欠陥は、インターフェースの問題・データ処理・タイミング・トランザクションの損失/重複・例外処理など多岐にわたります。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "呼び出せることを1回確認すれば完了",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "1回呼べただけでは不十分です。最低限でも、現実的な入力値と、例外処理を確かめる予期しない入力の“両方”で呼ぶ必要があります。より徹底するなら、すべての関数を少なくとも一度呼び出せることまで確認します。",
+            "syllabusRefs": ["TTA-2.7.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……よし。画面がなくても、入力と返り値、そして異常系。つなぎ目こそ壊れやすい。システムがサービスに分かれるほど、APIを攻める腕がものを言う。次は、どの技法をどこまでやるか——選ぶ話だ。",
+      "next": null
+    }
+  ]
+}

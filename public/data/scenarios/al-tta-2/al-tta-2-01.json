@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-2-01",
+  "title": "コードを通す、判定を通す 〜ステートメント／デシジョンテスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "単体テストのカバレッジ設計だ。……このコード、最低限どこまで通せばいい？ ホワイトボックスの基本、ステートメントとデシジョンから始めよう。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "まずステートメントカバレッジ。これは何を測る？",
+      "choices": [
+        {
+          "text": "実行したステートメント数÷実行可能な総数",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。ステートメントテストはコード内の実行可能なステートメントに着目します。カバレッジは、テストによって実行されたステートメントの数を、テスト対象の実行可能なステートメントの総数で割った値（通常%）。完全達成はすべてのコードで最低限考慮すべきですが、時間や労力の制約で常に可能とは限らず、到達不能コード（例：全ケースを明示処理済みなのに必須のswitchデフォルト）のため100%にできないこともあります。",
+            "syllabusRefs": ["TTA-2.2.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "テストの本数を数えた割合だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "テストの本数ではありません。ステートメントカバレッジは、実行された“ステートメント”の数を実行可能なステートメントの総数で割った値です。少ないテストでも多くのステートメントを通せますし、逆もあります。測るのはコードのどれだけを通したか、です。",
+            "syllabusRefs": ["TTA-2.2.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "問題だ。分岐のない直線コードが5行ある。完全なステートメントカバレッジに、テストは何件要る？",
+      "choices": [
+        {
+          "text": "1件（全行を1回通れば100%）",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。分岐のない直線コードは、1つのテストケースで先頭から末尾まで全ステートメントを通過でき、それで100%です。ステートメントカバレッジが見るのは“各ステートメントを通ったか”であり、行数分のテストは必要ありません。",
+            "syllabusRefs": ["TTA-2.2.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "5件（1行に1テストが必要）",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "1行1テストと考えたくなりますが、分岐がなければ1つのテストが5行すべてを順に通過します。ステートメントカバレッジは通過の有無を見るので、直線コードなら1件で100%。行数とテスト数は一致しません。",
+            "syllabusRefs": ["TTA-2.2.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "次はデシジョンテスト。ステートメントと何が違う？",
+      "choices": [
+        {
+          "text": "判定結果に着目し、真と偽の制御フローを通す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。デシジョンテストは判定結果に着目し、判定ポイントからの制御フローを追います（IFは真/偽、CASEは複数の結果、LOOPは条件の真/偽）。判定の内部構造の複雑度に関係なく、判定“全体”を真と偽の結果で評価します。ブランチテストとほぼ同義で扱われます（ISO29119-4では判定のないコードにも最低1テストを課し、ブランチカバレッジ100%と等価にしている）。",
+            "syllabusRefs": ["TTA-2.3.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "判定の中の条件を1つずつ全部評価する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "それは改良条件判定（MC/DC）や複合条件テストの発想です。デシジョンテストは、判定の内部構造の複雑度に関係なく、判定“全体”の真偽の結果だけを評価します。そのため、複数条件の組み合わせによる欠陥は検出できない場合があります。",
+            "syllabusRefs": ["TTA-2.3.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "もう一問。`if(x>0){A} else {B}` の完全デシジョンカバレッジに、最小で何件要る？",
+      "choices": [
+        {
+          "text": "2件（x>0が真の入力と、偽の入力）",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。IFの真の結果（Aへ）と偽の結果（Bへ）、両方の制御フローを通す必要があるため、最小2件です。例えば x=1（真）と x=-1（偽）。デシジョンカバレッジは判定結果の真偽を両方カバーして初めて100%になります。",
+            "syllabusRefs": ["TTA-2.3.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "1件（Aさえ通れば十分）",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "真の側（A）だけでは、偽の側（else→B）の判定結果が未カバーです。デシジョンテストは真と偽の両方の結果を通す必要があるため、最小2件。片方だけでは、else側に潜む欠陥を見逃します。",
+            "syllabusRefs": ["TTA-2.3.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……筋がいい。ステートメントで“通したか”、デシジョンで“真偽を分けたか”。ここが土台だ。だが、判定の中に条件が複数あると、これでは足りなくなる。次で見せよう。",
+      "next": null
+    }
+  ]
+}

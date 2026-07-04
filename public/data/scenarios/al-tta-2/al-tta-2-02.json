@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-2-02",
+  "title": "独立して効く条件 〜改良条件判定テスト（MC/DC）〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "航空系サブシステムのレビューだ。ここは改良条件判定テスト——MC/DC が要る。……なぜだと思う？ 判定の中に、条件が複数あるからだ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "MC/DC は、何を確かめる技法だ？",
+      "choices": [
+        {
+          "text": "各条件が独立して判定結果に影響することを確認",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。各判定文は1つ以上の不可分条件から構成され、それぞれがブール値として評価され、論理的に結合されて判定結果を決めます。改良条件判定テスト（MC/DC）は、各不可分条件が“独立して”正しく全体の判定結果に影響することをチェックします。複数の条件を含む判定において、ステートメントカバレッジやデシジョンカバレッジよりも強いレベルのカバレッジを提供します。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "判定全体の真偽だけを見る",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "判定全体の真偽だけを見るのはデシジョンテストです。MC/DCは、判定が複数の条件を含む場合にどう構成されているかを考慮し、各不可分条件が独立して判定結果に影響することを確認します（判定が1つの不可分条件だけならデシジョンテストと同じになります）。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "問題だ。独立した3つの不可分条件 A・B・C を持つ判定。MC/DC 達成に通常必要なテスト回数は？",
+      "choices": [
+        {
+          "text": "N+1 ＝ 4回",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。N個の一意で互いに独立した不可分条件を仮定すると、MC/DCは通常 N+1 回の実行で達成されます。3条件なら 3+1＝4 回。各不可分条件の結果の変化が独立して判定結果に影響することを示すテストのペアが必要です。なお1つのテストケースで複数条件の組み合わせを実行するため、必ずしもN+1個の別々のテストケースを実行する必要はありません。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "2^N ＝ 8回",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "2^N（=8）は複合条件テスト（全組み合わせ）の回数です。MC/DCはすべての組み合わせを試すのではなく、各条件が独立して判定結果に効くことを示せればよいので、通常 N+1（=4）回で達成できます。そこが複合条件テストとの大きな違いです。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "MC/DC は、どういう場面で使う技法だ？",
+      "choices": [
+        {
+          "text": "セーフティクリティカル。デシジョンと複合条件の中間",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。航空宇宙産業や自動車産業など、故障が大惨事を引き起こす可能性のあるセーフティクリティカルなシステムで使われます。デシジョンテストよりも厳密ですが、判定に不可分条件がいくつかある場合、複合条件テストよりもはるかに少ないテスト条件で実施できる——デシジョンと複合条件の中間的で妥当な位置づけです。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "あらゆるコードで常に使うべき最上位技法",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "常に最上位、ではありません。MC/DCはセーフティクリティカルなシステム向けの技法で、デシジョンと複合条件の“中間”の位置づけです。判定に条件が1つしかないコードではデシジョンテストと変わらず、MC/DCを課す意味は薄くなります。技法は対象の性質とリスクで選びます。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "MC/DC の達成を難しくする要因を挙げられるか？",
+      "choices": [
+        {
+          "text": "条件の“結合”と、コンパイラの短絡評価",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。①結合：同じ変数が判定内に複数回出現すると条件が「結合」し、1つの条件の値だけで判定結果を変えられないことがあります（結合していない不可分条件のみをテストする、各判定を解析する等で対処）。②短絡評価：`A and B` で A が偽なら B を評価しないなど、式全体を評価しないコンパイラ設計は、必要なテストを実行できずMC/DC達成に影響します（テスト時に短絡評価を切る設定が可能だが、テスト/本番コード同一が要件のセーフティクリティカルでは許されない場合あり）。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "MC/DC に達成を妨げる要因は存在しない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "実際には妨げる要因があります。同じ変数の複数出現による条件の「結合」、そしてコンパイラの短絡評価です。特に短絡評価は、テスト時に切る設定ができても、テストコードとデリバリーコードが同一でなければならないセーフティクリティカルなアプリケーションでは切れないことがあり、MC/DC達成の難所になります。",
+            "syllabusRefs": ["TTA-2.4.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……理解が速いな。条件を1つずつ独立に効かせて確かめる。少ないテストで深く見る——MC/DC は職人の道具だ。次は、全部を尽くす“複合条件”を見せよう。",
+      "next": null
+    }
+  ]
+}

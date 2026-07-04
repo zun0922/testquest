@@ -1,0 +1,157 @@
+{
+  "id": "al-tta-2-03",
+  "title": "すべての組み合わせを尽くす 〜複合条件テスト〜",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "「全部の組み合わせを試したいんです」——新人がそう言ってきた。気持ちは分かる。だが、その代償を知った上で選ばないとな。複合条件テストの話だ。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "複合条件テストとは、どういうものだ？",
+      "choices": [
+        {
+          "text": "判定内の不可分条件の可能な組み合わせを全て試す",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。複合条件テストは、判定を含む不可分条件の可能な組み合わせをすべてテストする、最も徹底的なレベルです（まれに要求される）。カバレッジは、テスト対象の全判定において実行された不可分条件の組み合わせの数として測定します（通常%）。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "判定結果の真偽だけを網羅する",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "判定結果の真偽だけならデシジョンテストです。複合条件テストは、判定を構成する不可分条件の“すべての可能な組み合わせ”をテストする、より徹底的なレベルです。真偽の2通りではなく、条件の組み合わせを尽くします。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "問題だ。独立した3つの不可分条件を持つ判定。完全な複合条件カバレッジに必要な組み合わせ数は？",
+      "choices": [
+        {
+          "text": "2^N ＝ 8通り（真理値表から導ける）",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "正解。N個の一意で相互に独立した不可分条件を仮定すると、2^N 回の実行で完全な複合条件カバレッジを達成できます。3条件なら 2^3＝8通り。テストケース数は、すべての不可分条件を含む真理値表から直接導けます（1テストケースで複数の組み合わせを実行しうるため、必ずしも2^N個のテストが要るわけではありません）。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "N+1 ＝ 4通り",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "N+1（=4）は MC/DC の回数です。複合条件テストは“すべての組み合わせ”を尽くすので 2^N（=8）通り。この差——4対8——が、条件が増えるほど広がっていくのが、次の使いどころの話につながります。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "では、どこで使い、どこで避ける？",
+      "choices": [
+        {
+          "text": "高リスク・組込みで。条件が増えるとMC/DCが現実的",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。複合条件テストは、リスクの高いソフトウェアや、長時間クラッシュせず確実に動作することが求められる組込みソフトウェアなどに用います。ただし、判定に複数の不可分条件があると必要なテストケース数が2^Nで爆発するため、改良条件判定テスト（MC/DC）がより現実的になります。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q4"
+        },
+        {
+          "text": "最も強力なので常に第一選択にする",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "最も徹底的ではありますが、常に第一選択にはできません。条件数に対して 2^N でテストケースが爆発するため、判定に複数の不可分条件がある状況では MC/DC の方が現実的です。強さとコストの釣り合いで選びます。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "q4"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "choice",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "短絡評価は、複合条件テストにどう効く？",
+      "choices": [
+        {
+          "text": "論理演算の順序やグループ化で実行可能な組み合わせが減る",
+          "rating": "best",
+          "statusEffects": { "skill": 3, "confidence": 1, "knowledge": 1 },
+          "feedback": {
+            "explanation": "そのとおり。コンパイラが短絡評価を行う場合、不可分条件に対して行われる論理演算の順序やグループ化によって、実際に実行可能な条件の組み合わせの数が少なくなることが多くなります。理論上の 2^N すべてが実行可能とは限らない、ということです。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "短絡評価は複合条件テストに影響しない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "影響します。短絡評価があると、論理演算の順序やグループ化によって、実行可能な条件の組み合わせの数が少なくなることが多くなります。MC/DCと同様、短絡評価は複合条件テストのカバレッジ計算にも関わってきます。",
+            "syllabusRefs": ["TTA-2.5.1"]
+          },
+          "next": "ending"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "全部を尽くせば安心——とは限らん。4対8の差は、条件が増えれば手に負えなくなる。徹底と現実の境目を見極めるのが、技術屋の判断だ。……次は、画面のないテスト対象を攻める。",
+      "next": null
+    }
+  ]
+}
