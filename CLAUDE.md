@@ -29,7 +29,7 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 - `skills/image-asset-production.skill`：キャラ立ち絵・背景のAI生成（設計→生成→採用→表情差分→組み込みの判断フロー・落とし穴・サービス検証履歴）。ルールは `.claude/rules/project/image-assets.md`（2026-07-03作成）
 
 ### シナリオ制作時に参照（本プロジェクト固有）
-- `skills/scenario-authoring.skill`：学習シナリオの制作（シラバス精読→起案→監修→JSON化→検証の判断フロー・評価基準〔迷ったらpoor〕・配分ルール・validator 12項目・著作権配慮・落とし穴）。FL第1章制作で確立した知見を体系化。クロスワードの `istqb-crossword-terms.skill` に相当する本プロジェクト固有スキル（2026-07-03作成・**PO承認済み**）
+- `skills/scenario-authoring.skill`：学習シナリオの制作（シラバス精読→起案→監修→JSON化→検証の判断フロー・評価基準〔迷ったらpoor〕・配分ルール・validator 12項目・著作権配慮・落とし穴）。FL第1章制作で確立した知見を体系化。クロスワードの `istqb-crossword-terms.skill` に相当する本プロジェクト固有スキル（2026-07-03作成・PO承認済み）。**2026-07-05 かく乱肢（distractor）設計を追加**（原則3択・3類型・FL/AL難易度傾斜・good＝誤りを含まない部分正答。evaluation-rubric §1.6。**PO承認済み 2026-07-05**）
 
 ---
 
