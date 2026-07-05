@@ -37,6 +37,16 @@
           "next": "q2"
         },
         {
+          "text": "マネジメントや実行を支援するツールがある",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "半分正解です。マネジメントや実行を支援するツールは確かにあります。加えて、静的テスト（レビュー・静的解析）、テスト設計と実装、カバレッジ測定、非機能テスト、DevOps（パイプライン・CI/CD）、コラボレーションなど、ツールはテストのほぼすべての活動に及びます。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q2"
+        },
+        {
           "text": "テストツール＝自動実行ツールのことだ",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -70,6 +80,16 @@
           "next": "q3"
         },
         {
+          "text": "非機能テストはツールなしでは一切無理",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい—ツールの重要性に気づいたのは良いです。ただし「一切無理」は言い過ぎです。ツールの役割は、手動では困難または不可能な非機能テスト（大規模な負荷生成・精密な計測など）を可能にすること。小規模な確認は手動でも成立する場面があります。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "q3"
+        },
+        {
           "text": "性能テストもストップウォッチ計測で十分だ",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -98,6 +118,16 @@
           "statusEffects": { "knowledge": 3, "confidence": 1 },
           "feedback": {
             "explanation": "そのとおり。シラバスは“その他、テストを補助するツール”の例として表計算ソフトを挙げています。テストのコンテキストで使われる表計算ソフトはテストツールです。道具の分類は製品の種類ではなく、用途とコンテキストで決まります。",
+            "syllabusRefs": ["6.1"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "開発者が使うツールはテスト用ではない",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい—使い分けを意識したのは良いのですが、分類の基準が違います。道具がテストツールかどうかは、使う人の職種ではなく、テストのコンテキストで使われるかどうか（用途）で決まります。表計算ソフトも、テストで使えばテストツールです。",
             "syllabusRefs": ["6.1"]
           },
           "next": "ending"
