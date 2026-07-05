@@ -37,6 +37,16 @@
           "next": "q2"
         },
         {
+          "text": "リリース前に欠陥を見つけて直せること",
+          "rating": "good",
+          "statusEffects": { "knowledge": 2 },
+          "feedback": {
+            "explanation": "良い着眼です。リリース前に欠陥を検出して修正につなげることは、テストの大きな価値の一つです。ただしテストの意義はそれだけではなく、品質を評価し、リリース判定などの意思決定に判断材料を提供することも含みます。検出だけに絞ると、価値の一部しか説明できていません。",
+            "syllabusRefs": ["1.2.1"]
+          },
+          "next": "q2"
+        },
+        {
           "text": "バグをゼロにするため",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -70,6 +80,16 @@
           "next": "q3"
         },
         {
+          "text": "テストは品質を作り込む活動だ",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい理解です。テストが品質向上に貢献するのは事実です。しかし品質を“作り込む”のは開発活動であり、テストは品質を評価し欠陥を見つける活動（QC＝品質コントロールの一種）です。作り込みと評価を区別して説明できると、誤解がなくなります。",
+            "syllabusRefs": ["1.2.2"]
+          },
+          "next": "q3"
+        },
+        {
           "text": "テストはQAそのものだ",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -98,6 +118,16 @@
           "statusEffects": { "knowledge": 3, "confidence": 1 },
           "feedback": {
             "explanation": "正解です。人はエラー（誤り）を起こし、それが欠陥（バグ）を生み、欠陥が実行されると故障につながることがあります。根本原因は根本原因分析で特定し、対処します。",
+            "syllabusRefs": ["1.2.3"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "欠陥があれば必ず故障が起きる",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい理解です。欠陥が故障の原因になるという方向は正しいです。ただし欠陥があっても、そのコードが実行されるなど特定の条件が揃わない限り故障は起きません。「必ず」ではなく「実行されると故障につながることがある」が正確です。",
             "syllabusRefs": ["1.2.3"]
           },
           "next": "ending"

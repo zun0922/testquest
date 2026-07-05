@@ -37,6 +37,16 @@
           "next": "q2"
         },
         {
+          "text": "重大な欠陥だけ口頭で手早く伝える",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい判断です。重大な欠陥を素早く伝える意識は大切です。しかし口頭だけでは記録が残らず、再現手順や事実の共有が不確かになります。欠陥は事実ベースで記録し（欠陥レポート）、建設的なコミュニケーションとセットで伝えましょう。",
+            "syllabusRefs": ["1.5.1"]
+          },
+          "next": "q2"
+        },
+        {
           "text": "作った人のミスとして責める言い方をする",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -70,6 +80,16 @@
           "next": "q3"
         },
         {
+          "text": "別チームなど独立した人に任せるほどよい",
+          "rating": "good",
+          "statusEffects": { "teamwork": 2 },
+          "feedback": {
+            "explanation": "良い着眼です。独立性が高いと認知バイアスの違いから、作成者本人が見逃す欠陥を見つけやすくなります。ただし「高いほど常に良い」わけではありません。開発者との協働が難しくなる、開発者が品質への当事者意識を失うなどの弊害もあり、度合いの使い分けが大切です。",
+            "syllabusRefs": ["1.5.3"]
+          },
+          "next": "q3"
+        },
+        {
           "text": "独立性は不要、作った本人だけでよい",
           "rating": "poor",
           "statusEffects": { "knowledge": 1 },
@@ -98,6 +118,16 @@
           "statusEffects": { "teamwork": 3, "confidence": 1, "knowledge": 1 },
           "feedback": {
             "explanation": "チーム全体アプローチでは、必要な知識とスキルを持つメンバーがどの仕事も担い、全員が品質に責任を持ちます。チーム内の情報伝達とコラボレーションが強化されます。",
+            "syllabusRefs": ["1.5.2"]
+          },
+          "next": "ending"
+        },
+        {
+          "text": "品質の最終責任はテストリーダーが負う",
+          "rating": "poor",
+          "statusEffects": { "knowledge": 1 },
+          "feedback": {
+            "explanation": "惜しい理解です。テストマネジメントの役割に責任が伴うのは確かです。しかしチーム全体アプローチでは、品質は特定の役割ではなくチーム全員の責任です。リーダー個人に品質責任を集約すると、全員参加の品質づくりが弱まります。",
             "syllabusRefs": ["1.5.2"]
           },
           "next": "ending"
