@@ -152,6 +152,10 @@ STEP 6：機能テスト（人間・AIサポート）
 - ⚠ **ケンの人物像は設定書§4.3「同期エンジニア」が正**（技術メンターではない。AL編メンターは将来の別新キャラ）。2026-07-03 に混同事故→fl-2-02/fl-4-03 の口調を同期風に修正済み・スキルに教訓恒久化（worklog 追記10）
 - 🔲 法務確認（クロスワードD2の結果待ち → 流用可否判断）
 - 🔲 プロトタイプ（HTML単体版）の本リポジトリへの取り込み検討
+- ✅ **環境移行 案B 実行（2026-07-11・PO指示）＝正の作業場所は `C:\dev\testquest`（OneDrive外の clone）**
+  - **今後の作業はすべて `C:\dev\testquest` で行う。OneDrive側（本フォルダ）は参照専用アーカイブ**（gitignore対象の原本置き場：`assets-candidates/` 93MB・`シラバス抽出_*.txt`・`e2e-shots/`）。OneDrive側での編集・コミットは禁止
+  - PC間同期は git push/pull（**PC切替時は push 必須**）。gitignore対象（シラバス抽出txt・.env.local・.vercel）は clone 先へ手動コピー済み
+  - 背景：OneDrive同期による破損が2026-07-11に顕在化（skill 7件ZIP破損・振り返りmd 0バイト化→復旧済み。worklog 追記33）
 
 ---
 
