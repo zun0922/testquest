@@ -1182,3 +1182,21 @@
 **訂正：** 前スレッドの残タスク「AL-TTA第3〜6章の未反映分を push で本番反映」は **git log 確認により完了済みと判明**（`af231ae` で origin/main 同期済み。以後のかく乱肢改訂 `e0ffa66` まで反映済み）。残タスクから除外する
 
 **次のアクション：** 環境移行（案B＝OneDrive外へ clone・CLAUDE.md §6 再開ポイント）の実行判断。実行時は未コミット差分（CLAUDE.md・worklog・振り返り）の commit/push を先に行う。gitignore 対象（シラバス抽出_*.txt・assets-candidates/ 等）は clone に含まれないため別途コピーが必要
+
+## 2026-07-11（追記34）
+**着手内容：** 環境移行 案B の実行（PO指示「案B実行して」）
+
+**完了内容：**
+- **移行前 commit/push（OneDrive側から最終push）：** `a99b94b`（追記33・CLAUDE.md §6 移行明記・振り返り md を git 管理下へ追加）
+- **clone：** `C:\dev\testquest`（新規作成）← https://github.com/zun0922/testquest.git。skill 15件・シナリオ72 JSON（71本＋index）・追記33 を clone 内で確認
+- **gitignore対象の手動コピー：** シラバス抽出_*.txt（AL-TM/AL-TTA）・.env.local・.vercel（project.json/README）→ コピー後も `git status` クリーン（ignore 有効）
+- **検証（clone 先で全実施・全PASS）：** `npm ci` → 型チェック✓ → **単体 134件 全PASS** → **E2E 8件 全PASS**（Playwright・14.6s）
+- **OneDrive側の封印：** `【参照専用】作業場所はC-dev-testquestへ移行済み.md` を配置（意図的に git 未追跡・OneDrive側にだけ置くマーカー）。assets-candidates/（93MB）・e2e-shots 等の gitignore 原本は OneDrive 側に保持
+- 本追記自体を **新リポジトリ（C:\dev\testquest）から push** ＝新フローの動作確認を兼ねる
+
+**運用ルール（確定）：**
+- 正の作業場所＝`C:\dev\testquest`。OneDrive側は参照専用アーカイブ（編集・コミット禁止）
+- PC間同期＝git push/pull。**PC切替時は push 必須**
+- 別PCでの初回セットアップ＝clone → gitignore対象コピー（OneDrive参照）→ npm ci
+
+**次のアクション：** 通しプレイFB反映（確認シート回収待ち）／AL編かく乱肢改訂（AL傾斜）／画像圧縮（pngquant）／B-4類似性逆引き／configuration-management.skill 適合改訂
