@@ -20,7 +20,7 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 
 ### プロジェクト管理・品質管理時に参照
 - `skills/project-management.skill`
-- `skills/configuration-management.skill`（※クロスワード固有記述が7箇所残存。参照時はTestQuestに読み替え、本格利用前に適合改訂する）
+- `skills/configuration-management.skill`（**v1.6・TestQuest適合改訂済み 2026-07-16**。ディレクトリ構成のSSOTは本ファイル§7。改訂起案：`docs/スキル適合改訂案_configuration-management_v0.1.md`）
 
 ### 機能テスト・自動化時に参照
 - `skills/test-execution.skill` / `test-automation.skill`
@@ -128,7 +128,7 @@ STEP 6：機能テスト（人間・AIサポート）
 - 📋 **保留・要対応の宿題は `docs/宿題リスト_v1.0.md` に集約**（A=PO判断・C-1=✅完了／残: B-1本格アート・B-2 vite8更新・B-3 TD実データ・D ロードマップ）
   - ⚠ dev依存に脆弱性5件（vite/vitest系・実行時0件）。vite8更新は別途判断
 - 🔲 開発フロー・役割分担定義のTestQuest版作成（v10.1を複製しシナリオ制作工程を追加）
-- 🔲 configuration-management.skill のTestQuest適合改訂
+- ✅ configuration-management.skill のTestQuest適合改訂（v1.6・2026-07-16 PO承認。§7 ディレクトリ構成を新設し節参照を名前参照化）
 - ✅ シナリオ制作スキルの新規作成（`skills/scenario-authoring.skill`・2026-07-03 **PO承認**。評価基準に「迷ったらpoor」を含む。FL第2章以降の起案はこのスキルを発動）
 - ✅ **FL第2章コンテンツ完成**（2026-07-03・監修承認 AC-012）：`public/data/scenarios/fl-2/fl-2-01〜05.json`（§2.1×2＋§2.2×2＋§2.3・起案`docs/シナリオ起案_FL第2章_v0.1.md`準拠・ケンが fl-2-02 に初登場）。index.json 計10本。`SelectScreen` を**データ駆動化**（indexにある章＝活性・ない章＝ロック。第3章以降はデータ追加のみで活性化）。単体50件＋E2E6件 全PASS・実画面スクショPO共有済み
 - ✅ **FL第3章コンテンツ完成**（2026-07-03・監修承認 AC-012）：`public/data/scenarios/fl-3/fl-3-01〜05.json`（§3.1×2＋§3.2×3・起案`docs/シナリオ起案_FL第3章_v0.1.md`準拠・poor解説トーンガイドライン初適用）。index.json 計15本（第1〜3章）。単体56件＋E2E6件 全PASS・実画面スクショPO共有済み
@@ -147,7 +147,7 @@ STEP 6：機能テスト（人間・AIサポート）
 - 🎉🎉🎉 **企画書 Phase3 全コンテンツ達成＝FL27＋AL-TM23＋AL-TTA21＝総計71本**。3ルート（FL入門／AL-TMマネジメント昇進編／AL-TTAテクニカル）が完結。門番＝章別＋レベル別総数＋全体71本
 - 🎉🎉🎉 **かく乱肢改訂・全章展開 完遂（2026-07-11・本番反映済み）**：FL6章＋AL-TM3章＋AL-TTA6章＝**全71本・280問すべて3択化**（2択残0・good計63≈7.5%）。AL編5バッチ＝AL-TM 40+26+14肢／AL-TTA 34+44肢（各バッチ起案→監修承認→決定的スクリプト部分編集〔best不変・削除0〕→単体134/E2E8→push→本番スモーク）。本番全71本の全数検証済み。**通しプレイFB②が全ルートで解消**。worklog 追記35〜40
   - ※「AL-TTA第3〜6章の未反映分をpush」という旧記載は誤り＝`af231ae`で反映済みと判明（worklog追記33の訂正参照）
-- 🔲 **残タスク**：通しプレイFB反映（確認シート回収待ち・**改訂後の再プレイ推奨**）／ B-4類似性逆引き（匠5＋澪5＋server背景も対象）／ 画像圧縮（pngquant・34MB→約1/4）／ configuration-management.skill のTestQuest適合改訂
+- 🔲 **残タスク**：通しプレイFB反映（確認シート回収待ち・**改訂後の再プレイ推奨**）／ B-4類似性逆引き（匠5＋澪5＋server背景も対象）／ 画像圧縮（pngquant・34MB→約1/4）
 - 🔲 **通しプレイ総合確認（PO実施中）**：`docs/通しプレイ確認シート_v0.1.md`（全39本・観点C1-C6/A1-A5/X1-X5）。フィードバック受領後にAIが修正案リスト化
 - 🔲 **AL実装の残作業**：①`types`/`validator` の CharacterId に **'takumi'/'mio' 追加（コード変更）**・level 'AL-TM'/'AL-TTA' の index対応 ②server背景（設定書§5.2予約・TTA用）③類似性逆引き（匠5＋澪5を宿題B-4に追加済み）
 - ⚠ **ケンの人物像は設定書§4.3「同期エンジニア」が正**（技術メンターではない。AL編メンターは将来の別新キャラ）。2026-07-03 に混同事故→fl-2-02/fl-4-03 の口調を同期風に修正済み・スキルに教訓恒久化（worklog 追記10）
@@ -160,9 +160,35 @@ STEP 6：機能テスト（人間・AIサポート）
 
 ---
 
-## 7. 改版履歴
+## 7. ディレクトリ構成（配置判断のSSOT・configuration-management.skill が参照）
+
+```
+src/
+  components/        画面（TitleScreen/SelectScreen/ResultScreen/ErrorScreen）＋ common/（Button・ConfirmDialog・StatusHud）＋ player/（ScenarioPlayer）
+  hooks/             useGame・useTypewriter
+  types/             型定義
+  utils/             status/validator/storage/scenarioLoader/levels/assets（単体テストは *.test.ts を同居）
+public/
+  data/scenarios/    シナリオJSON＝学習コンテンツの正（fl-1〜6・al-tm-1〜3・al-tta-1〜6・index.json）
+  images/            採用済みアセットのみ（characters/{tanaka,rin,ken,takumi,mio}/・backgrounds/）
+tests/e2e/           Playwright E2E（walkthrough・persistence・orientation）
+scripts/             画像生成・運用スクリプト（gen-expression-gemini.ps1・remove-bg.mjs 等）
+docs/                プロジェクトドキュメント（起案・仕様書・手順書・worklog・宿題リスト・採用記録）
+skills/              スキルファイル（name.skill＝zip形式）
+.claude/rules/       AIルール（common/＝同期コピー・編集禁止、project/＝固有）
+.github/workflows/   CI
+```
+
+- **ルート直下に置いてよいもの**：CLAUDE.md・企画書・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・TestQuest.html（プロトタイプ原本）・.gitignore
+- **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB・原本はOneDrive側）・シラバス抽出_*.txt（著作物）・.env*・.vercel
+- 新規ディレクトリ追加時は本節＋.gitignore を同一コミットで更新する（configuration-management.skill §1）
+
+---
+
+## 8. 改版履歴
 
 | 日付 | 内容 |
 |------|------|
 | 2026-06-13 | 初版作成（企画書v1.2承認・クロスワードからルール7件/スキル13件を引き継ぎ） |
 | 2026-06-25 | テスト仕様書 v1.0 PO承認（§5〜§9を逆戻りから復元・レビュー確認）→ v1.1 でシナリオテスト網羅性を補強（非王道ルート TC-005 追加）。次はテスト手順書 v0.1 |
+| 2026-07-16 | configuration-management.skill v1.6（TestQuest適合改訂・PO承認）に伴い §7「ディレクトリ構成」を新設・旧§7 改版履歴を §8 へ繰り下げ。§1 スキル一覧の注記を更新 |
