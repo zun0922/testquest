@@ -62,3 +62,61 @@ export function isAlUnlocked(index: ScenarioIndex, save: SaveDataV1): boolean {
   const fl = index.scenarios.filter((s) => s.level === 'FL')
   return fl.length > 0 && fl.every((s) => Boolean(save.cleared[s.id]))
 }
+
+/** クリア進捗（折り畳んだ見出しでも進み具合が分かるようにするための表示用集計）。 */
+export interface Progress {
+  total: number
+  cleared: number
+}
+
+function progressOf(entries: ScenarioIndex['scenarios'], save: SaveDataV1): Progress {
+  return {
+    total: entries.length,
+    cleared: entries.filter((s) => Boolean(save.cleared[s.id])).length,
+  }
+}
+
+/** 章単位のクリア進捗。 */
+export function chapterProgress(
+  index: ScenarioIndex,
+  save: SaveDataV1,
+  level: LevelKey,
+  chapter: number,
+): Progress {
+  return progressOf(
+    index.scenarios.filter((s) => s.level === level && s.chapter === chapter),
+    save,
+  )
+}
+
+/** レベル単位のクリア進捗。 */
+export function levelProgress(index: ScenarioIndex, save: SaveDataV1, level: LevelKey): Progress {
+  return progressOf(
+    index.scenarios.filter((s) => s.level === level),
+    save,
+  )
+}
+
+export interface ContinueTarget {
+  level: LevelKey
+  chapter: number
+}
+
+/**
+ * 「続きの章」＝未クリアが残る最初の章（LEVELS 順→章番号順）。選択画面の初期展開先に使う。
+ * ロック中の AL は対象外。全て（解放済みレベル内）クリア済みなら null。
+ */
+export function findContinueChapter(
+  index: ScenarioIndex,
+  save: SaveDataV1,
+  alUnlocked: boolean,
+): ContinueTarget | null {
+  for (const lv of LEVELS) {
+    if (lv.key !== 'FL' && !alUnlocked) continue
+    for (const chapter of lv.chapters) {
+      const p = chapterProgress(index, save, lv.key, chapter)
+      if (p.total > 0 && p.cleared < p.total) return { level: lv.key, chapter }
+    }
+  }
+  return null
+}

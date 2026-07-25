@@ -22,6 +22,8 @@ export default {
         'status-confidence': '#ffd54d',
         'status-teamwork': '#5ee6a8',
         'status-gain': '#8ef0c4',
+        // クリア済み表示（選択画面のシナリオ・章の完了。status-gain と同値の明るい緑＝達成の色）
+        cleared: '#8ef0c4',
       },
       fontFamily: {
         sans: ["'Segoe UI'", "'Hiragino Sans'", "'Meiryo'", 'sans-serif'],
