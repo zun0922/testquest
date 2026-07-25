@@ -10,11 +10,20 @@ const EXISTING_SAVE = {
   cleared: {},
 }
 
+// 導入シーンの text ノード数に依存せず最初の選択肢まで進める（導入シーン拡充 2026-07-26）
+async function advanceToChoice(page: Page, maxClicks = 10) {
+  for (let i = 0; i < maxClicks; i++) {
+    if (await page.getByTestId('choice-btn-0').isVisible()) return
+    await page.getByTestId('message-window').click()
+  }
+  await expect(page.getByTestId('choice-btn-0')).toBeVisible()
+}
+
 // 章選択 → サンプルシナリオを最後まで通しでプレイ → 結果画面まで
 async function playThroughFromSelect(page: Page) {
   await page.getByTestId('scenario-item-fl-1-01').click()
   await expect(page.getByTestId('screen-play')).toBeVisible()
-  await page.getByTestId('message-window').click() // intro（text）→ 最初の choice
+  await advanceToChoice(page) // 導入（text 群）→ 最初の choice
   for (let i = 0; i < 4; i++) {
     // fl-1-01 は choice ノード4本
     await page.getByTestId('choice-btn-0').click()

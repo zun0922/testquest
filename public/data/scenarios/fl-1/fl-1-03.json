@@ -1,8 +1,29 @@
 {
   "id": "fl-1-03",
   "title": "7つの道しるべ 〜テストの原則〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "リリース1週間前。会議室のホワイトボードには、消しきれない付箋が何枚も残っている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "“全部テストしないと不安”“いや、もう時間がない”……みんな、言っていることはどれも正しいの。だから難しい。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

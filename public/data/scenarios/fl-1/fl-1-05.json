@@ -1,8 +1,29 @@
 {
   "id": "fl-1-05",
   "title": "チームで品質をつくる 〜スキルと独立性〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "夕方のオフィス。ケンの画面には、書きかけの欠陥レポートが開いたまま、さっきから止まっている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "これ、開発の先輩が作った画面なんだよね。……ぼくが指摘したら、責めてるみたいに聞こえないかな。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

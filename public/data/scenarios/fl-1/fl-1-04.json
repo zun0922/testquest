@@ -1,8 +1,29 @@
 {
   "id": "fl-1-04",
   "title": "テストの段取り 〜活動と役割〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "朝いちばん、あなたのデスクに1枚の依頼票が置かれていた。件名は“検索機能改修のテスト一式”——初めて、あなたの名前で回ってきた仕事だ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "担当はあなただ。……凛が横で見ている。困ったら聞けばいい。ただし、考える順番は自分で決めてみろ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,41 @@
 {
   "id": "fl-1-01",
   "title": "配属初日 〜テストって何？〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "四月の朝。まだ人の少ないオフィスに、あなたのために用意されたデスクがひとつ空いている。",
+      "next": "intro-greet"
+    },
+    {
+      "id": "intro-greet",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "はじめまして、鈴木凛です。今日からあなたのメンターを担当します。……緊張してる？ 大丈夫、最初はみんなそうだったから。",
+      "next": "intro-brief"
+    },
+    {
+      "id": "intro-brief",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "田中だ。うちのチームは今、次のリリースに向けて追い込みの最中でな。手を動かす前に、考え方から掴んでもらう。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

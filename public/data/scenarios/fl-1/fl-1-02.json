@@ -1,8 +1,29 @@
 {
   "id": "fl-1-02",
   "title": "はじめてのテスト依頼 〜なぜテストするの？〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "昼下がりの休憩スペース。同期のケンが、コーヒーを片手にしては珍しく難しい顔で座っている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "さっき開発の先輩に言われたんだ。“テストって、そんなに時間をかける必要ある？”って。……ぼく、うまく答えられなかった。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",
