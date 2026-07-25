@@ -1,8 +1,17 @@
 {
   "id": "al-tm-3-01",
   "title": "チームに要る力を読む 〜4つの能力領域とスキル分析〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "新プロジェクトの体制表。役割の欄は埋まっているが、名前の欄はすべて空白のままだ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,28 @@
 {
   "id": "al-tta-2-03",
   "title": "すべての組み合わせを尽くす 〜複合条件テスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "テスト設計レビューの席。新人が持ってきた組み合わせ表は、行数が二百を超えていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "……全部埋めれば安心か。だが、その表を来年も保守するのは誰だ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

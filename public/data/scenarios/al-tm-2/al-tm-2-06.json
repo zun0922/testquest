@@ -1,8 +1,29 @@
 {
   "id": "al-tm-2-06",
   "title": "チームの数だけ流儀がある 〜アジャイルとハイブリッドの欠陥マネジメント〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "合同定例の議事録。同じ欠陥が、二つの異なる書式で二重に登録されている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "sad", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "……どちらのやり方も、そのチームの中では正しいのよね。困るのは、間に立つ人。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

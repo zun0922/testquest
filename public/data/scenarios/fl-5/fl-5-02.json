@@ -1,8 +1,29 @@
 {
   "id": "fl-5-02",
   "title": "いくら掛かる？どれから試す？ 〜見積りと優先順位〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "見積りシートの前で、カーソルが点滅している。工数の欄は、まだどこも埋まっていない。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "勘で数字を置くと、あとで自分の首を絞めることになるの。……根拠のある出し方があるから、順番に見ていこう。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

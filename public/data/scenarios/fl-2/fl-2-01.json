@@ -1,8 +1,29 @@
 {
   "id": "fl-2-01",
   "title": "プロジェクトが変わればテストも変わる 〜開発モデルとテスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "月曜の朝。あなたのアカウントに、見慣れないボードが追加されていた。日次のスタンドアップ、二週間のスプリント。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "前の現場は、仕様が固まってからテスト設計に入ったよね。……ここでは、その“固まってから”が来ないの。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

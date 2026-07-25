@@ -1,8 +1,17 @@
 {
   "id": "al-tm-1-08",
   "title": "このプロジェクトの戦い方 〜テストアプローチの選択〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "次期プロジェクトの概要資料。ページをめくるたびに、前の案件とは違う条件が並んでいく。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

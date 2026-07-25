@@ -1,8 +1,29 @@
 {
   "id": "al-tm-1-03",
   "title": "モデル×レベル×タイプ 〜コンテキストに合わせる〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "全社メールの件名は“開発プロセス移行のお知らせ”。添付を開くと、移行対象にあなたの担当案件が入っていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "rin", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "開発側も手探りなんだ。……スプリントで回す部分と、前もって固める部分が混ざるらしくて。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

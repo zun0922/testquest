@@ -1,8 +1,17 @@
 {
   "id": "al-tm-1-04",
   "title": "三つの信号 〜計画・モニタリング・コントロールの複合判断〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "進捗会議まであと1時間。手元には四つの報告が届いている。どれも、良い知らせではない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,29 @@
 {
   "id": "fl-2-04",
   "title": "何をどう試す？ 〜テストタイプと確認・リグレッション〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "リリース候補のチケット一覧。新機能の下に、修正済みの欠陥がずらりと並んでいる。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "直したところは直った。……それだけ確かめれば十分か？ 前は動いていた画面のことも、忘れるなよ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

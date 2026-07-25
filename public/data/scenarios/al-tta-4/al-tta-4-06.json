@@ -1,8 +1,28 @@
 {
   "id": "al-tta-4-06",
   "title": "動く場所を選ばない 〜移植性テストと共存性テスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "客先の環境一覧。OSもブラウザも、社内の検証環境とは一つずつ違っている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "動くはずだ、は根拠にならん。……同じ機械に相乗りする他のソフトのことも、忘れるな。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

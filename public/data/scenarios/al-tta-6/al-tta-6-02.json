@@ -1,8 +1,28 @@
 {
   "id": "al-tta-6-02",
   "title": "データを分け、言葉を作る 〜データ駆動とキーワード駆動〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "昨年書かれた自動テストのスクリプト。同じ手順が、値だけを変えて三十本並んでいる。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "仕様が一つ変わるたび、三十本を直すことになる。……こうなる前に、分けておくべきだった。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

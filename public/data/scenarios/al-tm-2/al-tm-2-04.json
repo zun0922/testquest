@@ -1,8 +1,17 @@
 {
   "id": "al-tm-2-04",
   "title": "どの物差しで測るか 〜見積り技法の選択〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "机の上に、性格の違う二件の依頼書が並んでいる。片方は前例のある改修、もう片方は初めての領域だ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

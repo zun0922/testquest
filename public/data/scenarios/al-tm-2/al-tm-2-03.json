@@ -1,8 +1,29 @@
 {
   "id": "al-tm-2-03",
   "title": "いくらかかる？を分解する 〜見積りの基本と影響要因〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "見積り提出まで、あと三日。前回の実績値を開くと、想定と実績が倍近く食い違っていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "外した理由を説明できないなら、次も同じように外す。……何が効いたのかを分けて考えろ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

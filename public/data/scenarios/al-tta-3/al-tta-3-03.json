@@ -1,8 +1,28 @@
 {
   "id": "al-tta-3-03",
   "title": "動かして初めて見える 〜動的解析〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "監視グラフのメモリ使用量が、階段状に上がり続けている。落ちるのは、決まって三日目の夜だ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "再現手順は無い。ログにも残らん。……こういうのは、動かしながら覗くしかない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

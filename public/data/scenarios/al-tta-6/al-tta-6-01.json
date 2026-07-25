@@ -1,8 +1,28 @@
 {
   "id": "al-tta-6-01",
   "title": "自動化は開発プロジェクトだ 〜テスト自動化の立ち上げ〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "経営会議の決定事項が回ってきた。“来期、テスト自動化に着手する”——予算と期限だけが決まっている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "誰が作り、誰が直し続けるのか。……そこが空欄のまま始まる自動化は、必ず止まる。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

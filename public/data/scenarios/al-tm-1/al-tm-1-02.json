@@ -1,8 +1,29 @@
 {
   "id": "al-tm-1-02",
   "title": "ステークホルダーの地図 〜権力と関心のマトリクス〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "キックオフの招待リスト。並んだ名前は二十を超え、部署も肩書きもばらばらだ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "全員に同じ報告をすれば、結局は誰にも届かん。……誰に何を渡すかを、先に決めておけ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

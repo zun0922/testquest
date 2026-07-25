@@ -1,8 +1,29 @@
 {
   "id": "al-tm-2-05",
   "title": "欠陥の一生 〜ワークフローと委員会〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "欠陥管理ツールの管理画面。ステータスの選択肢が、いつの間にか十二種類まで増えている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "増えた分だけ、みんな迷ってるの。……“これ、どこに入れればいいの”って、毎日聞かれる。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

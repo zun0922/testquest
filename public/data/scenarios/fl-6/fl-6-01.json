@@ -1,8 +1,29 @@
 {
   "id": "fl-6-01",
   "title": "道具箱を知る 〜テストツールの種類〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "共有フォルダに眠っていたツール一覧。最終更新は3年前で、名前だけが並んでいる。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "ねえ、これ全部“テストツール”なの？ ぼく、テストを実行するやつだけだと思ってた。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

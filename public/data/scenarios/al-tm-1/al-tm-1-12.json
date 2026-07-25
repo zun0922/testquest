@@ -1,8 +1,17 @@
 {
   "id": "al-tm-1-12",
   "title": "その投資、回収できるか 〜ツール選定とROI〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "役員会の資料テンプレート。冒頭のスライドに、“投資対効果”という見出しだけが置かれている。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,29 @@
 {
   "id": "fl-4-04",
   "title": "経験というセンサー 〜経験ベースのテスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "渡された仕様書は、わずか3ページ。“既存機能と同様”という一文が、何度も出てくる。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "仕様が薄いから無理です——とは言えん。現場では、こういう案件のほうが多いくらいだ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

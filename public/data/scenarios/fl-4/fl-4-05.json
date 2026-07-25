@@ -1,8 +1,29 @@
 {
   "id": "fl-4-05",
   "title": "一緒に書けば欠陥は減る 〜コラボレーションベースのアプローチ〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "バックログリファインメントの会議室。ビジネス側、開発、そしてテスト。三者が同じ机を囲むのは、これが初めてだ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "ここで出た疑問は、実装前に消せる欠陥なの。……遠慮して黙るのが、いちばんもったいない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

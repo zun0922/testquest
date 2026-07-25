@@ -1,8 +1,28 @@
 {
   "id": "al-tta-6-03",
   "title": "道具箱を揃える 〜特定用途のテストツール〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "最後の講義の日。机の上には、これまで使ってきたツールの名前が書かれた紙が広げられている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "happy", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "ここまでよく食らいついた。……最後に、道具の全体像を渡しておく。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

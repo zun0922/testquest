@@ -1,8 +1,28 @@
 {
   "id": "al-tta-4-05",
   "title": "直しやすさも品質だ 〜保守性テスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "五年前に作られたシステムの改修見積り。工数の大半が、“影響調査”に積まれている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "作るのは一度きりだが、直すのは何十回もある。……そのコストは、最初の設計で決まる。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,17 @@
 {
   "id": "al-tta-5-02",
   "title": "設計図を疑う 〜アーキテクチャレビュー〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "ホワイトボードに描かれたECサイトの構成図。矢印の一本が、外部サービスへまっすぐ伸びている。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

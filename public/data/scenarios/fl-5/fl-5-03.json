@@ -1,8 +1,29 @@
 {
   "id": "fl-5-03",
   "title": "危ないところから試す 〜リスクマネジメント〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "残り3週間。テスト項目は1,200件。単純に割ると1日あたり60件——現実的な数字ではない。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "全部やる、は計画とは言わん。……どこが落ちたら会社が困るのか。そこから考えろ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,28 @@
 {
   "id": "al-tta-2-04",
   "title": "つなぎ目を攻める 〜APIテスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "新しい担当は、画面を持たないサービス群。手元にあるのは仕様書と、コマンドの実行履歴だけだ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "目で見て確かめる、が使えない場所だ。……代わりに、何を見る。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

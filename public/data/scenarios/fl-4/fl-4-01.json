@@ -1,8 +1,29 @@
 {
   "id": "fl-4-01",
   "title": "技法という道具箱 〜同値分割と境界値〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "割引率の仕様書。年齢の欄に、0歳から120歳までの数字が並んでいる。全部試したら、何日かかるだろう。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "総当たりは実務では通らない。……だが、勘で選ぶのも違う。選び方には理屈があるんだ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

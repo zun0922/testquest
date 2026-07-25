@@ -1,8 +1,39 @@
 {
   "id": "al-tta-1-01",
   "title": "技術リスクの目利き 〜RBTにおけるTTAのタスク〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "配属先は、開発フロアの奥にある小さな区画。壁のモニターに、ビルドの結果が流れ続けている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "高橋だ。……マネージャーが立てる戦略と、俺たちが見る現場は、見ている高さが違う。",
+      "next": "intro-motive2"
+    },
+    {
+      "id": "intro-motive2",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "同じ“リスク”という言葉でも、指しているものが変わる。……そこを取り違えると、テストは的を外す。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

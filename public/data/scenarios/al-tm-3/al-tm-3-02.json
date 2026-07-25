@@ -1,8 +1,29 @@
 {
   "id": "al-tm-3-02",
   "title": "測って、伸ばす 〜スキルアセスメントと育成〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "壁の一覧には、必要な力が並んでいる。その隣に、メンバーの名前を書き込む列がまだ空いていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "得意不得意は、本人が一番わかっているとは限らん。……測り方から決めろ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

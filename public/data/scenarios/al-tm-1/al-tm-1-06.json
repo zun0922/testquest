@@ -1,8 +1,17 @@
 {
   "id": "al-tm-1-06",
   "title": "限られた時間をどこに注ぐか 〜リスク軽減の設計〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "壁に貼られたリスク一覧。赤いラベルが三つ、そのうち二つは同じ領域に集まっている。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

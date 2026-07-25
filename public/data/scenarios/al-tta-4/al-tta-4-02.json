@@ -1,8 +1,28 @@
 {
   "id": "al-tta-4-02",
   "title": "攻める前に、許可を取れ 〜セキュリティテスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "決済サービスのステージング環境。渡された接続情報の紙には、赤字で“取扱注意”と書かれている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "腕に覚えのある奴ほど、先に手を動かしたがる。……だがその一手は、事故として記録に残るぞ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

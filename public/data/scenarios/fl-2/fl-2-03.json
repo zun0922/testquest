@@ -1,8 +1,29 @@
 {
   "id": "fl-2-03",
   "title": "どこまで組み上がった？ 〜5つのテストレベル〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "会議室のテーブルに、新機能の構成図が広げられている。部品、つなぎ目、そしてシステム全体。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "どこまで組み上がった状態で試すかで、見つかる欠陥は変わってくるの。順番に見ていこうか。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

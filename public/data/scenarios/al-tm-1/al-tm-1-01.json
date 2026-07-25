@@ -1,8 +1,41 @@
 {
   "id": "al-tm-1-01",
   "title": "三本柱を握る 〜計画・モニタリングとコントロール・完了〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "辞令の紙が一枚。“テストリーダーを命ずる”——机の上のそれを、あなたはもう一度読み返した。今日から、判断を求められる側の席に座る。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "おめでとう。……これからは自分が手を動かすより、チームが動く形をつくる仕事になるね。",
+      "next": "intro-motive2"
+    },
+    {
+      "id": "intro-motive2",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "happy", "position": "left" },
+        { "characterId": "rin", "expression": "happy", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "私からも一つ。困ったら聞け。ただし“どうしましょう”ではなく、“こうしたい”を持って来い。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

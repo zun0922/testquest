@@ -1,8 +1,29 @@
 {
   "id": "fl-5-04",
   "title": "見える化して伝える 〜モニタリング・コントロール・完了〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "定例会の5分前。共有画面はまだ真っ白で、あなたの手元には実行結果のログだけがある。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "役員も出る場だ。……数字を並べるだけでは、誰も判断できん。何が言いたいのかを先に決めろ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

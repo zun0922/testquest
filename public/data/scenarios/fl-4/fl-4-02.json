@@ -1,8 +1,29 @@
 {
   "id": "fl-4-02",
   "title": "組み合わせと状態を描く 〜デシジョンテーブルと状態遷移〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "仕様書のページをめくる手が止まる。条件、条件、また条件——文章だけでは、どこまで数えたのか分からなくなってきた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "文章で追うと、人はどこかで必ず抜けるの。……だから私たちは、追い方そのものを変える。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

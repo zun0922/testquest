@@ -1,8 +1,28 @@
 {
   "id": "al-tta-4-04",
   "title": "速さは仕様だ 〜性能テスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "サポートから回ってきた問い合わせ票。本文は一行だけだ——“最近、なんとなく重い気がします”。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "thinking", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "気がします、では直せん。……どの操作が、何秒かかっているのか。そこから始める。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

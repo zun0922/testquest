@@ -1,8 +1,28 @@
 {
   "id": "al-tta-2-01",
   "title": "コードを通す、判定を通す 〜ステートメント／デシジョンテスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "機材の低い唸りが漏れる小部屋。ディスプレイには、決済モジュールのソースコードが開かれている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "昨日のレビューで分かった。この関数には、テストが一本も無い。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

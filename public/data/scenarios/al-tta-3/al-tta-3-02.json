@@ -1,8 +1,28 @@
 {
   "id": "al-tta-3-02",
   "title": "未来の自分が読めるコード 〜静的解析による保守性向上〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "静的解析ツールの出力。警告は千二百件、そのほとんどが同じ関数に集中している。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "この関数、一つで八百行ある。……次に触る人間が、無事に戻ってこられると思うか。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

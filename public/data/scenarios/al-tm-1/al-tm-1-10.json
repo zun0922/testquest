@@ -1,8 +1,29 @@
 {
   "id": "al-tm-1-10",
   "title": "テストのやり方を良くする 〜IDEALと改善アプローチ〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "流出した欠陥の報告書が、共有フォルダにまた一件増えた。原因欄には“テストケースの考慮漏れ”とある。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "犯人探しをしても、次は防げない。……同じことが起きない形にプロセスを変える。それが君の仕事だ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

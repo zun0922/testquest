@@ -1,8 +1,29 @@
 {
   "id": "fl-4-03",
   "title": "コードの中を照らす 〜ホワイトボックステスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "開発フロアの一角。モニターには、緑色で埋まったカバレッジレポートが映っている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "ken", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "100%……いい数字に見えるでしょう？ でも、何を100%通したのかは、この画面には書いていないの。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

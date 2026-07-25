@@ -1,8 +1,29 @@
 {
   "id": "al-tm-2-01",
   "title": "測れるものは達成できる 〜テストメトリクスの設計〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "週次報告のあと。田中課長が、あなたの出した進捗シートを机に置いたまま黙っている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "thinking", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "先週も“順調”、今週も“順調”。……で、何が順調なんだ。役員会でそう聞かれたら、君はどう答える。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

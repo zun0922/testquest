@@ -1,8 +1,17 @@
 {
   "id": "al-tm-3-04",
   "title": "テストの価値を語る 〜品質コストと費用対効果〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "経営会議の議事録。“テスト費用”の行にだけ、赤いマーカーが引かれている。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

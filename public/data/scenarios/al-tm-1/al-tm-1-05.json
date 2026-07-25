@@ -1,8 +1,29 @@
 {
   "id": "al-tm-1-05",
   "title": "リスクの声を集める 〜識別とアセスメント〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "会議室の予約を取り、招待者リストを開く。開発、運用、そしてビジネス側——今回はどこまで呼ぶべきだろう。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "リスクは、探す人が変われば見えるものも変わる。……誰を呼ばないかも、設計のうちだぞ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,28 @@
 {
   "id": "al-tta-2-02",
   "title": "独立して効く条件 〜改良条件判定テスト（MC/DC）〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "航空系サブシステムの判定ロジック。一つの if の中に、条件が四つ並んでいる。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "規格が要求している。……“とりあえず通した”では、ここは受け付けてもらえん。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

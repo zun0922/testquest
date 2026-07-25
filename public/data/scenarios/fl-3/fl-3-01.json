@@ -1,8 +1,29 @@
 {
   "id": "fl-3-01",
   "title": "動かさずに見つける 〜静的テストの基本〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "実装開始まではまだ二週間。あなたのデスクに届いたのは、コードではなく仕様書のドラフトだった。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "動くものが無いと、テストは始められない。……そう思ってた？ 実は、いちばん安く欠陥を摘めるのは今なの。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

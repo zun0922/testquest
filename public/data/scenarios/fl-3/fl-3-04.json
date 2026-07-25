@@ -1,8 +1,29 @@
 {
   "id": "fl-3-04",
   "title": "それぞれの持ち場 〜レビューの役割と種別〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "会議室のホワイトボードに、今日の進行が書き出されている。モデレーター、書記、レビューア——名前の横に、役割が添えられていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "同じ“レビュー”でも、形式によって進め方も目的も違うの。今日はどの形なのか、意識して見ていて。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

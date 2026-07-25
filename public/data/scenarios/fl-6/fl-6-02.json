@@ -1,8 +1,29 @@
 {
   "id": "fl-6-02",
   "title": "自動化は銀の弾丸か 〜テスト自動化の利点とリスク〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "会議室から漏れてくる声は、どれも前向きだ。“来期は自動化で工数半減”——議事録には、もうそう書かれている。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "ken", "expression": "thinking", "position": "right" }
+      ],
+      "speaker": "ken",
+      "text": "……ぼく、調べてて不安になったんだ。自動化したテストって、誰がメンテするんだろう。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

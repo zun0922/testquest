@@ -1,8 +1,29 @@
 {
   "id": "al-tm-3-03",
   "title": "チームを率いる力 〜リーダーシップとモチベーション〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "来月からの新体制。座席表には、まだ会ったことのない二人の名前が加わっていた。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "人が増えると、いままでの“暗黙の了解”が通じなくなるの。……最初のひと月が肝心だよ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

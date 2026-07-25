@@ -1,8 +1,17 @@
 {
   "id": "al-tta-5-03",
   "title": "コードの急所を突く 〜コードレビュー〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "印刷された擬似コードが一枚、机に置かれた。行番号だけが振られ、注釈はどこにもない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

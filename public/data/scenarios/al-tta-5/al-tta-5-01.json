@@ -1,8 +1,28 @@
 {
   "id": "al-tta-5-01",
   "title": "読む前に、備えよ 〜レビューにおけるTTAのタスク〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "統合テスト計画書のレビュー依頼。添付は八十ページ、会議は明日の午後だ。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "その場で初めて読む会議に、意味はない。……レビューの成果は、準備の段階で決まっている。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

@@ -1,8 +1,28 @@
 {
   "id": "al-tta-4-03",
   "title": "落ちない、を証明する 〜信頼性テスト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "顧客の要求仕様書。可用性の欄には“99.99%”とだけ書かれ、根拠の記載はない。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "数字は書いてある。……だが、どう測れば満たしたと言えるのかは、どこにも書いていない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

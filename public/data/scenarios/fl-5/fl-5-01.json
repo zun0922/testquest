@@ -1,8 +1,29 @@
 {
   "id": "fl-5-01",
   "title": "テストの地図を描く 〜テスト計画〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "キックオフ資料に、まだ空欄のページがある。表題だけが先に置かれていた——“テスト計画”。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "tanaka",
+      "text": "埋めるのは君だ。……何をどこまでやるのか決まらないまま走り出したチームがどうなるかは、もう見てきただろう。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

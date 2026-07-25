@@ -1,8 +1,28 @@
 {
   "id": "al-tta-3-01",
   "title": "実行せずに見抜く 〜制御フロー解析とデータフロー解析〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "server",
+      "characters": [],
+      "speaker": "narration",
+      "text": "引き継いだリポジトリ。最終コミットは四年前で、作った本人はもう社内にいない。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "server",
+      "characters": [
+        { "characterId": "takumi", "expression": "normal", "position": "left" }
+      ],
+      "speaker": "takumi",
+      "text": "動かす前に、まず形を見る。……コードってのは、読めば語るんだ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

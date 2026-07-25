@@ -1,8 +1,17 @@
 {
   "id": "al-tm-2-02",
   "title": "数字を物語に 〜ステークホルダーに届くテスト報告〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "明日の判定会議に向けた資料フォルダ。数字のファイルは十を超えているが、まだ物語にはなっていない。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

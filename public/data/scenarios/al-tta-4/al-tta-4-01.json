@@ -1,8 +1,17 @@
 {
   "id": "al-tta-4-01",
   "title": "“どのように動くか”を計画する 〜非機能テストの計画〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "新案件の要求一覧。機能要求の後ろに、“性能”“可用性”“セキュリティ”という項目だけが並んでいる。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

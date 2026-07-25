@@ -1,8 +1,29 @@
 {
   "id": "fl-5-05",
   "title": "記録が品質を守る 〜構成管理と欠陥マネジメント〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "先週の不具合を再現しようとして、手が止まる。あのとき、どのビルドで、どの手順で試したんだったか。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "思い出せないよね。……記録が無いと、見つけた欠陥そのものが無かったことになっちゃうの。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

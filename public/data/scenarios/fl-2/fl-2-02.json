@@ -1,8 +1,29 @@
 {
   "id": "fl-2-02",
   "title": "テストが先か、コードが先か 〜テストファーストとシフトレフト〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "週明けの朝会。開発チームのボードに、見慣れないカードが並んでいる。“TDD”、“CI/CD”。",
+      "next": "intro-motive"
+    },
+    {
+      "id": "intro-motive",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        { "characterId": "tanaka", "expression": "normal", "position": "left" },
+        { "characterId": "rin", "expression": "normal", "position": "right" }
+      ],
+      "speaker": "rin",
+      "text": "開発の進め方が変わると、テストの居場所も変わるの。……あとから確かめる仕事のままで、いいのかな。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",

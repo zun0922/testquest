@@ -1,8 +1,17 @@
 {
   "id": "al-tta-2-05",
   "title": "どこまで、どの技法で 〜ホワイトボックステスト技法の選択〜",
-  "startNodeId": "intro",
+  "startNodeId": "intro-scene",
   "nodes": [
+    {
+      "id": "intro-scene",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "二つのモジュールの仕様書が、机の上で並んでいる。片方は決済、もう片方は社内向けの帳票だ。",
+      "next": "intro"
+    },
     {
       "id": "intro",
       "type": "text",
