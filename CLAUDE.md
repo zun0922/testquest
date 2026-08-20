@@ -148,7 +148,8 @@ STEP 6：機能テスト（人間・AIサポート）
 - 🎉🎉🎉 **かく乱肢改訂・全章展開 完遂（2026-07-11・本番反映済み）**：FL6章＋AL-TM3章＋AL-TTA6章＝**全71本・280問すべて3択化**（2択残0・good計63≈7.5%）。AL編5バッチ＝AL-TM 40+26+14肢／AL-TTA 34+44肢（各バッチ起案→監修承認→決定的スクリプト部分編集〔best不変・削除0〕→単体134/E2E8→push→本番スモーク）。本番全71本の全数検証済み。**通しプレイFB②が全ルートで解消**。worklog 追記35〜40
   - ※「AL-TTA第3〜6章の未反映分をpush」という旧記載は誤り＝`af231ae`で反映済みと判明（worklog追記33の訂正参照）
 - ✅ **UI改善：選択画面の折り畳み**（2026-07-25・PO要望→承認）：レベル・章の2階層トグル化（閉じた節は非描画）。初期展開＝**続きの章のみ**（`findContinueChapter`）・開閉は**明示操作＞自動判定**の優先順で `localStorage 'testquest:ui'`（進捗とは別キー）に保存。見出しにクリア進捗（n/N）・**クリア済み＝明るい緑 `cleared #8ef0c4`**（設計書 v1.4 §5.2/§7.1/§10.2）。単体153＋E2E15 PASS
-- 🔲 **残タスク**：通しプレイFB反映（確認シート回収待ち・**改訂後の再プレイ推奨**）／ B-4類似性逆引き（匠5＋澪5＋server背景も対象）／ 画像圧縮（pngquant・34MB→約1/4）
+- ✅ **画像圧縮 完了（2026-08-21・PO承認）**：当初案の pngquant（GPL-3.0・削減21%止まり）ではなく **WebP q90** を採用し **27枚 37.6MB → 2.1MB（5.5%・約1/18）**。`alphaQuality:100` で透過エッジ無劣化・`assets.ts` EXT→`webp`・元PNGは `assets-candidates/original-png/` へ退避。恒久スクリプト `scripts/compress-images.mjs`（`--dry-run`/`--force`/`--archive`/`--quality`・冪等）。**`LICENSES.md` を新規作成**（sharp の prebuilt が LGPL-3.0 を含むが devDependency＝配布物に伝播なしの判断根拠を記録）。単体153＋E2E15 PASS・実画面確認済み。※git履歴の旧PNGは残るため `.git` は縮まない（worklog 追記45）
+- 🔲 **残タスク**：通しプレイFB反映（確認シート回収待ち・**改訂後の再プレイ推奨**）／ B-4類似性逆引き（匠5＋澪5＋server背景も対象）
 - 🔲 **通しプレイ総合確認（PO実施中）**：`docs/通しプレイ確認シート_v0.1.md`（全39本・観点C1-C6/A1-A5/X1-X5）。フィードバック受領後にAIが修正案リスト化
 - 🔲 **AL実装の残作業**：①`types`/`validator` の CharacterId に **'takumi'/'mio' 追加（コード変更）**・level 'AL-TM'/'AL-TTA' の index対応 ②server背景（設定書§5.2予約・TTA用）③類似性逆引き（匠5＋澪5を宿題B-4に追加済み）
 - ⚠ **ケンの人物像は設定書§4.3「同期エンジニア」が正**（技術メンターではない。AL編メンターは将来の別新キャラ）。2026-07-03 に混同事故→fl-2-02/fl-4-03 の口調を同期風に修正済み・スキルに教訓恒久化（worklog 追記10）
@@ -171,7 +172,7 @@ src/
   utils/             status/validator/storage/scenarioLoader/levels/assets（単体テストは *.test.ts を同居）
 public/
   data/scenarios/    シナリオJSON＝学習コンテンツの正（fl-1〜6・al-tm-1〜3・al-tta-1〜6・index.json）
-  images/            採用済みアセットのみ（characters/{tanaka,rin,ken,takumi,mio}/・backgrounds/）
+  images/            採用済みアセットのみ（characters/{tanaka,rin,ken,takumi,mio}/・backgrounds/）＝**WebP**（2026-08-21圧縮・元PNGは assets-candidates/original-png/）
 tests/e2e/           Playwright E2E（walkthrough・persistence・orientation）
 scripts/             画像生成・運用スクリプト（gen-expression-gemini.ps1・remove-bg.mjs 等）
 docs/                プロジェクトドキュメント（起案・仕様書・手順書・worklog・宿題リスト・採用記録）
@@ -180,8 +181,8 @@ skills/              スキルファイル（name.skill＝zip形式）
 .github/workflows/   CI
 ```
 
-- **ルート直下に置いてよいもの**：CLAUDE.md・企画書・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・TestQuest.html（プロトタイプ原本）・.gitignore
-- **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB・原本はOneDrive側）・シラバス抽出_*.txt（著作物）・.env*・.vercel
+- **ルート直下に置いてよいもの**：CLAUDE.md・企画書・LICENSES.md（依存ライセンス台帳・依存追加時に同一コミットで更新）・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・TestQuest.html（プロトタイプ原本）・.gitignore
+- **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB＝原本はOneDrive側・`original-png/`＝WebP圧縮前の採用PNG 27枚37.6MB）・シラバス抽出_*.txt（著作物）・.env*・.vercel
 - 新規ディレクトリ追加時は本節＋.gitignore を同一コミットで更新する（configuration-management.skill §1）
 
 ---
@@ -193,3 +194,4 @@ skills/              スキルファイル（name.skill＝zip形式）
 | 2026-06-13 | 初版作成（企画書v1.2承認・クロスワードからルール7件/スキル13件を引き継ぎ） |
 | 2026-06-25 | テスト仕様書 v1.0 PO承認（§5〜§9を逆戻りから復元・レビュー確認）→ v1.1 でシナリオテスト網羅性を補強（非王道ルート TC-005 追加）。次はテスト手順書 v0.1 |
 | 2026-07-16 | configuration-management.skill v1.6（TestQuest適合改訂・PO承認）に伴い §7「ディレクトリ構成」を新設・旧§7 改版履歴を §8 へ繰り下げ。§1 スキル一覧の注記を更新 |
+| 2026-08-21 | 画像圧縮（PNG→WebP q90・37.6MB→2.1MB）完了に伴い §6 TODO を更新・§7 に WebP／`assets-candidates/original-png/`／`LICENSES.md` を反映 |
