@@ -7,7 +7,7 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 
 ## 1. スキルファイルの読み込み（skills/ — クロスワードから引き継ぎ）
 
-`.skill` ファイルはZIPアーカイブ。`unzip -p <file>` で SKILL.md を展開して読む。
+`.skill` ファイルはZIPアーカイブ。**多くは PowerShell `Compress-Archive` 製でパス区切りがバックスラッシュのため `unzip` は失敗する**（`appears to use backslashes as path separators`。`unzip -p` が通るのは requirements-engineering / self-review / test-planning の3件のみ・2026-08-21実測）。確実な読み方は **`.zip` にコピーしてから `Expand-Archive -Force`**、または `[IO.Compression.ZipFile]::OpenRead()` でエントリ直読み。**PS5.1 の `Get-Content -Raw` は既定でANSI解釈するため、内容確認時は `-Encoding UTF8` を付ける**（付けないと日本語の検索が空振りする）。再パッケージは `.zip` に作って `.skill` へリネーム（`Compress-Archive` は `.skill` 拡張子を拒否する）。
 
 ### 最優先（常時参照）
 - `skills/y-koizumi-profile.skill`：POのプロファイル・思考傾向・AIのフォロー方針
@@ -27,6 +27,7 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 
 ### 画像アセット制作時に参照（本プロジェクト固有）
 - `skills/image-asset-production.skill`：キャラ立ち絵・背景のAI生成（設計→生成→採用→表情差分→組み込みの判断フロー・落とし穴・サービス検証履歴）。ルールは `.claude/rules/project/image-assets.md`（2026-07-03作成）
+  - **2026-08-21 改訂（PO指示）**：`references/rights-check.md` を新設＝**権利・類似性チェック（STEP E）の実施手順**（Yandex URL 逆引き・TinEye/Lens不可・判定軸＝duplicatesの有無・除外4類型・要約モデルの誤読対策・記録項目）。あわせて STEP E を「AI実行＋PO確認」に更新／`integration.md` に **WebP圧縮**（`compress-images.mjs`・alphaQuality:100・pngquant不採用理由）／`pitfalls.md` に逆引きの落とし穴と `.skill` の読み書き作法を追記
 
 ### シナリオ制作時に参照（本プロジェクト固有）
 - `skills/scenario-authoring.skill`：学習シナリオの制作（シラバス精読→起案→監修→JSON化→検証の判断フロー・評価基準〔迷ったらpoor〕・配分ルール・validator 12項目・著作権配慮・落とし穴）。FL第1章制作で確立した知見を体系化。クロスワードの `istqb-crossword-terms.skill` に相当する本プロジェクト固有スキル（2026-07-03作成・PO承認済み）。**2026-07-05 かく乱肢（distractor）設計を追加**（原則3択・3類型・FL/AL難易度傾斜・good＝誤りを含まない部分正答。evaluation-rubric §1.6。**PO承認済み 2026-07-05**）

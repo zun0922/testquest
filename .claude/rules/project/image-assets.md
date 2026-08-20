@@ -14,10 +14,12 @@
 - 設定書にないキャラ・背景を生成しない（設定書改版→PO承認が先）
 - 生成物の採用はPO判断。採用・不採用と生成パラメータ・系譜を `docs/画像採用記録_v0.1.md` に記録する
 - レビュー用ドキュメントの英語プロンプトには日本語対訳を併記する
+- **権利・類似性チェック（設定書§7の4項目）は採用済みアセットの全数に実施し、「実施した」で終わらせず判定根拠まで採用記録に残す**（規約は版と確認日／逆引きで固有名が出たケースは除外根拠を明記）。手順は `skills/image-asset-production.skill` の `references/rights-check.md`
 
 ## 配置・組み込み
 
 - `public/images/` には**採用済みアセットのみ**置く。候補・不採用案は `assets-candidates/` に保管
+- **配信形式は WebP**（制作はPNG → 配置直前に `scripts/compress-images.mjs` で quality 90・`alphaQuality:100` 固定で変換）。圧縮前のPNG原本は `assets-candidates/original-png/` に退避する
 - 差し替え後は 単体＋E2E 実行と、`e2e-shots/` の実画面スクリーンショットによるPO確認をセットで行う
 - `GEMINI_API_KEY` はユーザー環境変数（レジストリ）管理。**リポジトリにコミット禁止**
 
