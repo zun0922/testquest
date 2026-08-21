@@ -1458,3 +1458,21 @@
 - **検証（門番の実効性・偽陰性チェック）：** 正常実行で **exit 0**（同一11／意図的1／superset OK 1〔+7エントリ〕／固有2／参照専用1）。さらに**scratchpadに意図しない差分とsuperset破れを注入した参照ディレクトリを作って実行 → 両方を検出し exit 1**（self-reviewのサイズ差・growth-trackerの6エントリmissing）
 - **連動更新：** 宿題リスト v1.4（A-3 ✅・前提の誤りを明記）／CLAUDE.md §1（**共通スキルの正は本リポ**・検出コマンド・growth-trackerの位置づけ）／**開発フロー定義 v1.1**（§7 に共通スキルの管理方針を追加＝PO決定の反映）
 **次のアクション：** 宿題B-2（vite 8 メジャー更新）へ。以降 B-3／B-5／C-2 を順次
+
+## 2026-08-21（追記50）
+**着手内容：** 宿題B-2＝dev依存の脆弱性対応（PO指示「b2着手」）。破壊的更新のため**ブランチ `chore/vite8-upgrade` を切って検証**
+**完了内容：**
+- **STEP 1（現状把握）：** `npm audit` は宿題記載の5件から**7件に増加**（critical 1〔vitest〕/ high 3〔vite・postcss・nanoid〕/ moderate 3〔esbuild・@vitest/mocker・vite-node〕）。**`npm audit --omit=dev` は 0 vulnerabilities**＝実行時依存（react/react-dom）は無傷を確認
+  - `fixAvailable` の内訳を機械確認 → **nanoid/postcss は非破壊で修正可能**・残5件は **vite@8.2.2 / vitest@4.1.11 のメジャー更新が必要**と判明
+- **段階1（非破壊）：** `npm audit fix` → nanoid 3.3.15→3.3.18・postcss 8.5.15→8.5.26（**7→5件**）。型/単体153/ビルド 全PASS・**バンドルハッシュ不変**を確認
+- **段階2（メジャー更新）：** **vite 5.4.21→8.2.2・vitest 2.1.9→4.1.11・@vitejs/plugin-react 4.7.0→6.1.0**
+  - `npm install` が peer 解決に失敗（`@vitejs/plugin-react@6` が `peer vite@^8` を要求するのに、npm がディスク上の旧 node_modules を参照して詰まる）→ **package.json を直接更新し node_modules と package-lock を削除してクリーンインストール**（203 packages・lock は 836追加/1512削除＝676行純減）
+  - **`npm audit` 0 vulnerabilities**（7→0）。**アプリコードと設定は無改変で通った**（vite.config・vitest設定・ソースいずれも変更なし）
+- **E2E 15件全滅→原因特定（vite 8 は無関係）：** `node_modules` 削除により **Playwright のブラウザバイナリが未導入**になったため（クリーンインストールで Playwright 自体も 1.61.1→1.62.1 に上がりブラウザ版も変わった）。`npx playwright install chromium`（114.5MiB）で解決 → **15件全PASS**
+- **CI の Node を 20→24 に変更：** vite 8 と plugin-react 6 の `engines.node` が **`^20.19.0 || >=22.12.0`**。`node-version: 20` は 20.x の解決結果に依存するため、**ローカル（v24.15.0）と揃えて 24 に固定**。audit ゲートのコメントも更新（dev側も0件化したが、新規脆弱性でCIを止めないためゲートは実行時依存に限定を維持）
+- **ビルド出力の変化を確認：** modules 49→33・CSS 14.41→**13.07 kB**・JS 170.76→171.10 kB。CSS減少は Tailwind 出力の最適化で、**実画面スクショ（フィードバックカードのバッジ/項番/メーター・立ち絵2体のグレーアウト・選択画面の折り畳み/進捗n_N/ALロック/選択枠ハイライト）で視覚的欠落なしを確認**。E2Eの色実測アサート（cleared 緑）も通過
+- **検証（全PASS）：** 型 / 単体153 / ビルド / E2E15 / **`npm ci` による lock 再現性**（CI の初手を模擬）/ 実画面スクショ / `npm audit` 0件
+- **ライセンス：** vite・vitest・plugin-react は**3件とも MIT のまま変化なし**（`LICENSES.md` v1.1 に更新版数と audit 結果を記録）
+- **据え置き（B-2のスコープ外・別途判断）：** react 18→19・tailwindcss 3→4・typescript 5→7・jsdom 24→30・@types/* 19系。いずれもアプリコードまたは設定形式に影響するため本件では触らない
+**状態：** ブランチ `chore/vite8-upgrade` にコミット。**main へのマージはPO判断待ち**
+**次のアクション：** マージ可否のPO確認 → main へ反映 → push（CI で Node 24・npm ci・E2E が通ることを確認）。以降 B-3／B-5／C-2
