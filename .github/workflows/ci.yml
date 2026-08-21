@@ -20,9 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Node 24（ローカル開発環境と一致）。vite 8 / @vitejs/plugin-react 6 は
+      # engines.node: ^20.19.0 || >=22.12.0 を要求するため 20 の解決結果に依存させない。
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: 依存インストール
@@ -31,8 +33,9 @@ jobs:
       - name: 型チェック
         run: npm run typecheck
 
-      # 実行時依存（production）の脆弱性のみをゲートにする。
-      # dev ツールチェーン（vite/vitest 系）の既知脆弱性は別途 vite8 更新で対応（worklog 参照）。
+      # 実行時依存（production）の脆弱性をゲートにする。
+      # 2026-08-21（宿題B-2）に vite 8 / vitest 4 へ更新し dev 側も 0 件化したが、
+      # dev ツールチェーンの新規脆弱性でCIを止めないため、ゲートは実行時依存に限定する。
       - name: 実行時依存の脆弱性チェック
         run: npm audit --omit=dev --audit-level=moderate
 
