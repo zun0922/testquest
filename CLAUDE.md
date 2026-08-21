@@ -180,6 +180,7 @@ src/
   utils/             status/validator/storage/scenarioLoader/levels/assets（単体テストは *.test.ts を同居）
 public/
   data/scenarios/    シナリオJSON＝学習コンテンツの正（fl-1〜6・al-tm-1〜3・al-tta-1〜6・index.json）
+  data/scenarios_test/ テストデータTD群（15ケース・**`scripts/gen-testdata.mjs` が生成・手編集禁止**。`VITE_SCENARIOS_PATH` で切替。門番＝`src/utils/testdata.test.ts`）
   images/            採用済みアセットのみ（characters/{tanaka,rin,ken,takumi,mio}/・backgrounds/）＝**WebP**（2026-08-21圧縮・元PNGは assets-candidates/original-png/）
 tests/e2e/           Playwright E2E（walkthrough・persistence・orientation）
 scripts/             画像生成・運用スクリプト（gen-expression-gemini.ps1・remove-bg.mjs 等）

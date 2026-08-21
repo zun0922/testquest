@@ -1,0 +1,237 @@
+{
+  "id": "td-base",
+  "title": "テストデータ基準シナリオ",
+  "startNodeId": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "これはテストデータ用の基準シナリオです。検証の基準となる正常なデータです。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        {
+          "characterId": "tanaka",
+          "expression": "normal",
+          "position": "left"
+        },
+        {
+          "characterId": "rin",
+          "expression": "normal",
+          "position": "right"
+        }
+      ],
+      "speaker": "tanaka",
+      "text": "テストデータ用の設問（q1）。どれを選びますか？",
+      "choices": [
+        {
+          "text": "最も適切な選択肢",
+          "rating": "best",
+          "statusEffects": {
+            "knowledge": 3,
+            "confidence": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "部分的に正しい選択肢",
+          "rating": "good",
+          "statusEffects": {
+            "knowledge": 2
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q2"
+        },
+        {
+          "text": "誤りを含む選択肢",
+          "rating": "poor",
+          "statusEffects": {
+            "knowledge": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        {
+          "characterId": "tanaka",
+          "expression": "normal",
+          "position": "left"
+        },
+        {
+          "characterId": "rin",
+          "expression": "normal",
+          "position": "right"
+        }
+      ],
+      "speaker": "tanaka",
+      "text": "テストデータ用の設問（q2）。どれを選びますか？",
+      "choices": [
+        {
+          "text": "最も適切な選択肢",
+          "rating": "best",
+          "statusEffects": {
+            "knowledge": 3,
+            "confidence": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "部分的に正しい選択肢",
+          "rating": "good",
+          "statusEffects": {
+            "knowledge": 2
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q3"
+        },
+        {
+          "text": "誤りを含む選択肢",
+          "rating": "poor",
+          "statusEffects": {
+            "knowledge": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "choice",
+      "background": "office",
+      "characters": [
+        {
+          "characterId": "tanaka",
+          "expression": "normal",
+          "position": "left"
+        },
+        {
+          "characterId": "rin",
+          "expression": "normal",
+          "position": "right"
+        }
+      ],
+      "speaker": "tanaka",
+      "text": "テストデータ用の設問（q3）。どれを選びますか？",
+      "choices": [
+        {
+          "text": "最も適切な選択肢",
+          "rating": "best",
+          "statusEffects": {
+            "knowledge": 3,
+            "confidence": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "end"
+        },
+        {
+          "text": "部分的に正しい選択肢",
+          "rating": "good",
+          "statusEffects": {
+            "knowledge": 2
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "end"
+        },
+        {
+          "text": "誤りを含む選択肢",
+          "rating": "poor",
+          "statusEffects": {
+            "knowledge": 1
+          },
+          "feedback": {
+            "explanation": "テストデータ用の解説文です。",
+            "syllabusRefs": [
+              "1.1"
+            ]
+          },
+          "next": "end"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "type": "text",
+      "background": "office",
+      "characters": [
+        {
+          "characterId": "tanaka",
+          "expression": "normal",
+          "position": "left"
+        },
+        {
+          "characterId": "rin",
+          "expression": "normal",
+          "position": "right"
+        }
+      ],
+      "speaker": "rin",
+      "text": "ここが最終ノードです。お疲れさまでした。",
+      "next": null
+    },
+    {
+      "id": "orphan",
+      "type": "text",
+      "background": "office",
+      "characters": [],
+      "speaker": "narration",
+      "text": "このノードはどこからも参照されていません（到達不能）。",
+      "next": null
+    }
+  ]
+}

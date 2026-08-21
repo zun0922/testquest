@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "td-base",
+      "title": "テストデータ基準シナリオ",
+      "level": "FL",
+      "chapter": 1,
+      "order": 1,
+      "estimatedMinutes": 5,
+      "file": "td/td-base.json"
+    },
+    {
+      "id": "td-added",
+      "title": "追加テスト用シナリオ",
+      "level": "FL",
+      "chapter": 1,
+      "order": 2,
+      "estimatedMinutes": 5,
+      "file": "td/td-added.json"
+    }
+  ]
+}
