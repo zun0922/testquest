@@ -44,19 +44,24 @@ Claude Cowork で新規スライド生成セッションを開始する。
 
 ### Step 2：添付ファイルをアップロード
 
-#### 簡易版：zip 一式を1ファイル添付
+#### zip 一式を1ファイル添付（**全部入り・777KB・8ファイル**）
 
 ```
-presentations/Cowork用_MVP総括一式_v1.0.zip   ← これ1件で必須3件＋画面イメージをカバー
+presentations/Cowork用_MVP総括一式_v1.0.zip   ← これ1件で完結
 ├── Cowork用_スライド生成パッケージ_v1.0.md   （本パッケージ）
-├── MVP完了報告書_v0.1.md                     （数値根拠・必須）
-├── MVP総括スライド_ブリーフ_v0.1.md          （構成案9枚・PO確定事項・必須）
+├── MVP完了報告書_v0.1.md                     （★数値の正）
+├── MVP総括スライド_ブリーフ_v0.1.md          （★構成9枚・PO確定事項）
+├── 企画書_TestQuest_v1.2.md                  （企画の狙い・対象・ルート構成）
+├── 開発フロー_役割分担定義_v0.1.md           （役割分担・制作フロー3系統＝4枚目/6枚目の根拠）
+├── 宿題リスト_v1.0.md                        （残課題・保留判断＝7枚目/8枚目の根拠）
 └── screens/                                  （スライド2で使う実画面）
     ├── play-feedback.png                     （プレイ中：立ち絵＋評価フィードバック）
     └── select-chapters.png                   （章選択：折り畳み・進捗表示）
 ```
 
-> Cowork が zip 自動展開に対応していない場合は、上記4点＋2画像を個別に添付してください。
+> **Cowork が全部を読み切れない場合**は、★印の2件＋本パッケージ＋画像2枚（計5点）に絞って再添付してください。
+> 9枚を書くのに必要な情報はその5点で足ります（不足分は本ファイルの「📦 プロジェクトコンテキスト要約」が補います）。
+> zip 自動展開に対応していない場合も同様に個別添付で進められます。
 
 **zip は gitignore 対象（再生成可能）。** 作り直す場合：
 
@@ -64,20 +69,13 @@ presentations/Cowork用_MVP総括一式_v1.0.zip   ← これ1件で必須3件�
 # 一時ディレクトリへ材料を集めて再圧縮する
 $stage = "$env:TEMP\coworkpkg"; New-Item -ItemType Directory -Force "$stage\screens" | Out-Null
 Copy-Item docs\Cowork用_スライド生成パッケージ_v1.0.md,docs\MVP完了報告書_v0.1.md,docs\MVP総括スライド_ブリーフ_v0.1.md $stage -Force
+Copy-Item 企画書_TestQuest_v1.2.md,docs\開発フロー_役割分担定義_v0.1.md,docs\宿題リスト_v1.0.md $stage -Force
 Copy-Item e2e-shots\04-feedback.png "$stage\screens\play-feedback.png" -Force
 Copy-Item e2e-shots\06-select-collapsed.png "$stage\screens\select-chapters.png" -Force
 Compress-Archive "$stage\*" presentations\Cowork用_MVP総括一式_v1.0.zip -Force
 ```
 
 ※ 画面イメージは `e2e-shots/`（E2E実行で生成される・gitignore対象）から取る。無い場合は `npm run test:e2e` を実行すれば再生成される。
-
-#### 任意で添付（深掘りを求める場合）
-
-| ファイル | 用途 |
-|---------|------|
-| `企画書_TestQuest_v1.2.md` | 企画の狙い・対象読者・ルート構成 |
-| `docs/開発フロー_役割分担定義_v0.1.md` | 役割分担・制作フロー3系統・検証体制6層の根拠 |
-| `docs/宿題リスト_v1.0.md` | 残課題・保留判断の一覧 |
 
 ### Step 3：以下のメインプロンプトを貼り付けて実行
 
