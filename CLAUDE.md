@@ -162,7 +162,7 @@ STEP 6：機能テスト（人間・AIサポート）
   - ③ 類似性逆引き＝**完了**（2026-08-21 B-4①・全27枚）
 - ⚠ **ケンの人物像は設定書§4.3「同期エンジニア」が正**（技術メンターではない。AL編メンターは将来の別新キャラ）。2026-07-03 に混同事故→fl-2-02/fl-4-03 の口調を同期風に修正済み・スキルに教訓恒久化（worklog 追記10）
 - 🔲 法務確認（クロスワードD2の結果待ち → 流用可否判断）
-- 🔲 プロトタイプ（HTML単体版）の本リポジトリへの取り込み検討
+- ✅ **プロトタイプ（HTML単体版）の扱いを決着（2026-08-21・PO判断）**：リポジトリ直下にあった `TestQuest.html` は**プロトタイプ本体ではなく Claude artifact 画面のブラウザ保存物**と判明（`__FRAME_PREAMBLE` 入り・`startNodeId`/`choices`/`statusEffects` 0件・React/Vue 0件＝ゲームロジックなし）。原本を探索（`Downloads` 134.8KB版・`OneDrive\AI_WG\testsim` 25.8KB版）したが**3つとも保存物で動く実体は存在しない**ため**削除**。位置づけは設計書§8.1 の「旧HTMLプロトタイプは参考扱い（レイアウトの正としない・要件9.1）」のまま有効。※必要になれば claude.ai の artifact から再取得、または `git show 736456a:TestQuest.html` で復元可能
 - ✅ **環境移行 案B 実行（2026-07-11・PO指示）＝正の作業場所は `C:\dev\testquest`（OneDrive外の clone）**
   - **今後の作業はすべて `C:\dev\testquest` で行う。OneDrive側（本フォルダ）は参照専用アーカイブ**（gitignore対象の原本置き場：`assets-candidates/` 93MB・`シラバス抽出_*.txt`・`e2e-shots/`）。OneDrive側での編集・コミットは禁止
   - PC間同期は git push/pull（**PC切替時は push 必須**）。gitignore対象（シラバス抽出txt・.env.local・.vercel）は clone 先へ手動コピー済み
@@ -190,7 +190,8 @@ skills/              スキルファイル（name.skill＝zip形式）
 .github/workflows/   CI
 ```
 
-- **ルート直下に置いてよいもの**：CLAUDE.md・企画書・LICENSES.md（依存ライセンス台帳・依存追加時に同一コミットで更新）・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・TestQuest.html（プロトタイプ原本）・.gitignore
+- **ルート直下に置いてよいもの**：CLAUDE.md・企画書・LICENSES.md（依存ライセンス台帳・依存追加時に同一コミットで更新）・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・.gitignore
+  - ※ `TestQuest.html`（プロトタイプ）は 2026-08-21 に削除（実体は artifact 画面の保存物でゲームロジックを含まなかった）
 - **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB＝原本はOneDrive側・`original-png/`＝WebP圧縮前の採用PNG 27枚37.6MB）・シラバス抽出_*.txt（著作物）・.env*・.vercel
 - 新規ディレクトリ追加時は本節＋.gitignore を同一コミットで更新する（configuration-management.skill §1）
 
