@@ -27,3 +27,8 @@ assets-candidates/
 
 .vercel
 .env*
+
+# スライド画像（Cowork等の外部ツール出力＝再生成可能な中間物。pptx は presentations/ にコミット）
+slides/
+# Cowork へ渡す配布用zip（中身の md はコミット済み・スクショは e2e-shots から再生成可能）
+presentations/*.zip

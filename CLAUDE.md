@@ -62,6 +62,7 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 | 要件定義書 | `docs/`（未作成） | 🔄 次の成果物 |
 | 開発フロー・役割分担定義（TestQuest版） | `docs/開発フロー_役割分担定義_v0.1.md` | ✅ **v1.0 承認済み**（2026-08-21。**工程・役割・承認ルールの正**＝本ファイル§5はその要約。クロスワード v10.1 を土台に適合改訂：§5〜§7 コンテンツ制作フロー3系統・§8 検証体制6層＋データ品質門番＋本番スモーク・§9.2 未稼働の枠・§13 全数監修・§14.3 承認ルール） |
 | **MVP完了報告書** | `docs/MVP完了報告書_v0.1.md` | ✅ **v1.0 承認済み（2026-08-21）**＝MVP完了判定・AC達成状況・人間テストの実施状況・リリース判定の正 |
+| MVP総括スライド ブリーフ | `docs/MVP総括スライド_ブリーフ_v0.1.md` | 🔄 **v0.1 起案（2026-08-21）**＝Coworkでのパワポ化に向けた引き継ぎ資料。**STEP 1 のPO確認事項①〜④待ち**（対象読者／限界の記載可否／主題の据え方／枚数）。§6 に**Cowork出力先の必須ガイダンス**（散乱事故2回の教訓） |
 | 作業ログ（中断・再開用） | `docs/worklog.md` | 運用中 |
 
 参照シラバスPDF（親フォルダ `../`）：FL V4.0 J02 / AL-TM V3.0 J03 / AL-TTA 2024 V4.0 J01 / AL-TA V3.1.1 J03（5.4 拡張用）
@@ -190,7 +191,9 @@ public/
   images/            採用済みアセットのみ（characters/{tanaka,rin,ken,takumi,mio}/・backgrounds/）＝**WebP**（2026-08-21圧縮・元PNGは assets-candidates/original-png/）
 tests/e2e/           Playwright E2E（walkthrough・persistence・orientation）
 scripts/             画像生成・運用スクリプト（gen-expression-gemini.ps1・remove-bg.mjs 等）
-docs/                プロジェクトドキュメント（起案・仕様書・手順書・worklog・宿題リスト・採用記録）
+docs/                プロジェクトドキュメント（起案・仕様書・手順書・worklog・宿題リスト・採用記録・報告書）
+presentations/       完成スライド（pptx）＝`TestQuest_<種別>_v<版>.pptx`（例 `TestQuest_MVP総括_v1.0.pptx`）。Cowork配布用zip（`*.zip`）は gitignore
+slides/              スライド画像（Cowork等の外部ツール出力）＝`slides/v<版>/`（gitignored・再生成可能な中間物）
 skills/              スキルファイル（name.skill＝zip形式）
 .claude/rules/       AIルール（common/＝同期コピー・編集禁止、project/＝固有）
 .github/workflows/   CI
@@ -198,7 +201,8 @@ skills/              スキルファイル（name.skill＝zip形式）
 
 - **ルート直下に置いてよいもの**：CLAUDE.md・企画書・LICENSES.md（依存ライセンス台帳・依存追加時に同一コミットで更新）・ビルド設定（package.json・*.config.*・tsconfig*）・index.html・.gitignore
   - ※ `TestQuest.html`（プロトタイプ）は 2026-08-21 に削除（実体は artifact 画面の保存物でゲームロジックを含まなかった）
-- **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB＝原本はOneDrive側・`original-png/`＝WebP圧縮前の採用PNG 27枚37.6MB）・シラバス抽出_*.txt（著作物）・.env*・.vercel
+- **gitignored（コミット禁止）**：node_modules/・dist/・test-results/・playwright-report/・e2e-shots/・assets-candidates/（候補画像93MB＝原本はOneDrive側・`original-png/`＝WebP圧縮前の採用PNG 27枚37.6MB）・シラバス抽出_*.txt（著作物）・.env*・.vercel・**slides/**（外部ツール出力の画像・再生成可能）
+- ⚠ **外部ツール（Cowork 等）を使う前に出力先を必ず依頼文へ明記する**（configuration-management.skill §7.5 の3層構造）。**クロスワードでは Cowork 生成物がプロジェクトルート直下に散乱する事故が2回発生**（2026-05-16／05-19）。教訓＝「skill を新設しただけでは再発しない・依頼パッケージとプロンプト自体に保存先を埋め込む」。**AI Code から外部ツールの保存先は制御できない**ため、①依頼文に保存先・命名を明記 ②受領後に散乱を検知したら即整理 ③本節の規約を事前定義（← 上記 `presentations/`・`slides/` がこれ）
 - 新規ディレクトリ追加時は本節＋.gitignore を同一コミットで更新する（configuration-management.skill §1）
 
 ---
