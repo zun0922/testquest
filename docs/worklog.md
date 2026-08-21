@@ -1474,5 +1474,13 @@
 - **検証（全PASS）：** 型 / 単体153 / ビルド / E2E15 / **`npm ci` による lock 再現性**（CI の初手を模擬）/ 実画面スクショ / `npm audit` 0件
 - **ライセンス：** vite・vitest・plugin-react は**3件とも MIT のまま変化なし**（`LICENSES.md` v1.1 に更新版数と audit 結果を記録）
 - **据え置き（B-2のスコープ外・別途判断）：** react 18→19・tailwindcss 3→4・typescript 5→7・jsdom 24→30・@types/* 19系。いずれもアプリコードまたは設定形式に影響するため本件では触らない
-**状態：** ブランチ `chore/vite8-upgrade` にコミット。**main へのマージはPO判断待ち**
-**次のアクション：** マージ可否のPO確認 → main へ反映 → push（CI で Node 24・npm ci・E2E が通ることを確認）。以降 B-3／B-5／C-2
+**状態：** ブランチ `chore/vite8-upgrade` にコミット（`69a0bb7`）
+**完了内容（追記・マージと本番反映）：** PO承認「マージして進めて」
+- **マージ：** `--no-ff` で main へ（`e1a26fc`）→ push → ブランチ削除
+- **CI（Node 24 で初回実行）：** **success**。GitHub API で `head_sha` を照合し**ローカルHEAD（e1a26fc）の run であることを検証**（待機ループの「15秒」表示は待機開始からの経過で、CI自体は約6分走っていた。他系統の run を誤読していないか確認済み）
+- **本番スモーク（全合格）：**
+  - 新バンドル `index-BmVDU0wB.js` を配信（旧 `index-yUqtI9WK.js` は消えた）。**ローカル dist とバイト単位で一致（171,104 bytes）**＝同一ビルドの配信を確認
+  - トップ200／CSS `index-qfZUKB_i.css` 200／立ち絵WebP 200 `image/webp`／`index.json` **71本**
+  - **`unlockAll` リテラル 0件**（dev限定フラグが本番バンドルに混入していない＝vite 8 でも tree-shaking が効いている）
+- **検証中の自己修正（記録）：** 当初 `"webp"`（ダブルクォート）で検索して0件となり回帰を疑ったが、**vite 8 の minify はバックティックを使う**（`var Be=\`webp\`; function Ve(e){return \`/images/backgrounds/${e}.${Be}\`}`）ためのマッチ漏れと判明。画像パス生成は正常。**バンドル検査の正規表現を引用符に依存させないこと**が教訓
+**次のアクション：** 宿題B-3（TD群の実テストデータ準備）へ。以降 B-5／C-2
