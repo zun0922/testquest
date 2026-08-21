@@ -1439,3 +1439,22 @@
 - **v1.0 へ改版：** ヘッダーを v1.0（PO承認済み）に・改版履歴に v1.0 行を追加（**内容変更なし**＝起案どおり承認）
 - **連動更新：** CLAUDE.md ①§3 ドキュメント表を ✅ v1.0 承認済みに ②**§5 見出しを「正＝docs/開発フロー_役割分担定義_v0.1.md v1.0 承認済み。本節はその要約」に変更**（従来は「クロスワード v10.1 準拠」＝正が外部プロジェクトを指していた状態を解消）③§6 TODO を ✅ 化
 **次のアクション：** 残タスク＝通しプレイFB回収待ち・B-4②（D2待ち）・宿題A-3/B-2/B-3/B-5/C-2
+
+## 2026-08-21（追記49）
+**着手内容：** 宿題A-3＝スキルの共有資産化（PO指示「通しプレイと法務確認は保留でA3以降を順次処理していきましょう」）
+**完了内容：**
+- **STEP 1（実測調査）：** 全15スキルをハッシュ比較し、**宿題の前提2点が誤りと判明**
+  - **共通11件は完全同一**（improvement-proposal／project-management／requirements-engineering／self-review／software-design／test-automation／test-execution／test-planning／test-procedure／test-spec／**y-koizumi-profile**）＝宿題記載の「y-koizumi-profile も分岐進行中」は誤り
+  - **`growth-tracker` は分岐しているが競合なし**＝TestQuest版はクロスワード版の**完全な上位集合**（共通8ログ＋references3＋SKILL.md はサイズ完全一致・TestQuest独自ログ7件が追加）
+  - `configuration-management` の差分は意図的（TestQuest適合改訂v1.6・2026-07-16）。TestQuest固有2件＝image-asset-production／scenario-authoring。クロスワード固有1件＝istqb-crossword-terms
+  - **クロスワード側 skills の最終更新は 2026-06-11**（以降更新なし＝TestQuestが現役）。`claude-rules-library` は **OneDrive上**で `rules/` のみ扱い**skillsの枠がない**
+- **PO決定：** 「**TestQuestを正＋差分検出**」。library方式は採らない＝**libraryがOneDrive上にあり、2026-07-11のskill 7件破損と同じリスクを負うため**
+- **STEP 4（適用）：** `scripts/check-skill-drift.ps1` を新設（**ASCIIのみ**＝PS5.1のANSI解釈対策）
+  - 分類＝IDENTICAL／INTENTIONAL（理由つき登録）／SUPERSET OK（**エントリ単位で包含検証**）／TESTQUEST-ONLY／REFERENCE-ONLY／DRIFT。意図しない差分は **exit 1**
+  - 参照先は**ワイルドカードで解決**（`$env:USERPROFILE\OneDrive*\AI_WG\crossword\...`）＝日本語パスをASCIIスクリプトに書かずに済み、環境変化にも強い
+- **実行時に自己修正した不具合2件（記録として残す）：**
+  - ①当初は日本語パスを `[char]0x9598` で組み立てたが**コードポイント誤り**（閘≠閂）→ ワイルドカード解決方式に変更
+  - ②**PowerShellの変数名は大文字小文字を区別しない**ため、定義した `$Intentional`/`$Superset`（設定）が集計用 `$intentional`/`$superset`（配列）に上書きされ `ContainsKey` が失敗 → `$IntentionalMap`/`$SupersetList` に改名
+- **検証（門番の実効性・偽陰性チェック）：** 正常実行で **exit 0**（同一11／意図的1／superset OK 1〔+7エントリ〕／固有2／参照専用1）。さらに**scratchpadに意図しない差分とsuperset破れを注入した参照ディレクトリを作って実行 → 両方を検出し exit 1**（self-reviewのサイズ差・growth-trackerの6エントリmissing）
+- **連動更新：** 宿題リスト v1.4（A-3 ✅・前提の誤りを明記）／CLAUDE.md §1（**共通スキルの正は本リポ**・検出コマンド・growth-trackerの位置づけ）／**開発フロー定義 v1.1**（§7 に共通スキルの管理方針を追加＝PO決定の反映）
+**次のアクション：** 宿題B-2（vite 8 メジャー更新）へ。以降 B-3／B-5／C-2 を順次

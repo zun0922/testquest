@@ -7,13 +7,15 @@ Claude Code がセッション開始時に最初に読み込むファイル。
 
 ## 1. スキルファイルの読み込み（skills/ — クロスワードから引き継ぎ）
 
+**共通スキルの正は本リポジトリ**（`C:\dev\testquest\skills\`・git管理・OneDrive外）＝**PO決定 2026-08-21・宿題A-3**。library方式は採らない（libraryがOneDrive上でskill破損の既往と同じリスクを負うため）。クロスワードとの分岐は `powershell -ExecutionPolicy Bypass -File scripts\check-skill-drift.ps1` で検出（同一11件／意図的派生＝configuration-management／superset＝growth-tracker／固有2件を分類。意図しない差分は exit 1）。
+
 `.skill` ファイルはZIPアーカイブ。**多くは PowerShell `Compress-Archive` 製でパス区切りがバックスラッシュのため `unzip` は失敗する**（`appears to use backslashes as path separators`。`unzip -p` が通るのは requirements-engineering / self-review / test-planning の3件のみ・2026-08-21実測）。確実な読み方は **`.zip` にコピーしてから `Expand-Archive -Force`**、または `[IO.Compression.ZipFile]::OpenRead()` でエントリ直読み。**PS5.1 の `Get-Content -Raw` は既定でANSI解釈するため、内容確認時は `-Encoding UTF8` を付ける**（付けないと日本語の検索が空振りする）。再パッケージは `.zip` に作って `.skill` へリネーム（`Compress-Archive` は `.skill` 拡張子を拒否する）。
 
 ### 最優先（常時参照）
 - `skills/y-koizumi-profile.skill`：POのプロファイル・思考傾向・AIのフォロー方針
 - `skills/improvement-proposal.skill`：スキル更新・プロセス改善の提案基準
 - `skills/self-review.skill`：成果物出力前のセルフレビュー観点
-- `skills/growth-tracker.skill`：協働の成長記録（クロスワードからの引き継ぎコピー。分岐に注意 — 共有資産化を検討中）
+- `skills/growth-tracker.skill`：協働の成長記録。**本リポが正**（クロスワード版の完全な上位集合＝共通8ログ＋TestQuest独自ログ。2026-08-21 実測確認）
 
 ### ドキュメント作成時に参照
 - `skills/requirements-engineering.skill` / `software-design.skill` / `test-planning.skill` / `test-spec.skill` / `test-procedure.skill`
