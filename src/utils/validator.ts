@@ -159,6 +159,16 @@ export function validateScenario(data: unknown): { warnings: string[] } {
     if (node.type === 'choice') {
       choiceNodeCount++
       const choices = node.choices as Choice[]
+      // --- #14 ヒント文（FR-P2-007・省略可）---
+      if (node.hint !== undefined) {
+        if (!isString(node.hint) || (node.hint as string).length === 0) {
+          errors.push(`#14: nodes '${node.id}' の hint が文字列でないか空です`)
+        } else if ((node.hint as string).length > LIMITS.HINT_MAX) {
+          errors.push(
+            `#14: nodes '${node.id}' の hint が ${LIMITS.HINT_MAX} 文字を超えています（${(node.hint as string).length}）`,
+          )
+        }
+      }
       // --- #4 選択肢数 2〜3 ---
       if (choices.length < LIMITS.CHOICES_MIN || choices.length > LIMITS.CHOICES_MAX) {
         errors.push(`#4: nodes '${node.id}' の選択肢数が ${LIMITS.CHOICES_MIN}〜${LIMITS.CHOICES_MAX} ではありません（${choices.length}）`)
@@ -174,6 +184,41 @@ export function validateScenario(data: unknown): { warnings: string[] } {
         }
         if (!RATINGS.includes(c.rating as string)) {
           errors.push(`#1: nodes '${node.id}' の選択肢 rating が不正です`)
+        }
+        // --- #13 emphasis（FR-P2-007 ヒント・省略可）---
+        // 指定語が text に無いと強調されず「ヒントを押しても何も起きない」空振りになるため、
+        // 実在すること・重ならないこと・多すぎないことを検証する。
+        if (c.emphasis !== undefined) {
+          if (!Array.isArray(c.emphasis)) {
+            errors.push(`#13: nodes '${node.id}' の emphasis が配列ではありません`)
+          } else {
+            if (c.emphasis.length > LIMITS.EMPHASIS_MAX) {
+              errors.push(
+                `#13: nodes '${node.id}' の emphasis が ${LIMITS.EMPHASIS_MAX} 件を超えています（${c.emphasis.length}）`,
+              )
+            }
+            const text = isString(c.text) ? (c.text as string) : ''
+            const spans: Array<[number, number]> = []
+            for (const w of c.emphasis) {
+              if (!isString(w) || (w as string).length === 0) {
+                errors.push(`#13: nodes '${node.id}' の emphasis に空文字または非文字列が含まれます`)
+                continue
+              }
+              const at = text.indexOf(w as string)
+              if (at < 0) {
+                errors.push(`#13: nodes '${node.id}' の emphasis '${w as string}' が選択肢 text に含まれません`)
+                continue
+              }
+              spans.push([at, at + (w as string).length])
+            }
+            spans.sort((a, b) => a[0] - b[0])
+            for (let i = 1; i < spans.length; i++) {
+              if (spans[i][0] < spans[i - 1][1]) {
+                errors.push(`#13: nodes '${node.id}' の emphasis の範囲が重なっています`)
+                break
+              }
+            }
+          }
         }
         // --- #6 statusEffects 1キー以上・各値 整数1〜5 ---
         if (!isObject(c.statusEffects)) {

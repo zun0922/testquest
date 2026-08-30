@@ -5,6 +5,7 @@ import type { StatusValues, ChoiceNode, Choice, Rating, CharacterDisplay } from 
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { useVoice } from '../../hooks/useVoice'
 import { loadVoiceSettings, saveVoiceSettings, type VoiceSettings } from '../../utils/uiState'
+import { emphasizedIndices, hasHintData, hintLevel, splitByEmphasis } from '../../utils/hint'
 import StatusHud from '../common/StatusHud'
 import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
@@ -110,7 +111,15 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
 
       {/* 選択肢オーバーレイ */}
       {showChoices && (
-        <ChoiceOverlay choices={(node as ChoiceNode).choices} onChoose={onChoose} />
+        // key に node.id を与えて問題ごとに作り直す＝前の問題のヒント表示を持ち越さない
+        <ChoiceOverlay
+          key={node.id}
+          choices={(node as ChoiceNode).choices}
+          hint={(node as ChoiceNode).hint}
+          onChoose={onChoose}
+          status={status}
+          level={session.level}
+        />
       )}
 
       {/* フィードバックモーダル */}
@@ -161,7 +170,27 @@ function Stage({ characters, speaker }: { characters: CharacterDisplay[]; speake
   )
 }
 
-function ChoiceOverlay({ choices, onChoose }: { choices: Choice[]; onChoose: (i: number) => void }) {
+function ChoiceOverlay({
+  choices,
+  hint,
+  onChoose,
+  status,
+  level,
+}: {
+  choices: Choice[]
+  hint?: string
+  onChoose: (i: number) => void
+  status: StatusValues
+  level: PlaySession['level']
+}) {
+  // FR-P2-007 ヒント：合計ポイントとレベル別閾値で強さが決まる（要件仕様 §3）。
+  // Lv1＝ヒント文のみ／Lv2＝ヒント文＋選択肢の強調。任意表示にしているのは、
+  // 自分で考えてから見られるようにするため。
+  const [showHint, setShowHint] = useState(false)
+  const hLv = hintLevel(status, level)
+  const canHint = hLv > 0 && hasHintData(hint, choices)
+  const targets = showHint ? emphasizedIndices(choices, hLv) : new Set<number>()
+
   // 表示順をシャッフルする（起案時は best を先頭に置いているため、そのままだと正答が常に A になり
   // 「1番を選べば正解」が学習されて演習が形骸化する）。reducer は元インデックスで選択を解決するので、
   // data-testid と onChoose には元インデックスを渡し、A/B/C ラベルは表示位置で振る。
@@ -176,6 +205,16 @@ function ChoiceOverlay({ choices, onChoose }: { choices: Choice[]; onChoose: (i:
   }, [choices])
   return (
     <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 px-6 z-20">
+      {/* ヒント文（Lv1 以上）。答えではなく「何を考えるか」を示す */}
+      {showHint && hint && (
+        <div
+          data-testid="hint-text"
+          className="w-full max-w-md rounded-lg border border-hint/60 bg-hint/10 backdrop-blur-sm px-4 py-3 text-sm leading-relaxed text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)]"
+        >
+          <span className="mr-1" aria-hidden>💡</span>
+          {hint}
+        </div>
+      )}
       {order.map((origIdx, pos) => (
         <button
           key={origIdx}
@@ -187,9 +226,29 @@ function ChoiceOverlay({ choices, onChoose }: { choices: Choice[]; onChoose: (i:
           <span className="inline-flex items-center justify-center mr-2 min-w-[1.4rem] rounded bg-black/40 text-accent font-bold [text-shadow:none]">
             {String.fromCharCode(65 + pos)}
           </span>
-          {choices[origIdx].text}
+          {targets.has(origIdx)
+            ? splitByEmphasis(choices[origIdx].text, choices[origIdx].emphasis).map((seg, i) =>
+              seg.hit ? (
+                <strong key={i} data-testid="hint-mark" className="font-bold text-hint underline decoration-hint/60 underline-offset-2">
+                  {seg.text}
+                </strong>
+              ) : (
+                <span key={i}>{seg.text}</span>
+              ),
+            )
+            : choices[origIdx].text}
         </button>
       ))}
+
+      {/* ヒントボタン。数値は出さない（UI-RULE-006）。活性/非活性でポイントの育ち具合が間接的に伝わる */}
+      <button
+        data-testid="btn-hint"
+        disabled={!canHint || showHint}
+        onClick={() => setShowHint(true)}
+        className="mt-1 text-sm px-4 py-2 rounded-lg border border-line/80 bg-black/50 text-text-muted enabled:hover:text-text-main enabled:hover:border-accent/70 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+      >
+        {showHint ? '💡 ヒント表示中' : canHint ? '💡 ヒントを見る' : '💡 ヒントはまだ使えません'}
+      </button>
     </div>
   )
 }

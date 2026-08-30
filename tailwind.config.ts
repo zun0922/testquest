@@ -24,6 +24,9 @@ export default {
         'status-gain': '#8ef0c4',
         // クリア済み表示（選択画面のシナリオ・章の完了。status-gain と同値の明るい緑＝達成の色）
         cleared: '#8ef0c4',
+        // ヒントの強調（FR-P2-007）。選択肢の透過ゴールド背景の上でコントラストが出る明るいシアン。
+        // rating 3色（緑/黄/赤）とも status メーター色とも用途が重ならない色を選ぶ。
+        hint: '#7ce0ff',
       },
       fontFamily: {
         sans: ["'Segoe UI'", "'Hiragino Sans'", "'Meiryo'", 'sans-serif'],
