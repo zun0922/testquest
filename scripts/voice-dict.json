@@ -1,0 +1,31 @@
+{
+  "_doc": "VOICEVOX ユーザー辞書に登録する読み（FR-P2-006）。学習教材では専門用語の読み間違いが品質に直結するため、辞書をリポジトリで管理して誰の環境でも同じ読みを再現する。登録は node scripts/gen-voice-dict.mjs。",
+  "_accent": "accent_type はアクセント核の位置（0=平板）。初期値は保守的に平板とし、STEP 2 の試聴で調整する。",
+  "_source": "収録語は実際のセリフ569ノードから抽出した英字略語・専門用語（出現数はコメント参照）。出てこない語は登録しない（過剰登録はアクセントを不自然にする）。",
+  "words": [
+    { "surface": "API", "pronunciation": "エーピーアイ", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 9 },
+    { "surface": "CI", "pronunciation": "シーアイ", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 5 },
+    { "surface": "CD", "pronunciation": "シーディー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 3 },
+    { "surface": "MC", "pronunciation": "エムシー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 6 },
+    { "surface": "DC", "pronunciation": "ディーシー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 6 },
+    { "surface": "DB", "pronunciation": "ディービー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 3 },
+    { "surface": "EC", "pronunciation": "イーシー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 2 },
+    { "surface": "QA", "pronunciation": "キューエー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 2 },
+    { "surface": "CM", "pronunciation": "シーエム", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "OS", "pronunciation": "オーエス", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "ROI", "pronunciation": "アールオーアイ", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 3 },
+    { "surface": "SLA", "pronunciation": "エスエルエー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "TDD", "pronunciation": "ティーディーディー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 3 },
+    { "surface": "ATDD", "pronunciation": "エーティーディーディー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "SDLC", "pronunciation": "エスディーエルシー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 2 },
+    { "surface": "TTA", "pronunciation": "ティーティーエー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 3 },
+    { "surface": "xUnit", "pronunciation": "エックスユニット", "accent_type": 4, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "DevOps", "pronunciation": "デブオプス", "accent_type": 1, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "SMART", "pronunciation": "スマート", "accent_type": 2, "word_type": "PROPER_NOUN", "_n": 1 },
+    { "surface": "JSTQB", "pronunciation": "ジェイエスティーキュービー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 0 },
+    { "surface": "ISTQB", "pronunciation": "アイエスティーキュービー", "accent_type": 0, "word_type": "PROPER_NOUN", "_n": 0 },
+    { "surface": "三点見積り", "pronunciation": "サンテンミツモリ", "accent_type": 0, "word_type": "COMMON_NOUN", "_n": 1 },
+    { "surface": "網羅率", "pronunciation": "モーラリツ", "accent_type": 3, "word_type": "COMMON_NOUN", "_n": 2 },
+    { "surface": "可搬性", "pronunciation": "カハンセイ", "accent_type": 0, "word_type": "COMMON_NOUN", "_n": 0 }
+  ]
+}

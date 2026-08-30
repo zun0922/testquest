@@ -1,0 +1,64 @@
+{
+  "_doc": "FR-P2-006 キャラクターボイスの配役。PO選定 2026-08-25（試聴18名から決定）。設定の正は docs/音声設定書_v0.1.md、規約の判定根拠は docs/音声採用記録_v0.1.md。",
+  "_credit": "全音源とも規約でクレジット表記が必要（波音リツのみ本体規約由来の VOICEVOX 表記のみ必須）。表示は TitleScreen.tsx。",
+  "engine": "http://127.0.0.1:50021",
+  "format": "m4a",
+  "bitrate": "48k",
+  "cast": {
+    "narration": {
+      "_setting": "地の文。特定の人物ではない中立的な語り",
+      "_policy": "zunko.jp（東北ずん子プロジェクト）＝商用・非商用可／クレジット必須（アプリは紹介画面などに記載）／2026-08-25 確認",
+      "speaker": "東北イタコ",
+      "style": "ノーマル",
+      "speedScale": 1.0,
+      "pitchScale": 0.0,
+      "intonationScale": 1.0
+    },
+    "rin": {
+      "_setting": "鈴木 凛／20代後半・女性／シニアテストエンジニア（メンター）／落ち着いた指導役",
+      "_policy": "meimeihimari.com＝商用可・個人法人問わず申請報告不要／クレジット必須／オリジナルキャラの声としての利用を明示的に可と回答／2026-08-25 確認",
+      "speaker": "冥鳴ひまり",
+      "style": "ノーマル",
+      "speedScale": 1.0,
+      "pitchScale": 0.0,
+      "intonationScale": 1.0
+    },
+    "tanaka": {
+      "_setting": "田中 課長／40代・男性／QAマネージャー／管理職の重み",
+      "_policy": "virvoxproject＝商用・非商用可／クレジット必須／企業の事前申請条件は青山龍星のみで本音源には無い／2026-08-25 確認",
+      "speaker": "玄野武宏",
+      "style": "ノーマル",
+      "speedScale": 0.95,
+      "pitchScale": 0.0,
+      "intonationScale": 1.0
+    },
+    "ken": {
+      "_setting": "佐藤 健／20代前半・男性／同期エンジニア／若く軽快",
+      "_policy": "virvoxproject（同上）／2026-08-25 確認",
+      "speaker": "白上虎太郎",
+      "style": "ふつう",
+      "speedScale": 1.05,
+      "pitchScale": 0.0,
+      "intonationScale": 1.0
+    },
+    "takumi": {
+      "_setting": "高橋 匠／50代前半・男性／テクニカルテストアナリスト（技術メンター）／低く落ち着いた専門家",
+      "_policy": "virvoxproject（同上）／2026-08-25 確認",
+      "speaker": "麒ヶ島宗麟",
+      "style": "ノーマル",
+      "speedScale": 0.95,
+      "pitchScale": -0.02,
+      "intonationScale": 1.0
+    },
+    "mio": {
+      "_setting": "伊藤 澪／40代前半・女性／テクニカルテストアナリスト（技術メンター）",
+      "_note": "PO配役済みだが【シナリオ登場0件】のため現時点で音声は生成されない（宿題A-4の判断後に有効化）",
+      "_policy": "canon-voice.com/terms＝商用可／クレジットは本体の VOICEVOX 表記のみ必須／「他キャラクターへの声当て可」を明示／2026-08-25 確認",
+      "speaker": "波音リツ",
+      "style": "ノーマル",
+      "speedScale": 1.0,
+      "pitchScale": 0.0,
+      "intonationScale": 1.0
+    }
+  }
+}

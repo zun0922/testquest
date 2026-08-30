@@ -1,0 +1,3000 @@
+{
+  "version": 1,
+  "format": "m4a",
+  "scenarios": {
+    "fl-1-01": {
+      "intro-scene": {
+        "hash": "5061ce342d5d37ca",
+        "dur": 7.2,
+        "cast": "narration"
+      },
+      "intro-greet": {
+        "hash": "9923b993262dfc35",
+        "dur": 9.69,
+        "cast": "rin"
+      },
+      "intro-brief": {
+        "hash": "7aea9c9756409645",
+        "dur": 8.72,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "d8dab6535b97930d",
+        "dur": 10.38,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "52b787e6161bbd3e",
+        "dur": 3.68,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "b5815c0a3c5385b7",
+        "dur": 5.12,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "5dc3d759e25f8f68",
+        "dur": 4.13,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "be31e02852bf6942",
+        "dur": 3.79,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "d2391145959ee022",
+        "dur": 13.39,
+        "cast": "tanaka"
+      }
+    },
+    "fl-1-02": {
+      "intro-scene": {
+        "hash": "f83132f9cb560baf",
+        "dur": 8.4,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "3ec939a38017130b",
+        "dur": 9.17,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "b66087444fab2fab",
+        "dur": 5.88,
+        "cast": "ken"
+      },
+      "q1": {
+        "hash": "ae9d2c18ff8d63b8",
+        "dur": 2.11,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "dbfdc7ee589cafe6",
+        "dur": 4.85,
+        "cast": "ken"
+      },
+      "q3": {
+        "hash": "e74f2ed43d1697de",
+        "dur": 3.44,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "bf999ced839ff940",
+        "dur": 10.23,
+        "cast": "ken"
+      }
+    },
+    "fl-1-03": {
+      "intro-scene": {
+        "hash": "ecc2a23375db9dc8",
+        "dur": 7.67,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "831a2e0f480ca854",
+        "dur": 8.21,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "ae0a5a42373b0742",
+        "dur": 7.92,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "bd489759da3a5515",
+        "dur": 2.93,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "3633e6248c38ca15",
+        "dur": 3.61,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "69db0ca239d6f5c4",
+        "dur": 3.45,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "857acaea4496cb03",
+        "dur": 3.5,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "438d727dbc5d82c9",
+        "dur": 10.22,
+        "cast": "tanaka"
+      }
+    },
+    "fl-1-04": {
+      "intro-scene": {
+        "hash": "97d4e9fde6c8f922",
+        "dur": 13.09,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "5ec9fd60287b442e",
+        "dur": 7.86,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "92c86624d1b41e86",
+        "dur": 5.85,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "478f2a3a740add6c",
+        "dur": 2.03,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "99244c3e8958160e",
+        "dur": 4.77,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "bb7f4d2ce61d67df",
+        "dur": 3.7,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "e6384d17fc7d5cce",
+        "dur": 3.83,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "f542102cce8f16b4",
+        "dur": 12.14,
+        "cast": "rin"
+      }
+    },
+    "fl-1-05": {
+      "intro-scene": {
+        "hash": "57221497b7330f20",
+        "dur": 8.2,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "d400c57528e3942b",
+        "dur": 7.15,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "2a70d2da086914e4",
+        "dur": 6.76,
+        "cast": "ken"
+      },
+      "q1": {
+        "hash": "3acc4b62161f6ee6",
+        "dur": 2.21,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "be33c8e16b62c24a",
+        "dur": 2.96,
+        "cast": "ken"
+      },
+      "q3": {
+        "hash": "907e4249cfec8fa0",
+        "dur": 2.38,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "9708f8068df1955a",
+        "dur": 10.29,
+        "cast": "ken"
+      }
+    },
+    "fl-2-01": {
+      "intro-scene": {
+        "hash": "e244d0d442f75a3c",
+        "dur": 9.93,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "c2b60da47e36e204",
+        "dur": 8.28,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "528851932c48d569",
+        "dur": 10.99,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "bff7915b24e1cce2",
+        "dur": 7.16,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "c88d6e875c0eac28",
+        "dur": 9.79,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "37dedfda25a45fec",
+        "dur": 8.5,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "03d1ea0c98fa0b94",
+        "dur": 7.03,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "a4568723383464b2",
+        "dur": 13.77,
+        "cast": "tanaka"
+      }
+    },
+    "fl-2-02": {
+      "intro-scene": {
+        "hash": "01b364069aad2f4b",
+        "dur": 9.88,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "0863168e516e29a6",
+        "dur": 7.51,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "05572055e4adcb12",
+        "dur": 12.74,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "d8e1f74176dbd701",
+        "dur": 9.82,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "d476448dab9727a9",
+        "dur": 9.18,
+        "cast": "ken"
+      },
+      "q3": {
+        "hash": "7ec6af65cb94db25",
+        "dur": 6.46,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "a8f4a9edb34e9f59",
+        "dur": 5.88,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "5fec7063505abd63",
+        "dur": 11.29,
+        "cast": "ken"
+      }
+    },
+    "fl-2-03": {
+      "intro-scene": {
+        "hash": "c3613439c78d156f",
+        "dur": 9.1,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "e962503d3881609d",
+        "dur": 6.72,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "bdc29ec2d958f2ac",
+        "dur": 11,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "0848fa9ea2d92bc7",
+        "dur": 5.87,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "55b58c81a0631dbf",
+        "dur": 5.81,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "f0a8c3fd1aec93f7",
+        "dur": 7.01,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "eeffafc83aef27ab",
+        "dur": 6.05,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "7838ba72d5e0d068",
+        "dur": 10.03,
+        "cast": "tanaka"
+      }
+    },
+    "fl-2-04": {
+      "intro-scene": {
+        "hash": "e9a09fe0dee9f017",
+        "dur": 7.47,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "b53939596694e3fe",
+        "dur": 7.15,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "e421db5a9b860cae",
+        "dur": 10.7,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "5b9ee86474dc5453",
+        "dur": 6.48,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "3b63e488d4f30d2f",
+        "dur": 6.17,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "550a4a8865e45107",
+        "dur": 6.56,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "9df32eb4a40ee901",
+        "dur": 5.94,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "8c51c866e73b5d91",
+        "dur": 11.02,
+        "cast": "rin"
+      }
+    },
+    "fl-2-05": {
+      "intro-scene": {
+        "hash": "bfe44f9c8e59dc92",
+        "dur": 8.73,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "02b6477af3d79ddf",
+        "dur": 7.54,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "bb8998459ed90396",
+        "dur": 9.5,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "c6abce6dd87416b8",
+        "dur": 3.86,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "7b63bb28db8983c5",
+        "dur": 4.14,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "44a23b8bfb3cc615",
+        "dur": 6.02,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "c4b20ee58a5bdedc",
+        "dur": 9.87,
+        "cast": "tanaka"
+      }
+    },
+    "fl-3-01": {
+      "intro-scene": {
+        "hash": "568fed9943ebcebb",
+        "dur": 7.92,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "922e37113b6205f8",
+        "dur": 8.31,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "3c7c736d36b966d3",
+        "dur": 11.6,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "0ada639815e64562",
+        "dur": 4.97,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "7b86834df4567c0b",
+        "dur": 5.16,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "e43e403d9720a145",
+        "dur": 4.28,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "aa5b4b105b00036a",
+        "dur": 4.75,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "13753208c24bac7c",
+        "dur": 7.66,
+        "cast": "tanaka"
+      }
+    },
+    "fl-3-02": {
+      "intro-scene": {
+        "hash": "eef11e487d4f6141",
+        "dur": 9.53,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "817652444db0c75c",
+        "dur": 7.14,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "61cfe9d3e2437c0a",
+        "dur": 11.35,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "1e6914674ea0a3f1",
+        "dur": 3.32,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "1c8161b6a0f87642",
+        "dur": 3.93,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "9775657fd8fe20ac",
+        "dur": 6.23,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "9978a0c492384191",
+        "dur": 5.13,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "6e41d9d755f392ff",
+        "dur": 9.94,
+        "cast": "rin"
+      }
+    },
+    "fl-3-03": {
+      "intro-scene": {
+        "hash": "20092cf71ae26648",
+        "dur": 8.11,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "27c32a3fd43f20e5",
+        "dur": 7.32,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "4657e709c0843e73",
+        "dur": 10.23,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "83efd44390c4bcbf",
+        "dur": 5.3,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "1f0376e9378e7253",
+        "dur": 4.28,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "76e019cc0e50fc1a",
+        "dur": 6.76,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "37fe5b68dc47f1c6",
+        "dur": 3.92,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "085ff31e4ffa7b0d",
+        "dur": 10.14,
+        "cast": "rin"
+      }
+    },
+    "fl-3-04": {
+      "intro-scene": {
+        "hash": "4f2d2c4fb68be27c",
+        "dur": 11.85,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "01c486102655ebb3",
+        "dur": 8.76,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "157fdcff24631126",
+        "dur": 10.82,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "3bc7c57dcc3d48c5",
+        "dur": 2.83,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "60c5d6a01f963bc0",
+        "dur": 5.72,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "759fbda50ebab613",
+        "dur": 6.43,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "85262db2d6ea00b2",
+        "dur": 8.13,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "d8954b1390ab8797",
+        "dur": 9.74,
+        "cast": "tanaka"
+      }
+    },
+    "fl-3-05": {
+      "intro-scene": {
+        "hash": "b967522c9608df02",
+        "dur": 6.4,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "31e7391b818f7bc3",
+        "dur": 6.65,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "e6872b1a064a7c69",
+        "dur": 9.54,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "56838ca10d5dddb6",
+        "dur": 4.48,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "489e9c7a5410fb14",
+        "dur": 6.5,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "35eed9c8f69170f3",
+        "dur": 5.01,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "96391fb8b5283981",
+        "dur": 10.68,
+        "cast": "tanaka"
+      }
+    },
+    "fl-4-01": {
+      "intro-scene": {
+        "hash": "6ea128c95e243b1d",
+        "dur": 10.75,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "7e76ddac8bcc6bda",
+        "dur": 6.87,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "288a34a7f9e8f41b",
+        "dur": 11.08,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "04bc02378dac5b46",
+        "dur": 5.57,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "1009a53b160b8161",
+        "dur": 4.96,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "7ee8dbe8d716eed4",
+        "dur": 8.28,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "1a456ac0e0e6dc9e",
+        "dur": 5.15,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "90f331a51b6cb035",
+        "dur": 11.04,
+        "cast": "tanaka"
+      }
+    },
+    "fl-4-02": {
+      "intro-scene": {
+        "hash": "c93e88fa5256b822",
+        "dur": 11.03,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "871484b3d75a2a34",
+        "dur": 6.89,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "54ac4f72616faaa4",
+        "dur": 10.93,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "8c5cfa1e2f249521",
+        "dur": 5.62,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "6d5bd976c34646f6",
+        "dur": 3.98,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "9ec0d28b3864cd05",
+        "dur": 6.51,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "2c82c7fd475ee80d",
+        "dur": 5,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "6468f750ae196d28",
+        "dur": 10.97,
+        "cast": "rin"
+      }
+    },
+    "fl-4-03": {
+      "intro-scene": {
+        "hash": "5a4775bbf8e1ba24",
+        "dur": 6.97,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "c884202375feb4cd",
+        "dur": 8.6,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "9c17726d8b3d7fd5",
+        "dur": 12.95,
+        "cast": "ken"
+      },
+      "q1": {
+        "hash": "d39a6e3f3f3e342d",
+        "dur": 7.1,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "8c5b79a07e9c9d02",
+        "dur": 3.67,
+        "cast": "ken"
+      },
+      "q3": {
+        "hash": "a06cf112e6d90692",
+        "dur": 5.65,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "9bbbb63a6637aeca",
+        "dur": 6.75,
+        "cast": "ken"
+      },
+      "ending": {
+        "hash": "cf22009d95f40e4c",
+        "dur": 11.09,
+        "cast": "ken"
+      }
+    },
+    "fl-4-04": {
+      "intro-scene": {
+        "hash": "c680e9dc93186a4e",
+        "dur": 8.57,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "0c6db3aa8b989df6",
+        "dur": 6.35,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "dab56b724b721fb6",
+        "dur": 10.42,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "60242207f90f5d53",
+        "dur": 4.18,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "d1009c42a9f179e7",
+        "dur": 5.02,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "e2bf670a5cfce427",
+        "dur": 4.86,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "7e71422e4f38860d",
+        "dur": 5.13,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "a024d5899571b355",
+        "dur": 11.83,
+        "cast": "rin"
+      }
+    },
+    "fl-4-05": {
+      "intro-scene": {
+        "hash": "cd492af0b10a8f5b",
+        "dur": 11,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "9f6022e36fb8fb34",
+        "dur": 6.88,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "722764624feee03a",
+        "dur": 10.52,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "7b8057e11775f872",
+        "dur": 6.07,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "c0840e79dee42d57",
+        "dur": 2.85,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "33294ca46600e2de",
+        "dur": 4.62,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "177d5950be8561c6",
+        "dur": 6.66,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "203b0bba4cbe1c40",
+        "dur": 10.52,
+        "cast": "tanaka"
+      }
+    },
+    "fl-5-01": {
+      "intro-scene": {
+        "hash": "29155379361cd198",
+        "dur": 7.86,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "9cd9beb0735ed7d0",
+        "dur": 6.7,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "cbf6f600b45d1808",
+        "dur": 10.45,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "a0e00105879c1d75",
+        "dur": 4.27,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "78dcfd666beac151",
+        "dur": 6.36,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "bd552e42827d6a5d",
+        "dur": 6.11,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "d57acabdfa836cb1",
+        "dur": 4.36,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "0a453d548ac93312",
+        "dur": 8.7,
+        "cast": "tanaka"
+      }
+    },
+    "fl-5-02": {
+      "intro-scene": {
+        "hash": "e4895e1cc1f7fe89",
+        "dur": 7.84,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "97bc7367aae24742",
+        "dur": 7.94,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "35905b7525819881",
+        "dur": 9.59,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "14098950502c3bae",
+        "dur": 9.57,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "e6bef929dda9c8bb",
+        "dur": 3.07,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "eb11d51670a2609c",
+        "dur": 4.03,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "7b30f87c90175384",
+        "dur": 6.53,
+        "cast": "tanaka"
+      },
+      "q5": {
+        "hash": "9847226b2be4f7ba",
+        "dur": 6.46,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "6fce905ca5b57861",
+        "dur": 9.46,
+        "cast": "rin"
+      }
+    },
+    "fl-5-03": {
+      "intro-scene": {
+        "hash": "a90f4ae80a8fb33b",
+        "dur": 10.1,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "65c3bc270a1581a5",
+        "dur": 6.22,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "6a933f0cc6881df8",
+        "dur": 9.78,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "4f83267bc4ee90b4",
+        "dur": 4.76,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "664f6f3f1ea03de9",
+        "dur": 6.58,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "fb104ae3098fef3b",
+        "dur": 4.77,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "90b1f88f7e41f26e",
+        "dur": 3.53,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "90ae39a7548067a4",
+        "dur": 10.03,
+        "cast": "rin"
+      }
+    },
+    "fl-5-04": {
+      "intro-scene": {
+        "hash": "3be4ff9029f57331",
+        "dur": 8.14,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "bdb86c67fe4ea946",
+        "dur": 6.88,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "3d0e461a3a43c64c",
+        "dur": 9.05,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "4641e5659c7ad4dd",
+        "dur": 4.93,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "148407f61d73a9de",
+        "dur": 3.1,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "92c2de0b78787527",
+        "dur": 4.78,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "a72d77ba093e8a56",
+        "dur": 4.74,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "0f34b990a1e99f0f",
+        "dur": 11.12,
+        "cast": "tanaka"
+      }
+    },
+    "fl-5-05": {
+      "intro-scene": {
+        "hash": "4e0c1de0348cdc96",
+        "dur": 9.32,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "30a5e5b0160648e6",
+        "dur": 6.01,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "321d3cf46b681aa8",
+        "dur": 11.06,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "8fb3ad7ceac77816",
+        "dur": 5.22,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "2430f64c54de243c",
+        "dur": 4.93,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "08b5c9bb10d55aa4",
+        "dur": 5.15,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "9de63f8d18fc4181",
+        "dur": 5.26,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "b746eb01fd798e8e",
+        "dur": 13.14,
+        "cast": "rin"
+      }
+    },
+    "fl-6-01": {
+      "intro-scene": {
+        "hash": "68ee6d6e314f4125",
+        "dur": 7.68,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "b72f79553e277c10",
+        "dur": 7.33,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "4dc9dc759332965e",
+        "dur": 10.14,
+        "cast": "ken"
+      },
+      "q1": {
+        "hash": "80d00008bb50fd5f",
+        "dur": 4.17,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "f4f3f3510a27eba6",
+        "dur": 4.59,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "60bec84e8e9ecad8",
+        "dur": 5.07,
+        "cast": "ken"
+      },
+      "ending": {
+        "hash": "4fff95bf4d6344b3",
+        "dur": 11.44,
+        "cast": "ken"
+      }
+    },
+    "fl-6-02": {
+      "intro-scene": {
+        "hash": "b4a84d7957491317",
+        "dur": 9.78,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "5e00ce58b08ba12c",
+        "dur": 6.02,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "07c6091e5ad8eaad",
+        "dur": 9.95,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "084533c487d4f1f7",
+        "dur": 5.6,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "48e10f0d9b8533a4",
+        "dur": 4.75,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "0b539b20f507e3e8",
+        "dur": 5.88,
+        "cast": "ken"
+      },
+      "q4": {
+        "hash": "9cdcb954a29208d3",
+        "dur": 4.86,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "17cc3db401479b0a",
+        "dur": 10.49,
+        "cast": "ken"
+      }
+    },
+    "al-tm-1-01": {
+      "intro-scene": {
+        "hash": "26f9aeb0415988d1",
+        "dur": 12.36,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "aec9b15693d6ac7b",
+        "dur": 6.25,
+        "cast": "rin"
+      },
+      "intro-motive2": {
+        "hash": "44bb925911245a1e",
+        "dur": 7.61,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "1490e1e72dd8c41d",
+        "dur": 13.95,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "0fea2c4c62450d45",
+        "dur": 4.49,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "3f0d0bf1442738e3",
+        "dur": 7,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "65d0c0ae974b3c52",
+        "dur": 3.81,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "8fbcb4b5b2d30af2",
+        "dur": 3.69,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "913ac3e5aa04d127",
+        "dur": 12.27,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-02": {
+      "intro-scene": {
+        "hash": "90ce14072bc4b1e0",
+        "dur": 7,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "a4f9ce8be3fceaaf",
+        "dur": 7.21,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "05469ff649a1b420",
+        "dur": 12.92,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "d0cb21d3498ac9dd",
+        "dur": 5.26,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "d9c5ca1327eda840",
+        "dur": 3.47,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "9c333ae904513ee9",
+        "dur": 5.79,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "e916a440d916e1d1",
+        "dur": 7.23,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "11faa70dd4b0aeb5",
+        "dur": 12.35,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-03": {
+      "intro-scene": {
+        "hash": "7f407438c8fba828",
+        "dur": 10.32,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "8e362663f24e8cf5",
+        "dur": 6.68,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "b6641052340a75b9",
+        "dur": 12.34,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "49f9cdc284e94e6e",
+        "dur": 5.95,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "018ff56d1b641df3",
+        "dur": 5.15,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "7c9bf51e963f6e5a",
+        "dur": 5.62,
+        "cast": "ken"
+      },
+      "q4": {
+        "hash": "c41138240d5449b9",
+        "dur": 7.95,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "aa2dbd77708f370f",
+        "dur": 12.25,
+        "cast": "rin"
+      }
+    },
+    "al-tm-1-04": {
+      "intro-scene": {
+        "hash": "1903c64b8c2f163f",
+        "dur": 8.44,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "426ad1519caefe02",
+        "dur": 8.69,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "d2b0019d2063d963",
+        "dur": 15.66,
+        "cast": "narration"
+      },
+      "brief2": {
+        "hash": "961ce1cd749a368b",
+        "dur": 9.07,
+        "cast": "narration"
+      },
+      "brief3": {
+        "hash": "7c1d148143c6be35",
+        "dur": 9.65,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "bf1349ce7e286c3b",
+        "dur": 6.89,
+        "cast": "tanaka"
+      },
+      "q2a": {
+        "hash": "459f1af7cd5f4ea1",
+        "dur": 7.64,
+        "cast": "rin"
+      },
+      "q2b": {
+        "hash": "e5df5e87c0ad1c27",
+        "dur": 10.56,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "073cd886650f0194",
+        "dur": 3.93,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "2579b0f87e8e29df",
+        "dur": 5.43,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "b7ddc60a37329833",
+        "dur": 11.12,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-05": {
+      "intro-scene": {
+        "hash": "947d13db51231b73",
+        "dur": 10.88,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "3e07b94192c1bd18",
+        "dur": 6.41,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "d4c104608a564468",
+        "dur": 8.18,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "1e16b999dfc77d12",
+        "dur": 5.47,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "239a338d34c96e81",
+        "dur": 4.24,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "ae0bc8bbadcdf463",
+        "dur": 6.05,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "a03e23a28e02781e",
+        "dur": 3.37,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "ed1762f0bed4cee6",
+        "dur": 11.89,
+        "cast": "rin"
+      }
+    },
+    "al-tm-1-06": {
+      "intro-scene": {
+        "hash": "ff929e8e5115f28c",
+        "dur": 7.44,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "acfd51d5646a112f",
+        "dur": 9.48,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "9cdbca954ae226f0",
+        "dur": 18.32,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "f55c3a2cdff87d06",
+        "dur": 3.01,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "0c007a8511693d5f",
+        "dur": 5.64,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "083c1d85a35c14a1",
+        "dur": 2.78,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "7af2d539e0cc025e",
+        "dur": 6.25,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "0ffcd94e59e397f9",
+        "dur": 12.82,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-07": {
+      "intro-scene": {
+        "hash": "b86f2fb468d77202",
+        "dur": 7.39,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "4f6185edcd5f43f1",
+        "dur": 6.84,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "3d1f1d94e0c9ad81",
+        "dur": 11.34,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "8b205212585fe022",
+        "dur": 4.98,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "c656532948ca2428",
+        "dur": 6.21,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "55025737b8e19990",
+        "dur": 3.8,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "6ae8eed300e156ba",
+        "dur": 11.17,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-08": {
+      "intro-scene": {
+        "hash": "fe427172ed1705d3",
+        "dur": 7.77,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "fc83c1ed81294419",
+        "dur": 6.43,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "578c93ba10bbc120",
+        "dur": 20.72,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "806e1bdbe6fc236b",
+        "dur": 5.76,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "ea2f3fba5e76488a",
+        "dur": 5.45,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "f391f0c7293ac73b",
+        "dur": 5.29,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "eeee8e4bbe25afb2",
+        "dur": 5.86,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "1225961153423dcf",
+        "dur": 10.16,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-09": {
+      "intro-scene": {
+        "hash": "c21af4510f2f2490",
+        "dur": 6.53,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "5a1cbaba0c745844",
+        "dur": 8.73,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "1833d642c4dbba23",
+        "dur": 9.23,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "15a429775c8df1d7",
+        "dur": 3.86,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "b4d0e37f1c4f2cf3",
+        "dur": 5.28,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "8ec54067c7485f25",
+        "dur": 4.61,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "38b62f00f1d6f244",
+        "dur": 4.24,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "f477a9cfc23ab99b",
+        "dur": 11.64,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-10": {
+      "intro-scene": {
+        "hash": "c870dc4c4d4625fa",
+        "dur": 9.93,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "35ad27cdbfb6a7b9",
+        "dur": 7.6,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "34eb61d7d81c4254",
+        "dur": 9.44,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "e5f29602f42df390",
+        "dur": 3.63,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "87973c7d02d0959b",
+        "dur": 4.89,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "dc8fd2298dc659e2",
+        "dur": 4.43,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "2bd246a2ced2bfd5",
+        "dur": 4.76,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "866de99e02ee7087",
+        "dur": 11.24,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-1-11": {
+      "intro-scene": {
+        "hash": "661b4a4a23cd4e08",
+        "dur": 6.89,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "fff31bd5b8969140",
+        "dur": 6.85,
+        "cast": "ken"
+      },
+      "intro": {
+        "hash": "a3db7552dc6f06b3",
+        "dur": 10.14,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "0d7e66013d0c1f3b",
+        "dur": 6.46,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "ef69794479ee17a4",
+        "dur": 3.33,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "8a6af79c03771e3b",
+        "dur": 6.94,
+        "cast": "ken"
+      },
+      "q4": {
+        "hash": "5f53344cdadae845",
+        "dur": 3.4,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "db347b5a953158e6",
+        "dur": 10.84,
+        "cast": "ken"
+      }
+    },
+    "al-tm-1-12": {
+      "intro-scene": {
+        "hash": "26b5907320529c0c",
+        "dur": 8.28,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "7930a63340fa8f84",
+        "dur": 10.07,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "28eff2fd8098a431",
+        "dur": 23.09,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "db6d65a083ad5ff7",
+        "dur": 3.88,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "eb641d2f24e869c0",
+        "dur": 2.77,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "440933f480abdc0b",
+        "dur": 3.57,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "b7374770becf1398",
+        "dur": 3.61,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "ff7dcb40adae5e50",
+        "dur": 10.94,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-3-01": {
+      "intro-scene": {
+        "hash": "b858c6fd75db196b",
+        "dur": 7.71,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "64c5351f03e32f31",
+        "dur": 9.76,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "56ef7b46e9f9098d",
+        "dur": 20.36,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "a034cc3a04184a50",
+        "dur": 4.99,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "935605a095d654f2",
+        "dur": 4.37,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "9260be2f1b3a5834",
+        "dur": 4.27,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "d9c77d4f13c27f62",
+        "dur": 5.26,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "00571deb9551e7b7",
+        "dur": 10.99,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-3-02": {
+      "intro-scene": {
+        "hash": "a0d96a778243d5d2",
+        "dur": 8.89,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "b608814b728191d0",
+        "dur": 5.48,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "89bb1525909f6853",
+        "dur": 10.84,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "cc985456ed9bf287",
+        "dur": 3.63,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "393eb462754e60e4",
+        "dur": 4.78,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "628aa4af35b9081e",
+        "dur": 6.3,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "bbd39324bb7ebd67",
+        "dur": 5.52,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "26de4796d0db95ae",
+        "dur": 10.7,
+        "cast": "rin"
+      }
+    },
+    "al-tm-3-03": {
+      "intro-scene": {
+        "hash": "f18a6b42a2d26f97",
+        "dur": 7.37,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "99e7d9d7986a16d1",
+        "dur": 7.48,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "e9bad4f93379f2df",
+        "dur": 9.52,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "68918d35ecb4d6fa",
+        "dur": 4.02,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "91c84ae5a85324a2",
+        "dur": 6.92,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "b1ff5f4e5da3640d",
+        "dur": 3.71,
+        "cast": "rin"
+      },
+      "q4": {
+        "hash": "950edc4cb4ad6a16",
+        "dur": 4.65,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "50be783849c0d12b",
+        "dur": 11.14,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-3-04": {
+      "intro-scene": {
+        "hash": "da5f9ad22f3aae0d",
+        "dur": 7.16,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "dc0e1fdd28f10417",
+        "dur": 10.92,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "0699a61d996e83c3",
+        "dur": 22.04,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "b829cb05ba424759",
+        "dur": 5.27,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "0d57929dc53f76dc",
+        "dur": 5.34,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "19cba0ab8889ee3f",
+        "dur": 4.81,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "62e85b6d6431b7c9",
+        "dur": 3.98,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "3c1ef3be3e4693c8",
+        "dur": 13.88,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-2-01": {
+      "intro-scene": {
+        "hash": "3cf07883c56404c1",
+        "dur": 7.63,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "0324496f7dd8537c",
+        "dur": 9.7,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "3f63f11629f3a692",
+        "dur": 10.37,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "af0400ce574e09ba",
+        "dur": 4.33,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "7b08945b42bd022d",
+        "dur": 4.68,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "b43a8709cc038c1d",
+        "dur": 2.43,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "df9784032e187176",
+        "dur": 4.36,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "fd8c11fd35e1becb",
+        "dur": 9.06,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-2-02": {
+      "intro-scene": {
+        "hash": "6f850a752c79d256",
+        "dur": 8.47,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "182f8748c22d72e0",
+        "dur": 6.9,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "5036f5cb00057f50",
+        "dur": 22.2,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "5536fa362c329467",
+        "dur": 3.48,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "4933afe46440dc2b",
+        "dur": 5.91,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "15ab5774b81a5f31",
+        "dur": 6.01,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "5cda7d5995f8f164",
+        "dur": 4.69,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "555509911e9c252e",
+        "dur": 10.54,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-2-03": {
+      "intro-scene": {
+        "hash": "a44501424f0af3ea",
+        "dur": 8.99,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "113a3beead2e5377",
+        "dur": 6.33,
+        "cast": "tanaka"
+      },
+      "intro": {
+        "hash": "7cace50324db9527",
+        "dur": 10.97,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "34b90e317eceb0e9",
+        "dur": 3.41,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "04b1208cd24adbf4",
+        "dur": 3.28,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "ebdc55ff1a6ff9de",
+        "dur": 6.23,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "607eb70e13b185d5",
+        "dur": 4.68,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "13f4782505fc92a5",
+        "dur": 10.91,
+        "cast": "rin"
+      }
+    },
+    "al-tm-2-04": {
+      "intro-scene": {
+        "hash": "aaccd84b42d8f9a3",
+        "dur": 10.07,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "afbd8f4c46982adc",
+        "dur": 8.37,
+        "cast": "tanaka"
+      },
+      "brief1": {
+        "hash": "8c884a38604b750e",
+        "dur": 21,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "bfb83ae18150c4c4",
+        "dur": 6.74,
+        "cast": "tanaka"
+      },
+      "q2": {
+        "hash": "d760afddd83f538e",
+        "dur": 6.91,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "ffd9cea799fcac4b",
+        "dur": 6.25,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "eb5dd747916740b5",
+        "dur": 3.31,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "5f328511923ee0d7",
+        "dur": 9.79,
+        "cast": "tanaka"
+      }
+    },
+    "al-tm-2-05": {
+      "intro-scene": {
+        "hash": "80560c47d161ab9f",
+        "dur": 7.74,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "c54c147c5f2205bb",
+        "dur": 7.05,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "71a16b93fe74e48e",
+        "dur": 10.15,
+        "cast": "rin"
+      },
+      "q1": {
+        "hash": "99c9b64b853d492f",
+        "dur": 3.24,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "31d928f2d32536d0",
+        "dur": 3.72,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "5c0925ebc8b592a7",
+        "dur": 4.03,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "62285b10ff08b43d",
+        "dur": 6.16,
+        "cast": "tanaka"
+      },
+      "ending": {
+        "hash": "a1aa0061df9663b7",
+        "dur": 9.65,
+        "cast": "rin"
+      }
+    },
+    "al-tm-2-06": {
+      "intro-scene": {
+        "hash": "44fd4a1cc9a3ef96",
+        "dur": 7.3,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "2c4cfc3398b96949",
+        "dur": 6.23,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "ea7e93a58fcd37fa",
+        "dur": 11.55,
+        "cast": "ken"
+      },
+      "q1": {
+        "hash": "50057d09ab56fcff",
+        "dur": 4.83,
+        "cast": "ken"
+      },
+      "q2": {
+        "hash": "b261492d06545be3",
+        "dur": 4.6,
+        "cast": "rin"
+      },
+      "q3": {
+        "hash": "4261b85b1f129dc1",
+        "dur": 6.39,
+        "cast": "ken"
+      },
+      "q4": {
+        "hash": "11ea65e6cc3bbf47",
+        "dur": 5,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "e12daa96e2c3ff30",
+        "dur": 13.73,
+        "cast": "ken"
+      }
+    },
+    "al-tm-2-07": {
+      "intro-scene": {
+        "hash": "8c351952356795df",
+        "dur": 8.26,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "02f715b246c727d9",
+        "dur": 6.82,
+        "cast": "rin"
+      },
+      "intro": {
+        "hash": "b5c72110ce4fce1f",
+        "dur": 9.32,
+        "cast": "tanaka"
+      },
+      "q1": {
+        "hash": "e02863e0e3fa5db4",
+        "dur": 6.08,
+        "cast": "rin"
+      },
+      "q2": {
+        "hash": "718778bc84083271",
+        "dur": 3.46,
+        "cast": "tanaka"
+      },
+      "q3": {
+        "hash": "8cfd92e9e144725b",
+        "dur": 5.23,
+        "cast": "tanaka"
+      },
+      "q4": {
+        "hash": "9a2d1c99ced34add",
+        "dur": 6.13,
+        "cast": "rin"
+      },
+      "ending": {
+        "hash": "10b0a2f240525faf",
+        "dur": 10.85,
+        "cast": "tanaka"
+      }
+    },
+    "al-tta-1-01": {
+      "intro-scene": {
+        "hash": "21c687ef77db2d5a",
+        "dur": 8.97,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "d9aa3e757d8386a0",
+        "dur": 6.17,
+        "cast": "takumi"
+      },
+      "intro-motive2": {
+        "hash": "83e6a88c1d75a353",
+        "dur": 7.38,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "ec5b106398ae36b2",
+        "dur": 10.16,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "050b35ea881963f7",
+        "dur": 4.53,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "14884a31904b8523",
+        "dur": 4.34,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "74d4156f7e6ecbc9",
+        "dur": 5.14,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "e3b10552803ec733",
+        "dur": 5.7,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "9ec80890a08f0464",
+        "dur": 11.88,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-2-01": {
+      "intro-scene": {
+        "hash": "40794620d58fd9a5",
+        "dur": 7.7,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "9ceb58a80daa5f0d",
+        "dur": 4.58,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "c501bafbe6e96715",
+        "dur": 9.87,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "1be113a3bd70767b",
+        "dur": 3.54,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "5c4b157eecd4d5bc",
+        "dur": 7.4,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "a2f45c61652a2030",
+        "dur": 3.57,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "390876726d7e7145",
+        "dur": 9.49,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "ace22f5563c3252f",
+        "dur": 12.75,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-2-02": {
+      "intro-scene": {
+        "hash": "43e313c7feae39e7",
+        "dur": 8.5,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "aa1bd036e31889ec",
+        "dur": 5.54,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "1f2f31f42c7b9b97",
+        "dur": 12.03,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "c0f1ce8be8555116",
+        "dur": 4.38,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "125777159507f5f3",
+        "dur": 11.82,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "b405ab072cdc3fcf",
+        "dur": 4.75,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "2db831d79e513618",
+        "dur": 5.05,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "0657e67212fdd4ef",
+        "dur": 13.7,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-2-03": {
+      "intro-scene": {
+        "hash": "2c7ebf7bb599a453",
+        "dur": 7.66,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "fa8e257194b8b85d",
+        "dur": 5.04,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "31e3cf3aab3ffa67",
+        "dur": 10.73,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "6afd7eeedf492ba1",
+        "dur": 3.18,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "9b95b213a642c02b",
+        "dur": 8.22,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "a30fb133fa3570d5",
+        "dur": 2.94,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "5b00ce7b4e19d33d",
+        "dur": 3.55,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "049347fef66a8f43",
+        "dur": 14.11,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-2-04": {
+      "intro-scene": {
+        "hash": "6ed5a28d806f49db",
+        "dur": 8.93,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "bf3ecc26dbc9e131",
+        "dur": 4.6,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "9286d0ff1245e3b9",
+        "dur": 9.49,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "b7e55ba037e643ba",
+        "dur": 3.88,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "e71b36e57026fca2",
+        "dur": 3.79,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "b4ae03bbd1f39c93",
+        "dur": 3.08,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "9db3ad9e62f8b670",
+        "dur": 3.42,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "06b248ca91bc4e78",
+        "dur": 14.87,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-2-05": {
+      "intro-scene": {
+        "hash": "2a4283021010ab38",
+        "dur": 9.08,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "6549010699f715e2",
+        "dur": 10.25,
+        "cast": "takumi"
+      },
+      "brief1": {
+        "hash": "95bbb2fbeda14061",
+        "dur": 21.26,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "de4d2c132606db98",
+        "dur": 4.15,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "48d3eaeca1ece749",
+        "dur": 4.03,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "117ae26b070fb611",
+        "dur": 7.38,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "be0f4c3c86ac17f3",
+        "dur": 4.18,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "339df3027060ffd7",
+        "dur": 13.82,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-3-01": {
+      "intro-scene": {
+        "hash": "376d01caa1488ba2",
+        "dur": 7.16,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "14ba4c72df49a109",
+        "dur": 5.05,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "c070d0c746d98f6a",
+        "dur": 11.56,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "d54a1f2fd40e639e",
+        "dur": 4.09,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "1b74afc95de570d8",
+        "dur": 9.53,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "52e8ce33ec759826",
+        "dur": 3.65,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "5d102735bca1ca54",
+        "dur": 8.88,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "6eb79b783e06e175",
+        "dur": 10.55,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-3-02": {
+      "intro-scene": {
+        "hash": "6efbb92a879f2548",
+        "dur": 8.32,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "2431554513ee984c",
+        "dur": 6.58,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "814405863c03f165",
+        "dur": 11.08,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "0b2e21a42f98f033",
+        "dur": 4.25,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "f73614f8743bd202",
+        "dur": 3.94,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "06ffcd5bf540a732",
+        "dur": 4.53,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "c377eb27ea90557b",
+        "dur": 4.44,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "8ae006a89ff4e9f9",
+        "dur": 14.04,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-3-03": {
+      "intro-scene": {
+        "hash": "162541d57451c960",
+        "dur": 8.48,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "90d56131d7a1fdd5",
+        "dur": 5.91,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "ea1aeeb2ae49898c",
+        "dur": 10.73,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "f608c3e565f7b7de",
+        "dur": 4.17,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "4c357cd6f6f8076b",
+        "dur": 5.22,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "b041fe756c2eafd4",
+        "dur": 4.25,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "14c0479c0438b310",
+        "dur": 5.14,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "1e9639ae665c498f",
+        "dur": 12.52,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-01": {
+      "intro-scene": {
+        "hash": "16163dcaf20d9ccd",
+        "dur": 10.48,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "b8af92032261d298",
+        "dur": 9.91,
+        "cast": "takumi"
+      },
+      "brief1": {
+        "hash": "9a1e14e1c71c35d6",
+        "dur": 22.93,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "95d903684b84f561",
+        "dur": 3.57,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "7e3ec379fca5f5dc",
+        "dur": 3.69,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "047bd2217836c301",
+        "dur": 7.37,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "fa59d8341bc127af",
+        "dur": 3.54,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "a6ef48aacdbf92a9",
+        "dur": 10.88,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-02": {
+      "intro-scene": {
+        "hash": "c68d2cd6292d7929",
+        "dur": 9.97,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "deb5b94b99e55b85",
+        "dur": 6.9,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "b1f5fc954b1bee43",
+        "dur": 7.31,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "39556888a6bd342d",
+        "dur": 3.04,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "fd46bd2e54caac14",
+        "dur": 5.8,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "3cc0f9e759f6306d",
+        "dur": 3.58,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "f01bc336a8dc7df9",
+        "dur": 3.99,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "7ae6d4223573374d",
+        "dur": 11.06,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-03": {
+      "intro-scene": {
+        "hash": "7139a39f4799b179",
+        "dur": 9.92,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "eb60ec1ba990d6c3",
+        "dur": 5.92,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "f59fb16b2318bc14",
+        "dur": 8.58,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "289582d759e92c7d",
+        "dur": 3.01,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "980c785fd31329f9",
+        "dur": 4.75,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "e8d011e13bb0b5eb",
+        "dur": 4.02,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "f974f9ed9504ce62",
+        "dur": 2.99,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "19065d951a0cc1ac",
+        "dur": 11.74,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-04": {
+      "intro-scene": {
+        "hash": "5d2db63ed4d86475",
+        "dur": 8.33,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "afdb6bf1d11588b0",
+        "dur": 6.25,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "fdd3abe0f581dac6",
+        "dur": 7.84,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "98685c7f39072430",
+        "dur": 5.24,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "7e998f0f56586c28",
+        "dur": 5.38,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "975548bba7fe37ba",
+        "dur": 6.19,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "753e37ae2c5455fc",
+        "dur": 3.54,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "13cf8152c60fd0ef",
+        "dur": 10.39,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-05": {
+      "intro-scene": {
+        "hash": "d2d7b04fbcfba92e",
+        "dur": 8.29,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "0906201b76ceaab3",
+        "dur": 6.55,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "09611d00d609d761",
+        "dur": 9.12,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "6450e3cc314c4132",
+        "dur": 3.46,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "1108960086774e3c",
+        "dur": 3.64,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "5e53c12250ba7c5e",
+        "dur": 3.39,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "d4fee7a465bf6e27",
+        "dur": 2.73,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "a2b67deaec6e1e0a",
+        "dur": 10.7,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-4-06": {
+      "intro-scene": {
+        "hash": "4251aa7ae47e91c6",
+        "dur": 7.49,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "7116b858f662864b",
+        "dur": 6.32,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "c228d634f539555d",
+        "dur": 10.36,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "3a5108169d4e0f7a",
+        "dur": 3.82,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "32ba11ca5e478a10",
+        "dur": 2.66,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "47a07b6e94594978",
+        "dur": 3.24,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "e58ce98931f1ba10",
+        "dur": 4.33,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "ab7c9dd0ec2cd925",
+        "dur": 13.26,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-5-01": {
+      "intro-scene": {
+        "hash": "2571bfec71c989c6",
+        "dur": 7.01,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "3248c42a950fec2a",
+        "dur": 6.35,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "0b098ea2f0681cf1",
+        "dur": 10.22,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "cf98f7b6a63004b9",
+        "dur": 3.69,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "69ef8d8cfe2064f0",
+        "dur": 5.73,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "cab4c201c38927f7",
+        "dur": 3.32,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "97a2ece51b097f85",
+        "dur": 4.64,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "a2976fc8cd576d1f",
+        "dur": 10.85,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-5-02": {
+      "intro-scene": {
+        "hash": "8c0a0a836352c01a",
+        "dur": 8.57,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "4e48fcdb62febb5c",
+        "dur": 9.87,
+        "cast": "takumi"
+      },
+      "brief1": {
+        "hash": "1c94ed1109b8b21a",
+        "dur": 24.72,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "81c757bfbadb9fd1",
+        "dur": 4.16,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "e2c033864d26be1c",
+        "dur": 6.3,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "f523ab0cd7ffc821",
+        "dur": 5.1,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "3d4ba3a979b4be05",
+        "dur": 3.9,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "b2642cbce64551ff",
+        "dur": 9.6,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-5-03": {
+      "intro-scene": {
+        "hash": "6d9063c4dfc0d3c2",
+        "dur": 8.56,
+        "cast": "narration"
+      },
+      "intro": {
+        "hash": "bf22acf875a5c6a7",
+        "dur": 8.35,
+        "cast": "takumi"
+      },
+      "brief1": {
+        "hash": "540b677eba961891",
+        "dur": 35.87,
+        "cast": "narration"
+      },
+      "q1": {
+        "hash": "3901ce8e35e6ed4c",
+        "dur": 3.86,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "8c91254cf7d6a06e",
+        "dur": 5.39,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "fa665146ab29ff45",
+        "dur": 6.14,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "ad83692a8e5f71c1",
+        "dur": 4.27,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "030628c37cae861d",
+        "dur": 10.59,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-6-01": {
+      "intro-scene": {
+        "hash": "76549edb63302135",
+        "dur": 9.1,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "3fe72f967ab7d37e",
+        "dur": 6.52,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "af44ac4cf42d9df9",
+        "dur": 9.63,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "8167a9a33b0e8c10",
+        "dur": 3.39,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "337b38a0e0618508",
+        "dur": 3.66,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "291d2fdccb4d60d0",
+        "dur": 3.39,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "1b3d29b84573f82a",
+        "dur": 3.78,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "05f873041043c1e0",
+        "dur": 11.77,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-6-02": {
+      "intro-scene": {
+        "hash": "96305a8996816ab5",
+        "dur": 7.45,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "9c04e052d7c58abd",
+        "dur": 6.58,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "0dc07f2984df548b",
+        "dur": 10.36,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "6458fe2f60fb183b",
+        "dur": 3.22,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "a942da0e578a4f2f",
+        "dur": 3.55,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "25bcba83347a2712",
+        "dur": 4,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "4309100935ee1224",
+        "dur": 5.22,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "c45d6491939a06be",
+        "dur": 11.31,
+        "cast": "takumi"
+      }
+    },
+    "al-tta-6-03": {
+      "intro-scene": {
+        "hash": "1ae1570f726923b6",
+        "dur": 7.97,
+        "cast": "narration"
+      },
+      "intro-motive": {
+        "hash": "98762c6345dabf67",
+        "dur": 4.88,
+        "cast": "takumi"
+      },
+      "intro": {
+        "hash": "fa9457ceb1876198",
+        "dur": 9.98,
+        "cast": "takumi"
+      },
+      "q1": {
+        "hash": "692b9a9ab9844b80",
+        "dur": 4.52,
+        "cast": "takumi"
+      },
+      "q2": {
+        "hash": "aa2e45aa9d19c2fb",
+        "dur": 4.2,
+        "cast": "takumi"
+      },
+      "q3": {
+        "hash": "089ac3061e70c366",
+        "dur": 6.72,
+        "cast": "takumi"
+      },
+      "q4": {
+        "hash": "100b5c861b50a34f",
+        "dur": 3.44,
+        "cast": "takumi"
+      },
+      "ending": {
+        "hash": "7eea20210e8297bc",
+        "dur": 15.26,
+        "cast": "takumi"
+      }
+    }
+  },
+  "credits": [
+    "VOICEVOX:冥鳴ひまり",
+    "VOICEVOX:東北イタコ",
+    "VOICEVOX:玄野武宏",
+    "VOICEVOX:白上虎太郎",
+    "VOICEVOX:麒ヶ島宗麟"
+  ]
+}

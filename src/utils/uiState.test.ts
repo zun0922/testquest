@@ -2,9 +2,12 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import {
   chapterOpenKey,
+  DEFAULT_VOICE,
   levelOpenKey,
   loadOverrides,
+  loadVoiceSettings,
   saveOverrides,
+  saveVoiceSettings,
   UI_KEY,
 } from './uiState'
 import { SAVE_KEY } from './storage'
@@ -75,5 +78,52 @@ describe('loadOverrides / saveOverrides', () => {
       throw new Error('SecurityError')
     })
     expect(loadOverrides()).toEqual({})
+  })
+})
+
+describe('音声設定（FR-P2-006）', () => {
+  it('未保存なら既定値（ON・音量0.8）を返す', () => {
+    expect(loadVoiceSettings()).toEqual(DEFAULT_VOICE)
+  })
+
+  it('保存した設定を復元する', () => {
+    saveVoiceSettings({ enabled: false, volume: 0.3 })
+    expect(loadVoiceSettings()).toEqual({ enabled: false, volume: 0.3 })
+  })
+
+  it('音声設定を保存しても折り畳み状態は消えない', () => {
+    saveOverrides({ 'lv:fl': false })
+    saveVoiceSettings({ enabled: false, volume: 0.5 })
+    expect(loadOverrides()).toEqual({ 'lv:fl': false })
+  })
+
+  it('折り畳み状態を保存しても音声設定は消えない', () => {
+    saveVoiceSettings({ enabled: false, volume: 0.5 })
+    saveOverrides({ 'ch:fl-1': true })
+    expect(loadVoiceSettings()).toEqual({ enabled: false, volume: 0.5 })
+  })
+
+  it('保存は進捗データ（testquest:save）を書き換えない', () => {
+    localStorage.setItem(SAVE_KEY, 'PROGRESS')
+    saveVoiceSettings({ enabled: false, volume: 0.1 })
+    expect(localStorage.getItem(SAVE_KEY)).toBe('PROGRESS')
+  })
+
+  it('型不正・音量が範囲外なら既定値に落とす（再生が壊れない）', () => {
+    localStorage.setItem(UI_KEY, JSON.stringify({ version: 1, voice: { enabled: 'yes', volume: 0.5 } }))
+    expect(loadVoiceSettings()).toEqual(DEFAULT_VOICE)
+    localStorage.setItem(UI_KEY, JSON.stringify({ version: 1, voice: { enabled: true, volume: 1.5 } }))
+    expect(loadVoiceSettings()).toEqual(DEFAULT_VOICE)
+    localStorage.setItem(UI_KEY, JSON.stringify({ version: 1, voice: { enabled: true, volume: -1 } }))
+    expect(loadVoiceSettings()).toEqual(DEFAULT_VOICE)
+  })
+
+  it('壊れたJSON・利用不可環境でも既定値を返し throw しない', () => {
+    localStorage.setItem(UI_KEY, '{壊れている')
+    expect(loadVoiceSettings()).toEqual(DEFAULT_VOICE)
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('QuotaExceededError')
+    })
+    expect(() => saveVoiceSettings({ enabled: true, volume: 0.2 })).not.toThrow()
   })
 })

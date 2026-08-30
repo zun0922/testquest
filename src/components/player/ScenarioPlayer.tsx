@@ -3,6 +3,8 @@ import { useMemo, useState } from 'react'
 import type { PlaySession } from '../../hooks/useGame'
 import type { StatusValues, ChoiceNode, Choice, Rating, CharacterDisplay } from '../../types'
 import { useTypewriter } from '../../hooks/useTypewriter'
+import { useVoice } from '../../hooks/useVoice'
+import { loadVoiceSettings, saveVoiceSettings, type VoiceSettings } from '../../utils/uiState'
 import StatusHud from '../common/StatusHud'
 import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
@@ -26,8 +28,18 @@ const RATING_META: Record<Rating, { label: string; icon: string; border: string;
 
 export default function ScenarioPlayer({ session, status, onChoose, onAdvance, onCloseFeedback, onFinish, onQuit }: Props) {
   const [paused, setPaused] = useState(false)
+  const [voice, setVoice] = useState<VoiceSettings>(() => loadVoiceSettings())
   const node = session.scenario.nodes.find((n) => n.id === session.nodeId)
   const tw = useTypewriter(node?.text ?? '')
+  // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
+  //（PO決定 2026-08-25）。音声が無い章・OFF・再生拒否のいずれでも従来どおり進行する。
+  const voiceState = useVoice(session.scenario.id, node?.id ?? '', voice)
+
+  const toggleVoice = () => {
+    const next = { ...voice, enabled: !voice.enabled }
+    setVoice(next)
+    saveVoiceSettings(next)
+  }
 
   if (!node) return null
 
@@ -50,6 +62,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   return (
     <div
       data-testid="screen-play"
+      data-voice-state={voiceState}
       className="min-h-screen bg-bg-base bg-cover bg-center text-text-main relative select-none"
       style={{ backgroundImage: `url(${backgroundUrl(node.background)})` }}
     >
@@ -58,6 +71,15 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
 
       {/* 右上：メニュー＋StatusHud */}
       <div className="absolute top-3 right-3 flex items-start gap-2 z-10">
+        <button
+          data-testid="btn-voice"
+          aria-label={voice.enabled ? 'ボイスをオフにする' : 'ボイスをオンにする'}
+          aria-pressed={voice.enabled}
+          onClick={toggleVoice}
+          className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+        >
+          {voice.enabled ? '🔊' : '🔇'}
+        </button>
         <button
           data-testid="btn-pause"
           aria-label="メニュー"
