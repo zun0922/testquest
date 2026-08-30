@@ -4,6 +4,7 @@ import { useReducer } from 'react'
 import {
   type Scenario,
   type ScenarioIndex,
+  type ScenarioIndexEntry,
   type Choice,
   type ChoiceNode,
   type Rating,
@@ -20,6 +21,8 @@ export type LoadState = 'loading' | 'success' | 'error'
 
 export interface PlaySession {
   scenario: Scenario
+  /** シナリオのレベル。ヒントの閾値がレベル別のため保持する（FR-P2-007）。 */
+  level: ScenarioIndexEntry['level']
   nodeId: string
   isReplay: boolean
   ratings: Record<Rating, number>
@@ -47,7 +50,7 @@ export type GameAction =
   | { type: 'START_NEW' }
   | { type: 'CONTINUE' }
   | { type: 'SELECT_SCENARIO' } // ロード開始（App が fetch）
-  | { type: 'SCENARIO_LOADED'; scenario: Scenario; isReplay: boolean }
+  | { type: 'SCENARIO_LOADED'; scenario: Scenario; isReplay: boolean; level: ScenarioIndexEntry['level'] }
   | { type: 'SCENARIO_ERROR' }
   | { type: 'RETRY_SCENARIO' }
   | { type: 'ADVANCE' }
@@ -95,6 +98,7 @@ export function reducer(state: GameState, action: GameAction): GameState {
     case 'SCENARIO_LOADED': {
       const session: PlaySession = {
         scenario: action.scenario,
+        level: action.level,
         nodeId: action.scenario.startNodeId,
         isReplay: action.isReplay,
         ratings: { ...ZERO_RATINGS },

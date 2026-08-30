@@ -46,7 +46,7 @@ export default function App() {
       try {
         const scenario = await loadScenario(entry.file)
         const isReplay = Boolean(state.save.cleared[entry.id])
-        dispatch({ type: 'SCENARIO_LOADED', scenario, isReplay })
+        dispatch({ type: 'SCENARIO_LOADED', scenario, isReplay, level: entry.level })
       } catch (e) {
         console.error('[App] シナリオロード失敗:', e)
         dispatch({ type: 'SCENARIO_ERROR' })

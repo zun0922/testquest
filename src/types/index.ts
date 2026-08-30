@@ -60,6 +60,11 @@ export interface TextNode extends NodeBase {
 export interface ChoiceNode extends NodeBase {
   type: 'choice'
   choices: Choice[] // 2〜3個（UI-RULE-003）
+  /**
+   * FR-P2-007 ヒント文（省略可）。**答えを示さず、判断の観点だけ**を示す1〜2文。
+   * 強調（Choice.emphasis）が「どこを見るか」を示すのに対し、こちらは「何を考えるか」を示す。
+   */
+  hint?: string
 }
 
 export interface CharacterDisplay {
@@ -71,6 +76,12 @@ export interface CharacterDisplay {
 export interface Choice {
   text: string // 最大40文字
   rating: Rating
+  /**
+   * FR-P2-007 ヒント用の強調範囲（省略可）。`text` 内の部分文字列を指定する。
+   * 本文（text）は変更せず別フィールドで持つことで、監修済みの文面を不変に保つ。
+   * 省略された選択肢ではヒントを出さない（章単位の段階導入を可能にするため）。
+   */
+  emphasis?: string[]
   statusEffects: Partial<Record<StatusKey, number>> // 値は1〜5・1キー以上必須（減算なし）
   feedback: Feedback
   next: string // 分岐先ノードID
@@ -103,6 +114,8 @@ export const LIMITS = {
   CHOICE_NODES_MIN: 3, // シナリオ内の choice ノード数（要件6.1）
   CHOICE_NODES_MAX: 5,
   CHARACTERS_MAX: 2,
+  EMPHASIS_MAX: 2, // 1選択肢あたりの強調語数（多いと論点がぼやける・FR-P2-007）
+  HINT_MAX: 100, // ヒント文の最大文字数（読む負担を抑える・FR-P2-007）
   STATUS_EFFECT_MIN: 1,
   STATUS_EFFECT_MAX: 5,
 } as const
