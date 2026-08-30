@@ -5,6 +5,7 @@ import { useGame } from './hooks/useGame'
 import type { ScenarioIndexEntry } from './types'
 import * as storage from './utils/storage'
 import { loadIndex, loadScenario } from './utils/scenarioLoader'
+import { unlockAudio } from './utils/voice'
 import TitleScreen from './components/TitleScreen'
 import SelectScreen from './components/SelectScreen'
 import ScenarioPlayer from './components/player/ScenarioPlayer'
@@ -89,6 +90,15 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [state.screen])
+
+  // 自動再生ポリシー対策（FR-P2-006）：最初のユーザー操作で共有音声要素を解錠する。
+  // iOS Safari は「操作起因で一度 play() した要素」しか後から鳴らせないため、
+  // タイトル画面のクリック時点で解錠しておく（解錠に失敗しても無音で進むだけ）。
+  useEffect(() => {
+    const onFirst = () => unlockAudio()
+    window.addEventListener('pointerdown', onFirst, { once: true })
+    return () => window.removeEventListener('pointerdown', onFirst)
+  }, [])
 
   // --- 描画 ---
   // 横持ちガード（設計書 v1.3 §8・AC-011）：縦持ちのスマホでは立ち絵が画面幅を超えるため

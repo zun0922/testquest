@@ -21,6 +21,7 @@ e2e-shots/
 # Vite
 .vite/
 # 画像候補（採用済みのみ public/images/ に置く。候補・系譜はローカル/OneDrive保持・90MB級のためGit除外）
+# 音声の wav 原本（assets-candidates/voice-wav/）もここに含まれる。配信用の m4a のみ public/audio/ にコミットする
 assets-candidates/
 # シラバス抽出テキスト（ISTQBシラバス本文の抽出＝著作物。リポジトリに含めない）
 シラバス抽出_*.txt
