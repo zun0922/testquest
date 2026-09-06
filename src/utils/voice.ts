@@ -162,6 +162,37 @@ export function unlockAudio(): void {
   }
 }
 
+/**
+ * 指定ノードのセリフを1回だけ鳴らす（FR-P2-005 バックログの再生ボタン用）。
+ * 共有要素を使うので、鳴らし直すと前の再生は自動的に止まる。
+ * 音声が無い・再生できない場合は false を返すだけで、呼び出し側は何もしなくてよい。
+ */
+export function playVoiceOnce(
+  manifest: VoiceManifest | null,
+  scenarioId: string,
+  nodeId: string,
+  volume: number,
+): boolean {
+  const url = voiceUrlFor(manifest, scenarioId, nodeId)
+  const audio = getSharedAudio()
+  if (!url || !audio) return false
+  stopAudio(audio)
+  audio.src = url
+  audio.volume = volume
+  try {
+    audio.currentTime = 0
+  } catch {
+    // src 差し替え直後は設定できないことがある（0から始まるので実害なし）
+  }
+  try {
+    const p = audio.play()
+    if (p && typeof p.then === 'function') void p.catch(() => undefined)
+    return true
+  } catch {
+    return false
+  }
+}
+
 /** テスト用：解錠状態と共有要素をリセットする。 */
 export function resetAudioForTest(): void {
   sharedAudio = null

@@ -1,5 +1,5 @@
 // FR-003〜006 シナリオ再生。設計書§5.3〜5.6・§8.1（モックA案がレイアウトの正）。
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { PlaySession } from '../../hooks/useGame'
 import type { StatusValues, ChoiceNode, Choice, Rating, CharacterDisplay } from '../../types'
 import { useTypewriter } from '../../hooks/useTypewriter'
@@ -9,6 +9,8 @@ import { emphasizedIndices, hasHintData, hintLevel, splitByEmphasis } from '../.
 import StatusHud from '../common/StatusHud'
 import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
+import { isRead, loadReadLog, markRead, type ReadLog } from '../../utils/readLog'
+import { ensureManifest, hasVoice, playVoiceOnce, type VoiceManifest } from '../../utils/voice'
 
 interface Props {
   session: PlaySession
@@ -32,15 +34,69 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const [voice, setVoice] = useState<VoiceSettings>(() => loadVoiceSettings())
   const node = session.scenario.nodes.find((n) => n.id === session.nodeId)
   const tw = useTypewriter(node?.text ?? '')
+
+  // FR-P2-005 既読スキップ／バックログ
+  // 既読の記録は ref で持つ：ノードを表示するたびに書き換わるが、再描画は不要なため
+  const readLogRef = useRef<ReadLog>(loadReadLog())
+  // 「このノードを表示する前から既読だったか」。表示と同時に既読へ記録するので、
+  // 記録より前の状態を残しておかないと初見のノードまで自動で送ってしまう
+  const [visit, setVisit] = useState<{ nodeId: string; wasRead: boolean } | null>(null)
+  const [skipping, setSkipping] = useState(false)
+  const [backlog, setBacklog] = useState<BacklogLine[]>([])
+  const [showBacklog, setShowBacklog] = useState(false)
   // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
   //（PO決定 2026-08-25）。音声が無い章・OFF・再生拒否のいずれでも従来どおり進行する。
   const voiceState = useVoice(session.scenario.id, node?.id ?? '', voice)
+
+  const sid = session.scenario.id
+  const nodeId = node?.id
+  const speaker = node?.speaker
+  const text = node?.text
+
+  // ノードを表示したら既読にし、バックログへ積む
+  useEffect(() => {
+    if (!nodeId) return
+    const wasRead = isRead(readLogRef.current, sid, nodeId)
+    readLogRef.current = markRead(readLogRef.current, sid, nodeId)
+    setVisit({ nodeId, wasRead })
+    setBacklog((prev) =>
+      // 分岐で同じノードへ戻ることがあるため、重複しては積まない
+      prev.some((l) => l.nodeId === nodeId)
+        ? prev
+        : [...prev, { nodeId, speaker: speaker ?? 'narration', text: text ?? '' }],
+    )
+  }, [sid, nodeId, speaker, text])
 
   const toggleVoice = () => {
     const next = { ...voice, enabled: !voice.enabled }
     setVoice(next)
     saveVoiceSettings(next)
   }
+
+  const feedbackChoice = session.feedbackChoice
+  const nodeType = node?.type
+  const nodeNext = node?.type === 'text' ? node.next : undefined
+  const twDone = tw.done
+  const twSkip = tw.skip
+  // 既読の自動送り。止まる条件をこの1か所に集約する
+  useEffect(() => {
+    if (!skipping || !nodeId) return
+    if (paused || feedbackChoice) return // 表示を消さずに待つ（スキップは解除しない）
+    if (visit?.nodeId !== nodeId) return // 既読判定が確定するまで待つ
+    if (!visit.wasRead || nodeType === 'choice') {
+      setSkipping(false) // 未読と選択肢では必ず止まる＝読み飛ばしと出題スキップを防ぐ
+      return
+    }
+    if (!twDone) {
+      twSkip() // 送り途中なら全文を出してから進む
+      return
+    }
+    const t = setTimeout(() => {
+      if (nodeNext === null) onFinish()
+      else onAdvance()
+    }, 90) // 一瞬だけ残す＝何が流れたか目で追える速さ
+    return () => clearTimeout(t)
+  }, [skipping, nodeId, nodeType, nodeNext, visit, twDone, twSkip, paused, feedbackChoice, onAdvance, onFinish])
 
   if (!node) return null
 
@@ -49,6 +105,10 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
 
   const handleAreaClick = () => {
     if (feedback) return // フィードバック表示中は背景クリック無効
+    if (skipping) {
+      setSkipping(false) // 画面に触れたら止まる＝明示操作を自動送りより優先する
+      return
+    }
     if (!tw.done) {
       tw.skip() // 送り中 → 全文即時表示
       return
@@ -80,6 +140,28 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
           className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
           {voice.enabled ? '🔊' : '🔇'}
+        </button>
+        <button
+          data-testid="btn-skip"
+          aria-label={skipping ? '既読スキップを止める' : '既読スキップ'}
+          aria-pressed={skipping}
+          onClick={() => setSkipping((v) => !v)}
+          className={`min-w-[44px] min-h-[44px] rounded-lg focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent ${
+            skipping ? 'bg-accent text-bg-base font-bold' : 'bg-black/62 text-text-main'
+          }`}
+        >
+          &#9193;
+        </button>
+        <button
+          data-testid="btn-backlog"
+          aria-label="これまでのセリフ"
+          onClick={() => {
+            setSkipping(false)
+            setShowBacklog(true)
+          }}
+          className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+        >
+          &#9776;
         </button>
         <button
           data-testid="btn-pause"
@@ -125,6 +207,16 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
       {/* フィードバックモーダル */}
       {feedback && (
         <FeedbackModal choice={feedback} isReplay={session.isReplay} onClose={onCloseFeedback} />
+      )}
+
+      {/* バックログ（FR-P2-005） */}
+      {showBacklog && (
+        <BacklogOverlay
+          scenarioId={sid}
+          lines={backlog}
+          volume={voice.volume}
+          onClose={() => setShowBacklog(false)}
+        />
       )}
 
       {/* 中断メニュー */}
@@ -302,4 +394,89 @@ function FeedbackModal({ choice, isReplay, onClose }: { choice: Choice; isReplay
 function statusLabel(k: string): string {
   const labels: Record<string, string> = { knowledge: '知識', skill: 'スキル', confidence: '自信', teamwork: 'チームワーク' }
   return labels[k] ?? k
+}
+
+/** バックログ1行。表示に必要な最小限だけ持つ。 */
+interface BacklogLine {
+  nodeId: string
+  speaker: string
+  text: string
+}
+
+/**
+ * これまでのセリフを読み返す（FR-P2-005）。
+ * 音声がある行には再生ボタンを出す＝聞き逃しのリカバリ。無い行には出さない。
+ */
+function BacklogOverlay({
+  scenarioId,
+  lines,
+  volume,
+  onClose,
+}: {
+  scenarioId: string
+  lines: BacklogLine[]
+  volume: number
+  onClose: () => void
+}) {
+  const [manifest, setManifest] = useState<VoiceManifest | null>(null)
+  const bottomRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    let alive = true
+    void ensureManifest().then((m) => {
+      if (alive) setManifest(m)
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  // 開いたら最新（＝いま読んでいるところ）が見える位置にする
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ block: 'end' })
+  }, [])
+
+  return (
+    <div className="absolute inset-0 z-30 bg-black/80 flex flex-col p-4">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-accent font-bold">これまでのセリフ</h2>
+        <button
+          data-testid="btn-backlog-close"
+          onClick={onClose}
+          className="min-w-[44px] min-h-[44px] bg-surface rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+        >
+          &#10005;
+        </button>
+      </div>
+
+      <div data-testid="backlog" className="flex-1 overflow-y-auto pr-1">
+        {lines.length === 0 && <p className="text-text-muted text-sm">まだセリフがありません。</p>}
+        <ul className="flex flex-col gap-2">
+          {lines.map((l) => (
+            <li key={l.nodeId} data-testid="backlog-line" className="bg-surface/90 rounded-lg p-3 flex gap-3">
+              <div className="flex-1">
+                {l.speaker !== 'narration' && (
+                  <span className="inline-block bg-accent text-bg-base text-xs font-bold rounded px-2 py-0.5 mb-1">
+                    {speakerName(l.speaker)}
+                  </span>
+                )}
+                <p className="text-sm leading-[1.8]">{l.text}</p>
+              </div>
+              {hasVoice(manifest, scenarioId, l.nodeId) && (
+                <button
+                  data-testid={`btn-backlog-play-${l.nodeId}`}
+                  aria-label="このセリフを再生"
+                  onClick={() => playVoiceOnce(manifest, scenarioId, l.nodeId, volume)}
+                  className="self-start min-w-[44px] min-h-[44px] bg-black/50 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+                >
+                  &#9654;
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div ref={bottomRef} />
+      </div>
+    </div>
+  )
 }
