@@ -94,3 +94,16 @@ export function loadVoiceSettings(): VoiceSettings {
 export function saveVoiceSettings(voice: VoiceSettings): void {
   writePatch({ voice })
 }
+
+/**
+ * 編成パターン（FR-P2-003）の選択。UI設定なので進捗とは別キーに置く。
+ * 未保存・不正なら undefined を返し、呼び出し側は既定の編成で動く。
+ */
+export function loadCastingId(): string | undefined {
+  const casting = readRaw().casting
+  return typeof casting === 'string' ? casting : undefined
+}
+
+export function saveCastingId(casting: string): void {
+  writePatch({ casting })
+}

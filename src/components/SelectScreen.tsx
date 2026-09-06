@@ -19,6 +19,7 @@ import {
   type OpenOverrides,
 } from '../utils/uiState'
 import StatusHud from './common/StatusHud'
+import CastingPicker from './common/CastingPicker'
 
 interface Props {
   index: ScenarioIndex
@@ -109,6 +110,9 @@ export default function SelectScreen({ index, save, onSelect, onOpenEndings }: P
 
             {lvOpen && (
               <div id={`level-body-${lv.slug}`}>
+                {/* FR-P2-003 編成パターン。差し替えるのは技術メンター役なので AL-TTA の節にだけ置く。
+                    章の途中では変えられないよう、プレイ中ではなくこの選択画面に置いている（企画書§9.1）。 */}
+                {!locked && lv.key === 'AL-TTA' && <CastingPicker />}
                 {locked ? (
                   <div
                     data-testid={`lock-${lv.slug}`}

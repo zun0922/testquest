@@ -4,13 +4,22 @@ import type { PlaySession } from '../../hooks/useGame'
 import type { StatusValues, ChoiceNode, Choice, Rating, CharacterDisplay } from '../../types'
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { useVoice } from '../../hooks/useVoice'
-import { loadVoiceSettings, saveVoiceSettings, type VoiceSettings } from '../../utils/uiState'
+import { loadCastingId, loadVoiceSettings, saveVoiceSettings, type VoiceSettings } from '../../utils/uiState'
 import { emphasizedIndices, hasHintData, hintLevel, splitByEmphasis } from '../../utils/hint'
 import StatusHud from '../common/StatusHud'
 import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
 import { isRead, loadReadLog, markRead, type ReadLog } from '../../utils/readLog'
 import { ensureManifest, hasVoice, playVoiceOnce, type VoiceManifest } from '../../utils/voice'
+import {
+  DEFAULT_CASTING,
+  ensureCastings,
+  findCasting,
+  resolveCharacterId,
+  resolveCharacters,
+  resolveText,
+  type Casting,
+} from '../../utils/casting'
 
 interface Props {
   session: PlaySession
@@ -33,7 +42,29 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const [paused, setPaused] = useState(false)
   const [voice, setVoice] = useState<VoiceSettings>(() => loadVoiceSettings())
   const node = session.scenario.nodes.find((n) => n.id === session.nodeId)
-  const tw = useTypewriter(node?.text ?? '')
+
+  // FR-P2-003 編成パターン。読み込み前は既定の編成で描く（表示が遅れないように）
+  const [casting, setCasting] = useState<Casting>(DEFAULT_CASTING)
+  useEffect(() => {
+    let alive = true
+    const id = loadCastingId()
+    if (!id || id === DEFAULT_CASTING.id) return
+    void ensureCastings().then((d) => {
+      if (alive) setCasting(findCasting(d, id))
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  // 差し替えは「表示のときだけ」行う。シナリオJSONは元のまま扱う
+  const shownText = node ? resolveText(casting, session.scenario.id, node.id, node.text) : ''
+  const shownSpeaker = node ? resolveCharacterId(casting, node.speaker) : 'narration'
+  const shownCharacters = useMemo(
+    () => (node ? resolveCharacters(casting, node.characters) : []),
+    [casting, node],
+  )
+  const tw = useTypewriter(shownText)
 
   // FR-P2-005 既読スキップ／バックログ
   // 既読の記録は ref で持つ：ノードを表示するたびに書き換わるが、再描画は不要なため
@@ -46,12 +77,12 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const [showBacklog, setShowBacklog] = useState(false)
   // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
   //（PO決定 2026-08-25）。音声が無い章・OFF・再生拒否のいずれでも従来どおり進行する。
-  const voiceState = useVoice(session.scenario.id, node?.id ?? '', voice)
+  const voiceState = useVoice(session.scenario.id, node?.id ?? '', voice, casting.id)
 
   const sid = session.scenario.id
   const nodeId = node?.id
-  const speaker = node?.speaker
-  const text = node?.text
+  const speaker = shownSpeaker
+  const text = shownText
 
   // ノードを表示したら既読にし、バックログへ積む
   useEffect(() => {
@@ -128,7 +159,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
       style={{ backgroundImage: `url(${backgroundUrl(node.background)})` }}
     >
       {/* Stage：背景（上記）＋立ち絵 */}
-      <Stage characters={node.characters} speaker={node.speaker} />
+      <Stage characters={shownCharacters} speaker={shownSpeaker} />
 
       {/* 右上：メニュー＋StatusHud */}
       <div className="absolute top-3 right-3 flex items-start gap-2 z-30">
@@ -180,9 +211,9 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
         onClick={handleAreaClick}
         className="absolute bottom-0 left-0 right-0 text-left bg-surface/90 border-t-2 border-accent/40 p-5 min-h-[140px]"
       >
-        {node.speaker !== 'narration' && (
+        {shownSpeaker !== 'narration' && (
           <span data-testid="speaker-name" className="inline-block bg-accent text-bg-base text-xs font-bold rounded px-2 py-0.5 mb-2">
-            {speakerName(node.speaker)}
+            {speakerName(shownSpeaker)}
           </span>
         )}
         <p className="leading-[1.9] text-[15px]">
@@ -215,6 +246,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
           scenarioId={sid}
           lines={backlog}
           volume={voice.volume}
+          castingId={casting.id}
           onClose={() => setShowBacklog(false)}
         />
       )}
@@ -414,11 +446,13 @@ function BacklogOverlay({
   scenarioId,
   lines,
   volume,
+  castingId,
   onClose,
 }: {
   scenarioId: string
   lines: BacklogLine[]
   volume: number
+  castingId: string
   onClose: () => void
 }) {
   const [manifest, setManifest] = useState<VoiceManifest | null>(null)
@@ -469,7 +503,7 @@ function BacklogOverlay({
                 <button
                   data-testid={`btn-backlog-play-${l.nodeId}`}
                   aria-label="このセリフを再生"
-                  onClick={() => playVoiceOnce(manifest, scenarioId, l.nodeId, volume)}
+                  onClick={() => playVoiceOnce(manifest, scenarioId, l.nodeId, volume, castingId)}
                   className="self-start min-w-[44px] min-h-[44px] bg-black/50 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
                 >
                   &#9654;
