@@ -48,12 +48,28 @@ export default function TitleScreen({ hasSave, storageAvailable, onStartNew, onC
         </Button>
       </div>
 
-      <div className="text-center text-xs text-text-muted max-w-sm leading-relaxed">
-        <p>※本作は非公式の学習教材であり、JSTQB/ISTQB とは関係ありません。</p>
-        {!storageAvailable && <p className="mt-1">※この環境では進捗が保存されません。</p>}
+      {/* 文や名前の途中で改行しない（社内FB 2026-09-06）。
+          区切りのある位置だけで折り返すため、意味のまとまりを nowrap で囲む。 */}
+      <div data-testid="title-notes" className="text-center text-xs text-text-muted max-w-sm leading-relaxed [text-wrap:balance]">
+        <p>
+          <span className="whitespace-nowrap">※本作は非公式の学習教材であり、</span>
+          <span className="whitespace-nowrap">JSTQB/ISTQB とは関係ありません。</span>
+        </p>
+        {!storageAvailable && (
+          <p className="mt-1">
+            <span className="whitespace-nowrap">※この環境では進捗が保存されません。</span>
+          </p>
+        )}
         {credits.length > 0 && (
           <p data-testid="voice-credits" className="mt-1">
-            音声：{credits.join('／')}
+            音声：
+            {credits.map((c, i) => (
+              // 区切りは前の名前にくっつける（「／」が行頭に落ちないようにする）
+              <span key={c} data-testid="voice-credit" className="whitespace-nowrap">
+                {c}
+                {i < credits.length - 1 && '／'}
+              </span>
+            ))}
           </p>
         )}
       </div>
