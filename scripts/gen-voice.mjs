@@ -15,9 +15,16 @@
 //   node scripts/gen-voice.mjs --dry-run              # 生成せず対象だけ表示
 //   node scripts/gen-voice.mjs --force                # ハッシュ一致でも再生成
 //   node scripts/gen-voice.mjs --prune                # manifest に無い孤児ファイルを削除
+//   node scripts/gen-voice.mjs --cast mio             # 編成パターンの音声（FR-P2-003）
+//
+// --cast を付けると、public/data/casting.json でキャラを差し替えるノードだけを
+// 差し替え後の音源で生成し、public/audio/{castingId}/ へ出力する。
+// 既定の音声（public/audio/{scenarioId}/）には一切触れないので、
+// パターンを増やしても増えるのは「差し替えたキャラのぶん」だけで済む。
 //
 // 出力:
 //   public/audio/{scenarioId}/{nodeId}.m4a   配信用（コミット対象）
+//   public/audio/{castingId}/{scenarioId}/{nodeId}.m4a   編成パターン分（--cast 指定時）
 //   public/audio/manifest.json               存在判定・尺・ハッシュ
 //   assets-candidates/voice-wav/             wav原本（gitignore・再エンコード用に保管）
 
@@ -36,6 +43,7 @@ const SCENARIOS_DIR = path.join(ROOT, 'public/data/scenarios')
 const AUDIO_DIR = path.join(ROOT, 'public/audio')
 const WAV_DIR = path.join(ROOT, 'assets-candidates/voice-wav')
 const CAST_PATH = path.join(ROOT, 'scripts/voice-cast.json')
+const CASTING_PATH = path.join(ROOT, 'public/data/casting.json')
 const MANIFEST_PATH = path.join(AUDIO_DIR, 'manifest.json')
 
 const argv = process.argv.slice(2)
@@ -49,6 +57,7 @@ const FILTER = valueOf('--scenario', '')
 const DRY_RUN = has('--dry-run')
 const FORCE = has('--force')
 const PRUNE = has('--prune')
+const CASTING_ID = valueOf('--cast', '')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -126,8 +135,29 @@ async function durationOf(file) {
   }
 }
 
+/**
+ * 編成パターンの定義を読む（--cast 指定時のみ）。
+ * 差し替えるキャラと本文の差分を返す。シナリオJSONは読み替えるだけで変更しない。
+ */
+async function loadCasting(id) {
+  if (!id) return null
+  const data = JSON.parse(await readFile(CASTING_PATH, 'utf8'))
+  const found = data.castings.find((c) => c.id === id)
+  if (!found) {
+    console.error(`編成パターン「${id}」が casting.json にありません`)
+    console.error(`利用できるID: ${data.castings.map((c) => c.id).join(', ')}`)
+    process.exit(1)
+  }
+  if (Object.keys(found.swap ?? {}).length === 0) {
+    console.error(`編成パターン「${id}」は差し替えが無いため、生成するものがありません`)
+    process.exit(1)
+  }
+  return found
+}
+
 async function main() {
   const cast = JSON.parse(await readFile(CAST_PATH, 'utf8'))
+  const casting = await loadCasting(CASTING_ID)
   const engine = cast.engine
   const format = cast.format ?? 'm4a'
 
@@ -164,6 +194,18 @@ async function main() {
     : { version: 1, format, scenarios: {} }
   manifest.format = format
 
+  // 編成パターンの音声は manifest.variants に分けて持つ（既定の音声の記録は触らない）
+  const outRoot = casting ? path.join(AUDIO_DIR, casting.id) : AUDIO_DIR
+  const wavRoot = casting ? path.join(WAV_DIR, casting.id) : WAV_DIR
+  let store = manifest.scenarios
+  if (casting) {
+    manifest.variants ??= {}
+    manifest.variants[casting.id] ??= { scenarios: {} }
+    store = manifest.variants[casting.id].scenarios
+    console.log(`編成パターン「${casting.id}」（${casting.label}）の音声を生成します`)
+    console.log(`  差し替え: ${Object.entries(casting.swap).map(([a, b]) => `${a}→${b}`).join(', ')}`)
+  }
+
   const targets = await listTargets()
   if (targets.length === 0) {
     console.error(`対象シナリオがありません（--scenario ${FILTER}）`)
@@ -175,10 +217,13 @@ async function main() {
   // manifest に載っている＝実際に配信している音源だけを列挙する（未使用の配役は書かない）。
   const refreshCredits = () => {
     const speakersInUse = new Set()
-    for (const byNode of Object.values(manifest.scenarios)) {
-      for (const entry of Object.values(byNode)) {
-        const speaker = cast.cast[entry.cast]?.speaker
-        if (speaker) speakersInUse.add(speaker)
+    const stores = [manifest.scenarios, ...Object.values(manifest.variants ?? {}).map((v) => v.scenarios)]
+    for (const byScenario of stores) {
+      for (const byNode of Object.values(byScenario)) {
+        for (const entry of Object.values(byNode)) {
+          const speaker = cast.cast[entry.cast]?.speaker
+          if (speaker) speakersInUse.add(speaker)
+        }
       }
     }
     manifest.credits = [...speakersInUse].sort().map((name) => `VOICEVOX:${name}`)
@@ -199,14 +244,21 @@ async function main() {
 
   for (const entry of targets) {
     const scenario = JSON.parse(await readFile(path.join(SCENARIOS_DIR, entry.file), 'utf8'))
-    const byNode = (manifest.scenarios[scenario.id] ??= {})
-    const outDir = path.join(AUDIO_DIR, scenario.id)
-    const wavDir = path.join(WAV_DIR, scenario.id)
+    const byNode = (store[scenario.id] ??= {})
+    const outDir = path.join(outRoot, scenario.id)
+    const wavDir = path.join(wavRoot, scenario.id)
 
     for (const node of scenario.nodes) {
-      const text = normalizeForSpeech(node.text ?? '')
+      const speaker = node.speaker ?? 'narration'
+      // 編成パターンでは、差し替えるキャラのセリフだけを鳴らし直す。
+      // それ以外のノードは既定の音声をそのまま使うので生成しない。
+      if (casting && !casting.swap[speaker]) continue
+      const rawText = casting
+        ? (casting.textOverrides?.[scenario.id]?.[node.id] ?? node.text)
+        : node.text
+      const text = normalizeForSpeech(rawText ?? '')
       if (!text) continue
-      const role = node.speaker ?? 'narration'
+      const role = casting ? casting.swap[speaker] : speaker
       const conf = cast.cast[role]
       if (!conf) {
         console.error(`配役に無い話者です: ${role}（${scenario.id}/${node.id}）`)
@@ -220,7 +272,7 @@ async function main() {
         .slice(0, 16)
 
       const outFile = path.join(outDir, `${node.id}.${format}`)
-      seen.add(path.relative(AUDIO_DIR, outFile).replace(/\\/g, '/'))
+      seen.add(path.relative(outRoot, outFile).replace(/\\/g, '/'))
 
       if (!FORCE && byNode[node.id]?.hash === hash && existsSync(outFile)) {
         skipped++
@@ -271,12 +323,20 @@ async function main() {
 
   // 5) 孤児ファイル（シナリオから消えたノードの音声）
   const orphans = []
-  if (existsSync(AUDIO_DIR)) {
-    for (const dir of await readdir(AUDIO_DIR, { withFileTypes: true })) {
+  // 編成パターンのディレクトリは「シナリオではない」ので、既定側の走査からは除く
+  // （除かないと mio/ 以下がまるごと孤児に見えてしまう）
+  const castingDirs = new Set(
+    JSON.parse(await readFile(CASTING_PATH, 'utf8')).castings
+      .filter((c) => Object.keys(c.swap ?? {}).length > 0)
+      .map((c) => c.id),
+  )
+  if (existsSync(outRoot)) {
+    for (const dir of await readdir(outRoot, { withFileTypes: true })) {
       if (!dir.isDirectory()) continue
+      if (!casting && castingDirs.has(dir.name)) continue
       // フィルタ指定時は対象外シナリオを孤児と誤判定しない
       if (FILTER && !(dir.name === FILTER || dir.name.startsWith(`${FILTER}-`))) continue
-      for (const f of await readdir(path.join(AUDIO_DIR, dir.name))) {
+      for (const f of await readdir(path.join(outRoot, dir.name))) {
         const rel = `${dir.name}/${f}`
         if (!seen.has(rel)) orphans.push(rel)
       }
@@ -284,7 +344,7 @@ async function main() {
   }
   if (orphans.length > 0) {
     if (PRUNE && !DRY_RUN) {
-      for (const rel of orphans) await rm(path.join(AUDIO_DIR, rel))
+      for (const rel of orphans) await rm(path.join(outRoot, rel))
       console.log(`孤児ファイルを ${orphans.length} 件削除しました`)
     } else {
       const head = orphans.slice(0, 5).join(', ')

@@ -2993,8 +2993,777 @@
   "credits": [
     "VOICEVOX:冥鳴ひまり",
     "VOICEVOX:東北イタコ",
+    "VOICEVOX:波音リツ",
     "VOICEVOX:玄野武宏",
     "VOICEVOX:白上虎太郎",
     "VOICEVOX:麒ヶ島宗麟"
-  ]
+  ],
+  "variants": {
+    "mio": {
+      "scenarios": {
+        "al-tta-1-01": {
+          "intro-motive": {
+            "hash": "00b23d66a4830a7c",
+            "dur": 6.57,
+            "cast": "mio"
+          },
+          "intro-motive2": {
+            "hash": "93f77a3d1145c8e9",
+            "dur": 8.1,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "49f550837e95bf18",
+            "dur": 10.39,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "e858c9e308965ec9",
+            "dur": 4.56,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "9239a8626c62bdcb",
+            "dur": 4.26,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "08b1d49428cbc904",
+            "dur": 5.54,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "95807a9b2b78e202",
+            "dur": 5.94,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "8f594aa3e807beb3",
+            "dur": 12.35,
+            "cast": "mio"
+          }
+        },
+        "al-tta-2-01": {
+          "intro-motive": {
+            "hash": "9288b7b2d6fc3180",
+            "dur": 4.63,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "7360091dac133f8f",
+            "dur": 10.06,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "934943610868b705",
+            "dur": 3.51,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "2fb7294331261eeb",
+            "dur": 7.47,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "ddc1d9e0d0b9d5bc",
+            "dur": 3.72,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "2b6ae8da4ff581a4",
+            "dur": 10.44,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "f5d4e3bf56afa792",
+            "dur": 13.64,
+            "cast": "mio"
+          }
+        },
+        "al-tta-2-02": {
+          "intro-motive": {
+            "hash": "c908e50ec6dd80c8",
+            "dur": 5.68,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "e7fc7c667fcbc3e7",
+            "dur": 12.2,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "1248a92c9ab60536",
+            "dur": 4.43,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "3e7cdcdeaef89ec5",
+            "dur": 12.03,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "c38187ed051eb081",
+            "dur": 4.75,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "86d0f1823c626611",
+            "dur": 4.96,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "9e15364e11f5b3e9",
+            "dur": 14.59,
+            "cast": "mio"
+          }
+        },
+        "al-tta-2-03": {
+          "intro-motive": {
+            "hash": "5b132c4ba0a4ee1b",
+            "dur": 5.18,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "333160daa353c694",
+            "dur": 11.36,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "1151d20bfeb0ee27",
+            "dur": 3.1,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "9c9e06a0fb0e4e6b",
+            "dur": 8.12,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "59434bdc171a4d41",
+            "dur": 3.02,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "9c83fd8e2ca3aef2",
+            "dur": 3.57,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "dc2548bfc7991b7d",
+            "dur": 14.36,
+            "cast": "mio"
+          }
+        },
+        "al-tta-2-04": {
+          "intro-motive": {
+            "hash": "694da3953ab24dd2",
+            "dur": 4.94,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "aa23d7fc9c14a308",
+            "dur": 9.64,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "6f583c2fa33cc1d8",
+            "dur": 3.93,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "8b2d5bf2bc9fb174",
+            "dur": 3.73,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "18635cbd062482d8",
+            "dur": 3.05,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "7d2a638d31930900",
+            "dur": 3.3,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "31d09326becb8099",
+            "dur": 15.95,
+            "cast": "mio"
+          }
+        },
+        "al-tta-2-05": {
+          "intro": {
+            "hash": "fbcaf8869ef877fe",
+            "dur": 10.72,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "04c2787e6fd46c26",
+            "dur": 4.13,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "ce3be8ae022fc43e",
+            "dur": 3.82,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "38380bd5a25d3b0f",
+            "dur": 7.54,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "941f322ccae8113d",
+            "dur": 4.03,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "3b28a13aaa892143",
+            "dur": 14.21,
+            "cast": "mio"
+          }
+        },
+        "al-tta-3-01": {
+          "intro-motive": {
+            "hash": "1431cf0f6058d5a8",
+            "dur": 5.25,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "24e5f562a1855187",
+            "dur": 12.09,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "4f8d51eca6c9724a",
+            "dur": 4.03,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "8312b6f37f386aa2",
+            "dur": 9.73,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "ffa6e7c519af8dba",
+            "dur": 3.71,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "e6881dccf2e32223",
+            "dur": 9.37,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "459b7a9f6c8fce3e",
+            "dur": 11.25,
+            "cast": "mio"
+          }
+        },
+        "al-tta-3-02": {
+          "intro-motive": {
+            "hash": "2baa5f7efa229dde",
+            "dur": 6.84,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "3c18662f8e5ba1d1",
+            "dur": 11.57,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "6ad436a20e816d99",
+            "dur": 4.14,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "30417e0da6bd72e6",
+            "dur": 3.89,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "22907b570372ae7e",
+            "dur": 4.64,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "cffb58f786d0c208",
+            "dur": 4.32,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "436af4c79e5760e7",
+            "dur": 14.91,
+            "cast": "mio"
+          }
+        },
+        "al-tta-3-03": {
+          "intro-motive": {
+            "hash": "775c337fcf58fe06",
+            "dur": 5.98,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "4007ec71256841b2",
+            "dur": 10.77,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "e2158de7718e41f6",
+            "dur": 4.13,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "bd1d3ebdd738ad51",
+            "dur": 5.32,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "c1c7b5a2e9a626a7",
+            "dur": 4.17,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "f4e26cb1e1b47ec3",
+            "dur": 5.05,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "98e582030c6606ca",
+            "dur": 12.95,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-01": {
+          "intro": {
+            "hash": "0cfb17d57961645e",
+            "dur": 10.23,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "c2353ebf1c024ff1",
+            "dur": 3.62,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "582ed0f2ecf73fdf",
+            "dur": 3.52,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "cb82b5290786bad6",
+            "dur": 7.5,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "9817b89b12848e74",
+            "dur": 3.57,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "9d9a4c5964e3eceb",
+            "dur": 11.24,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-02": {
+          "intro-motive": {
+            "hash": "0118c841510bd19a",
+            "dur": 6.83,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "40dea7a929db33e8",
+            "dur": 7.7,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "8bcf776002fbe55c",
+            "dur": 3.16,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "b1342604c52b30dd",
+            "dur": 6.11,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "3bf827db45beee1b",
+            "dur": 3.64,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "aa8fece02c6088fe",
+            "dur": 3.87,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "b2a5f9ab4f629578",
+            "dur": 11.86,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-03": {
+          "intro-motive": {
+            "hash": "af172735b2da3519",
+            "dur": 6.03,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "5a82a2241b9d9afd",
+            "dur": 9.08,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "ee6f482542e673ec",
+            "dur": 3.01,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "ea3bdcdaf3f747ef",
+            "dur": 4.86,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "086dde139471e3cf",
+            "dur": 3.96,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "4f419d232409cd6c",
+            "dur": 3.08,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "441b65618bf60cbe",
+            "dur": 12.52,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-04": {
+          "intro-motive": {
+            "hash": "ad33294447e58953",
+            "dur": 6.64,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "6e7643e73d35e626",
+            "dur": 7.89,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "5bcd5ceb6fa74d6b",
+            "dur": 5.3,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "dfdfdbaf51b30bce",
+            "dur": 5.9,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "705e54563e630bf5",
+            "dur": 6.29,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "7b291307ad511649",
+            "dur": 3.53,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "db25c3ad95d1baf9",
+            "dur": 11.19,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-05": {
+          "intro-motive": {
+            "hash": "0760c27ac8a2001f",
+            "dur": 6.77,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "eb4030b775e3e14f",
+            "dur": 9.63,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "77d2e38b95d989f8",
+            "dur": 3.55,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "742427022b6e9146",
+            "dur": 3.57,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "9ceceefa4c836ab1",
+            "dur": 3.41,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "54ac6fe64d680476",
+            "dur": 2.69,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "b3a2837e0b46a19d",
+            "dur": 11.15,
+            "cast": "mio"
+          }
+        },
+        "al-tta-4-06": {
+          "intro-motive": {
+            "hash": "6b832328c1339438",
+            "dur": 6.58,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "458dbc03b20109ae",
+            "dur": 10.67,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "055e877bf2c1541a",
+            "dur": 3.67,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "46e290ab6d371d3b",
+            "dur": 2.77,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "208a80f537cda910",
+            "dur": 3.25,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "c5b688e01de43e87",
+            "dur": 4.62,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "6bedd98cf7f047b0",
+            "dur": 13.88,
+            "cast": "mio"
+          }
+        },
+        "al-tta-5-01": {
+          "intro-motive": {
+            "hash": "4a49d4d0cb41b500",
+            "dur": 6.58,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "a0778841f4f71e32",
+            "dur": 10.64,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "7fae32a88198cb5f",
+            "dur": 3.78,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "4771abaa43992006",
+            "dur": 6.04,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "67e22f95780dae13",
+            "dur": 3.48,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "d242cd0bd89198a3",
+            "dur": 4.61,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "28a27f09509fd4b9",
+            "dur": 11.5,
+            "cast": "mio"
+          }
+        },
+        "al-tta-5-02": {
+          "intro": {
+            "hash": "a59ffbef7f605605",
+            "dur": 9.56,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "2d944fc7a5cce213",
+            "dur": 4.38,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "4e5940cf48455402",
+            "dur": 6.23,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "fbda717c688fc291",
+            "dur": 5.37,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "56b9ef9a9cfd50d7",
+            "dur": 3.85,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "410128152590b17f",
+            "dur": 9.71,
+            "cast": "mio"
+          }
+        },
+        "al-tta-5-03": {
+          "intro": {
+            "hash": "df280960bffe3286",
+            "dur": 8.6,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "ab5ba4b2ee7a1c6a",
+            "dur": 3.85,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "38edf4f6cb59c225",
+            "dur": 5.72,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "25754c52325b7f89",
+            "dur": 6.49,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "1b0b8918296c929e",
+            "dur": 4.47,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "f59c9e1f6fd3311b",
+            "dur": 11.18,
+            "cast": "mio"
+          }
+        },
+        "al-tta-6-01": {
+          "intro-motive": {
+            "hash": "1a1100cc429998b7",
+            "dur": 6.86,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "2cd595f6dd6a8ab4",
+            "dur": 10.02,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "1262e2b73f33b897",
+            "dur": 3.39,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "1c07d4fab6d6aea7",
+            "dur": 3.62,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "11fb96b28d612956",
+            "dur": 3.68,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "f3e472aec511149a",
+            "dur": 4.04,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "2278ead582295db9",
+            "dur": 12.65,
+            "cast": "mio"
+          }
+        },
+        "al-tta-6-02": {
+          "intro-motive": {
+            "hash": "1fc1e1927aa6ae33",
+            "dur": 6.8,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "c9485150a149e2c6",
+            "dur": 10.61,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "84acf93c840c87e5",
+            "dur": 3.22,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "8042cc49f98a3980",
+            "dur": 3.67,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "c7b74304581bc12e",
+            "dur": 4.34,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "2442a0125a00216c",
+            "dur": 5.05,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "380c0ee4cdfebd5d",
+            "dur": 11.73,
+            "cast": "mio"
+          }
+        },
+        "al-tta-6-03": {
+          "intro-motive": {
+            "hash": "7600156ea17e37d2",
+            "dur": 4.93,
+            "cast": "mio"
+          },
+          "intro": {
+            "hash": "3281ef90a8c4b666",
+            "dur": 10.37,
+            "cast": "mio"
+          },
+          "q1": {
+            "hash": "9dff9294febd9895",
+            "dur": 4.48,
+            "cast": "mio"
+          },
+          "q2": {
+            "hash": "f55221cfdae7a5df",
+            "dur": 4.09,
+            "cast": "mio"
+          },
+          "q3": {
+            "hash": "03855a494f689a90",
+            "dur": 7.19,
+            "cast": "mio"
+          },
+          "q4": {
+            "hash": "cfb9c764d0bfcb8b",
+            "dur": 3.4,
+            "cast": "mio"
+          },
+          "ending": {
+            "hash": "9cc360d88e4550a3",
+            "dur": 16.25,
+            "cast": "mio"
+          }
+        }
+      }
+    }
+  }
 }

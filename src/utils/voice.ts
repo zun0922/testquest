@@ -33,15 +33,30 @@ export interface VoiceManifest {
    */
   credits?: string[]
   scenarios: Record<string, Record<string, VoiceEntry>>
+  /**
+   * 編成パターン（FR-P2-003）で差し替えたキャラの音声。
+   * 差し替えが起きるノードだけを持ち、無いノードは既定の音声を使う＝
+   * パターンを増やしても増える容量は「差し替えたキャラのぶん」だけで済む。
+   */
+  variants?: Record<string, { scenarios: Record<string, Record<string, VoiceEntry>> }>
 }
 
 function base(): string {
   return AUDIO_BASE.replace(/\/$/, '')
 }
 
-/** 音声ファイルのURL。形式の差し替えは manifest.format の変更だけで完結する。 */
-export function voiceUrl(scenarioId: string, nodeId: string, format: string = DEFAULT_FORMAT): string {
-  return `${base()}/${scenarioId}/${nodeId}.${format}`
+/**
+ * 音声ファイルのURL。形式の差し替えは manifest.format の変更だけで完結する。
+ * 編成パターンの音声は `audio/{castingId}/…` に置く（既定の音声のパスは変えない）。
+ */
+export function voiceUrl(
+  scenarioId: string,
+  nodeId: string,
+  format: string = DEFAULT_FORMAT,
+  castingId?: string,
+): string {
+  const dir = castingId ? `${base()}/${castingId}` : base()
+  return `${dir}/${scenarioId}/${nodeId}.${format}`
 }
 
 function isVoiceEntry(v: unknown): v is VoiceEntry {
@@ -101,14 +116,31 @@ export function hasVoice(manifest: VoiceManifest | null, scenarioId: string, nod
   return Boolean(manifest?.scenarios[scenarioId]?.[nodeId])
 }
 
+/** その編成に、このノード専用の音声があるか（無ければ既定の音声を使う）。 */
+export function hasVariantVoice(
+  manifest: VoiceManifest | null,
+  castingId: string | undefined,
+  scenarioId: string,
+  nodeId: string,
+): boolean {
+  if (!castingId) return false
+  return Boolean(manifest?.variants?.[castingId]?.scenarios[scenarioId]?.[nodeId])
+}
+
 /** 指定ノードの音声URL（無ければ null）。 */
 export function voiceUrlFor(
   manifest: VoiceManifest | null,
   scenarioId: string,
   nodeId: string,
+  castingId?: string,
 ): string | null {
+  const format = manifest?.format ?? DEFAULT_FORMAT
+  // 差し替えたキャラのセリフはその編成の音声を鳴らす（無いノードは既定のまま）
+  if (hasVariantVoice(manifest, castingId, scenarioId, nodeId)) {
+    return voiceUrl(scenarioId, nodeId, format, castingId)
+  }
   if (!hasVoice(manifest, scenarioId, nodeId)) return null
-  return voiceUrl(scenarioId, nodeId, manifest?.format ?? DEFAULT_FORMAT)
+  return voiceUrl(scenarioId, nodeId, format)
 }
 
 // ===== 再生要素（単一インスタンス） =====
@@ -172,8 +204,9 @@ export function playVoiceOnce(
   scenarioId: string,
   nodeId: string,
   volume: number,
+  castingId?: string,
 ): boolean {
-  const url = voiceUrlFor(manifest, scenarioId, nodeId)
+  const url = voiceUrlFor(manifest, scenarioId, nodeId, castingId)
   const audio = getSharedAudio()
   if (!url || !audio) return false
   stopAudio(audio)
