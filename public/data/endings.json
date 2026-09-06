@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "endings": [
+    {
+      "id": "fl-knowledge",
+      "scope": "FL",
+      "name": "知識の探求者",
+      "subtitle": "JSTQB Foundation Level 合格への道",
+      "background": "ending-sunset",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "配属から一年。あなたのデスクには、付箋だらけのシラバスが置かれている。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "テストの言葉を、借り物ではなく自分の言葉として話せるようになっていた。"
+        },
+        {
+          "speaker": "rin",
+          "characters": [{ "characterId": "rin", "expression": "happy", "position": "left" }],
+          "text": "その調子。用語を正しく使えるって、思っているより強い武器なのよ。会議で言葉が揃うだけで、議論の速さが変わるから。"
+        },
+        {
+          "speaker": "rin",
+          "characters": [{ "characterId": "rin", "expression": "normal", "position": "left" }],
+          "text": "……次は資格、受けてみたら？ あなたが積み上げてきたものは、そのまま合格への道になるわ。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "知ることは、守ること。あなたの学びは、まだ始まったばかりだ。"
+        }
+      ]
+    },
+    {
+      "id": "fl-skill",
+      "scope": "FL",
+      "name": "テスト職人",
+      "subtitle": "現場で信頼されるテスト設計のスペシャリスト",
+      "background": "ending-sunset",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "あなたが選ぶテストのやり方に、迷いがなくなった頃のこと。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [{ "characterId": "tanaka", "expression": "happy", "position": "left" }],
+          "text": "お前の考え方は筋がいい。技法の選び方に迷いがないし、境界の置き方に理由がある。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [{ "characterId": "tanaka", "expression": "normal", "position": "left" }],
+          "text": "次のプロジェクト、テスト設計を任せたい。……いや、頼みたい、が正しいな。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "闇雲に試すのではなく、狙って欠陥に近づく。それは勘ではなく、理屈の仕事だ。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "あなたはもう、その理屈を持っている。"
+        }
+      ]
+    },
+    {
+      "id": "fl-teamwork",
+      "scope": "FL",
+      "name": "チームの要",
+      "subtitle": "QA文化をチームに根付かせるリーダー",
+      "background": "ending-sunset",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "朝会の途中、開発者のほうから声がかかるようになった。「これ、テスト観点どう思う？」"
+        },
+        {
+          "speaker": "ken",
+          "characters": [{ "characterId": "ken", "expression": "happy", "position": "right" }],
+          "text": "お前がいると、品質の話がしやすいんだよな。責められてる感じがしないっていうか。"
+        },
+        {
+          "speaker": "ken",
+          "characters": [{ "characterId": "ken", "expression": "normal", "position": "right" }],
+          "text": "……最初に配属されてきたとき、俺と同じくらい何も分かってなかったのにさ。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "品質は誰か一人が背負うものではない。あなたはそれを、言葉ではなく振る舞いで示した。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "チームの真ん中に、あなたがいる。"
+        }
+      ]
+    },
+    {
+      "id": "fl-balanced",
+      "scope": "FL",
+      "name": "最高のQAエンジニア",
+      "subtitle": "完全なテストエンジニア像",
+      "background": "ending-skyline",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "知識を蓄え、技を磨き、人とつながる。あなたはそのどれも、欠かさなかった。"
+        },
+        {
+          "speaker": "rin",
+          "characters": [
+            { "characterId": "rin", "expression": "thinking", "position": "left" },
+            { "characterId": "tanaka", "expression": "normal", "position": "right" }
+          ],
+          "text": "正直に言うとね。ここまで伸びるとは思っていなかった。……悔しいけど、もう教えることが残っていないの。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [
+            { "characterId": "rin", "expression": "normal", "position": "left" },
+            { "characterId": "tanaka", "expression": "happy", "position": "right" }
+          ],
+          "text": "いや——早いな。だが事実だ。次の段階に進む時期だろう。マネジメントか、技術か。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [
+            { "characterId": "rin", "expression": "normal", "position": "left" },
+            { "characterId": "tanaka", "expression": "normal", "position": "right" }
+          ],
+          "text": "どちらを選んでも、うちのチームは困る。それくらいの人材になったということだ。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "テストエンジニアとしての土台は、完成した。ここから先は、あなたが選ぶ道だ。"
+        }
+      ]
+    },
+    {
+      "id": "al-tm",
+      "scope": "AL-TM",
+      "name": "マネジメントルート達成",
+      "subtitle": "テストマネージャーへの道",
+      "background": "ending-meeting-night",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "リスクを読み、人を配し、数字で価値を語る。テストを「管理する」とはどういうことか、あなたは掴んだ。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [{ "characterId": "tanaka", "expression": "normal", "position": "left" }],
+          "text": "お前のリスクの見立ては、経営に出しても通る。数字の根拠を、自分の言葉で説明できるからな。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [{ "characterId": "tanaka", "expression": "happy", "position": "left" }],
+          "text": "……俺が教えられることは、もう残っていない。次はお前が、誰かの計画を承認する番だ。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "マネジメントの道は、ここから続いていく。"
+        }
+      ]
+    },
+    {
+      "id": "al-tta",
+      "scope": "AL-TTA",
+      "name": "技術スペシャリストルート達成",
+      "subtitle": "テクニカルテストアナリストへの道",
+      "background": "ending-server-night",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "構造を読み解き、測って確かめ、道具の力を借りる。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "どこを、どう突けば壊れるのか。その見当のつけ方を、あなたは身につけた。"
+        },
+        {
+          "speaker": "takumi",
+          "characters": [{ "characterId": "takumi", "expression": "normal", "position": "left" }],
+          "text": "技術は嘘をつかない。測れば出るし、通せば分かる。お前はまず、その理屈を押さえた。"
+        },
+        {
+          "speaker": "takumi",
+          "characters": [{ "characterId": "takumi", "expression": "happy", "position": "left" }],
+          "text": "あとは現場で、手を動かして確かめてこい。……そのうち、お前が誰かの隣に立つ番が来る。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "技術の道は、ここから続いていく。"
+        }
+      ]
+    },
+    {
+      "id": "grand",
+      "scope": "ALL",
+      "name": "両の道を修めた者",
+      "subtitle": "テストという営みの、全体を見渡す場所へ",
+      "background": "ending-rooftop",
+      "lines": [
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "マネジメントの視座と、技術の眼。その両方を持つ者は、そう多くない。"
+        },
+        {
+          "speaker": "tanaka",
+          "characters": [
+            { "characterId": "tanaka", "expression": "normal", "position": "left" },
+            { "characterId": "takumi", "expression": "normal", "position": "right" }
+          ],
+          "text": "計画の立て方も、技術の理屈も分かってる。……厄介なやつになったな。俺の仕事がやりづらい。"
+        },
+        {
+          "speaker": "takumi",
+          "characters": [
+            { "characterId": "tanaka", "expression": "happy", "position": "left" },
+            { "characterId": "takumi", "expression": "normal", "position": "right" }
+          ],
+          "text": "それでいい。品質は、どちらか片方じゃ守れん。あんたも本当は分かってるだろう。"
+        },
+        {
+          "speaker": "rin",
+          "characters": [{ "characterId": "rin", "expression": "happy", "position": "left" }],
+          "text": "……ねえ。最初にあなたを迎えた日のこと、覚えてる？ 緊張してるって、顔に書いてあったのよ。"
+        },
+        {
+          "speaker": "rin",
+          "characters": [{ "characterId": "rin", "expression": "normal", "position": "left" }],
+          "text": "ずいぶん遠くまで来たわね。ここから先は、あなたが誰かを迎える側。"
+        },
+        {
+          "speaker": "narration",
+          "characters": [],
+          "text": "テストという営みの、全体を見渡せる場所に、あなたは立っている。"
+        }
+      ]
+    }
+  ]
+}

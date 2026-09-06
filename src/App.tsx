@@ -2,10 +2,13 @@
 //（reducer は純粋・設計書§6）。
 import { useEffect, useState, useCallback } from 'react'
 import { useGame } from './hooks/useGame'
-import type { ScenarioIndexEntry } from './types'
+import type { ScenarioIndexEntry, EndingDef } from './types'
 import * as storage from './utils/storage'
 import { loadIndex, loadScenario } from './utils/scenarioLoader'
 import { unlockAudio } from './utils/voice'
+import { ensureEndings, newlyReached } from './utils/ending'
+import EndingScreen from './components/EndingScreen'
+import EndingListScreen from './components/EndingListScreen'
 import TitleScreen from './components/TitleScreen'
 import SelectScreen from './components/SelectScreen'
 import ScenarioPlayer from './components/player/ScenarioPlayer'
@@ -23,6 +26,8 @@ export default function App() {
 
   const [state, dispatch] = useGame(initial.loaded, initial.avail)
   const [pending, setPending] = useState<ScenarioIndexEntry | null>(null)
+  // エンディング定義（FR-P2-002）。読めなくても空配列＝機能を出さないだけ
+  const [endings, setEndings] = useState<EndingDef[]>([])
   const [saveError, setSaveError] = useState(false)
 
   // index.json をロード
@@ -39,6 +44,16 @@ export default function App() {
   useEffect(() => {
     void loadIndexNow()
   }, [loadIndexNow])
+
+  useEffect(() => {
+    let alive = true
+    void ensureEndings().then((e) => {
+      if (alive) setEndings(e)
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
 
   // シナリオをロード（fetch＋検証）
   const loadScenarioNow = useCallback(
@@ -59,6 +74,14 @@ export default function App() {
     setPending(entry)
     dispatch({ type: 'SELECT_SCENARIO' })
     void loadScenarioNow(entry)
+  }
+
+  // 結果画面を見たあとで、新たに到達したエンディングがあればそちらへ進む（FR-P2-002）。
+  // 結果を飛ばして唐突にエンディングへ遷移しないよう、戻る操作のタイミングで判定する。
+  const handleBackFromResult = () => {
+    const ids = state.index ? newlyReached(state.index, state.save) : []
+    if (ids.length > 0) dispatch({ type: 'REACH_ENDING', ids, at: new Date().toISOString() })
+    else dispatch({ type: 'BACK_TO_SELECT' })
   }
 
   const handleRetry = () => {
@@ -163,7 +186,12 @@ export default function App() {
       )
     case 'select':
       return state.index ? (
-        <SelectScreen index={state.index} save={state.save} onSelect={handleSelect} />
+        <SelectScreen
+          index={state.index}
+          save={state.save}
+          onSelect={handleSelect}
+          onOpenEndings={() => dispatch({ type: 'SHOW_ENDING_LIST' })}
+        />
       ) : null
     case 'play':
       return state.session ? (
@@ -183,9 +211,24 @@ export default function App() {
           session={state.session}
           statusAfter={state.save.status}
           saveError={saveError}
-          onBack={() => dispatch({ type: 'BACK_TO_SELECT' })}
+          onBack={handleBackFromResult}
         />
       ) : null
+    case 'ending': {
+      const ending = endings.find((e) => e.id === state.endingId)
+      return ending ? (
+        <EndingScreen ending={ending} onClose={() => dispatch({ type: 'CLOSE_ENDING' })} />
+      ) : null
+    }
+    case 'endingList':
+      return (
+        <EndingListScreen
+          endings={endings}
+          save={state.save}
+          onPlay={(id) => dispatch({ type: 'SHOW_ENDING', id })}
+          onBack={() => dispatch({ type: 'BACK_TO_SELECT' })}
+        />
+      )
     default:
       return null
     }
