@@ -92,16 +92,49 @@ export interface Feedback {
   syllabusRefs: string[] // 例 ['1.3']。1件以上必須
 }
 
+// ===== 3.2.1 エンディングデータ（FR-P2-002・public/data/endings.json） =====
+/** エンディングの1行。演出の構成部品はシナリオのノードと揃える（同じ描画を流用するため）。 */
+export interface EndingLine {
+  speaker: CharacterId | 'narration'
+  characters: CharacterDisplay[]
+  text: string
+}
+
+export interface EndingDef {
+  id: string
+  scope: 'FL' | 'AL-TM' | 'AL-TTA' | 'ALL'
+  name: string
+  subtitle: string
+  background: string
+  lines: EndingLine[]
+}
+
+export interface EndingsData {
+  version: 1
+  endings: EndingDef[]
+}
+
 // ===== 3.3 進捗データ（localStorage） =====
 export interface SaveDataV1 {
   version: 1
   status: StatusValues
   cleared: Record<string, ClearRecord> // key＝シナリオID
+  /**
+   * 到達したエンディング（FR-P2-002）。key＝エンディングID・値＝到達日時(ISO 8601)。
+   * 省略可（既存セーブは空として扱う）。一度到達したら消えない＝コレクション要素。
+   */
+  endings?: Record<string, string>
 }
 export interface ClearRecord {
   clearedAt: string // ISO 8601
   ratings: Record<Rating, number>
-  statusGain: Partial<Record<StatusKey, number>>
+  statusGain: Partial<Record<StatusKey, number>> // poor を含む累積（表示用）
+  /**
+   * FR-P2-002 エンディング判定用の累積。**poor を選んで得た分は含めない**。
+   * poor でも知識が大量に入る構造のため、これを分けないとエンディングが分岐しない。
+   * 省略可（この記録が無い章は判定から除外する＝PO決定 2026-08-30）。
+   */
+  cleanGain?: Partial<Record<StatusKey, number>>
 }
 
 // ===== 制約値（検証・UIで共有） =====

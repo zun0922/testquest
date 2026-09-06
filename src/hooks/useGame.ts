@@ -16,7 +16,7 @@ import {
 } from '../types'
 import { applyStatusEffects } from '../utils/status'
 
-export type Screen = 'title' | 'select' | 'play' | 'result'
+export type Screen = 'title' | 'select' | 'play' | 'result' | 'ending' | 'endingList'
 export type LoadState = 'loading' | 'success' | 'error'
 
 export interface PlaySession {
@@ -27,6 +27,8 @@ export interface PlaySession {
   isReplay: boolean
   ratings: Record<Rating, number>
   statusGain: Partial<Record<StatusKey, number>> // 当該プレイの累積効果（表示用）
+  /** エンディング判定用の累積（**poor で得た分は含めない**・FR-P2-002）。 */
+  cleanGain: Partial<Record<StatusKey, number>>
   statusBefore: StatusValues // シナリオ開始前のスナップショット（結果比較・QUIT復元）
   syllabusRefs: string[] // 通過した選択の参照項番（結果画面で重複排除して表示）
   feedbackChoice: Choice | null
@@ -40,6 +42,8 @@ export interface GameState {
   indexState: LoadState
   scenarioState: 'idle' | 'loading' | 'error'
   session: PlaySession | null
+  /** 表示中のエンディングID（FR-P2-002）。一覧から選んだ場合もここに入る。 */
+  endingId: string | null
 }
 
 const ZERO_RATINGS: Record<Rating, number> = { best: 0, good: 0, poor: 0 }
@@ -59,6 +63,11 @@ export type GameAction =
   | { type: 'FINISH' }
   | { type: 'QUIT' }
   | { type: 'BACK_TO_SELECT' }
+  // --- FR-P2-002 エンディング ---
+  | { type: 'REACH_ENDING'; ids: string[]; at: string }
+  | { type: 'SHOW_ENDING'; id: string }
+  | { type: 'SHOW_ENDING_LIST' }
+  | { type: 'CLOSE_ENDING' }
 
 function freshSave(): SaveDataV1 {
   return { version: 1, status: { ...INITIAL_STATUS }, cleared: {} }
@@ -67,6 +76,7 @@ function freshSave(): SaveDataV1 {
 export function createInitialState(loaded: SaveDataV1 | null, storageAvailable: boolean): GameState {
   return {
     screen: 'title',
+    endingId: null,
     save: loaded ?? freshSave(),
     storageAvailable,
     index: null,
@@ -103,6 +113,7 @@ export function reducer(state: GameState, action: GameAction): GameState {
         isReplay: action.isReplay,
         ratings: { ...ZERO_RATINGS },
         statusGain: {},
+        cleanGain: {},
         statusBefore: { ...state.save.status },
         syllabusRefs: [],
         feedbackChoice: null,
@@ -133,10 +144,14 @@ export function reducer(state: GameState, action: GameAction): GameState {
 
       // 当該プレイの累積効果（表示用・結果集計用）
       const statusGain = { ...state.session.statusGain }
+      // エンディング判定用は poor を除いて別に積む（FR-P2-002・要件仕様 §2.1）。
+      // poor でも知識が大量に入る構造のため、分けないとエンディングが分岐しない。
+      const cleanGain = { ...state.session.cleanGain }
       for (const k of Object.keys(choice.statusEffects) as StatusKey[]) {
         const d = choice.statusEffects[k]
         if (d === undefined) continue
         statusGain[k] = (statusGain[k] ?? 0) + d
+        if (choice.rating !== 'poor') cleanGain[k] = (cleanGain[k] ?? 0) + d
       }
 
       // 再プレイでなければ実ステータスに加算（クランプ）。再プレイは status 不変（FR-002）
@@ -149,7 +164,7 @@ export function reducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         save,
-        session: { ...state.session, ratings, statusGain, syllabusRefs, feedbackChoice: choice },
+        session: { ...state.session, ratings, statusGain, cleanGain, syllabusRefs, feedbackChoice: choice },
       }
     }
 
@@ -171,6 +186,7 @@ export function reducer(state: GameState, action: GameAction): GameState {
           clearedAt: new Date().toISOString(),
           ratings: { ...state.session.ratings },
           statusGain: { ...state.session.statusGain },
+          cleanGain: { ...state.session.cleanGain },
         }
         save = { ...state.save, cleared: { ...state.save.cleared, [id]: record } }
       }
@@ -190,6 +206,25 @@ export function reducer(state: GameState, action: GameAction): GameState {
 
     case 'BACK_TO_SELECT':
       return { ...state, session: null, screen: 'select' }
+
+    // --- FR-P2-002 エンディング ---
+    case 'REACH_ENDING': {
+      // 到達は全件記録し、表示は1つだけ（残りは一覧から見られる）。
+      // 最終エンディングを含む場合はそれを優先して見せる。
+      const endings = { ...(state.save.endings ?? {}) }
+      for (const id of action.ids) endings[id] = action.at
+      const show = action.ids.includes('grand') ? 'grand' : action.ids[0]
+      return { ...state, save: { ...state.save, endings }, screen: 'ending', endingId: show ?? null }
+    }
+
+    case 'SHOW_ENDING':
+      return { ...state, screen: 'ending', endingId: action.id }
+
+    case 'SHOW_ENDING_LIST':
+      return { ...state, screen: 'endingList', endingId: null }
+
+    case 'CLOSE_ENDING':
+      return { ...state, screen: 'endingList', endingId: null }
 
     default:
       return state

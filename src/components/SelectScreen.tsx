@@ -24,6 +24,8 @@ interface Props {
   index: ScenarioIndex
   save: SaveDataV1
   onSelect: (entry: ScenarioIndexEntry) => void
+  /** FR-P2-002：エンディング一覧へ。到達が1件以上あるときだけ入口を出す。 */
+  onOpenEndings: () => void
 }
 
 // 開発・テスト用の解放フック（テストデータ原則：devモード限定・本番ビルドでは無効）
@@ -31,7 +33,8 @@ function devUnlockAll(): boolean {
   return import.meta.env.DEV && new URLSearchParams(window.location.search).get('unlockAll') === '1'
 }
 
-export default function SelectScreen({ index, save, onSelect }: Props) {
+export default function SelectScreen({ index, save, onSelect, onOpenEndings }: Props) {
+  const endingCount = Object.keys(save.endings ?? {}).length
   const alUnlocked = isAlUnlocked(index, save) || devUnlockAll()
   // ユーザーが明示的に開閉した節のみを保持（未操作の節は「続きの章」自動判定に従う）
   const [overrides, setOverrides] = useState<OpenOverrides>(loadOverrides)
@@ -60,7 +63,18 @@ export default function SelectScreen({ index, save, onSelect }: Props) {
     <div data-testid="screen-select" className="min-h-screen bg-bg-base text-text-main p-5">
       <div className="flex items-start justify-between mb-5">
         <h1 className="text-xl font-bold text-accent">TestQuest</h1>
-        <StatusHud status={save.status} />
+        <div className="flex items-center gap-2">
+          {endingCount > 0 && (
+            <button
+              data-testid="btn-endings"
+              onClick={onOpenEndings}
+              className="text-xs px-3 py-2 rounded-lg border border-cleared/60 bg-cleared/10 text-cleared hover:border-cleared transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+            >
+              エンディング
+            </button>
+          )}
+          <StatusHud status={save.status} />
+        </div>
       </div>
 
       {LEVELS.map((lv) => {
