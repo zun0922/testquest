@@ -14,3 +14,46 @@
     display: flex;
   }
 }
+
+/* エンディング演出（FR-P2-002）
+   到達までに数時間かかる区切りなので、本編と同じ静止画では特別感が出ない。
+   ゆっくりした動きと減光で「ここは特別な場面」だと伝える。
+   prefers-reduced-motion では動きを止める（酔いや目の負担を避けるため）。 */
+.ending-bg {
+  animation: ending-zoom 40s ease-out forwards;
+  transform-origin: center 55%;
+}
+@keyframes ending-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+/* 周辺減光。中央の立ち絵と文字に視線を集める */
+.ending-vignette {
+  background: radial-gradient(ellipse at center 45%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.ending-title {
+  animation: ending-title-in 1.6s ease-out both;
+}
+@keyframes ending-title-in {
+  from { opacity: 0; transform: translateY(-12px); letter-spacing: 0.4em; }
+  to { opacity: 1; transform: translateY(0); letter-spacing: 0.1em; }
+}
+
+/* 最終行のあと、少し遅らせて出す＝読み終わりの余韻 */
+.ending-close-in {
+  animation: ending-fade-in 1.2s ease-out both;
+}
+@keyframes ending-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ending-bg,
+  .ending-title,
+  .ending-close-in {
+    animation: none;
+  }
+}

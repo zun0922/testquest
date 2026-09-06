@@ -29,11 +29,14 @@ export default function EndingScreen({ ending, onClose }: Props) {
   }
 
   return (
-    <div
-      data-testid="screen-ending"
-      className="min-h-screen bg-bg-base bg-cover bg-center text-text-main relative select-none"
-      style={{ backgroundImage: `url(${backgroundUrl(ending.background)})` }}
-    >
+    <div data-testid="screen-ending" className="min-h-screen bg-bg-base text-text-main relative select-none overflow-hidden">
+      {/* 背景は別レイヤーにしてゆっくり寄る（本編の静止背景との差＝特別感） */}
+      <div
+        className="ending-bg absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${backgroundUrl(ending.background)})` }}
+        aria-hidden
+      />
+      <div className="ending-vignette absolute inset-0 pointer-events-none" aria-hidden />
       {/* 立ち絵（シナリオ再生と同じ配置・発話者以外はグレーアウト） */}
       <div className="absolute inset-0 flex items-end justify-around pb-36" aria-hidden>
         {line.characters.map((c) => (
@@ -51,7 +54,10 @@ export default function EndingScreen({ ending, onClose }: Props) {
 
       {/* エンディング名（上部に固定表示。到達した達成感を最初に見せる） */}
       <div className="absolute top-0 left-0 right-0 px-6 py-4 bg-gradient-to-b from-black/80 to-transparent text-center">
-        <p data-testid="ending-name" className="text-2xl font-bold text-accent [text-shadow:_0_2px_6px_rgb(0_0_0_/_0.9)]">
+        <p
+          data-testid="ending-name"
+          className="ending-title text-2xl font-bold text-accent tracking-[0.1em] [text-shadow:_0_2px_6px_rgb(0_0_0_/_0.9)]"
+        >
           {ending.name}
         </p>
         <p className="text-sm text-text-muted mt-1 [text-shadow:_0_1px_4px_rgb(0_0_0_/_0.9)]">{ending.subtitle}</p>
@@ -76,7 +82,7 @@ export default function EndingScreen({ ending, onClose }: Props) {
 
       {/* 最終行まで読んだら閉じられる */}
       {tw.done && isLast && (
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+        <div className="ending-close-in absolute bottom-6 left-0 right-0 flex justify-center z-10">
           <Button variant="primary" onClick={onClose} data-testid="btn-ending-close">
             エンディング一覧へ
           </Button>

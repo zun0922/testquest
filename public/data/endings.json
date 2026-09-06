@@ -6,7 +6,7 @@
       "scope": "FL",
       "name": "知識の探求者",
       "subtitle": "JSTQB Foundation Level 合格への道",
-      "background": "office",
+      "background": "ending-sunset",
       "lines": [
         {
           "speaker": "narration",
@@ -40,17 +40,17 @@
       "scope": "FL",
       "name": "テスト職人",
       "subtitle": "現場で信頼されるテスト設計のスペシャリスト",
-      "background": "office",
+      "background": "ending-sunset",
       "lines": [
         {
           "speaker": "narration",
           "characters": [],
-          "text": "あなたの書いたテストケースが、レビューで差し戻されなくなった頃のこと。"
+          "text": "あなたが選ぶテストのやり方に、迷いがなくなった頃のこと。"
         },
         {
           "speaker": "tanaka",
           "characters": [{ "characterId": "tanaka", "expression": "happy", "position": "left" }],
-          "text": "お前の設計は筋がいい。技法の選び方に迷いがないし、境界の置き方に理由がある。"
+          "text": "お前の考え方は筋がいい。技法の選び方に迷いがないし、境界の置き方に理由がある。"
         },
         {
           "speaker": "tanaka",
@@ -60,12 +60,12 @@
         {
           "speaker": "narration",
           "characters": [],
-          "text": "無駄なく網羅し、狙って欠陥を掘り当てる。それは理屈と経験の両方を持つ者だけができる仕事だ。"
+          "text": "闇雲に試すのではなく、狙って欠陥に近づく。それは勘ではなく、理屈の仕事だ。"
         },
         {
           "speaker": "narration",
           "characters": [],
-          "text": "あなたは、現場が名前で呼ぶテスト設計者になった。"
+          "text": "あなたはもう、その理屈を持っている。"
         }
       ]
     },
@@ -74,7 +74,7 @@
       "scope": "FL",
       "name": "チームの要",
       "subtitle": "QA文化をチームに根付かせるリーダー",
-      "background": "office",
+      "background": "ending-sunset",
       "lines": [
         {
           "speaker": "narration",
@@ -108,7 +108,7 @@
       "scope": "FL",
       "name": "最高のQAエンジニア",
       "subtitle": "完全なテストエンジニア像",
-      "background": "office",
+      "background": "ending-skyline",
       "lines": [
         {
           "speaker": "narration",
@@ -151,17 +151,17 @@
       "scope": "AL-TM",
       "name": "マネジメントルート達成",
       "subtitle": "テストマネージャーへの道",
-      "background": "office",
+      "background": "ending-meeting-night",
       "lines": [
         {
           "speaker": "narration",
           "characters": [],
-          "text": "リスクを読み、人を配し、数字で価値を語る。あなたの立てた計画で、チームが動くようになった。"
+          "text": "リスクを読み、人を配し、数字で価値を語る。テストを「管理する」とはどういうことか、あなたは掴んだ。"
         },
         {
           "speaker": "tanaka",
           "characters": [{ "characterId": "tanaka", "expression": "normal", "position": "left" }],
-          "text": "この前の経営会議な。お前の出したリスク分析、そのまま判断材料になった。誰も数字を疑わなかった。"
+          "text": "お前のリスクの見立ては、経営に出しても通る。数字の根拠を、自分の言葉で説明できるからな。"
         },
         {
           "speaker": "tanaka",
@@ -180,27 +180,27 @@
       "scope": "AL-TTA",
       "name": "技術スペシャリストルート達成",
       "subtitle": "テクニカルテストアナリストへの道",
-      "background": "server",
+      "background": "ending-server-night",
       "lines": [
         {
           "speaker": "narration",
           "characters": [],
-          "text": "コードの奥を覗き、動かして確かめ、道具を使いこなす。"
+          "text": "構造を読み解き、測って確かめ、道具の力を借りる。"
         },
         {
           "speaker": "narration",
           "characters": [],
-          "text": "あなたのレビュー指摘が、リリース前に致命的な欠陥を止めた。それも、一度ではない。"
+          "text": "どこを、どう突けば壊れるのか。その見当のつけ方を、あなたは身につけた。"
         },
         {
           "speaker": "takumi",
           "characters": [{ "characterId": "takumi", "expression": "normal", "position": "left" }],
-          "text": "技術は嘘をつかない。測れば出るし、通せば分かる。お前はそれを、頭じゃなく体で覚えたな。"
+          "text": "技術は嘘をつかない。測れば出るし、通せば分かる。お前はまず、その理屈を押さえた。"
         },
         {
           "speaker": "takumi",
           "characters": [{ "characterId": "takumi", "expression": "happy", "position": "left" }],
-          "text": "……次は、お前が誰かの隣に立つ番だ。俺がそうしたようにな。"
+          "text": "あとは現場で、手を動かして確かめてこい。……そのうち、お前が誰かの隣に立つ番が来る。"
         },
         {
           "speaker": "narration",
@@ -214,7 +214,7 @@
       "scope": "ALL",
       "name": "両の道を修めた者",
       "subtitle": "テストという営みの、全体を見渡す場所へ",
-      "background": "office",
+      "background": "ending-rooftop",
       "lines": [
         {
           "speaker": "narration",
@@ -227,7 +227,7 @@
             { "characterId": "tanaka", "expression": "normal", "position": "left" },
             { "characterId": "takumi", "expression": "normal", "position": "right" }
           ],
-          "text": "計画も立てられて、コードも読める。……厄介なやつになったな。俺の仕事がやりづらい。"
+          "text": "計画の立て方も、技術の理屈も分かってる。……厄介なやつになったな。俺の仕事がやりづらい。"
         },
         {
           "speaker": "takumi",
