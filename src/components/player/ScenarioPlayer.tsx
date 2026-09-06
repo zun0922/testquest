@@ -131,7 +131,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
       <Stage characters={node.characters} speaker={node.speaker} />
 
       {/* 右上：メニュー＋StatusHud */}
-      <div className="absolute top-3 right-3 flex items-start gap-2 z-10">
+      <div className="absolute top-3 right-3 flex items-start gap-2 z-30">
         <button
           data-testid="btn-voice"
           aria-label={voice.enabled ? 'ボイスをオフにする' : 'ボイスをオンにする'}
@@ -296,12 +296,15 @@ function ChoiceOverlay({
     return idx
   }, [choices])
   return (
-    <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 px-6 z-20">
+    // 暗幕はクリックを受け取らない（pointer-events-none）。受け取ると上部のボタンが
+    // 覆われて押せなくなるため。中身（ヒント・選択肢・ヒントボタン）だけが受け取る。
+    // 選択肢ノードは元々クリックで進まないので、暗幕が操作を遮る必要はない。
+    <div className="pointer-events-none absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 px-6 z-20">
       {/* ヒント文（Lv1 以上）。答えではなく「何を考えるか」を示す */}
       {showHint && hint && (
         <div
           data-testid="hint-text"
-          className="w-full max-w-md rounded-lg border border-hint/60 bg-hint/10 backdrop-blur-sm px-4 py-3 text-sm leading-relaxed text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)]"
+          className="pointer-events-auto w-full max-w-md rounded-lg border border-hint/60 bg-hint/10 backdrop-blur-sm px-4 py-3 text-sm leading-relaxed text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)]"
         >
           <span className="mr-1" aria-hidden>💡</span>
           {hint}
@@ -313,7 +316,7 @@ function ChoiceOverlay({
           data-testid={`choice-btn-${origIdx}`}
           onClick={() => onChoose(origIdx)}
           // ハイブリッド：透過ゴールド＋backdrop-blur＋テキストにスクリム（影）。背景の明暗に依らず読める
-          className="w-full max-w-md text-left bg-accent/25 backdrop-blur-sm border border-accent/70 rounded-lg px-4 py-3 text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)] hover:bg-accent/40 hover:border-accent hover:-translate-y-0.5 transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+          className="pointer-events-auto w-full max-w-md text-left bg-accent/25 backdrop-blur-sm border border-accent/70 rounded-lg px-4 py-3 text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)] hover:bg-accent/40 hover:border-accent hover:-translate-y-0.5 transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
           <span className="inline-flex items-center justify-center mr-2 min-w-[1.4rem] rounded bg-black/40 text-accent font-bold [text-shadow:none]">
             {String.fromCharCode(65 + pos)}
@@ -337,7 +340,7 @@ function ChoiceOverlay({
         data-testid="btn-hint"
         disabled={!canHint || showHint}
         onClick={() => setShowHint(true)}
-        className="mt-1 text-sm px-4 py-2 rounded-lg border border-line/80 bg-black/50 text-text-muted enabled:hover:text-text-main enabled:hover:border-accent/70 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+        className="pointer-events-auto mt-1 text-sm px-4 py-2 rounded-lg border border-line/80 bg-black/50 text-text-muted enabled:hover:text-text-main enabled:hover:border-accent/70 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
       >
         {showHint ? '💡 ヒント表示中' : canHint ? '💡 ヒントを見る' : '💡 ヒントはまだ使えません'}
       </button>

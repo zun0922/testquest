@@ -118,3 +118,27 @@ test('バックログを開くとスキップは止まる（開いている間�
   await expect(page.getByTestId('backlog')).toBeVisible()
   await expect(page.getByTestId('btn-skip')).toHaveAttribute('aria-pressed', 'false')
 })
+
+// 社内で問題になった点：選択肢が出ている間、上部のボタンが暗幕に覆われて押せなかった。
+// 中断できないのは操作として困るため、暗幕はクリックを受け取らない作りに直した。
+test('選択肢の表示中でも上部のボタン（中断・バックログ・ボイス）を押せる', async ({ page }) => {
+  await openScenario(page)
+  await readUntilChoice(page)
+  await expect(page.getByTestId('choice-btn-0')).toBeVisible()
+
+  // バックログ：開いて閉じられる
+  await page.getByTestId('btn-backlog').click()
+  await expect(page.getByTestId('backlog')).toBeVisible()
+  await page.getByTestId('btn-backlog-close').click()
+
+  // ボイス：切り替えられる
+  const before = await page.getByTestId('btn-voice').getAttribute('aria-pressed')
+  await page.getByTestId('btn-voice').click()
+  await expect(page.getByTestId('btn-voice')).not.toHaveAttribute('aria-pressed', before ?? '')
+
+  // 中断：メニューを開ける（選択肢を選ばずに抜けられる）
+  await page.getByTestId('btn-pause').click()
+  await expect(page.getByTestId('btn-quit-confirm')).toBeVisible()
+  await page.getByTestId('btn-quit-confirm').click()
+  await expect(page.getByTestId('screen-select')).toBeVisible()
+})
