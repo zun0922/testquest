@@ -30,6 +30,7 @@ async function readUntilChoice(page: Page) {
   for (let i = 0; i < 30; i++) {
     if (await page.getByTestId('choice-btn-0').isVisible()) return
     await page.getByTestId('message-window').click()
+    await page.waitForTimeout(120) // 設問の間合い（pacing.ts）を待つ
   }
   throw new Error('選択肢まで到達しなかった')
 }
@@ -159,7 +160,8 @@ test('既読スキップの送りが速すぎず・遅すぎない', async ({ pa
   // 旧実装（90ms/ノード）なら1秒未満で着く＝内容を追えない
   expect(elapsed, `選択肢到達まで ${elapsed}ms（速すぎる）`).toBeGreaterThan(700)
   // 2回目の調整（約580ms/ノード）は連打より遅く「早送りの実感がない」とPO判定された
-  expect(elapsed, `選択肢到達まで ${elapsed}ms（遅すぎる）`).toBeLessThan(2600)
+  // 選択肢ノードでは設問の間合い（pacing.ts・最大1.6秒）が加わる
+  expect(elapsed, `選択肢到達まで ${elapsed}ms（遅すぎる）`).toBeLessThan(4200)
 })
 
 // 押しても何も起きないように見えるのが分かりにくさの原因だった（実機確認 2026-09-13）

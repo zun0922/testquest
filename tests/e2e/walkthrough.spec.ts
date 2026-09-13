@@ -25,6 +25,7 @@ async function advanceToChoice(page: Page, maxClicks = 10) {
   for (let i = 0; i < maxClicks; i++) {
     if (await page.getByTestId('choice-btn-0').isVisible()) return
     await page.getByTestId('message-window').click()
+    await page.waitForTimeout(120) // 設問の間合い（pacing.ts）を待つ
   }
   await expect(page.getByTestId('choice-btn-0')).toBeVisible()
 }
