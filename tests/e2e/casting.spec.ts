@@ -46,10 +46,12 @@ test('編成を切り替えると立ち絵・名前・本文がまとめて入�
 
   await expect(page.getByTestId('speaker-name')).toHaveText('澪')
   // 名乗りが差し替わっている（学習内容は変えず、一人称と名前だけ直したもの）
-  await expect(page.getByTestId('message-window')).toContainText('伊藤だ')
+  await expect(page.getByTestId('message-window')).toContainText('伊藤です')
   await expect(page.getByTestId('message-window')).not.toContainText('高橋')
   await expect(page.locator('img[src*="mio"]').first()).toBeVisible()
   await expect(page.locator('img[src*="takumi"]')).toHaveCount(0)
+  // 澪は丁寧語で話す（ST-M2-002-TC-002 のPO判定・2026-09-13）
+  await expect(page.getByTestId('message-window')).toContainText('です')
   await page.screenshot({ path: 'e2e-shots/casting-mio.png' })
 })
 
