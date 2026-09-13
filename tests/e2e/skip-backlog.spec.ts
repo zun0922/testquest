@@ -142,3 +142,38 @@ test('選択肢の表示中でも上部のボタン（中断・バックログ�
   await page.getByTestId('btn-quit-confirm').click()
   await expect(page.getByTestId('screen-select')).toBeVisible()
 })
+
+// 実機確認（ST-M2-005-TC-001・2026-09-13）で「速すぎる」とPO判定され、
+// 一律90ms → 本文の長さに応じた待ち時間（260ms＋8ms/字・上限1000ms）に変更した。
+// 正確な秒数はflakyになるため、「速すぎる側へ戻っていないこと」だけを見る。
+test('既読スキップの送りが速すぎる状態に戻っていない', async ({ page }) => {
+  await openScenario(page)
+  await readUntilChoice(page)
+  await reopenScenario(page)
+
+  const started = Date.now()
+  await page.getByTestId('btn-skip').click()
+  await expect(page.getByTestId('choice-btn-0')).toBeVisible({ timeout: 20000 })
+  const elapsed = Date.now() - started
+
+  // 選択肢までに複数ノードを通るため、旧実装（90ms/ノード）なら1秒未満で着く
+  expect(elapsed, `選択肢到達まで ${elapsed}ms（速すぎる可能性）`).toBeGreaterThan(1200)
+})
+
+test('スキップ中はセリフを鳴らさない（鳴っては切られる音を避ける）', async ({ page }) => {
+  await openScenario(page)
+  await readUntilChoice(page)
+  await reopenScenario(page)
+
+  // ボイスONの状態から始める
+  if ((await page.getByTestId('btn-voice').getAttribute('aria-pressed')) !== 'true') {
+    await page.getByTestId('btn-voice').click()
+  }
+  await page.getByTestId('btn-skip').click()
+  await expect(page.getByTestId('screen-play')).toHaveAttribute('data-voice-state', 'off')
+
+  // スキップが止まれば、次のノードから通常どおり鳴る状態に戻る
+  await page.getByTestId('message-window').click()
+  await expect(page.getByTestId('btn-skip')).toHaveAttribute('aria-pressed', 'false')
+  await expect(page.getByTestId('screen-play')).not.toHaveAttribute('data-voice-state', 'off')
+})

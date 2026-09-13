@@ -10,6 +10,7 @@ import StatusHud from '../common/StatusHud'
 import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
 import { isRead, loadReadLog, markRead, type ReadLog } from '../../utils/readLog'
+import { skipDelayMs } from '../../utils/skip'
 import { ensureManifest, hasVoice, playVoiceOnce, type VoiceManifest } from '../../utils/voice'
 import {
   DEFAULT_CASTING,
@@ -77,7 +78,10 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const [showBacklog, setShowBacklog] = useState(false)
   // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
   //（PO決定 2026-08-25）。音声が無い章・OFF・再生拒否のいずれでも従来どおり進行する。
-  const voiceState = useVoice(session.scenario.id, node?.id ?? '', voice, casting.id)
+  // スキップ中はセリフを鳴らさない。送りが速いぶん、鳴っては切られる音が連続して耳障りになるため
+  //（実機確認 ST-M2-005-TC-001・2026-09-13）。スキップを止めれば次のノードから通常どおり鳴る。
+  const voiceForPlayback = skipping ? { ...voice, enabled: false } : voice
+  const voiceState = useVoice(session.scenario.id, node?.id ?? '', voiceForPlayback, casting.id)
 
   const sid = session.scenario.id
   const nodeId = node?.id
@@ -122,12 +126,13 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
       twSkip() // 送り途中なら全文を出してから進む
       return
     }
+    // 本文が長い行ほど長く留まる（一律だと短い行で無駄に待つ・utils/skip.ts に根拠を記載）
     const t = setTimeout(() => {
       if (nodeNext === null) onFinish()
       else onAdvance()
-    }, 90) // 一瞬だけ残す＝何が流れたか目で追える速さ
+    }, skipDelayMs(shownText))
     return () => clearTimeout(t)
-  }, [skipping, nodeId, nodeType, nodeNext, visit, twDone, twSkip, paused, feedbackChoice, onAdvance, onFinish])
+  }, [skipping, nodeId, nodeType, nodeNext, visit, twDone, twSkip, shownText, paused, feedbackChoice, onAdvance, onFinish])
 
   if (!node) return null
 
