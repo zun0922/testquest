@@ -77,8 +77,10 @@ describe.skipIf(!hasManifest)('音声マニフェストの整合（音声が配�
 
   it('public/audio 配下に manifest 未登録の孤児ファイルが無い', () => {
     const orphans: string[] = []
+    // 編成パターン（FR-P2-003）の音声は manifest.variants 側で管理するため、ここでは見ない
+    const variantDirs = new Set(Object.keys(manifest.variants ?? {}))
     for (const dirent of readdirSync(AUDIO_DIR, { withFileTypes: true })) {
-      if (!dirent.isDirectory()) continue
+      if (!dirent.isDirectory() || variantDirs.has(dirent.name)) continue
       const byNode = manifest.scenarios[dirent.name] ?? {}
       for (const file of readdirSync(join(AUDIO_DIR, dirent.name))) {
         const nodeId = file.replace(/\.[^.]+$/, '')
@@ -101,4 +103,60 @@ describe.skipIf(!hasManifest)('音声マニフェストの整合（音声が配�
     }
     expect(mismatched).toEqual([])
   })
+})
+
+// FR-P2-003 編成パターンの音声。差し替えたキャラのセリフだけが別音源になるため、
+// 「差し替え対象のノードに漏れなく音声があるか」「余計なノードを鳴らしていないか」を見張る。
+describe.skipIf(!hasManifest)('編成パターンの音声（配置されている場合のみ）', () => {
+  const casting = JSON.parse(
+    readFileSync(join(process.cwd(), 'public', 'data', 'casting.json'), 'utf-8'),
+  ) as { castings: { id: string; swap: Record<string, string> }[] }
+
+  const load = (id: string): Scenario => {
+    const entry = index.scenarios.find((e) => e.id === id)!
+    return JSON.parse(readFileSync(join(DATA_DIR, entry.file), 'utf-8')) as Scenario
+  }
+
+  for (const c of casting.castings.filter((x) => Object.keys(x.swap).length > 0)) {
+    const variant = manifest.variants?.[c.id]
+
+    it.skipIf(!variant)(`${c.id}: 差し替え対象の全セリフに音声がある`, () => {
+      const missing: string[] = []
+      const extra: string[] = []
+      for (const entry of index.scenarios) {
+        const byNode = variant!.scenarios[entry.id] ?? {}
+        for (const node of load(entry.id).nodes) {
+          const shouldHave = Boolean(c.swap[node.speaker]) && node.text.trim().length > 0
+          const has = Boolean(byNode[node.id])
+          if (shouldHave && !has) missing.push(`${entry.id}/${node.id}`)
+          if (!shouldHave && has) extra.push(`${entry.id}/${node.id}`)
+        }
+      }
+      expect(missing, `音声が無い: ${missing.slice(0, 5).join(', ')}`).toEqual([])
+      expect(extra, `差し替え対象でないのに音声がある: ${extra.slice(0, 5).join(', ')}`).toEqual([])
+    })
+
+    it.skipIf(!variant)(`${c.id}: 音声ファイルが実在する`, () => {
+      const missing: string[] = []
+      for (const [sid, byNode] of Object.entries(variant!.scenarios)) {
+        for (const nid of Object.keys(byNode)) {
+          if (!existsSync(join(AUDIO_DIR, c.id, sid, `${nid}.${manifest.format}`))) {
+            missing.push(`${c.id}/${sid}/${nid}`)
+          }
+        }
+      }
+      expect(missing, `ファイルが無い: ${missing.slice(0, 5).join(', ')}`).toEqual([])
+    })
+
+    it.skipIf(!variant)(`${c.id}: 差し替え後のキャラの音源で作られている`, () => {
+      const wrong: string[] = []
+      const expected = new Set(Object.values(c.swap))
+      for (const [sid, byNode] of Object.entries(variant!.scenarios)) {
+        for (const [nid, e] of Object.entries(byNode)) {
+          if (!expected.has(e.cast)) wrong.push(`${sid}/${nid}=${e.cast}`)
+        }
+      }
+      expect(wrong, `別のキャラの声で生成されている: ${wrong.slice(0, 5).join(', ')}`).toEqual([])
+    })
+  }
 })

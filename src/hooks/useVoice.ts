@@ -12,7 +12,12 @@ export type VoiceState =
   | 'playing' // 再生中（再生開始に成功）
   | 'blocked' // ブラウザに再生を拒否された（自動再生ポリシー等）
 
-export function useVoice(scenarioId: string, nodeId: string, settings: VoiceSettings): VoiceState {
+export function useVoice(
+  scenarioId: string,
+  nodeId: string,
+  settings: VoiceSettings,
+  castingId?: string,
+): VoiceState {
   const [manifest, setManifest] = useState<VoiceManifest | null>(null)
   const [state, setState] = useState<VoiceState>('none')
 
@@ -45,7 +50,7 @@ export function useVoice(scenarioId: string, nodeId: string, settings: VoiceSett
       setState('off')
       return
     }
-    const url = voiceUrlFor(manifest, scenarioId, nodeId)
+    const url = voiceUrlFor(manifest, scenarioId, nodeId, castingId)
     if (!url) {
       stopAudio(audio)
       setState('none')
@@ -79,7 +84,7 @@ export function useVoice(scenarioId: string, nodeId: string, settings: VoiceSett
       alive = false
       stopAudio(audio)
     }
-  }, [scenarioId, nodeId, settings.enabled, manifest])
+  }, [scenarioId, nodeId, settings.enabled, manifest, castingId])
   // settings.volume は上の副作用で反映する（依存に入れると音量操作で鳴り直すため）
 
   return state
