@@ -18,15 +18,21 @@ describe('skipDelayMs', () => {
     expect(skipDelayMs('あ'.repeat(1000))).toBe(SKIP_MAX_MS)
   })
 
-  it('実データの中央値（40字）で 0.5〜0.7 秒に収まる', () => {
+  it('実データの中央値（40字）で 0.25〜0.35 秒に収まる', () => {
     // 全569ノードの実測：最短12字・中央値40字・最長196字（2026-09-13）
     const d = skipDelayMs('あ'.repeat(40))
-    expect(d).toBeGreaterThanOrEqual(500)
-    expect(d).toBeLessThanOrEqual(700)
+    expect(d).toBeGreaterThanOrEqual(250)
+    expect(d).toBeLessThanOrEqual(350)
   })
 
-  it('修正前の一律90msより明確に遅い（今回の是正が効いている）', () => {
-    expect(skipDelayMs('あ'.repeat(12))).toBeGreaterThan(90 * 3)
+  it('旧実装の一律90msよりは遅い（内容を追えるように）', () => {
+    expect(skipDelayMs('あ'.repeat(12))).toBeGreaterThan(90)
+  })
+
+  it('人が連打する速さ（約200〜330ms）より速い＝早送りとして意味がある', () => {
+    // 2回目の調整（260ms＋8ms/字）は中央値で580msとなり、連打より遅く「実感がない」とPO判定された
+    expect(skipDelayMs('あ'.repeat(40))).toBeLessThan(330)
+    expect(skipDelayMs('あ'.repeat(196))).toBeLessThanOrEqual(500)
   })
 
   it('計算式は 下限＋文字数×単価（上限でクランプ）', () => {

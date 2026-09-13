@@ -74,6 +74,10 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   // 記録より前の状態を残しておかないと初見のノードまで自動で送ってしまう
   const [visit, setVisit] = useState<{ nodeId: string; wasRead: boolean } | null>(null)
   const [skipping, setSkipping] = useState(false)
+  // スキップが自動で止まったときは「なぜ止まったか」を一瞬見せる。
+  // 押しても何も起きないように見える（未読で即解除される）のが分かりにくさの原因だった
+  //（実機確認 ST-M2-005-TC-001・2026-09-13）。
+  const [stopReason, setStopReason] = useState<'unread' | 'choice' | null>(null)
   const [backlog, setBacklog] = useState<BacklogLine[]>([])
   const [showBacklog, setShowBacklog] = useState(false)
   // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
@@ -119,7 +123,9 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
     if (paused || feedbackChoice) return // 表示を消さずに待つ（スキップは解除しない）
     if (visit?.nodeId !== nodeId) return // 既読判定が確定するまで待つ
     if (!visit.wasRead || nodeType === 'choice') {
-      setSkipping(false) // 未読と選択肢では必ず止まる＝読み飛ばしと出題スキップを防ぐ
+      // 未読と選択肢では必ず止まる＝読み飛ばしと出題スキップを防ぐ
+      setSkipping(false)
+      setStopReason(nodeType === 'choice' ? 'choice' : 'unread')
       return
     }
     if (!twDone) {
@@ -139,10 +145,18 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const feedback = session.feedbackChoice
   const showChoices = node.type === 'choice' && tw.done && !feedback
 
+  // 停止理由は数秒で消す（画面に残し続けない）
+  useEffect(() => {
+    if (!stopReason) return
+    const t = setTimeout(() => setStopReason(null), 2600)
+    return () => clearTimeout(t)
+  }, [stopReason])
+
   const handleAreaClick = () => {
     if (feedback) return // フィードバック表示中は背景クリック無効
     if (skipping) {
       setSkipping(false) // 画面に触れたら止まる＝明示操作を自動送りより優先する
+      setStopReason(null) // 自分で止めた場合は理由を出さない
       return
     }
     if (!tw.done) {
@@ -181,7 +195,10 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
           data-testid="btn-skip"
           aria-label={skipping ? '既読スキップを止める' : '既読スキップ'}
           aria-pressed={skipping}
-          onClick={() => setSkipping((v) => !v)}
+          onClick={() => {
+            setStopReason(null)
+            setSkipping((v) => !v)
+          }}
           className={`min-w-[44px] min-h-[44px] rounded-lg focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent ${
             skipping ? 'bg-accent text-bg-base font-bold' : 'bg-black/62 text-text-main'
           }`}
@@ -209,6 +226,28 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
         </button>
         <StatusHud status={status} />
       </div>
+
+      {/* スキップのモード表示と停止理由（本文のすぐ上＝読んでいる視線に入る位置）。
+          右上のボタンの色だけでは、モードに入ったことに気づけなかった（実機確認 2026-09-13）。 */}
+      {(skipping || stopReason) && (
+        <div className="absolute bottom-[140px] left-0 right-0 flex justify-center pointer-events-none z-20 px-4">
+          {skipping ? (
+            <span
+              data-testid="skip-indicator"
+              className="bg-accent text-bg-base text-sm font-bold rounded-full px-4 py-1.5 shadow-lg"
+            >
+              ⏩ スキップ中（画面をタップで停止）
+            </span>
+          ) : (
+            <span
+              data-testid="skip-stop-reason"
+              className="bg-surface/95 border border-accent/60 text-text-main text-sm rounded-full px-4 py-1.5 shadow-lg"
+            >
+              {stopReason === 'choice' ? '選択肢のためスキップを止めました' : 'ここから未読のためスキップを止めました'}
+            </span>
+          )}
+        </div>
+      )}
 
       {/* メッセージウィンドウ（クリックで送り/進行） */}
       <button

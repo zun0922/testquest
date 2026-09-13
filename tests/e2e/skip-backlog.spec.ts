@@ -143,10 +143,10 @@ test('選択肢の表示中でも上部のボタン（中断・バックログ�
   await expect(page.getByTestId('screen-select')).toBeVisible()
 })
 
-// 実機確認（ST-M2-005-TC-001・2026-09-13）で「速すぎる」とPO判定され、
-// 一律90ms → 本文の長さに応じた待ち時間（260ms＋8ms/字・上限1000ms）に変更した。
-// 正確な秒数はflakyになるため、「速すぎる側へ戻っていないこと」だけを見る。
-test('既読スキップの送りが速すぎる状態に戻っていない', async ({ page }) => {
+// 実機確認（ST-M2-005-TC-001）で2度の調整を経ている：
+// 一律90ms「速すぎる」→ 260ms＋8ms/字「連打より遅く実感がない」→ 140ms＋4ms/字（現行）
+// 正確な秒数はflakyなので、上下どちらへも外れていないことを幅で見る。
+test('既読スキップの送りが速すぎず・遅すぎない', async ({ page }) => {
   await openScenario(page)
   await readUntilChoice(page)
   await reopenScenario(page)
@@ -156,8 +156,48 @@ test('既読スキップの送りが速すぎる状態に戻っていない', as
   await expect(page.getByTestId('choice-btn-0')).toBeVisible({ timeout: 20000 })
   const elapsed = Date.now() - started
 
-  // 選択肢までに複数ノードを通るため、旧実装（90ms/ノード）なら1秒未満で着く
-  expect(elapsed, `選択肢到達まで ${elapsed}ms（速すぎる可能性）`).toBeGreaterThan(1200)
+  // 旧実装（90ms/ノード）なら1秒未満で着く＝内容を追えない
+  expect(elapsed, `選択肢到達まで ${elapsed}ms（速すぎる）`).toBeGreaterThan(700)
+  // 2回目の調整（約580ms/ノード）は連打より遅く「早送りの実感がない」とPO判定された
+  expect(elapsed, `選択肢到達まで ${elapsed}ms（遅すぎる）`).toBeLessThan(2600)
+})
+
+// 押しても何も起きないように見えるのが分かりにくさの原因だった（実機確認 2026-09-13）
+test('スキップ中はモード表示が出て、止まると理由が表示される', async ({ page }) => {
+  await openScenario(page)
+  await readUntilChoice(page)
+  await reopenScenario(page)
+
+  await page.getByTestId('btn-skip').click()
+  await expect(page.getByTestId('skip-indicator')).toBeVisible()
+  await expect(page.getByTestId('skip-indicator')).toContainText('スキップ中')
+
+  await expect(page.getByTestId('choice-btn-0')).toBeVisible({ timeout: 20000 })
+  await expect(page.getByTestId('skip-indicator')).toHaveCount(0)
+  await expect(page.getByTestId('skip-stop-reason')).toContainText('選択肢')
+  await page.screenshot({ path: 'e2e-shots/skip-03-stop-reason.png' })
+})
+
+test('未読で止まったときは未読だと分かる表示が出る', async ({ page }) => {
+  await openScenario(page)
+  await page.getByTestId('message-window').click()
+  await page.getByTestId('message-window').click()
+
+  await page.getByTestId('btn-skip').click()
+  await expect(page.getByTestId('skip-stop-reason')).toContainText('未読')
+  await page.screenshot({ path: 'e2e-shots/skip-04-unread.png' })
+})
+
+test('自分で止めたときは理由を出さない（余計な表示をしない）', async ({ page }) => {
+  await openScenario(page)
+  await readUntilChoice(page)
+  await reopenScenario(page)
+
+  await page.getByTestId('btn-skip').click()
+  await expect(page.getByTestId('skip-indicator')).toBeVisible()
+  await page.getByTestId('message-window').click()
+  await expect(page.getByTestId('skip-indicator')).toHaveCount(0)
+  await expect(page.getByTestId('skip-stop-reason')).toHaveCount(0)
 })
 
 test('スキップ中はセリフを鳴らさない（鳴っては切られる音を避ける）', async ({ page }) => {
