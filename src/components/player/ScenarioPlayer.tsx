@@ -11,6 +11,7 @@ import ConfirmDialog from '../common/ConfirmDialog'
 import { backgroundUrl, characterUrl } from '../../utils/assets'
 import { isRead, loadReadLog, markRead, type ReadLog } from '../../utils/readLog'
 import { skipDelayMs } from '../../utils/skip'
+import { choiceRevealMs } from '../../utils/pacing'
 import { ensureManifest, hasVoice, playVoiceOnce, type VoiceManifest } from '../../utils/voice'
 import {
   DEFAULT_CASTING,
@@ -80,6 +81,13 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   const [stopReason, setStopReason] = useState<'unread' | 'choice' | null>(null)
   const [backlog, setBacklog] = useState<BacklogLine[]>([])
   const [showBacklog, setShowBacklog] = useState(false)
+  // 設問を出し切ってから選択肢を出すまでの間（PO実機フィードバック 2026-09-13）。
+  // 出題直後に選択肢が出ると、設問を読む前に目が選択肢へ移ってしまう。
+  const [choicesReady, setChoicesReady] = useState(false)
+  // メッセージ窓の高さは本文の長さで変わる（設問が長いと 140px を超える）。
+  // 固定値で中央帯を組むと、長い設問のときに選択肢が本文へかぶるため実寸に追従させる。
+  const msgRef = useRef<HTMLButtonElement | null>(null)
+  const [msgHeight, setMsgHeight] = useState(140)
   // ノード表示と同時にセリフを鳴らす。テキスト送り（30ms/文字）とは同期させず並行再生する
   //（PO決定 2026-08-25）。音声が無い章・OFF・再生拒否のいずれでも従来どおり進行する。
   // スキップ中はセリフを鳴らさない。送りが速いぶん、鳴っては切られる音が連続して耳障りになるため
@@ -143,7 +151,25 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
   if (!node) return null
 
   const feedback = session.feedbackChoice
-  const showChoices = node.type === 'choice' && tw.done && !feedback
+  const showChoices = node.type === 'choice' && tw.done && !feedback && choicesReady
+
+  // 設問を読む時間。本文を出し切ってから、長さに応じた間を置いて選択肢を出す
+  useEffect(() => {
+    setChoicesReady(false)
+    if (nodeType !== 'choice' || !twDone || feedbackChoice) return
+    const t = setTimeout(() => setChoicesReady(true), choiceRevealMs(shownText))
+    return () => clearTimeout(t)
+  }, [nodeId, nodeType, twDone, feedbackChoice, shownText])
+
+  // メッセージ窓の高さの変化を拾う（本文が伸びれば中央帯が縮む）
+  useEffect(() => {
+    const el = msgRef.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() => setMsgHeight(el.offsetHeight))
+    ro.observe(el)
+    setMsgHeight(el.offsetHeight)
+    return () => ro.disconnect()
+  }, [])
 
   // 停止理由は数秒で消す（画面に残し続けない）
   useEffect(() => {
@@ -187,9 +213,12 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
           aria-label={voice.enabled ? 'ボイスをオフにする' : 'ボイスをオンにする'}
           aria-pressed={voice.enabled}
           onClick={toggleVoice}
-          className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+          className="min-w-[44px] min-h-[44px] px-1 bg-black/62 rounded-lg text-text-main flex flex-col items-center justify-center leading-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
-          {voice.enabled ? '🔊' : '🔇'}
+          <span aria-hidden>{voice.enabled ? '🔊' : '🔇'}</span>
+          <span aria-hidden className="text-[9px] mt-0.5 opacity-90">
+            ボイス
+          </span>
         </button>
         <button
           data-testid="btn-skip"
@@ -199,11 +228,14 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
             setStopReason(null)
             setSkipping((v) => !v)
           }}
-          className={`min-w-[44px] min-h-[44px] rounded-lg focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent ${
+          className={`min-w-[44px] min-h-[44px] px-1 rounded-lg flex flex-col items-center justify-center leading-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent ${
             skipping ? 'bg-accent text-bg-base font-bold' : 'bg-black/62 text-text-main'
           }`}
         >
-          &#9193;
+          <span aria-hidden>&#9193;</span>
+          <span aria-hidden className="text-[9px] mt-0.5 opacity-90">
+            早送り
+          </span>
         </button>
         <button
           data-testid="btn-backlog"
@@ -212,17 +244,23 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
             setSkipping(false)
             setShowBacklog(true)
           }}
-          className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+          className="min-w-[44px] min-h-[44px] px-1 bg-black/62 rounded-lg text-text-main flex flex-col items-center justify-center leading-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
-          &#9776;
+          <span aria-hidden>📜</span>
+          <span aria-hidden className="text-[9px] mt-0.5 opacity-90">
+            ログ
+          </span>
         </button>
         <button
           data-testid="btn-pause"
-          aria-label="メニュー"
+          aria-label="中断メニュー"
           onClick={() => setPaused(true)}
-          className="min-w-[44px] min-h-[44px] bg-black/62 rounded-lg text-text-main focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+          className="min-w-[44px] min-h-[44px] px-1 bg-black/62 rounded-lg text-text-main flex flex-col items-center justify-center leading-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
-          ≡
+          <span aria-hidden>⏸</span>
+          <span aria-hidden className="text-[9px] mt-0.5 opacity-90">
+            中断
+          </span>
         </button>
         <StatusHud status={status} />
       </div>
@@ -251,6 +289,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
 
       {/* メッセージウィンドウ（クリックで送り/進行） */}
       <button
+        ref={msgRef}
         data-testid="message-window"
         onClick={handleAreaClick}
         className="absolute bottom-0 left-0 right-0 text-left bg-surface/90 border-t-2 border-accent/40 p-5 min-h-[140px]"
@@ -273,6 +312,7 @@ export default function ScenarioPlayer({ session, status, onChoose, onAdvance, o
           key={node.id}
           choices={(node as ChoiceNode).choices}
           hint={(node as ChoiceNode).hint}
+          messageHeight={msgHeight}
           onChoose={onChoose}
           status={status}
           level={session.level}
@@ -344,17 +384,27 @@ function ChoiceOverlay({
   onChoose,
   status,
   level,
+  messageHeight,
 }: {
   choices: Choice[]
   hint?: string
   onChoose: (i: number) => void
   status: StatusValues
   level: PlaySession['level']
+  /** メッセージ窓の実寸。中央帯の下端をここに合わせる（本文に重ねない） */
+  messageHeight: number
 }) {
   // FR-P2-007 ヒント：合計ポイントとレベル別閾値で強さが決まる（要件仕様 §3）。
   // Lv1＝ヒント文のみ／Lv2＝ヒント文＋選択肢の強調。任意表示にしているのは、
   // 自分で考えてから見られるようにするため。
   const [showHint, setShowHint] = useState(false)
+  // 設問・ヒントが長いと中央帯に収まらずスクロールになる。ヒントは下のボタンで出すため、
+  // そのままだとヒント文が画面の外（上）に残ってしまう。押したのに見えないのでは意味がないので、
+  // 表示したら必ず見える位置へ送る（実データ上限の設問65字＋ヒント54字で小型横持ちが該当・2026-09-13）。
+  const hintRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    if (showHint) hintRef.current?.scrollIntoView({ block: 'start' })
+  }, [showHint])
   const hLv = hintLevel(status, level)
   const canHint = hLv > 0 && hasHintData(hint, choices)
   const targets = showHint ? emphasizedIndices(choices, hLv) : new Set<number>()
@@ -371,28 +421,54 @@ function ChoiceOverlay({
     }
     return idx
   }, [choices])
+  // 配置の考え方（PO実機フィードバック 2026-09-13）
+  //  ・暗幕は**本文（画面下部）にかけない**＝選んでいる間も設問を読み続けられる
+  //  ・中身は**上部のボタン列より下**から並べる＝ヒント文がアイコンの背面に回らない
+  //    （2026-09-06 にボタンを前面へ上げた副作用で、ヒント文が欠けていた）
+  //  ・暗幕はクリックを受け取らない。受け取ると上部のボタンが押せなくなるため
   return (
-    // 暗幕はクリックを受け取らない（pointer-events-none）。受け取ると上部のボタンが
-    // 覆われて押せなくなるため。中身（ヒント・選択肢・ヒントボタン）だけが受け取る。
-    // 選択肢ノードは元々クリックで進まないので、暗幕が操作を遮る必要はない。
-    <div className="pointer-events-none absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 px-6 z-20">
-      {/* ヒント文（Lv1 以上）。答えではなく「何を考えるか」を示す */}
-      {showHint && hint && (
-        <div
-          data-testid="hint-text"
-          className="pointer-events-auto w-full max-w-md rounded-lg border border-hint/60 bg-hint/10 backdrop-blur-sm px-4 py-3 text-sm leading-relaxed text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)]"
-        >
-          <span className="mr-1" aria-hidden>💡</span>
-          {hint}
-        </div>
-      )}
+    <>
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 bg-black/25 z-20"
+        style={{ bottom: messageHeight }}
+        aria-hidden
+      />
+      {/* 横持ち390pxでは中央帯が狭い。justify-center のままはみ出すと**上が切れてスクロールもできない**ため、
+          外側は上詰め＋スクロール、内側を my-auto で「余裕があるときだけ中央」にする */}
+      <div
+        data-testid="choice-overlay"
+        className="pointer-events-none absolute inset-x-0 top-[60px] flex flex-col items-center overflow-y-auto px-6 z-20"
+        style={{ bottom: Math.max(0, messageHeight - 16) }}
+      >
+        <div className="flex flex-col items-center justify-center gap-1.5 w-full min-h-full">
+      {/* ヒント文と選択肢の配置（PO実機フィードバック 2026-09-13）
+          横持ちは縦が狭く横が広い（844×390）。縦に積むとヒント文がスクロールの外へ出てしまうため、
+          **広い画面ではヒント文を選択肢の左**に置いて縦を節約する。狭い画面では従来どおり縦積み。 */}
+      <div
+        className={`w-full flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-4 ${
+          showHint && hint ? 'sm:max-w-3xl' : 'sm:max-w-md'
+        }`}
+      >
+        {showHint && hint && (
+          <div
+            ref={hintRef}
+            data-testid="hint-text"
+            className="pointer-events-auto w-full max-w-md sm:w-2/5 self-stretch flex items-center rounded-lg border border-hint/60 bg-hint/10 backdrop-blur-sm px-3 py-2 text-[13px] leading-snug text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)]"
+          >
+            <span>
+              <span className="mr-1" aria-hidden>💡</span>
+              {hint}
+            </span>
+          </div>
+        )}
+        <div className={`w-full flex flex-col items-center gap-2 ${showHint && hint ? 'sm:w-3/5' : ''}`}>
       {order.map((origIdx, pos) => (
         <button
           key={origIdx}
           data-testid={`choice-btn-${origIdx}`}
           onClick={() => onChoose(origIdx)}
           // ハイブリッド：透過ゴールド＋backdrop-blur＋テキストにスクリム（影）。背景の明暗に依らず読める
-          className="pointer-events-auto w-full max-w-md text-left bg-accent/25 backdrop-blur-sm border border-accent/70 rounded-lg px-4 py-3 text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)] hover:bg-accent/40 hover:border-accent hover:-translate-y-0.5 transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+          className="pointer-events-auto w-full max-w-md text-left bg-accent/30 backdrop-blur-sm border border-accent/80 rounded-lg px-4 py-2.5 text-text-main [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.85)] hover:bg-accent/40 hover:border-accent hover:-translate-y-0.5 transition focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
         >
           <span className="inline-flex items-center justify-center mr-2 min-w-[1.4rem] rounded bg-black/40 text-accent font-bold [text-shadow:none]">
             {String.fromCharCode(65 + pos)}
@@ -410,17 +486,21 @@ function ChoiceOverlay({
             : choices[origIdx].text}
         </button>
       ))}
+        </div>
+      </div>
 
       {/* ヒントボタン。数値は出さない（UI-RULE-006）。活性/非活性でポイントの育ち具合が間接的に伝わる */}
       <button
         data-testid="btn-hint"
         disabled={!canHint || showHint}
         onClick={() => setShowHint(true)}
-        className="pointer-events-auto mt-1 text-sm px-4 py-2 rounded-lg border border-line/80 bg-black/50 text-text-muted enabled:hover:text-text-main enabled:hover:border-accent/70 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
+        className="pointer-events-auto text-sm px-4 py-1 rounded-lg border border-line/80 bg-black/50 text-text-muted enabled:hover:text-text-main enabled:hover:border-accent/70 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline focus-visible:outline-accent"
       >
-        {showHint ? '💡 ヒント表示中' : canHint ? '💡 ヒントを見る' : '💡 ヒントはまだ使えません'}
-      </button>
-    </div>
+          {showHint ? '💡 ヒント表示中' : canHint ? '💡 ヒントを見る' : '💡 ヒントはまだ使えません'}
+        </button>
+        </div>
+      </div>
+    </>
   )
 }
 

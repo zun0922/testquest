@@ -56,6 +56,7 @@ async function playLastScenario(page: Page) {
       continue
     }
     await page.getByTestId('message-window').click()
+    await page.waitForTimeout(120) // 設問の間合い（pacing.ts）を待つ
   }
   await expect(page.getByTestId('screen-result')).toBeVisible()
 }
@@ -135,6 +136,7 @@ test('選択画面からエンディング一覧に入れる（到達後のみ�
       continue
     }
     await page.getByTestId('message-window').click()
+    await page.waitForTimeout(120) // 設問の間合い（pacing.ts）を待つ
   }
   await page.getByTestId('btn-back-select').click()
   for (let i = 0; i < 20; i++) {
